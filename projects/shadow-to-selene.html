@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Shadow to Selene — Jack Mao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy:#0f0e1a; --navy2:#16152b; --purple:#7B6CF6; --purple-light:#a99cf8; --lime:#ccff00; --coral:#ff5533; --white:#ffffff; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
+    .cursor{position:fixed;width:14px;height:14px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor.hovering{width:42px;height:42px;background:var(--purple);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
+    .nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--purple-light);}
+    .nav-back{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;cursor:none;}
+    .nav-back:hover{color:var(--lime);}
+    .project-hero{min-height:75vh;display:flex;flex-direction:column;justify-content:flex-end;padding:10rem 3rem 4rem;background:radial-gradient(ellipse 80% 60% at 70% 100%,#5b1fa6 0%,#2d1060 40%,var(--navy) 70%);}
+    .project-meta{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .meta-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.3rem;}
+    .meta-value{font-size:.85rem;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace;}
+    .project-title{font-size:clamp(3rem,9vw,7rem);font-weight:800;letter-spacing:-.04em;line-height:.92;}
+    .project-title em{font-style:italic;font-family:'DM Serif Display',serif;color:var(--purple-light);}
+    .project-cover{width:100%;max-height:70vh;object-fit:cover;display:block;}
+    .cover-placeholder{width:100%;height:60vh;background:linear-gradient(135deg,#2d1040,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:800;color:rgba(255,255,255,.06);letter-spacing:-.05em;}
+    .project-content{max-width:780px;margin:0 auto;padding:6rem 3rem;}
+    .project-intro{font-size:clamp(1.1rem,2.5vw,1.5rem);font-family:'DM Serif Display',serif;font-style:italic;line-height:1.55;color:var(--purple-light);margin-bottom:3rem;border-left:2px solid var(--purple);padding-left:1.5rem;}
+    .section-heading{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.25rem;margin-top:2.5rem;}
+    .body-text{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.55);}
+    .body-text p{margin-bottom:1.5rem;}
+    .body-text strong{color:var(--white);}
+    .image-grid{display:grid;gap:1.5rem;margin:2.5rem 0;}
+    .two-col{grid-template-columns:1fr 1fr;}
+    .one-col{grid-template-columns:1fr;}
+    .image-grid img{width:100%;border-radius:12px;display:block;}
+    .img-slot{border-radius:12px;background:var(--navy2);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.12);font-family:'DM Mono',monospace;}
+    .img-slot.r43{aspect-ratio:4/3;}
+    .img-slot.r169{aspect-ratio:16/9;}
+    .img-slot.r11{aspect-ratio:1/1;}
+    .img-caption{font-size:.72rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;text-align:center;margin-top:-.75rem;margin-bottom:1.5rem;}
+    hr.div{border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
+    .type-specimen{margin:3rem 0;padding:2.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;}
+    .type-specimen p{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(1.5rem,4vw,3rem);line-height:1.2;color:rgba(255,255,255,.15);letter-spacing:-.02em;}
+    .type-specimen p span{color:var(--purple-light);}
+    .next-project{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--white);transition:background .3s;cursor:none;}
+    .next-project:hover{background:rgba(123,108,246,.06);}
+    .next-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
+    .next-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;letter-spacing:-.03em;}
+    .next-arrow{font-size:2.5rem;color:var(--purple-light);transition:transform .3s;}
+    .next-project:hover .next-arrow{transform:translateX(8px);}
+    footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;}
+    @media(max-width:768px){nav{padding:1.2rem 1.5rem;}.project-hero{padding:8rem 1.5rem 3rem;}.project-content{padding:4rem 1.5rem;}.two-col{grid-template-columns:1fr;}.next-project{padding:3rem 1.5rem;}footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}}
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <nav>
+    <a class="nav-logo" href="../index.html">Jack Mao <span>/</span> Portfolio</a>
+    <a class="nav-back" href="../index.html">← Back to work</a>
+  </nav>
+
+  <div class="project-hero">
+    <div class="project-meta">
+      <div><span class="meta-label">Category</span><span class="meta-value">Typography</span></div>
+      <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+      <div><span class="meta-label">Tools</span><span class="meta-value">Figma, Illustrator</span></div>
+    </div>
+    <h1 class="project-title">From Shadow<br>to <em>Selene</em></h1>
+  </div>
+
+  <!-- COVER: swap div for <img class="project-cover" src="../images/selene-cover.jpg" alt="cover" /> -->
+  <div class="cover-placeholder">TYPE</div>
+
+  <div class="project-content">
+    <p class="project-intro">A typographic exploration of duality — light and darkness as opposing forces rendered in letterform. The moon as metaphor for transformation through type.</p>
+
+    <div class="section-heading">Overview</div>
+    <div class="body-text">
+      <p><strong>From Shadow to Selene</strong> is a typographic system built around a single concept: the journey from darkness toward light. Selene, the Greek goddess of the moon, became the anchor for a visual language exploring contrast, weight, and negative space.</p>
+      <p>The project spans a typeface exploration, editorial layouts, and a set of typographic posters — each piece a different expression of the same underlying idea.</p>
+    </div>
+
+    <!-- Type specimen block — decorative, no images needed -->
+    <div class="type-specimen">
+      <p><span>S</span>hadow<br><span>to</span><br><span>Selene</span></p>
+    </div>
+
+    <div class="section-heading">Process</div>
+    <div class="body-text">
+      <p>The work began with research into historical astronomical illustration and early 20th century poster design. The tension between scientific precision and romantic mythology drove every layout decision.</p>
+      <p>Weight contrast was the primary tool — ultra-thin strokes meeting heavy slabs, small caps against oversized display type. Every juxtaposition was intentional: <strong>shadow only exists because of light.</strong></p>
+    </div>
+
+    <!-- Swap img-slot divs for real <img> tags -->
+    <div class="image-grid two-col">
+      <div class="img-slot r43">selene-01.jpg</div>
+      <div class="img-slot r43">selene-02.jpg</div>
+    </div>
+    <p class="img-caption">Poster series — typographic layouts, 2025</p>
+
+    <div class="image-grid one-col">
+      <div class="img-slot r169">selene-03.jpg</div>
+    </div>
+    <p class="img-caption">Editorial spread — full composition</p>
+
+    <hr class="div" />
+
+    <div class="section-heading">Reflection</div>
+    <div class="body-text">
+      <p>Typography is the most intimate design discipline — the gap between letters carries as much meaning as the letters themselves. This project was a reminder that <strong>negative space is never empty</strong>; it's always charged with intention.</p>
+    </div>
+  </div>
+
+  <a class="next-project" href="hidesign.html">
+    <div><div class="next-label">Next project</div><div class="next-title">HiDesign — Interface Study</div></div>
+    <div class="next-arrow">→</div>
+  </a>
+
+  <footer>
+    <span style="color:var(--purple-light)">Jack Mao</span>
+    <span>© 2026 — All rights reserved</span>
+    <span>Built with ♥ + Figma</span>
+  </footer>
+
+  <script>
+    const c = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px'; });
+    document.querySelectorAll('a').forEach(el => { el.addEventListener('mouseenter',()=>c.classList.add('hovering')); el.addEventListener('mouseleave',()=>c.classList.remove('hovering')); });
+  </script>
+</body>
+</html>

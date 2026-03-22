@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HiDesign — Interface Study — Jack Mao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy:#0f0e1a; --navy2:#16152b; --purple:#7B6CF6; --purple-light:#a99cf8; --lime:#ccff00; --coral:#ff5533; --white:#ffffff; --green:#2d5a2d; --green-light:#4ade80; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
+    .cursor{position:fixed;width:14px;height:14px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor.hovering{width:42px;height:42px;background:var(--purple);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
+    .nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--purple-light);}
+    .nav-back{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;cursor:none;}
+    .nav-back:hover{color:var(--lime);}
+    .project-hero{min-height:75vh;display:flex;flex-direction:column;justify-content:flex-end;padding:10rem 3rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 100%,#1a3a1a 0%,#0f2010 40%,var(--navy) 70%);}
+    .project-meta{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .meta-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.3rem;}
+    .meta-value{font-size:.85rem;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace;}
+    .project-title{font-size:clamp(3rem,9vw,7rem);font-weight:800;letter-spacing:-.04em;line-height:.92;}
+    .project-title em{font-style:italic;font-family:'DM Serif Display',serif;color:var(--green-light);}
+    .project-cover{width:100%;max-height:70vh;object-fit:cover;display:block;}
+    .cover-placeholder{width:100%;height:60vh;background:linear-gradient(135deg,#1a2a1a,#2d5a2d);display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:800;color:rgba(255,255,255,.06);letter-spacing:-.05em;}
+    .project-content{max-width:780px;margin:0 auto;padding:6rem 3rem;}
+    .project-intro{font-size:clamp(1.1rem,2.5vw,1.5rem);font-family:'DM Serif Display',serif;font-style:italic;line-height:1.55;color:var(--green-light);margin-bottom:3rem;border-left:2px solid var(--green-light);padding-left:1.5rem;opacity:.8;}
+    .section-heading{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.25rem;margin-top:2.5rem;}
+    .body-text{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.55);}
+    .body-text p{margin-bottom:1.5rem;}
+    .body-text strong{color:var(--white);}
+    .image-grid{display:grid;gap:1.5rem;margin:2.5rem 0;}
+    .two-col{grid-template-columns:1fr 1fr;}
+    .one-col{grid-template-columns:1fr;}
+    .three-col{grid-template-columns:1fr 1fr 1fr;}
+    .image-grid img{width:100%;border-radius:12px;display:block;}
+    .img-slot{border-radius:12px;background:var(--navy2);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.12);font-family:'DM Mono',monospace;}
+    .img-slot.r43{aspect-ratio:4/3;}
+    .img-slot.r169{aspect-ratio:16/9;}
+    .img-slot.r11{aspect-ratio:1/1;}
+    .img-caption{font-size:.72rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;text-align:center;margin-top:-.75rem;margin-bottom:1.5rem;}
+    hr.div{border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
+    .stat{padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+    .stat-num{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--lime);}
+    .stat-label{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.3rem;font-family:'DM Mono',monospace;}
+    .next-project{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--white);transition:background .3s;cursor:none;}
+    .next-project:hover{background:rgba(123,108,246,.06);}
+    .next-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
+    .next-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;letter-spacing:-.03em;}
+    .next-arrow{font-size:2.5rem;color:var(--purple-light);transition:transform .3s;}
+    .next-project:hover .next-arrow{transform:translateX(8px);}
+    footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;}
+    @media(max-width:768px){nav{padding:1.2rem 1.5rem;}.project-hero{padding:8rem 1.5rem 3rem;}.project-content{padding:4rem 1.5rem;}.two-col,.three-col{grid-template-columns:1fr;}.stat-row{grid-template-columns:1fr 1fr;}.next-project{padding:3rem 1.5rem;}footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}}
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <nav>
+    <a class="nav-logo" href="../index.html">Jack Mao <span>/</span> Portfolio</a>
+    <a class="nav-back" href="../index.html">← Back to work</a>
+  </nav>
+
+  <div class="project-hero">
+    <div class="project-meta">
+      <div><span class="meta-label">Category</span><span class="meta-value">UI Design</span></div>
+      <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+      <div><span class="meta-label">Tools</span><span class="meta-value">Figma, Framer</span></div>
+    </div>
+    <h1 class="project-title">HiDesign —<br><em>Interface Study</em></h1>
+  </div>
+
+  <!-- COVER: swap div for <img class="project-cover" src="../images/hidesign-cover.jpg" alt="cover" /> -->
+  <div class="cover-placeholder">FORM</div>
+
+  <div class="project-content">
+    <p class="project-intro">A deep-dive UI exploration — designing an interface from first principles, questioning every convention, and rebuilding from the ground up.</p>
+
+    <div class="section-heading">Overview</div>
+    <div class="body-text">
+      <p><strong>HiDesign</strong> is a self-initiated interface study that challenges the conventions of modern UI design. Rather than following established patterns, the project asks: what would a digital interface look like if it were designed without reference to existing systems?</p>
+      <p>The result is a set of screens that feel simultaneously unfamiliar and intuitive — borrowing logic from physical objects, architectural space, and natural systems rather than digital precedent.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">Screen designs</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Component systems</div></div>
+      <div class="stat"><div class="stat-num">01</div><div class="stat-label">Core idea</div></div>
+    </div>
+
+    <!-- Swap img-slot divs for real <img> tags -->
+    <div class="image-grid one-col">
+      <div class="img-slot r169">hidesign-01.jpg</div>
+    </div>
+    <p class="img-caption">Main dashboard — full layout</p>
+
+    <div class="section-heading">Process</div>
+    <div class="body-text">
+      <p>The project began with two weeks of deliberately <strong>not opening Figma</strong>. Sketching, reading, looking at architecture and industrial design — building a visual vocabulary that wasn't rooted in digital UI.</p>
+      <p>Once that foundation was established, the translation into screen design happened quickly. The constraints of a digital canvas became interesting rather than limiting — every element had to earn its place on screen.</p>
+    </div>
+
+    <div class="image-grid three-col">
+      <div class="img-slot r11">hidesign-02.jpg</div>
+      <div class="img-slot r11">hidesign-03.jpg</div>
+      <div class="img-slot r11">hidesign-04.jpg</div>
+    </div>
+    <p class="img-caption">Component library — cards, navigation, type scale</p>
+
+    <div class="image-grid two-col">
+      <div class="img-slot r43">hidesign-05.jpg</div>
+      <div class="img-slot r43">hidesign-06.jpg</div>
+    </div>
+    <p class="img-caption">Mobile and desktop breakpoints</p>
+
+    <hr class="div" />
+
+    <div class="section-heading">Reflection</div>
+    <div class="body-text">
+      <p>The biggest lesson: <strong>familiarity is a design tool, not a constraint.</strong> The most successful screens in this study were the ones that borrowed just enough convention to feel navigable, then broke away sharply in one unexpected direction.</p>
+    </div>
+  </div>
+
+  <a class="next-project" href="logotype.html">
+    <div><div class="next-label">Next project</div><div class="next-title">Logotype Collection</div></div>
+    <div class="next-arrow">→</div>
+  </a>
+
+  <footer>
+    <span style="color:var(--purple-light)">Jack Mao</span>
+    <span>© 2026 — All rights reserved</span>
+    <span>Built with ♥ + Figma</span>
+  </footer>
+
+  <script>
+    const c = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px'; });
+    document.querySelectorAll('a').forEach(el => { el.addEventListener('mouseenter',()=>c.classList.add('hovering')); el.addEventListener('mouseleave',()=>c.classList.remove('hovering')); });
+  </script>
+</body>
+</html>
