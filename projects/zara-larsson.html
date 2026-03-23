@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Edition ft. Zara Larsson — Jack Mao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f0e1a;
+      --navy2: #16152b;
+      --purple: #7B6CF6;
+      --purple-light: #a99cf8;
+      --lime: #ccff00;
+      --coral: #ff5533;
+      --pink: #e91e8c;
+      --pink-light: #f472b6;
+      --white: #ffffff;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
+    .cursor{position:fixed;width:14px;height:14px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor.hovering{width:42px;height:42px;background:var(--pink);}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
+    .nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--purple-light);}
+    .nav-back{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;cursor:none;}
+    .nav-back:hover{color:var(--lime);}
+
+    /* Hero — editorial magazine feel */
+    .project-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      padding: 10rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 100% 80% at 80% 100%, #8b0057 0%, #3d0040 35%, var(--navy) 70%);
+      gap: 3rem;
+    }
+    .hero-left { display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .edition-tag {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--pink-light);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .edition-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--pink-light);
+    }
+
+    .hero-issue {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: .88;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, #ffffff 0%, #f9a8d4 50%, #e91e8c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+    }
+
+    .hero-meta {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .hero-meta-item {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .08em;
+    }
+    .hero-meta-item span { color: var(--pink-light); }
+
+    .hero-pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 1.8vw, 1.5rem);
+      line-height: 1.5;
+      color: rgba(255,255,255,.45);
+      max-width: 340px;
+      border-left: 2px solid var(--pink);
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.2rem;
+      background: var(--pink);
+      border-radius: 100px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: white;
+    }
+    .cover-badge::before { content: '★'; }
+
+    /* Divider rule */
+    .mag-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--pink) 0%, rgba(233,30,140,.15) 100%);
+      margin: 0;
+    }
+
+    /* Content */
+    .project-content { max-width: 860px; margin: 0 auto; padding: 6rem 3rem; }
+
+    .mag-intro {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--pink-light);
+      margin-bottom: 3.5rem;
+      border-left: 2px solid var(--pink);
+      padding-left: 1.5rem;
+    }
+
+    .section-heading {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 1.25rem;
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.06);
+      max-width: 60px;
+    }
+
+    .body-text { font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.55); }
+    .body-text p { margin-bottom: 1.5rem; }
+    .body-text strong { color: var(--white); }
+    .body-text em { color: var(--pink-light); font-style: italic; font-family: 'DM Serif Display', serif; }
+
+    /* Magazine two-col layout */
+    .mag-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+      align-items: start;
+    }
+    .mag-two-col .body-text { font-size: .92rem; }
+
+    /* Pull quote standalone */
+    .pull-quote {
+      margin: 3.5rem 0;
+      padding: 2.5rem 3rem;
+      border-top: 2px solid var(--pink);
+      border-bottom: 1px solid rgba(233,30,140,.2);
+    }
+    .pull-quote p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      line-height: 1.35;
+      color: rgba(255,255,255,.8);
+      letter-spacing: -.01em;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--pink);
+      font-style: normal;
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* Track list */
+    .tracklist {
+      margin: 2.5rem 0;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .tracklist-header {
+      padding: 1rem 1.5rem;
+      background: rgba(233,30,140,.08);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--pink-light);
+      display: grid;
+      grid-template-columns: 2rem 1fr auto;
+      gap: 1rem;
+    }
+    .track {
+      padding: .85rem 1.5rem;
+      display: grid;
+      grid-template-columns: 2rem 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      transition: background .2s;
+    }
+    .track:last-child { border-bottom: none; }
+    .track:hover { background: rgba(233,30,140,.05); }
+    .track-num {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: rgba(255,255,255,.2);
+    }
+    .track-name { font-size: .88rem; font-weight: 700; color: rgba(255,255,255,.75); }
+    .track-name small {
+      display: block;
+      font-size: .7rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.3);
+      font-family: 'DM Mono', monospace;
+      margin-top: .15rem;
+    }
+    .track-feat {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--pink);
+      background: rgba(233,30,140,.12);
+      padding: .25rem .6rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* Image grid */
+    .image-grid { display: grid; gap: 1.5rem; margin: 2.5rem 0; }
+    .two-col { grid-template-columns: 1fr 1fr; }
+    .one-col { grid-template-columns: 1fr; }
+    .image-grid img { width: 100%; border-radius: 12px; display: block; }
+    .img-slot {
+      border-radius: 12px;
+      background: var(--navy2);
+      border: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.12);
+      font-family: 'DM Mono', monospace;
+    }
+    .img-slot.r43 { aspect-ratio: 4/3; }
+    .img-slot.r169 { aspect-ratio: 16/9; }
+    .img-slot.r11 { aspect-ratio: 1/1; }
+    .img-caption { font-size: .72rem; color: rgba(255,255,255,.2); font-family: 'DM Mono', monospace; text-align: center; margin-top: -.75rem; margin-bottom: 1.5rem; }
+
+    hr.div { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 3rem 0; }
+
+    /* Stats row */
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2.5rem 0; }
+    .stat { padding: 1.5rem; background: rgba(233,30,140,.05); border: 1px solid rgba(233,30,140,.12); border-radius: 12px; }
+    .stat-num { font-size: 2rem; font-weight: 800; letter-spacing: -.04em; color: var(--pink-light); }
+    .stat-label { font-size: .72rem; color: rgba(255,255,255,.35); margin-top: .3rem; font-family: 'DM Mono', monospace; }
+
+    .next-project{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--white);transition:background .3s;cursor:none;}
+    .next-project:hover{background:rgba(233,30,140,.06);}
+    .next-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
+    .next-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;letter-spacing:-.03em;}
+    .next-arrow{font-size:2.5rem;color:var(--pink-light);transition:transform .3s;}
+    .next-project:hover .next-arrow{transform:translateX(8px);}
+
+    footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;}
+
+    @media(max-width:768px){
+      nav{padding:1.2rem 1.5rem;}
+      .project-hero{grid-template-columns:1fr;min-height:auto;padding:8rem 1.5rem 4rem;gap:2rem;}
+      .hero-right{align-items:flex-start;text-align:left;}
+      .hero-pull-quote{max-width:100%;}
+      .project-content{padding:4rem 1.5rem;}
+      .mag-two-col{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      .pull-quote{padding:1.5rem;}
+      .next-project{padding:3rem 1.5rem;}
+      footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav>
+    <a class="nav-logo" href="../index.html">Jack Mao <span>/</span> Portfolio</a>
+    <a class="nav-back" href="../index.html#work">← Back to work</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="project-hero">
+    <div class="hero-left">
+      <div class="edition-tag">Special Edition — Vol. 01</div>
+      <div class="hero-issue">So<br>Good.</div>
+      <div class="hero-subtitle">Zara Larsson · 2017</div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Category — <span>Editorial Design</span></div>
+        <div class="hero-meta-item">Year — <span>2025</span></div>
+        <div class="hero-meta-item">Tools — <span>Adobe InDesign, Photoshop</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-pull-quote">What if an album wasn't just heard — but read, felt, and lived on the page like a magazine cover story?</p>
+      <div class="cover-badge">Album Editorial</div>
+    </div>
+  </div>
+
+  <div class="mag-rule"></div>
+
+  <!-- ── CONTENT ── -->
+  <div class="project-content">
+
+    <p class="mag-intro">
+      Reimagining Zara Larsson's <em>So Good</em> not as a tracklist — but as a full editorial experience. Every page a spread. Every lyric a headline. Every photograph a mood board.
+    </p>
+
+    <div class="section-heading">The Brief</div>
+    <div class="body-text">
+      <p><strong>So Good</strong>, released in March 2017, was Zara Larsson's global coming-of-age moment — a record that bridged Scandinavian pop sensibility with mainstream R&B and dance production. It debuted across charts in over 20 countries and cemented her as one of the most distinctive voices of her generation.</p>
+      <p>This project asked a single provocative question: <em>if So Good were a magazine, what would it look like?</em> The answer became a full editorial redesign — treating the album as both subject and structure, reimagining its energy through typography, photography direction, and layout design.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"She doesn't just make pop music. She makes pop culture — and this album is the proof."</p>
+      <cite>— Editorial concept, Jack Mao / 2025</cite>
+    </div>
+
+    <div class="section-heading">Design Direction</div>
+    <div class="mag-two-col">
+      <div class="body-text">
+        <p>The magazine's visual identity draws from the album's own tension between <strong>softness and power</strong>. Pastel gradients are cut through by bold blackletter headlines. Intimate photography sits beside hard-edged typography. Nothing is entirely one thing — just like the record itself.</p>
+        <p>The colour palette pulls from the album's promotional materials: deep magentas, champagne golds, and cool lilacs — accented by stark white and near-black negative space.</p>
+      </div>
+      <div class="body-text">
+        <p>Typography was treated as a design element in its own right. Display headlines were set oversized and cropped — partially bleeding off the page as if the ideas were too big to contain. Pull quotes were extracted from lyrics and given the weight of editorial copy.</p>
+        <p>Each section of the magazine corresponds to a sonic chapter of the album — the opener, the ballads, the anthems, the closer — each with its own visual register.</p>
+      </div>
+    </div>
+
+    <!-- Image grid — swap placeholders for your PDFs/images -->
+    <div class="image-grid two-col">
+      <div class="img-slot r43">spread-01.jpg</div>
+      <div class="img-slot r43">spread-02.jpg</div>
+    </div>
+    <p class="img-caption">Editorial spreads — cover and opening feature</p>
+
+    <div class="section-heading">The Tracklist as Structure</div>
+    <div class="body-text">
+      <p>Rather than a conventional contents page, the album's tracklist became the magazine's architecture. Each track was assigned a section, a mood, and a visual treatment — turning a 14-song record into a 14-chapter editorial journey.</p>
+    </div>
+
+    <div class="tracklist">
+      <div class="tracklist-header">
+        <span>#</span><span>Track</span><span>Section</span>
+      </div>
+      <div class="track"><span class="track-num">01</span><div class="track-name">Lush Life<small>The Opener</small></div><span class="track-feat">Cover Story</span></div>
+      <div class="track"><span class="track-num">02</span><div class="track-name">What They Say<small>The Statement</small></div><span class="track-feat">Feature</span></div>
+      <div class="track"><span class="track-num">03</span><div class="track-name">So Good ft. Ty Dolla $ign<small>The Anthem</small></div><span class="track-feat">Centre Spread</span></div>
+      <div class="track"><span class="track-num">04</span><div class="track-name">Never Forget You ft. MNEK<small>The Ballad</small></div><span class="track-feat">Photo Essay</span></div>
+      <div class="track"><span class="track-num">05</span><div class="track-name">Ain't My Fault<small>The Attitude</small></div><span class="track-feat">Editorial</span></div>
+      <div class="track"><span class="track-num">06</span><div class="track-name">Girls Like ft. Tinie Tempah<small>The Collab</small></div><span class="track-feat">Interview</span></div>
+      <div class="track"><span class="track-num">07</span><div class="track-name">Léon<small>The Closer</small></div><span class="track-feat">Back Page</span></div>
+    </div>
+
+    <div class="image-grid one-col">
+      <div class="img-slot r169">spread-03.jpg</div>
+    </div>
+    <p class="img-caption">Centre spread — "So Good" feature layout</p>
+
+    <div class="section-heading">By the Numbers</div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">14</div><div class="stat-label">Tracks / chapters</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Countries charted</div></div>
+      <div class="stat"><div class="stat-num">01</div><div class="stat-label">Editorial vision</div></div>
+    </div>
+
+    <div class="section-heading">Typography & Layout</div>
+    <div class="body-text">
+      <p>Headlines were set in an ultra-compressed serif with extreme tracking — evoking the loud confidence of Larsson's vocal delivery. Body copy uses a refined grotesque with generous leading, giving the pages room to breathe between the high-energy visual moments.</p>
+      <p>Layout was designed on a strict 12-column grid — but rules were broken deliberately. Full-bleed images interrupt the structure. Type runs over photography. Colour blocks shift from spread to spread, keeping the reader visually engaged from page one to the back cover.</p>
+    </div>
+
+    <div class="image-grid two-col">
+      <div class="img-slot r43">spread-04.jpg</div>
+      <div class="img-slot r43">spread-05.jpg</div>
+    </div>
+    <p class="img-caption">Typography system and layout grid studies</p>
+
+    <hr class="div" />
+
+    <div class="section-heading">Reflection</div>
+    <div class="body-text">
+      <p>This project reinforced how music and editorial design share the same fundamental DNA — <strong>both are about pacing, tension, and release</strong>. An album builds from track to track; a magazine builds from spread to spread. The best version of both leaves you wanting to start again from the beginning.</p>
+      <p>Designing through the lens of Zara Larsson's <em>So Good</em> was an exercise in translating sonic energy into visual form — and a reminder that the most interesting design problems live at the edge of two disciplines.</p>
+    </div>
+
+  </div>
+
+  <a class="next-project" href="waves.html">
+    <div><div class="next-label">Back to start</div><div class="next-title">Symmetrically Unorthodox</div></div>
+    <div class="next-arrow">→</div>
+  </a>
+
+  <footer>
+    <span style="color:var(--purple-light)">Jack Mao</span>
+    <span>© 2026 — All rights reserved</span>
+    <span>Built with ♥ + Figma</span>
+  </footer>
+
+  <script>
+    const c = document.getElementById('cursor');
+    c.style.left = '-100px'; c.style.top = '-100px';
+    document.addEventListener('mousemove', e => { c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px'; });
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter',()=>c.classList.add('hovering'));
+      el.addEventListener('mouseleave',()=>c.classList.remove('hovering'));
+    });
+  </script>
+</body>
+</html>
