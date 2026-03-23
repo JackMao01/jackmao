@@ -195,8 +195,12 @@
       user-select: none;
       letter-spacing: -0.05em;
     }
-    .hero-tag {
-      font-size: 0.75rem;
+    .jm-monogram {
+      width: clamp(80px, 12vw, 140px);
+      height: clamp(80px, 12vw, 140px);
+      margin-bottom: 2rem;
+      animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+    }
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -780,6 +784,33 @@
     <!-- Hero -->
     <section id="hero">
       <div class="hero-bg-text">JM</div>
+      <svg class="jm-monogram" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="70" cy="70" r="67" stroke="rgba(123,108,246,0.25)" stroke-width="1"/>
+        <circle cx="70" cy="70" r="60" stroke="rgba(123,108,246,0.12)" stroke-width="0.5"/>
+        <!-- Lime accent arc top -->
+        <path d="M 30 70 A 40 40 0 0 1 110 70" stroke="#ccff00" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+        <!-- Lime accent arc bottom -->
+        <path d="M 45 95 A 40 40 0 0 0 95 95" stroke="#ccff00" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+        <!-- Corner marks -->
+        <line x1="20" y1="20" x2="32" y2="20" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="20" x2="20" y2="32" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="120" y1="20" x2="108" y2="20" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="120" y1="20" x2="120" y2="32" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="120" x2="32" y2="120" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="120" x2="20" y2="108" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="120" y1="120" x2="108" y2="120" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="120" y1="120" x2="120" y2="108" stroke="rgba(204,255,0,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- J letterform -->
+        <path d="M 38 42 L 52 42 M 45 42 L 45 82 Q 45 96 32 96 Q 26 96 23 90"
+              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- M letterform -->
+        <path d="M 60 96 L 60 42 L 78 74 L 96 42 L 96 96"
+              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Lime dot accent -->
+        <circle cx="111" cy="70" r="3.5" fill="#ccff00" opacity="0.9"/>
+        <circle cx="29" cy="70" r="2" fill="rgba(204,255,0,0.4)"/>
+      </svg>
       <div class="hero-tag">✦ Design &amp; Illustration — Toronto</div>
       <h1 class="hero-heading">Design thinking<br><em>made</em><br>thoughtfully.</h1>
       <p class="hero-sub">Illustrator, designer, and typographer crafting visual experiences that live at the intersection of concept and craft.</p>
