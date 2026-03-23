@@ -25,6 +25,10 @@
 
     html { scroll-behavior: smooth; }
 
+    /* ── Image protection ── */
+    img { -webkit-user-drag: none; user-drag: none; user-select: none; -webkit-user-select: none; }
+    iframe { pointer-events: auto; user-select: none; -webkit-user-select: none; }
+
     body {
       font-family: 'Syne', sans-serif;
       background: var(--navy);
@@ -1110,6 +1114,16 @@
   </div><!-- /main -->
 
   <script>
+    // ── Image protection ──
+    document.addEventListener('contextmenu', e => {
+      if (e.target.tagName === 'IMG' || e.target.tagName === 'IFRAME') {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('dragstart', e => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
     // ── Cursor ──
     const cursor = document.getElementById('cursor');
     cursor.style.left = '-100px';
