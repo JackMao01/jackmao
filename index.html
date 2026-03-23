@@ -81,7 +81,7 @@
     .splash-title {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(4rem, 17vw, 13rem);
+      font-size: clamp(2.8rem, 13vw, 13rem);
       line-height: 0.9;
       letter-spacing: -0.03em;
       background: linear-gradient(160deg, #e0d8ff 0%, #9d8ffa 50%, #6B5CE7 100%);
@@ -89,6 +89,8 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: fadeSlideUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both;
+      max-width: 95vw;
+      word-break: break-word;
     }
 
     .enter-btn {
@@ -699,14 +701,14 @@
       .nav-links a { font-size: 0.7rem; }
 
       /* Splash */
-      .splash-year { font-size: clamp(3.5rem, 20vw, 6rem); }
-      .splash-title { font-size: clamp(3rem, 18vw, 5.5rem); }
+      .splash-year { font-size: clamp(3rem, 18vw, 6rem); }
+      .splash-title { font-size: clamp(2.2rem, 13vw, 5.5rem); }
       .enter-btn { font-size: 1rem; padding: 0.85rem 1.6rem; }
 
       /* Hero */
       #hero { padding: 0 1.5rem 3rem; }
       .hero-bg-text { display: none; }
-      .hero-heading { font-size: clamp(2.5rem, 11vw, 4rem); }
+      .hero-heading { font-size: clamp(1.8rem, 8.5vw, 4rem); word-break: break-word; }
       .hero-sub { font-size: 0.85rem; }
 
       /* Marquee */
@@ -739,10 +741,10 @@
     }
 
     @media (max-width: 400px) {
-      .splash-year { font-size: 18vw; }
-      .splash-title { font-size: 16vw; }
+      .splash-year { font-size: 16vw; }
+      .splash-title { font-size: 12vw; }
       .nav-links { gap: 0.8rem; }
-      .hero-heading { font-size: 10vw; }
+      .hero-heading { font-size: 8vw; word-break: break-word; }
       .contact-email { font-size: 4.5vw; }
     }
   </style>
