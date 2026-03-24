@@ -200,19 +200,23 @@
       letter-spacing: -0.05em;
     }
     .hero-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--lime);
       margin-bottom: 1.5rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .hero-heading {
       font-weight: 800;
-      font-size: clamp(3.5rem, 13vw, 11rem);
+      font-size: clamp(2.8rem, 13vw, 11rem);
       line-height: 0.92;
       letter-spacing: -0.04em;
-      max-width: 900px;
+      max-width: min(900px, 100%);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .hero-heading em {
       font-style: italic;
@@ -789,8 +793,10 @@
       /* Hero */
       #hero { padding: 0 1.5rem 3rem; }
       .hero-bg-text { display: none; }
-      .hero-heading { font-size: clamp(1.8rem, 8.5vw, 4rem); word-break: break-word; overflow-wrap: break-word; }
-      .hero-sub { font-size: 0.85rem; }
+      .hero-tag { font-size: 0.62rem; letter-spacing: 0.1em; }
+      .hero-heading { font-size: clamp(1.8rem, 8vw, 4rem); word-break: break-word; overflow-wrap: break-word; }
+      .hero-sub { font-size: 0.85rem; max-width: 100%; }
+      .hero-scroll { font-size: 0.65rem; letter-spacing: 0.1em; }
 
       /* Marquee */
       .marquee-inner span { font-size: 0.95rem; padding: 0 1.5rem; }
@@ -825,7 +831,8 @@
       .splash-year { font-size: 16vw; }
       .splash-title { font-size: 12vw; }
       .nav-links { gap: 0.8rem; }
-      .hero-heading { font-size: 8vw; word-break: break-word; }
+      .hero-tag { font-size: 0.55rem; letter-spacing: 0.08em; }
+      .hero-heading { font-size: 7.5vw; word-break: break-word; }
       .contact-email { font-size: 4.5vw; }
     }
   </style>
@@ -842,7 +849,7 @@
     <button class="enter-btn" id="enterBtn">
       enter <span class="dot"></span>
     </button>
-    <p class="splash-footer">made proudly with ✦ figma</p>
+    <p class="splash-footer">made proudly with ✦ figma<br><span style="font-size:0.7rem; opacity:0.5;">with support from Claude AI</span></p>
   </div>
 
   <!-- ── MAIN ── -->
