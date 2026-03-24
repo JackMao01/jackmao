@@ -132,6 +132,7 @@
     document.addEventListener("contextmenu", e => { if (e.target.tagName === "IMG" || e.target.tagName === "IFRAME") e.preventDefault(); });
     document.addEventListener("dragstart", e => { if (e.target.tagName === "IMG") e.preventDefault(); });
     const c = document.getElementById('cursor');
+    c.style.left = '-100px'; c.style.top = '-100px';
     document.addEventListener('mousemove', e => { c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px'; });
     document.querySelectorAll('a').forEach(el => { el.addEventListener('mouseenter',()=>c.classList.add('hovering')); el.addEventListener('mouseleave',()=>c.classList.remove('hovering')); });
   </script>
