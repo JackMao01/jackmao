@@ -3,314 +3,262 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HiDesign — Interface Study — Jack Mao</title>
+  <title>Chronicles of Elysium — Jack Mao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    :root { --navy:#0f0e1a; --navy2:#16152b; --purple:#7B6CF6; --purple-light:#a99cf8; --lime:#ccff00; --coral:#ff5533; --white:#ffffff; --green:#2d5a2d; --green-light:#4ade80; }
+    :root {
+      --navy:#0f0e1a; --navy2:#16152b; --purple:#7B6CF6; --purple-light:#a99cf8;
+      --lime:#ccff00; --coral:#ff5533; --white:#ffffff;
+      --gold:#c9a84c; --gold-light:#e8c97a; --forest:#1a4a2a; --forest-light:#4ade80;
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    img{-webkit-user-drag:none;user-drag:none;user-select:none;-webkit-user-select:none;}
-    iframe{user-select:none;-webkit-user-select:none;}
     html{scroll-behavior:smooth;}
+    img{-webkit-user-drag:none;user-drag:none;user-select:none;-webkit-user-select:none;pointer-events:none;}
     body{font-family:'Syne',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
-    .cursor{position:fixed;width:14px;height:14px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
-    .cursor.hovering{width:42px;height:42px;background:var(--purple);}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
+    .cursor{position:fixed;width:14px;height:14px;background:var(--gold-light);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+    .cursor.hovering{width:42px;height:42px;background:var(--gold);}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(15,14,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);}
     .nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none;}
     .nav-logo span{color:var(--purple-light);}
     .nav-back{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;cursor:none;}
     .nav-back:hover{color:var(--lime);}
-    .project-hero{min-height:75vh;display:flex;flex-direction:column;justify-content:flex-end;padding:10rem 3rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 100%,#1a3a1a 0%,#0f2010 40%,var(--navy) 70%);}
-    .project-meta{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap;}
-    .meta-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.3rem;}
-    .meta-value{font-size:.85rem;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace;}
-    .project-title{font-size:clamp(3rem,9vw,7rem);font-weight:800;letter-spacing:-.04em;line-height:.92;}
-    .project-title em{font-style:italic;font-family:'DM Serif Display',serif;color:var(--green-light);}
-    .project-cover{width:100%;max-height:70vh;object-fit:cover;display:block;}
-    .cover-placeholder{width:100%;height:60vh;background:linear-gradient(135deg,#1a2a1a,#2d5a2d);display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:800;color:rgba(255,255,255,.06);letter-spacing:-.05em;}
-    .project-content{max-width:780px;margin:0 auto;padding:6rem 3rem;}
-    .project-intro{font-size:clamp(1.1rem,2.5vw,1.5rem);font-family:'DM Serif Display',serif;font-style:italic;line-height:1.55;color:var(--green-light);margin-bottom:3rem;border-left:2px solid var(--green-light);padding-left:1.5rem;opacity:.8;}
-    .section-heading{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.25rem;margin-top:2.5rem;}
-    .body-text{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.55);}
+
+    /* Hero */
+    .project-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:10rem 3rem 5rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 60% 100%,#1a4a2a 0%,#0a2010 35%,var(--navy) 70%);}
+    .hero-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;}
+    .hero-content{position:relative;z-index:1;}
+    .edition-tag{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
+    .edition-tag::before{content:'';display:block;width:32px;height:1px;background:var(--gold-light);}
+    .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(3rem,8vw,7.5rem);line-height:.9;letter-spacing:-.03em;background:linear-gradient(135deg,#ffffff 0%,#e8c97a 60%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem;}
+    .hero-subtitle-text{font-size:clamp(1rem,2vw,1.4rem);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:2.5rem;}
+    .hero-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+    .hero-meta-item{font-family:'DM Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em;}
+    .hero-meta-item span{color:var(--gold-light);}
+    .mag-rule{width:100%;height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(201,168,76,.1) 100%);}
+
+    /* Content */
+    .project-content{max-width:860px;margin:0 auto;padding:6rem 3rem;}
+    .project-intro{font-size:clamp(1.1rem,2.5vw,1.6rem);font-family:'DM Serif Display',serif;font-style:italic;line-height:1.55;color:var(--gold-light);margin-bottom:3.5rem;border-left:2px solid var(--gold);padding-left:1.5rem;}
+    .section-heading{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.25rem;margin-top:2.5rem;display:flex;align-items:center;gap:1rem;}
+    .section-heading::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);max-width:60px;}
+    .body-text{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.55);}
     .body-text p{margin-bottom:1.5rem;}
     .body-text strong{color:var(--white);}
+    .body-text em{color:var(--gold-light);font-style:italic;font-family:'DM Serif Display',serif;}
+
+    /* Pull quote */
+    .pull-quote{margin:3.5rem 0;padding:2.5rem 3rem;border-top:2px solid var(--gold);border-bottom:1px solid rgba(201,168,76,.15);}
+    .pull-quote p{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(1.3rem,3vw,2rem);line-height:1.4;color:rgba(255,255,255,.8);}
+    .pull-quote cite{display:block;margin-top:1rem;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light);font-style:normal;font-family:'Syne',sans-serif;}
+
+    /* Stat row */
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
+    .stat{padding:1.5rem;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.15);border-radius:12px;}
+    .stat-num{font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--gold-light);}
+    .stat-label{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.3rem;font-family:'DM Mono',monospace;}
+
+    /* Mechanics grid */
+    .mechanics-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2.5rem 0;}
+    .mechanic-card{padding:1.75rem;background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.15);border-radius:14px;}
+    .mechanic-num{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--gold-light);margin-bottom:.5rem;letter-spacing:.1em;}
+    .mechanic-title{font-size:1rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.75rem;}
+    .mechanic-desc{font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.45);}
+
+    /* Aesthetic bars */
+    .aesthetics-list{margin:2rem 0;display:flex;flex-direction:column;gap:.85rem;}
+    .aesthetic-row{display:grid;grid-template-columns:120px 1fr 36px;align-items:center;gap:1rem;}
+    .aesthetic-label{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.5);}
+    .aesthetic-bar-track{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+    .aesthetic-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);}
+    .aesthetic-score{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--gold-light);}
+
+    /* Act cards */
+    .act-card{margin:1.5rem 0;padding:1.75rem;background:rgba(255,255,255,.02);border-left:2px solid rgba(201,168,76,.3);border-radius:0 12px 12px 0;}
+    .act-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--gold-light);letter-spacing:.1em;margin-bottom:.4rem;}
+    .act-title{font-size:1rem;font-weight:800;margin-bottom:.75rem;}
+    .act-body{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.45);}
+
+    /* Platform pills */
+    .platform-row{display:flex;flex-wrap:wrap;gap:.75rem;margin:2rem 0;}
+    .platform-pill{padding:.5rem 1.1rem;border-radius:100px;border:1px solid rgba(201,168,76,.25);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.5);font-family:'DM Mono',monospace;}
+
+    /* Image grid */
     .image-grid{display:grid;gap:1.5rem;margin:2.5rem 0;}
     .two-col{grid-template-columns:1fr 1fr;}
     .one-col{grid-template-columns:1fr;}
-    .three-col{grid-template-columns:1fr 1fr 1fr;}
     .image-grid img{width:100%;border-radius:12px;display:block;}
-    .img-slot{border-radius:12px;background:var(--navy2);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.12);font-family:'DM Mono',monospace;}
-    .img-slot.r43{aspect-ratio:4/3;}
-    .img-slot.r169{aspect-ratio:16/9;}
-    .img-slot.r11{aspect-ratio:1/1;}
     .img-caption{font-size:.72rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;text-align:center;margin-top:-.75rem;margin-bottom:1.5rem;}
+
     hr.div{border:none;border-top:1px solid rgba(255,255,255,.06);margin:3rem 0;}
-    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
-    .stat{padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
-    .stat-num{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--lime);}
-    .stat-label{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.3rem;font-family:'DM Mono',monospace;}
+
     .next-project{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--white);transition:background .3s;cursor:none;}
-    .next-project:hover{background:rgba(123,108,246,.06);}
+    .next-project:hover{background:rgba(201,168,76,.05);}
     .next-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
     .next-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;letter-spacing:-.03em;}
-    .next-arrow{font-size:2.5rem;color:var(--purple-light);transition:transform .3s;}
+    .next-arrow{font-size:2.5rem;color:var(--gold-light);transition:transform .3s;}
     .next-project:hover .next-arrow{transform:translateX(8px);}
     footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.2);font-family:'DM Mono',monospace;}
-    @media(max-width:768px){nav{padding:1.2rem 1.5rem;}.project-hero{padding:8rem 1.5rem 3rem;}.project-content{padding:4rem 1.5rem;}.two-col,.three-col{grid-template-columns:1fr;}.stat-row{grid-template-columns:1fr 1fr;}.next-project{padding:3rem 1.5rem;}footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}}
+
+    @media(max-width:768px){
+      nav{padding:1.2rem 1.5rem;}
+      .project-hero{padding:8rem 1.5rem 4rem;}
+      .project-content{padding:4rem 1.5rem;}
+      .mechanics-grid{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      .aesthetic-row{grid-template-columns:90px 1fr 30px;}
+      .pull-quote{padding:1.5rem;}
+      .next-project{padding:3rem 1.5rem;}
+      footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}
+    }
   </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
+
   <nav>
     <a class="nav-logo" href="../index.html">Jack Mao <span>/</span> Portfolio</a>
     <a class="nav-back" href="../index.html#work">← Back to work</a>
   </nav>
 
+  <!-- HERO -->
   <div class="project-hero">
-    <div class="project-meta">
-      <div><span class="meta-label">Category</span><span class="meta-value">UI Design</span></div>
-      <div><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
-      <div><span class="meta-label">Tools</span><span class="meta-value">Figma, Framer</span></div>
+    <img class="hero-cover" src="../images/kassandra-cover.png" alt="Kassandra: The Harmony of Elysium" />
+    <div class="hero-content">
+      <div class="edition-tag">Game Design · RTA928</div>
+      <div class="hero-title">Chronicles of<br>Elysium</div>
+      <div class="hero-subtitle-text">The Quest for Harmony</div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Category — <span>Video Game Design</span></div>
+        <div class="hero-meta-item">Year — <span>2023</span></div>
+        <div class="hero-meta-item">Course — <span>RTA928: Intro to Game Design</span></div>
+        <div class="hero-meta-item">Role — <span>Creator, Designer, Producer</span></div>
+      </div>
     </div>
-    <h1 class="project-title">HiDesign —<br><em>Interface Study</em></h1>
   </div>
 
-  <!-- COVER: swap div for <img class="project-cover" src="../images/hidesign-cover.jpg" alt="cover" /> -->
-  <div class="cover-placeholder">FORM</div>
+  <div class="mag-rule"></div>
 
+  <!-- CONTENT -->
   <div class="project-content">
-    <p class="project-intro">A deep-dive UI exploration — designing an interface from first principles, questioning every convention, and rebuilding from the ground up.</p>
 
+    <p class="project-intro">
+      A third-person action-adventure game built on Aristotle's Poetics and Joseph Campbell's Hero's Journey — following Kassandra, a humble musician, as she transforms into a legendary hero across the shattered world of Elysium.
+    </p>
+
+    <!-- KEY ART -->
+    <div class="image-grid one-col">
+      <img src="../images/kassandra-keyart.png" alt="Kassandra key art" />
+    </div>
+    <p class="img-caption">Key art — Kassandra: The Harmony of Elysium</p>
+
+    <!-- OVERVIEW -->
     <div class="section-heading">Overview</div>
     <div class="body-text">
-      <p><strong>HiDesign</strong> is a self-initiated interface study that challenges the conventions of modern UI design. Rather than following established patterns, the project asks: what would a digital interface look like if it were designed without reference to existing systems?</p>
-      <p>The result is a set of screens that feel simultaneously unfamiliar and intuitive — borrowing logic from physical objects, architectural space, and natural systems rather than digital precedent.</p>
+      <p>The player assumes the role of <strong>Kassandra</strong> — a tale of a young heroine who embarks on a quest to restore harmony to the shattered world of Elysium. The player makes critical decisions and witnesses the transformation of a humble musician into a legendary hero. The game provides players with a rich and emotionally engaging experience that explores the mature theme of <em>personal growth</em>.</p>
+      <p>Built on a <strong>one-time purchase</strong> monetization model, Chronicles of Elysium is designed for PC (Steam, Epic Games), PS5, and Xbox Series X — targeting players who value narrative depth, character customization, and emotionally resonant storytelling.</p>
     </div>
 
     <div class="stat-row">
-      <div class="stat"><div class="stat-num">12</div><div class="stat-label">Screen designs</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Component systems</div></div>
-      <div class="stat"><div class="stat-num">01</div><div class="stat-label">Core idea</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Story acts</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Platforms</div></div>
+      <div class="stat"><div class="stat-num">35%</div><div class="stat-label">Artistic resources</div></div>
     </div>
 
-    <!-- Main dashboard -->
-    <div class="image-grid one-col">
-      <svg width="100%" viewBox="0 0 780 440" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <!-- bg -->
-        <rect width="780" height="440" fill="#1a1a2e"/>
-        <!-- top nav bar -->
-        <rect x="0" y="0" width="780" height="48" fill="#12122a"/>
-        <circle cx="24" cy="24" r="8" fill="#4ade80" opacity="0.8"/>
-        <rect x="42" y="18" width="60" height="12" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="640" y="16" width="50" height="16" rx="8" fill="#4ade80" opacity="0.7"/>
-        <rect x="700" y="18" width="60" height="12" rx="6" fill="rgba(255,255,255,0.08)"/>
-        <!-- sidebar -->
-        <rect x="0" y="48" width="180" height="392" fill="#13132b"/>
-        <rect x="16" y="72" width="148" height="32" rx="6" fill="rgba(74,222,128,0.15)"/>
-        <rect x="28" y="82" width="80" height="12" rx="3" fill="#4ade80" opacity="0.7"/>
-        <rect x="16" y="116" width="148" height="32" rx="6" fill="transparent"/>
-        <rect x="28" y="126" width="64" height="12" rx="3" fill="rgba(255,255,255,0.25)"/>
-        <rect x="16" y="158" width="148" height="32" rx="6" fill="transparent"/>
-        <rect x="28" y="168" width="72" height="12" rx="3" fill="rgba(255,255,255,0.25)"/>
-        <rect x="16" y="200" width="148" height="32" rx="6" fill="transparent"/>
-        <rect x="28" y="210" width="56" height="12" rx="3" fill="rgba(255,255,255,0.25)"/>
-        <rect x="16" y="380" width="148" height="32" rx="6" fill="transparent"/>
-        <rect x="28" y="390" width="80" height="12" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <!-- main content area -->
-        <!-- stat cards row -->
-        <rect x="200" y="68" width="160" height="80" rx="8" fill="#1e1e3a"/>
-        <rect x="212" y="80" width="60" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <rect x="212" y="98" width="90" height="22" rx="3" fill="rgba(74,222,128,0.6)"/>
-        <rect x="376" y="68" width="160" height="80" rx="8" fill="#1e1e3a"/>
-        <rect x="388" y="80" width="60" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <rect x="388" y="98" width="80" height="22" rx="3" fill="rgba(123,108,246,0.7)"/>
-        <rect x="552" y="68" width="210" height="80" rx="8" fill="#1e1e3a"/>
-        <rect x="564" y="80" width="60" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <rect x="564" y="98" width="100" height="22" rx="3" fill="rgba(255,85,51,0.6)"/>
-        <!-- chart area -->
-        <rect x="200" y="164" width="340" height="200" rx="8" fill="#1e1e3a"/>
-        <rect x="212" y="176" width="80" height="10" rx="3" fill="rgba(255,255,255,0.3)"/>
-        <!-- simple bar chart -->
-        <rect x="220" y="300" width="24" height="50" rx="3" fill="rgba(74,222,128,0.5)"/>
-        <rect x="254" y="278" width="24" height="72" rx="3" fill="rgba(74,222,128,0.6)"/>
-        <rect x="288" y="258" width="24" height="92" rx="3" fill="rgba(74,222,128,0.7)"/>
-        <rect x="322" y="285" width="24" height="65" rx="3" fill="rgba(74,222,128,0.55)"/>
-        <rect x="356" y="265" width="24" height="85" rx="3" fill="rgba(74,222,128,0.65)"/>
-        <rect x="390" y="240" width="24" height="110" rx="3" fill="rgba(74,222,128,0.8)"/>
-        <rect x="424" y="270" width="24" height="80" rx="3" fill="rgba(74,222,128,0.6)"/>
-        <rect x="458" y="255" width="24" height="95" rx="3" fill="rgba(74,222,128,0.7)"/>
-        <line x1="212" y1="355" x2="528" y2="355" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <!-- list panel -->
-        <rect x="556" y="164" width="206" height="200" rx="8" fill="#1e1e3a"/>
-        <rect x="568" y="176" width="70" height="10" rx="3" fill="rgba(255,255,255,0.3)"/>
-        <rect x="568" y="200" width="182" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="568" y="210" width="120" height="10" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <rect x="568" y="228" width="182" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="568" y="238" width="90" height="10" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <rect x="568" y="256" width="182" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="568" y="266" width="140" height="10" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <rect x="568" y="284" width="182" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="568" y="294" width="100" height="10" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <rect x="568" y="312" width="182" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="568" y="322" width="115" height="10" rx="3" fill="rgba(255,255,255,0.18)"/>
-        <!-- bottom row -->
-        <rect x="200" y="378" width="562" height="48" rx="8" fill="#1e1e3a"/>
-        <rect x="214" y="394" width="40" height="16" rx="4" fill="rgba(74,222,128,0.25)"/>
-        <rect x="262" y="398" width="100" height="8" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="680" y="394" width="68" height="16" rx="8" fill="rgba(255,85,51,0.4)"/>
-      </svg>
+    <!-- PLATFORMS -->
+    <div class="section-heading">Platforms &amp; Release</div>
+    <div class="platform-row">
+      <span class="platform-pill">PC — Steam</span>
+      <span class="platform-pill">PC — Epic Games</span>
+      <span class="platform-pill">PlayStation 5</span>
+      <span class="platform-pill">Xbox Series X</span>
     </div>
-    <p class="img-caption">Main dashboard — full layout</p>
 
-    <div class="section-heading">Process</div>
+    <!-- CORE MECHANICS -->
+    <div class="section-heading">Core Mechanics</div>
+    <div class="mechanics-grid">
+      <div class="mechanic-card">
+        <div class="mechanic-num">01 — PRIMARY</div>
+        <div class="mechanic-title">Level-Based Progression</div>
+        <p class="mechanic-desc">Determining the degree of character customization in-game and how well it works in narrative-driven games indicates the immersion level. This structure allows players to create their own autonomy when articulating commands and getting the outcome they desire the more they play — shaping how each character approaches the environment, implements their skill sets, and defeats various enemy types.</p>
+      </div>
+      <div class="mechanic-card">
+        <div class="mechanic-num">02 — SECONDARY</div>
+        <div class="mechanic-title">Dynamic Movement System</div>
+        <p class="mechanic-desc">A fluid and connected combat system to achieve leveling progression flows into movement. A fast-paced action mechanism to maneuver, dodge, or attack should be efficient — making real-time responsiveness give players the accessibility to learn and master their controllability. Pressing once swings the weapon, twice fires a projectile, holding charges for a strike — each contributing to the character's overall advancement.</p>
+      </div>
+    </div>
+
+    <!-- AESTHETIC PLEASURE -->
+    <div class="section-heading">Pleasure Aesthetics</div>
     <div class="body-text">
-      <p>The project began with two weeks of deliberately <strong>not opening Figma</strong>. Sketching, reading, looking at architecture and industrial design — building a visual vocabulary that wasn't rooted in digital UI.</p>
-      <p>Once that foundation was established, the translation into screen design happened quickly. The constraints of a digital canvas became interesting rather than limiting — every element had to earn its place on screen.</p>
+      <p>Using the MDA framework, eight aesthetic categories were evaluated to define the core experience of Chronicles of Elysium.</p>
+    </div>
+    <div class="aesthetics-list">
+      <div class="aesthetic-row"><span class="aesthetic-label">Fantasy</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:100%"></div></div><span class="aesthetic-score">4/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Narrative</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:100%"></div></div><span class="aesthetic-score">4/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Discovery</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:100%"></div></div><span class="aesthetic-score">4/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Challenge</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:75%"></div></div><span class="aesthetic-score">3/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Expression</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:75%"></div></div><span class="aesthetic-score">3/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Sensation</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:50%"></div></div><span class="aesthetic-score">2/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Fellowship</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:25%"></div></div><span class="aesthetic-score">1/4</span></div>
+      <div class="aesthetic-row"><span class="aesthetic-label">Submission</span><div class="aesthetic-bar-track"><div class="aesthetic-bar-fill" style="width:25%"></div></div><span class="aesthetic-score">1/4</span></div>
     </div>
 
-    <div class="image-grid three-col">
-      <!-- Card component -->
-      <svg width="100%" viewBox="0 0 240 240" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <rect width="240" height="240" fill="#1a1a2e"/>
-        <rect x="16" y="16" width="208" height="208" rx="10" fill="#1e1e3a"/>
-        <rect x="28" y="28" width="184" height="90" rx="6" fill="rgba(74,222,128,0.12)"/>
-        <rect x="28" y="28" width="184" height="90" rx="6" fill="none" stroke="rgba(74,222,128,0.25)" stroke-width="1"/>
-        <rect x="40" y="50" width="60" height="46" rx="4" fill="rgba(74,222,128,0.2)"/>
-        <rect x="110" y="52" width="90" height="10" rx="3" fill="rgba(255,255,255,0.35)"/>
-        <rect x="110" y="68" width="70" height="8" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="110" y="80" width="80" height="8" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="28" y="132" width="184" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
-        <rect x="28" y="150" width="140" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
-        <rect x="28" y="168" width="160" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
-        <rect x="28" y="196" width="80" height="24" rx="6" fill="rgba(74,222,128,0.35)"/>
-        <rect x="116" y="196" width="60" height="24" rx="6" fill="rgba(255,255,255,0.06)"/>
-        <text x="120" y="8" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.2)" letter-spacing="2">CARD</text>
-      </svg>
-      <!-- Navigation component -->
-      <svg width="100%" viewBox="0 0 240 240" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <rect width="240" height="240" fill="#1a1a2e"/>
-        <!-- top nav -->
-        <rect x="16" y="16" width="208" height="44" rx="8" fill="#12122a"/>
-        <circle cx="36" cy="38" r="10" fill="rgba(74,222,128,0.3)"/>
-        <rect x="54" y="33" width="50" height="10" rx="3" fill="rgba(255,255,255,0.25)"/>
-        <rect x="138" y="33" width="32" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="178" y="33" width="32" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <!-- side nav -->
-        <rect x="16" y="72" width="60" height="152" rx="8" fill="#12122a"/>
-        <rect x="24" y="88" width="44" height="28" rx="5" fill="rgba(74,222,128,0.2)"/>
-        <rect x="31" y="96" width="30" height="8" rx="2" fill="rgba(74,222,128,0.6)"/>
-        <rect x="24" y="124" width="44" height="28" rx="5" fill="transparent"/>
-        <rect x="31" y="132" width="26" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
-        <rect x="24" y="160" width="44" height="28" rx="5" fill="transparent"/>
-        <rect x="31" y="168" width="30" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
-        <rect x="24" y="196" width="44" height="16" rx="5" fill="transparent"/>
-        <rect x="31" y="200" width="22" height="8" rx="2" fill="rgba(255,255,255,0.12)"/>
-        <!-- breadcrumb -->
-        <rect x="88" y="72" width="136" height="20" rx="4" fill="#12122a"/>
-        <rect x="94" y="78" width="30" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <text x="130" y="85" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.15)">/</text>
-        <rect x="138" y="78" width="40" height="8" rx="2" fill="rgba(74,222,128,0.4)"/>
-        <text x="120" y="8" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.2)" letter-spacing="2">NAV</text>
-      </svg>
-      <!-- Type scale component -->
-      <svg width="100%" viewBox="0 0 240 240" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <rect width="240" height="240" fill="#1a1a2e"/>
-        <rect x="16" y="16" width="208" height="208" rx="10" fill="#1e1e3a"/>
-        <rect x="28" y="28" width="50" height="8" rx="2" fill="rgba(255,255,255,0.12)"/>
-        <rect x="28" y="44" width="184" height="22" rx="3" fill="rgba(255,255,255,0.9)"/>
-        <rect x="28" y="44" width="184" height="22" rx="3" fill="none" stroke="rgba(74,222,128,0.2)" stroke-width="1"/>
-        <text x="36" y="60" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1a1a2e">Display</text>
-        <rect x="28" y="74" width="184" height="16" rx="3" fill="rgba(255,255,255,0.6)"/>
-        <text x="36" y="86" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1a1a2e">Heading</text>
-        <rect x="28" y="98" width="184" height="12" rx="3" fill="rgba(255,255,255,0.4)"/>
-        <text x="36" y="108" font-family="sans-serif" font-size="8" fill="#1a1a2e">Subheading text</text>
-        <rect x="28" y="118" width="184" height="10" rx="3" fill="rgba(255,255,255,0.25)"/>
-        <text x="36" y="127" font-family="sans-serif" font-size="7" fill="#2a2a40">Body copy — regular weight</text>
-        <rect x="28" y="136" width="184" height="1" fill="rgba(255,255,255,0.06)"/>
-        <rect x="28" y="148" width="60" height="8" rx="2" fill="rgba(74,222,128,0.3)"/>
-        <rect x="28" y="162" width="40" height="8" rx="2" fill="rgba(123,108,246,0.4)"/>
-        <rect x="28" y="176" width="50" height="8" rx="2" fill="rgba(255,85,51,0.35)"/>
-        <rect x="28" y="190" width="35" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <text x="120" y="8" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.2)" letter-spacing="2">TYPE</text>
-      </svg>
+    <div class="pull-quote">
+      <p>"The progression in the narrative defines the mantle of the hero — because anyone could be hailed as one, but not everyone can become one."</p>
+      <cite>— Jennings, 2022 · Cited in Chronicles of Elysium narrative design</cite>
     </div>
-    <p class="img-caption">Component library — cards, navigation, type scale</p>
 
-    <div class="image-grid two-col">
-      <!-- Mobile screen -->
-      <svg width="100%" viewBox="0 0 340 260" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <rect width="340" height="260" fill="#1a1a2e"/>
-        <text x="170" y="20" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.2)" letter-spacing="2">MOBILE</text>
-        <!-- phone frame -->
-        <rect x="105" y="28" width="130" height="220" rx="18" fill="#12122a" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-        <rect x="148" y="34" width="44" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
-        <!-- status bar -->
-        <rect x="113" y="50" width="114" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
-        <!-- hero block -->
-        <rect x="113" y="64" width="114" height="50" rx="4" fill="rgba(74,222,128,0.15)"/>
-        <rect x="121" y="72" width="70" height="10" rx="3" fill="rgba(255,255,255,0.5)"/>
-        <rect x="121" y="87" width="50" height="8" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <!-- content cards -->
-        <rect x="113" y="122" width="50" height="50" rx="5" fill="#1e1e3a"/>
-        <rect x="119" y="128" width="38" height="24" rx="3" fill="rgba(74,222,128,0.2)"/>
-        <rect x="119" y="156" width="30" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-        <rect x="171" y="122" width="56" height="50" rx="5" fill="#1e1e3a"/>
-        <rect x="177" y="128" width="44" height="24" rx="3" fill="rgba(123,108,246,0.2)"/>
-        <rect x="177" y="156" width="34" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-        <!-- bottom nav -->
-        <rect x="113" y="182" width="114" height="36" rx="4" fill="#12122a"/>
-        <rect x="122" y="192" width="22" height="16" rx="4" fill="rgba(74,222,128,0.25)"/>
-        <rect x="153" y="192" width="22" height="16" rx="4" fill="transparent"/>
-        <rect x="184" y="192" width="22" height="16" rx="4" fill="transparent"/>
-        <!-- home indicator -->
-        <rect x="148" y="223" width="44" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-      </svg>
-      <!-- Desktop screen -->
-      <svg width="100%" viewBox="0 0 340 260" style="border-radius:12px;display:block;" xmlns="http://www.w3.org/2000/svg">
-        <rect width="340" height="260" fill="#1a1a2e"/>
-        <text x="170" y="20" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.2)" letter-spacing="2">DESKTOP</text>
-        <!-- browser frame -->
-        <rect x="20" y="28" width="300" height="210" rx="8" fill="#12122a" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <!-- browser chrome -->
-        <rect x="20" y="28" width="300" height="28" rx="8" fill="#0f0f22"/>
-        <rect x="20" y="44" width="300" height="12" fill="#0f0f22"/>
-        <circle cx="34" cy="42" r="4" fill="rgba(255,85,51,0.5)"/>
-        <circle cx="46" cy="42" r="4" fill="rgba(255,200,0,0.4)"/>
-        <circle cx="58" cy="42" r="4" fill="rgba(74,222,128,0.4)"/>
-        <rect x="80" y="35" width="160" height="14" rx="7" fill="rgba(255,255,255,0.06)"/>
-        <rect x="90" y="39" width="80" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
-        <!-- page nav -->
-        <rect x="20" y="56" width="300" height="32" rx="0" fill="#13132b"/>
-        <rect x="30" y="65" width="40" height="10" rx="3" fill="rgba(255,255,255,0.3)"/>
-        <rect x="82" y="65" width="32" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="126" y="65" width="40" height="10" rx="3" fill="rgba(255,255,255,0.15)"/>
-        <rect x="272" y="63" width="38" height="14" rx="7" fill="rgba(74,222,128,0.4)"/>
-        <!-- hero -->
-        <rect x="30" y="98" width="180" height="60" rx="4" fill="transparent"/>
-        <rect x="30" y="98" width="140" height="14" rx="3" fill="rgba(255,255,255,0.6)"/>
-        <rect x="30" y="118" width="110" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <rect x="30" y="134" width="120" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-        <rect x="30" y="152" width="70" height="20" rx="6" fill="rgba(74,222,128,0.45)"/>
-        <!-- hero image -->
-        <rect x="222" y="96" width="84" height="90" rx="6" fill="rgba(74,222,128,0.1)" stroke="rgba(74,222,128,0.2)" stroke-width="1"/>
-        <!-- bottom cards -->
-        <rect x="30" y="196" width="80" height="32" rx="5" fill="#1e1e3a"/>
-        <rect x="118" y="196" width="80" height="32" rx="5" fill="#1e1e3a"/>
-        <rect x="206" y="196" width="80" height="32" rx="5" fill="#1e1e3a"/>
-        <rect x="36" y="202" width="50" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <rect x="124" y="202" width="50" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <rect x="212" y="202" width="50" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
-      </svg>
+    <!-- NARRATIVE -->
+    <div class="section-heading">Narrative Structure — The Hero's Journey</div>
+    <div class="body-text">
+      <p>The narrative is built on two interlocking frameworks: <strong>Aristotle's Poetics</strong> (beginning-middle-end, tragedy, catharsis) and <strong>Joseph Campbell's Hero's Journey</strong> (call to adventure, crossing the threshold, ordeal, return). Together they create a six-act structure that drives both character transformation and player investment.</p>
     </div>
-    <p class="img-caption">Mobile and desktop breakpoints</p>
+
+    <div class="act-card">
+      <div class="act-label">ACT 1</div>
+      <div class="act-title">The Call to Adventure</div>
+      <p class="act-body">Elysium's idyllic land, where harmony once reigned, has been disrupted by dark forces beyond its borders. Kassandra, a travelling musician, receives a mystical invitation from an ancient sage dwelling under the World Tree. A prophecy is revealed — only a true hero can retrieve the lost Harmonia Flute and restore balance to Elysium.</p>
+    </div>
+    <div class="act-card">
+      <div class="act-label">ACT 2</div>
+      <div class="act-title">Crossing the Threshold</div>
+      <p class="act-body">With the support of her companion Cloud, the white cat, Kassandra accepts the call. She meets trusted allies: <strong>Jax, The Hardened Warrior</strong>, and <strong>Eleanor, The Keen Oracle</strong>. These individuals provide guidance and set challenges that test and strengthen her for the dark forces ahead.</p>
+    </div>
+    <div class="act-card">
+      <div class="act-label">ACT 3</div>
+      <div class="act-title">Tests, Allies, and Enemies</div>
+      <p class="act-body">Kassandra faces moral dilemmas and difficult choices — a heart-wrenching betrayal of a team member and the capturing of another. The evil antagonist, <strong>Cain</strong>, a power-hungry sorcerer controlling dark forces, has caught wind of her and is determined to remove her at all costs.</p>
+    </div>
+    <div class="act-card">
+      <div class="act-label">ACT 4</div>
+      <div class="act-title">The Ordeal</div>
+      <p class="act-body">Ambushed by Cain on the windy white grasslands, the climactic confrontation erupts. With her weapon of choice — the ukulele — and her three companions, Kassandra must use everything she has learned. Cain destroys her ukulele. Brought to her knees, overwhelmed, our heroine faces complete defeat.</p>
+    </div>
+    <div class="act-card">
+      <div class="act-label">ACT 5</div>
+      <div class="act-title">The Revelation</div>
+      <p class="act-body">Reaching the Harmonia Flute, it reveals her hidden past — she is <strong>Princess Kassandra of Celestis</strong>, sent to Elysium without her memories after her royal family was massacred. She realizes true harmony can only be restored by reconciling her inner demons and forgiving herself for her powerlessness. This inner transformation unlocks the Flute's power.</p>
+    </div>
+    <div class="act-card">
+      <div class="act-label">ACT 6</div>
+      <div class="act-title">The Return</div>
+      <p class="act-body">Kassandra defeats Cain with the power of the Harmonia Flute, restoring harmony to Elysium and bringing justice to Celestis. She must return to close that lost chapter — leaving behind the magical realm and those she has come to love. But as a changed hero, she carries the wisdom of a completed journey — and the potential for a sequel.</p>
+    </div>
 
     <hr class="div" />
 
+    <!-- REFLECTION -->
     <div class="section-heading">Reflection</div>
     <div class="body-text">
-      <p>The biggest lesson: <strong>familiarity is a design tool, not a constraint.</strong> The most successful screens in this study were the ones that borrowed just enough convention to feel navigable, then broke away sharply in one unexpected direction.</p>
+      <p>This project reinforced how <strong>narrative and gameplay must be fused rather than layered</strong>. Traditional linear narratives like Aristotle's Poetics and Campbell's Hero's Journey can interrupt a player-driven game that requires interaction — the challenge is finding the balance where story compels without constraining freedom.</p>
+      <p>Designing Kassandra's arc — a female protagonist undergoing heightened personal growth — was an intentional exploration of the "Heroine's Journey" as an alternative monomythic framework. Playing a game that leaves players thinking about somebody else's story through their own eyes is, ultimately, the goal of any narrative-driven design.</p>
     </div>
+
   </div>
 
   <a class="next-project" href="logotype.html">
@@ -330,7 +278,10 @@
     const c = document.getElementById('cursor');
     c.style.left = '-100px'; c.style.top = '-100px';
     document.addEventListener('mousemove', e => { c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px'; });
-    document.querySelectorAll('a').forEach(el => { el.addEventListener('mouseenter',()=>c.classList.add('hovering')); el.addEventListener('mouseleave',()=>c.classList.remove('hovering')); });
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter', () => c.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => c.classList.remove('hovering'));
+    });
   </script>
 </body>
 </html>
