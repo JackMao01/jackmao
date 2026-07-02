@@ -465,7 +465,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--glass-border);background:rgba(12,9,22,.86);color:#c9a84c;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#c9a84c;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -669,6 +669,30 @@
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign: continue the index's printed-volume conceit ══ */
+.hub-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(255,255,255,0.42); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(255,255,255,0.72); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(255,255,255,0.09); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2,#16152b); }
+.plate-fig-frame img, .plate-fig-frame iframe { display:block; width:100%; }
+.plate-fig-frame img { height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.5; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime,#ccff00); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(255,255,255,0.09); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(22,21,43,0.55); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(255,255,255,0.5); }
+.plate-fig-cap b { color:var(--lime,#ccff00); font-weight:500; white-space:nowrap; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
+.sec-head .section-heading { margin-top:0; }
+
 </style>
   <link rel="preload" as="image" href="../images/kassandra-keyart.webp" type="image/webp" fetchpriority="high"/>
   <noscript>
@@ -711,6 +735,7 @@
   <main>
 <!-- HERO -->
   <div class="project-hero" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°06 — PLATES</b><br/>Chronicles of Elysium · 2023</div>
     <div class="hero-content">
       <div class="edition-tag">Game Design · RTA928</div>
       <h1 class="hero-title">Chronicles of<br>Elysium</h1>
@@ -746,12 +771,11 @@
 
     <!-- KEY ART -->
     <div class="image-grid one-col">
-      <img src="../images/kassandra-keyart.webp" alt="Kassandra key art"  loading="lazy" decoding="async" width="1024" height="1536"/>
+      <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/kassandra-keyart.webp" alt="Kassandra key art"  loading="lazy" decoding="async" width="1024" height="1536"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Kassandra — key art</span></figcaption></figure>
     </div>
-    <p class="img-caption">Key art — Kassandra: The Harmony of Elysium</p>
 
     <!-- OVERVIEW -->
-    <h2 class="section-heading">Overview</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Overview</h2></div>
     <div class="body-text">
       <p>The player assumes the role of <strong>Kassandra</strong> — a tale of a young heroine who embarks on a quest to restore harmony to the shattered world of Elysium. The player makes critical decisions and witnesses the transformation of a humble musician into a legendary hero. The game provides players with a rich and emotionally engaging experience that explores the mature theme of <em>personal growth</em>.</p>
       <p>Built on a <strong>one-time purchase</strong> monetization model, Chronicles of Elysium is designed for PC (Steam, Epic Games), PS5, and Xbox Series X — targeting players who value narrative depth, character customization, and emotionally resonant storytelling.</p>
@@ -764,7 +788,7 @@
     </div>
 
     <!-- PLATFORMS -->
-    <h2 class="section-heading">Platforms &amp; Release</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">Platforms &amp; Release</h2></div>
     <div class="platform-row">
       <span class="platform-pill">PC — Steam</span>
       <span class="platform-pill">PC — Epic Games</span>
@@ -773,7 +797,7 @@
     </div>
 
     <!-- CORE MECHANICS -->
-    <h2 class="section-heading">Core Mechanics</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">Core Mechanics</h2></div>
     <div class="mechanics-grid">
       <div class="mechanic-card">
         <div class="mechanic-num">01 — PRIMARY</div>
@@ -788,7 +812,7 @@
     </div>
 
     <!-- AESTHETIC PLEASURE -->
-    <h2 class="section-heading">Pleasure Aesthetics</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">04</span><h2 class="section-heading">Pleasure Aesthetics</h2></div>
     <div class="body-text">
       <p>Using the MDA framework, eight aesthetic categories were evaluated to define the core experience of Chronicles of Elysium.</p>
     </div>
@@ -809,7 +833,7 @@
     </div>
 
     <!-- NARRATIVE -->
-    <h2 class="section-heading">Narrative Structure — The Hero's Journey</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">05</span><h2 class="section-heading">Narrative Structure — The Hero's Journey</h2></div>
     <div class="body-text">
       <p>The narrative is built on two interlocking frameworks: <strong>Aristotle's Poetics</strong> (beginning-middle-end, tragedy, catharsis) and <strong>Joseph Campbell's Hero's Journey</strong> (call to adventure, crossing the threshold, ordeal, return). Together they create a six-act structure that drives both character transformation and player investment.</p>
     </div>
@@ -848,7 +872,7 @@
     <hr class="div" />
 
     <!-- REFLECTION -->
-    <h2 class="section-heading">Reflection</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">06</span><h2 class="section-heading">Reflection</h2></div>
     <div class="body-text">
       <p>This project reinforced how <strong>narrative and gameplay must be fused rather than layered</strong>. Traditional linear narratives like Aristotle's Poetics and Campbell's Hero's Journey can interrupt a player-driven game that requires interaction — the challenge is finding the balance where story compels without constraining freedom.</p>
       <p>Designing Kassandra's arc — a female protagonist undergoing heightened personal growth — was an intentional exploration of the "Heroine's Journey" as an alternative monomythic framework. Playing a game that leaves players thinking about somebody else's story through their own eyes is, ultimately, the goal of any narrative-driven design.</p>

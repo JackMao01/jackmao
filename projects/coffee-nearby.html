@@ -482,7 +482,7 @@
     }
     #back-to-top {
       position:fixed; right:1.5rem; bottom:1.5rem; z-index:80; width:44px; height:44px;
-      border-radius:50%; border:1px solid var(--glass-border); background:rgba(251,250,246,.86);
+      border-radius:50%; border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;
       color:var(--lime); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
       cursor:auto;
     }
@@ -1365,6 +1365,32 @@
     .case-cell{background:var(--navy,#1b0e05);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ffb000)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign (light-theme variant): printed-volume conceit ══ */
+.project-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(0,0,0,0.4); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(0,0,0,0.68); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(0,0,0,0.12); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2); }
+.plate-fig-frame img { display:block; width:100%; height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.55; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(0,0,0,0.12); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(0,0,0,0.045); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(0,0,0,0.55); }
+.plate-fig-cap b { color:var(--lime); font-weight:500; white-space:nowrap; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px var(--lime); opacity:0.55; flex:none; }
+.sec-head .section-heading { margin-top:0; }
+.coffee-demo-frame { position:relative; }
+.hero-folio { color:rgba(255,247,234,0.45); }
+.hero-folio b { color:rgba(255,247,234,0.75); }
+
 </style>
   <noscript>
     <style>
@@ -1405,6 +1431,7 @@
 
   <main>
     <section class="project-hero" aria-label="Coffee Nearby introduction" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°08 — PLATES</b><br/>Coffee Nearby · 2026</div>
       <div>
         <div class="edition-tag">Interactive - UI/UX Prototype</div>
         <h1 class="project-title">Coffee<br><em>Nearby</em></h1>
@@ -1441,17 +1468,17 @@
           <p>A working, single-file prototype: it runs fully client-side in a fixed 600×600 viewport, navigable with a four-way D-pad and no cursor, powered by live OpenStreetMap data with no framework, build step, or API keys — an interaction model built from first principles for a screen most people haven't touched yet.</p>
         </div>
       </div>
-        <h2 class="section-heading">Working Product</h2>
+        <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Working Product</h2></div>
       <div class="body-text">
         <p>The prototype below is the actual working HTML product. It is best understood as a constrained 600x600 wearable interface: no scrolling assumptions, no mouse-first behavior, and no decorative glass effects that would fail on an additive waveguide display.</p>
       </div>
-      <div class="coffee-demo-frame" aria-label="Coffee Nearby working product preview">
+      <figure class="plate-fig"><div class="coffee-demo-frame" aria-label="Coffee Nearby working product preview"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
         <div class="coffee-demo-screen">
           <iframe src="coffee-finder-amber.html" title="Coffee Nearby working prototype" loading="lazy" tabindex="-1"></iframe>
         </div>
-      </div>
+      </div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Working prototype — amber waveguide build</span></figcaption></figure>
 
-      <h2 class="section-heading">Constraint System</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">Constraint System</h2></div>
       <div class="coffee-stack">
         <div class="system-panel">
           <div class="snapshot-label">Viewport</div>
@@ -1467,31 +1494,31 @@
         </div>
       </div>
 
-      <h2 class="section-heading">What It Does</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">What It Does</h2></div>
       <div class="body-text">
         <p>The app starts with a boot-style welcome screen, requests location, scans nearby OpenStreetMap cafe data through the Overpass API, then presents a list view, filter screen, detail view, and radar mode. Shops are sorted by distance with walking ETAs, compass direction, favorites, and live position updates.</p>
         <p>The radar view plots shops as dots on a circular display that rotates with the user's heading. D-pad controls cycle through shops, while the focused item pulses so the wearer always knows what is selected.</p>
       </div>
 
-      <h2 class="section-heading">Technical Decisions</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">04</span><h2 class="section-heading">Technical Decisions</h2></div>
       <div class="body-text">
         <p>The project uses vanilla JavaScript, HTML, and CSS with no framework, no build step, no npm dependencies, and no API keys. It combines <code>navigator.geolocation</code>, <code>watchPosition</code>, <code>DeviceOrientationEvent</code>, localStorage, haversine distance, great-circle bearing, and a defensive generation-counter pattern for stale async work.</p>
         <p>Filters are intentionally forgiving because OpenStreetMap data can be sparse. Unknown values pass unless the data explicitly says no. The opening-hours parser handles the common 80 percent of OSM strings and fails open rather than hiding useful results.</p>
       </div>
 
-      <h2 class="section-heading">Interaction Model</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">05</span><h2 class="section-heading">Interaction Model</h2></div>
       <div class="body-text">
         <p>Every interactive list item is a native button because there is no cursor. The D-pad handler gathers the focusable controls on the active screen and moves focus through them with arrow keys, while Enter becomes the primary selection action.</p>
         <p>The radar intentionally steps outside the general focus system. SVG targets are awkward focus surfaces, so radar mode tracks a dedicated selected-shop index and uses directional controls to cycle through shops instead of fighting browser focus mechanics.</p>
       </div>
 
-      <h2 class="section-heading">Location Logic</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">06</span><h2 class="section-heading">Location Logic</h2></div>
       <div class="body-text">
         <p>Auto-refresh uses two tiers. Cheap updates run whenever the user moves enough to affect distance, bearing, or walking ETA. Expensive updates only re-query Overpass when the wearer has moved meaningfully away from the last fetch anchor and enough time has passed to avoid hammering the API.</p>
         <p>The compass arrow uses shortest-path rotation, so moving from 350 degrees to 10 degrees rotates forward 20 degrees instead of snapping backward across the full circle. It is a small detail, but on a head-worn display small motion mistakes become very visible.</p>
       </div>
 
-      <h2 class="section-heading">Visual System</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">07</span><h2 class="section-heading">Visual System</h2></div>
       <div class="body-text">
         <p>The orange-to-brown direction is named <em>Amber</em>. It is a physics-informed theme: a dark base for transparency on additive display hardware, amber phosphor for legibility, and brown warmth to keep the interface from feeling purely technical.</p>
         <p><span class="terminal-chip">Amber phosphor</span><span class="terminal-chip">Brown base</span><span class="terminal-chip">No glass blur</span><span class="terminal-chip">D-pad focus</span></p>
@@ -1499,7 +1526,7 @@
 
       <div class="pull-quote">The interface works because it respects the hardware instead of pretending it is a phone.</div>
 
-      <h2 class="section-heading">Reflection</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">08</span><h2 class="section-heading">Reflection</h2></div>
       <div class="body-text">
         <p>This project became a study in designing against instinct. Most web patterns assume scroll, touch, pointers, modals, hover states, and full-color surfaces. Coffee Nearby strips those assumptions down to a state machine of visible screens and focusable actions.</p>
         <p>The strongest lesson was that constraints can create identity. Amber Waveguide is not just an aesthetic wrapper; it is a response to display physics, input limits, data uncertainty, and the need for quick decisions while moving through the world.</p>

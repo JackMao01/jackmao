@@ -518,7 +518,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--glass-border);background:rgba(15,14,35,.86);color:#93c5fd;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#93c5fd;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -722,8 +722,39 @@
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign: continue the index's printed-volume conceit ══ */
+/* A. hero index framing (echoes N°01 — INDEX on home) */
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(255,255,255,0.42); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(255,255,255,0.72); font-weight:500; }
+/* A2. hero posters — the plate you clicked, expanded (matches index p-posters) */
+.hero-posters { position:absolute; top:11rem; right:9vw; width:min(40vw,500px); height:50vh; pointer-events:none; z-index:1; }
+.hero-posters img { position:absolute; height:100%; width:auto; aspect-ratio:683/1024; object-fit:cover; top:0; border-radius:4px; border:1px solid rgba(255,255,255,0.16); box-shadow:0 30px 70px rgba(0,0,0,0.55); }
+.hero-posters img:first-child { left:18%; transform:rotate(-5deg); z-index:1; }
+.hero-posters img:last-child  { left:52%; transform:rotate(4deg); z-index:2; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } .hero-posters{ top:9.5rem; right:8vw; width:60vw; height:30vh; } .hero-posters img:first-child{ left:0; } .hero-posters img:last-child{ left:auto; right:0; } }
+/* B. plate figures — artworks as numbered plates with crop marks */
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(255,255,255,0.09); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2,#16152b); }
+.plate-fig-frame img { display:block; width:100%; height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.5; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime,#ccff00); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(255,255,255,0.09); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(22,21,43,0.55); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(255,255,255,0.5); }
+.plate-fig-cap b { color:var(--lime,#ccff00); font-weight:500; white-space:nowrap; }
+/* C. section folios — ghosted numerals like index groups */
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
+.sec-head .section-heading { margin-top:0; }
+
 </style>
   <link rel="preload" as="image" href="../images/waves-01.png" type="image/png" fetchpriority="high"/>
+<link rel="preload" as="image" href="../images/waves-02.png" type="image/png" fetchpriority="high"/>
   <noscript>
     <style>
       #page-veil { display: none !important; }
@@ -765,6 +796,8 @@
 
   <main>
   <div class="project-hero" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°02 — PLATES</b><br/>Light &amp; Form · 2021</div>
+<div class="hero-posters" aria-hidden="true"><img src="../images/waves-02.png" alt="" loading="eager" decoding="async"/><img src="../images/waves-01.png" alt="" loading="eager" decoding="async"/></div>
     <div class="project-meta">
       <div><span class="meta-label">Category</span><span class="meta-value">Illustration + Photo Editing</span></div>
       <div><span class="meta-label">Year</span><span class="meta-value"><time datetime="2021">2021</time></span></div>
@@ -795,37 +828,29 @@
         </div>
       </div>
 
-    <h2 class="section-heading">Symmetrically Unorthodox — Illustration</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Symmetrically Unorthodox — Illustration</h2></div>
     <div class="body-text">
       <p>Symmetrically Unorthodox began as an experiment in formal constraint. Start with perfect bilateral symmetry — then introduce controlled chaos. Each decision made with intention, never at random. The result is a series of illustrations that feel simultaneously balanced and unsettled: familiar forms made strange by subtle deviations from the expected.</p>
       <p>The work started in pencil — loose gestural forms refined digitally in Adobe Illustrator. Each composition went through at least three symmetry passes before the deliberate breaks were introduced. The process demanded patience: knowing when the disruption was enough, and when it became noise.</p>
       <p><strong>Color was the final decision.</strong> Deep navy and violet, punctuated by warm coral accents that interrupt the cool equilibrium — a chromatic echo of the structural tension already present in the forms.</p>
     </div>
 
-    <div class="image-grid two-col">
-      <img loading="lazy" decoding="async" src="../images/waves-01.png" width="1200" height="800" alt="Symmetrically Unorthodox — pink poster"/>
-      <img loading="lazy" decoding="async" src="../images/waves-02.png" width="1200" height="800" alt="Symmetrically Unorthodox — blue poster"/>
-    </div>
-    <p class="img-caption">Symmetrically Unorthodox — poster series, pink and blue colourways</p>
+    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-01.png" width="1200" height="800" alt="Symmetrically Unorthodox — pink poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Symmetrically Unorthodox — pink colourway</span></figcaption></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-02.png" width="1200" height="800" alt="Symmetrically Unorthodox — blue poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;02</b><span>Symmetrically Unorthodox — blue colourway</span></figcaption></figure></div>
 
     <hr class="div"/>
 
-    <h2 class="section-heading">From Shadow to Serenity — Photo Editing</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">From Shadow to Serenity — Photo Editing</h2></div>
     <div class="body-text">
       <p>From Shadow to Serenity is a photo editing project built around a single concept: the journey from darkness toward calm. Each image was carefully retouched and colour-graded in Adobe Photoshop to explore contrast, mood, and the interplay of light and shadow — the same formal questions as Symmetrically Unorthodox, answered through the lens instead of the stylus.</p>
       <p>The work began with images that captured raw contrast — harsh shadows, soft highlights, and scenes that felt emotionally charged. The tension between what is visible and what remains hidden became the conceptual spine of every edit. Each photograph asked: how much darkness can you remove before the image loses its truth?</p>
       <p><strong>Serenity, here, is not the absence of shadow</strong> — it is what you find when you learn to work with it.</p>
     </div>
 
-    <div class="image-grid two-col">
-      <img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/>
-      <img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="800" alt="From Shadow to Serenity — original"/>
-    </div>
-    <p class="img-caption">From Shadow to Serenity — photo editing series, 2021</p>
+    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>From Shadow to Serenity — first edit</span></figcaption></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>From Shadow to Serenity — revised edit</span></figcaption></figure></div>
 
     <hr class="div"/>
 
-    <h2 class="section-heading">Reflection</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">Reflection</h2></div>
     <div class="body-text">
       <p>Placing these two projects together revealed something I hadn't fully articulated before — that illustration and photography are, for me, the same question asked in two different languages. Both are about deciding what gets to exist on the surface and what gets erased. Both demand the same thing: restraint, and the courage to stop.</p>
     </div>

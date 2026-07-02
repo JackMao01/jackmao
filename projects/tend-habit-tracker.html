@@ -487,7 +487,7 @@
     }
     #back-to-top {
       position:fixed; right:1.5rem; bottom:1.5rem; z-index:80; width:44px; height:44px;
-      border-radius:50%; border:1px solid var(--glass-border); background:rgba(251,250,246,.86);
+      border-radius:50%; border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;
       color:var(--lime); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
       cursor:auto;
     }
@@ -1177,6 +1177,30 @@
     .case-cell{background:rgba(251,250,246,.86)}
     .case-k{color:var(--case-accent,#7057cf)}
     .case-v{color:#6a697a}
+
+/* ══ Folio redesign (light-theme variant): printed-volume conceit ══ */
+.project-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(0,0,0,0.4); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(0,0,0,0.68); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(0,0,0,0.12); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2); }
+.plate-fig-frame img { display:block; width:100%; height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.55; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(0,0,0,0.12); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(0,0,0,0.045); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(0,0,0,0.55); }
+.plate-fig-cap b { color:var(--lime); font-weight:500; white-space:nowrap; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px var(--lime); opacity:0.55; flex:none; }
+.sec-head .section-heading { margin-top:0; }
+.coffee-demo-frame { position:relative; }
+
 </style>
   <link rel="preload" as="image" href="../images/tend-app-store-icon.png" type="image/png" fetchpriority="high"/>
   <noscript>
@@ -1217,6 +1241,7 @@
 
   <main>
     <section class="project-hero" aria-label="Tend introduction" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°07 — PLATES</b><br/>Tend · 2026</div>
       <div>
         <div class="edition-tag">UI/UX Design · SwiftUI Habit Tracker</div>
         <h1 class="project-title">Tend<br><em>Habit Tracker</em></h1>
@@ -1251,63 +1276,63 @@
         </div>
       </div>
 
-      <h2 class="section-heading">Snapshots</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Snapshots</h2></div>
       <div class="body-text">
         <p>The visual direction centers on an off-white surface, lavender accent system, and a gentle leaf-on-water identity. The interface keeps the tracker quiet and tactile: weekly rhythm, progress rings, habit check-ins, journaling, calendar history, themes, and reminder settings all support the same promise of steady return.</p>
       </div>
       <div class="snapshot-grid">
         <div class="snapshot-card">
           <div class="snapshot-label">Minimal Habit Home</div>
-          <img class="progress-shot" src="../images/tend-01-minimal-habit-home.png" alt="Minimal habit home snapshot for Tend" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-01-minimal-habit-home.png" alt="Minimal habit home snapshot for Tend" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Minimal habit home</span></figcaption></figure>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Zen Launch Animation</div>
-          <img class="progress-shot" src="../images/tend-02-zen-launch-animation.png" alt="Lavender leaf and pond ripple launch animation snapshot" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-02-zen-launch-animation.png" alt="Lavender leaf and pond ripple launch animation snapshot" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;02</b><span>Lavender leaf and pond ripple launch animation</span></figcaption></figure>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Calendar + Journal</div>
-          <img class="progress-shot" src="../images/tend-03-calendar-and-journal.png" alt="Tend calendar and journal snapshot" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-03-calendar-and-journal.png" alt="Tend calendar and journal snapshot" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>Tend calendar and journal</span></figcaption></figure>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Themes + Pro</div>
-          <img class="progress-shot" src="../images/tend-04-themes-and-pro-direction.png" alt="Tend theme studio and Pro direction snapshot" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-04-themes-and-pro-direction.png" alt="Tend theme studio and Pro direction snapshot" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>Tend theme studio and Pro direction</span></figcaption></figure>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Product Flows</div>
-          <img class="progress-shot" src="../images/tend-05-product-flows.png" alt="Tend onboarding templates reminders and Pro unlock product flow snapshot" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-05-product-flows.png" alt="Tend onboarding templates reminders and Pro unlock product flow snapshot" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;05</b><span>Tend onboarding templates reminders and Pro unlock product flow</span></figcaption></figure>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">SwiftUI Foundation</div>
-          <img class="progress-shot" src="../images/tend-06-native-swiftui-foundation.png" alt="Tend native SwiftUI foundation snapshot" width="1600" height="1000" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img class="progress-shot" src="../images/tend-06-native-swiftui-foundation.png" alt="Tend native SwiftUI foundation snapshot" width="1600" height="1000" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;06</b><span>Tend native SwiftUI foundation</span></figcaption></figure>
         </div>
       </div>
 
-      <h2 class="section-heading">Final Design</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">Final Design</h2></div>
       <div class="body-text">
         <p>The final design settles into three primary pages: Home for the daily ritual, Calendar for date-aware progress, and Journal for quieter reflection. Together they keep Tend focused on the smallest useful loop: check in, understand the rhythm of the month, and write down what made the day feel calm.</p>
       </div>
       <div class="final-design-grid">
         <div class="final-design-card">
           <div class="snapshot-label">Home Page</div>
-          <img src="../images/tend-final-home.png" alt="Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview" width="2508" height="1304" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-home.png" alt="Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview" width="2508" height="1304" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;07</b><span>Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview</span></figcaption></figure>
         </div>
         <div class="final-design-card">
           <div class="snapshot-label">Calendar Page</div>
-          <img src="../images/tend-final-calendar.png" alt="Final Tend Calendar page design with month view, daily summary, and theme preview" width="2508" height="1303" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-calendar.png" alt="Final Tend Calendar page design with month view, daily summary, and theme preview" width="2508" height="1303" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;08</b><span>Final Tend Calendar page design with month view, daily summary, and theme preview</span></figcaption></figure>
         </div>
         <div class="final-design-card">
           <div class="snapshot-label">Journal Page</div>
-          <img src="../images/tend-final-journal.png" alt="Final Tend Journal page design with reflection prompts and theme preview" width="2508" height="1305" loading="lazy" decoding="async"/>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-journal.png" alt="Final Tend Journal page design with reflection prompts and theme preview" width="2508" height="1305" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;09</b><span>Final Tend Journal page design with reflection prompts and theme preview</span></figcaption></figure>
         </div>
       </div>
 
-      <h2 class="section-heading">Problem</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">Problem</h2></div>
       <div class="body-text">
         <p>Most habit apps make progress visible, but many make failure louder than recovery. Tend was shaped around a softer product question: how can a tracker preserve accountability while making missed days feel recoverable?</p>
         <p>The answer became a calm ritual system rather than a productivity dashboard. Tend focuses on small routines, quiet reminders, simple check-ins, and reflection, with progress framed as rhythm instead of perfection.</p>
       </div>
 
-      <h2 class="section-heading">Product Flow</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">04</span><h2 class="section-heading">Product Flow</h2></div>
       <div class="flow-map">
         <div class="flow-node"><div class="flow-title">Prototype</div><div class="flow-desc">A browser build tested the dashboard, date strip, calendar, journal, themes, reminders, Pro screen, and startup ripple animation.</div></div>
         <div class="flow-node"><div class="flow-title">Translate</div><div class="flow-desc">The experience moved into SwiftUI with Home, Calendar, Journal, and Theme Studio views built as native screens.</div></div>
@@ -1315,7 +1340,7 @@
         <div class="flow-node"><div class="flow-title">Prepare</div><div class="flow-desc">The project added onboarding, local notifications, StoreKit product planning, icon exports, and App Store material drafts.</div></div>
       </div>
 
-      <h2 class="section-heading">Core Features</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">05</span><h2 class="section-heading">Core Features</h2></div>
       <div class="system-grid">
         <div class="system-panel">
           <div class="snapshot-label">Implemented</div>
@@ -1327,7 +1352,7 @@
         </div>
       </div>
 
-      <h2 class="section-heading">Visual System</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">06</span><h2 class="section-heading">Visual System</h2></div>
       <div class="system-grid">
         <div class="system-panel">
           <div class="snapshot-label">Colour</div>
@@ -1346,27 +1371,27 @@
         </div>
       </div>
 
-      <h2 class="section-heading">Native Build</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">07</span><h2 class="section-heading">Native Build</h2></div>
       <div class="body-text">
         <p>The SwiftUI project was organized into App, Models, Views, Components, Design, Services, Assets, and Configuration folders. Reusable pieces include ProgressRing, WeekStrip, HabitRow, TendCard, TendChip, TendPrimaryButton, LaunchRippleView, sheet components, section headers, and empty states.</p>
         <p>SwiftData models cover habits, habit completions, and journal entries. AppState now keeps only lightweight UI preferences such as selected date, active page, theme, reminder time, Pro unlock state, onboarding completion, and reminder enablement.</p>
         <p>Build issues were resolved along the way: old model conflicts were removed, HabitFrequency was renamed to TendHabitFrequency, iOS-only modifiers were wrapped with platform checks, Combine imports were added where needed, and newer onChange syntax was adopted. The simulator build now runs and retains data after relaunch.</p>
       </div>
 
-      <h2 class="section-heading">UX Writing</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">08</span><h2 class="section-heading">UX Writing</h2></div>
       <div class="body-text">
         <p>The notification language was written to feel like a gentle invitation rather than a demand. Example lines include “A small moment for Tend,” “Pause, breathe, check in,” “A little progress counts,” and “Come back to your rhythm.”</p>
       </div>
 
       <div class="pull-quote">A habit app should make returning easier than quitting.</div>
 
-      <h2 class="section-heading">Launch Prep</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">09</span><h2 class="section-heading">Launch Prep</h2></div>
       <div class="body-text">
         <p>App Store materials were drafted alongside the build, including app-store copy, a privacy policy draft, an icon install guide, and StoreKit local testing notes. The current product ID for the one-time unlock is <strong>tend.pro.unlock</strong>.</p>
         <p>The next steps are to add the final AppIcon.appiconset into Xcode, test onboarding from a clean install, verify notification scheduling on simulator or device, add local StoreKit configuration, continue polishing Calendar, Journal, and sheet views, then prepare for TestFlight.</p>
       </div>
 
-      <h2 class="section-heading">Reflection</h2>
+      <div class="sec-head"><span class="sec-folio" aria-hidden="true">10</span><h2 class="section-heading">Reflection</h2></div>
       <div class="body-text">
         <p>Tend became more than a visual concept. It moved through product definition, prototype testing, native implementation, data persistence, notification design, monetization planning, and store-readiness tasks.</p>
         <p>The strongest lesson was that calm design is not just a palette. It shows up in the data model, the reminder copy, the recovery states, and the way the product behaves when someone misses a day. Tend is structured, but not severe; motivating, but not loud; designed to help a user keep going without making the app the centre of their day.</p>

@@ -600,7 +600,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--glass-border);background:rgba(18,8,22,.86);color:#c084fc;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#c084fc;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -804,6 +804,31 @@
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign: continue the index's printed-volume conceit ══ */
+.hub-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(255,255,255,0.42); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(255,255,255,0.72); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(255,255,255,0.09); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2,#16152b); }
+.plate-fig-frame img, .plate-fig-frame iframe { display:block; width:100%; }
+.plate-fig-frame img { height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.5; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime,#ccff00); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(255,255,255,0.09); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(22,21,43,0.55); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(255,255,255,0.5); }
+.plate-fig-cap b { color:var(--lime,#ccff00); font-weight:500; white-space:nowrap; }
+.photo-post { position:relative; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
+.sec-head .section-heading { margin-top:0; }
+
 </style>
   <link rel="preload" as="image" href="../images/DSCF6080.webp" type="image/webp" fetchpriority="high"/>
   <noscript>
@@ -847,6 +872,7 @@
 
   <main>
   <div class="project-hero" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°05 — PLATES</b><br/>Toronto in Bloom · 2026</div>
     <div class="project-meta">
       <div><span class="meta-label">Category</span><span class="meta-value">Social Media</span></div>
       <div><span class="meta-label">Year</span><span class="meta-value"><time datetime="2026">2026</time></span></div>
@@ -874,7 +900,7 @@
         </div>
       </div>
 
-    <h2 class="section-heading">The Concept</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">The Concept</h2></div>
     <div class="body-text">
       <p>Toronto in Bloom is a social media content project built around the 2026 cherry blossom season at High Park. The brief was self-assigned: document the bloom, edit for platform, and produce a set of posts — photos and short-form video — that feel native to Instagram and Threads while still carrying a deliberate aesthetic point of view.</p>
       <p>The work sits at the intersection of street photography, videography, and platform-native design. <strong>Every frame was made to be stopped on</strong> — high contrast, strong colour temperature, and a consistent pink-purple palette that runs through stills and video alike.</p>
@@ -882,13 +908,13 @@
 
     <div class="pull-quote">"Two weeks. Every year. Most people miss it."</div>
 
-    <h2 class="section-heading">Social Posts</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">Social Posts</h2></div>
     <div class="body-text">
       <p>Four posts designed for the grid — each shot on a Fujifilm X-series camera with the Classic Negative film simulation. The lifted shadows, muted highlights, and slightly desaturated midtones give the stills a restrained, filmic quality that reads differently in a feed full of phone-saturated spring content.</p>
     </div>
 
     <div class="post-grid">
-      <div class="photo-post">
+      <figure class="plate-fig"><div class="photo-post"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
         <div class="post-header">
           <div class="post-avatar">JM</div>
           <div class="post-handle">@jack.mao<span>Toronto, ON</span></div>
@@ -898,8 +924,8 @@
           <div class="post-likes">124 likes</div>
           <div>Everyone comes to the same tree. Every year. #HighPark #TorontoInBloom #CherryBlossom</div>
         </div>
-      </div>
-      <div class="photo-post">
+      </div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>High Park — the tree everyone returns to</span></figcaption></figure>
+      <figure class="plate-fig"><div class="photo-post"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
         <div class="post-header">
           <div class="post-avatar">JM</div>
           <div class="post-handle">@jack.mao<span>Toronto, ON</span></div>
@@ -909,8 +935,8 @@
           <div class="post-likes">89 likes</div>
           <div>Two weeks a year, this is what High Park looks like. #Toronto #Spring2026</div>
         </div>
-      </div>
-      <div class="photo-post">
+      </div><figcaption class="plate-fig-cap"><b>PL.&nbsp;02</b><span>High Park — canopy study</span></figcaption></figure>
+      <figure class="plate-fig"><div class="photo-post"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
         <div class="post-header">
           <div class="post-avatar">JM</div>
           <div class="post-handle">@jack.mao<span>Toronto, ON</span></div>
@@ -920,8 +946,8 @@
           <div class="post-likes">203 likes</div>
           <div>Everyone is making a memory here. #TorontoInBloom #HighPark #Spring</div>
         </div>
-      </div>
-      <div class="photo-post">
+      </div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>High Park — crowd beneath the blossoms</span></figcaption></figure>
+      <figure class="plate-fig"><div class="photo-post"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
         <div class="post-header">
           <div class="post-avatar">JM</div>
           <div class="post-handle">@jack.mao<span>Toronto, ON</span></div>
@@ -931,10 +957,10 @@
           <div class="post-likes">97 likes</div>
           <div>The other side of bloom season — the pond, the willows, the quiet spots. #Toronto #HighPark</div>
         </div>
-      </div>
+      </div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>High Park — golden hour walk-through</span></figcaption></figure>
     </div>
 
-    <h2 class="section-heading">Inspiration</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">Inspiration</h2></div>
     <div class="body-text">
       <p>The same instinct that drove these four posts has a clear reference point: <strong>Dave Krugman</strong> — NYC street photographer — and his documentation of bloom season in Central Park. His approach is patient and crowd-aware, finding the human moment inside the spectacle rather than shooting around it. Seeing his work made it clear what High Park could look like treated the same way.</p>
     </div>
@@ -982,7 +1008,7 @@
 
     <hr class="div"/>
 
-    <h2 class="section-heading">By the Numbers</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">04</span><h2 class="section-heading">By the Numbers</h2></div>
     <div class="stat-row">
       <div class="stat"><div class="stat-num">2 wks</div><div class="stat-label">Bloom window</div></div>
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">Grid posts</div></div>
@@ -992,7 +1018,7 @@
 
     <hr class="div"/>
 
-    <h2 class="section-heading">On Making It</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">05</span><h2 class="section-heading">On Making It</h2></div>
     <div class="body-text">
       <p>The discipline was platform-first thinking without platform-first compromise — every frame composed to work at 1:1 and 9:16, but none of them feeling like they were made for a grid. <strong>The photography came first. The crop came second.</strong></p>
       <p>The video was shot on iPhone in Cinematic mode, leaning on the camera's natural colour science rather than heavy post. The stills came from a Fujifilm X-series with Classic Negative — lifted shadows, restrained highlights, warm tones pulled back just enough that the blossoms feel like a memory rather than a spectacle. That restraint was the reference point. Dave Krugman's Central Park work showed what it looks like when a photographer treats bloom season as a human story rather than a backdrop — <strong>the same instinct, applied two weeks a year at High Park.</strong></p>

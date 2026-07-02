@@ -606,7 +606,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--glass-border);background:rgba(15,12,24,.86);color:#a855f7;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#a855f7;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -812,6 +812,31 @@
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign: continue the index's printed-volume conceit ══ */
+.hub-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(255,255,255,0.42); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(255,255,255,0.72); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.edition-frame { display:block; border-radius:4px; }
+.plate-fig-frame { position:relative; border:1px solid rgba(255,255,255,0.09); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2,#16152b); }
+.plate-fig-frame img, .plate-fig-frame iframe { display:block; width:100%; }
+.plate-fig-frame img { height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.5; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime,#ccff00); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(255,255,255,0.09); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(22,21,43,0.55); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(255,255,255,0.5); }
+.plate-fig-cap b { color:var(--lime,#ccff00); font-weight:500; white-space:nowrap; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
+.sec-head .section-heading { margin-top:0; }
+
 </style>
   <link rel="preload" as="image" href="../images/thumb-so-good.png" type="image/png" fetchpriority="high"/>
   <noscript>
@@ -860,6 +885,7 @@
 
 <main>
     <div class="hub-hero" style="view-transition-name: project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°03 — PLATES</b><br/>Special Editions · 2017 / 2022</div>
     <div class="hub-eyebrow">Pop Culture · Editorial &amp; Advertising</div>
     <h1 class="hub-title">Special<br><em>Editions</em></h1>
     <p class="hub-intro">Two projects. One design instinct — built around an artist's identity, not imposed on it.</p>
@@ -885,7 +911,7 @@
 
   <div class="editions">
     <a href="so-good.html" class="edition-card vol-01">
-      <img class="edition-thumb" src="../images/thumb-so-good.png" alt="Special Edition ft. Zara Larsson — So Good" width="1400" height="788" loading="lazy" decoding="async"/>
+      <span class="plate-fig-frame edition-frame"><img class="edition-thumb" src="../images/thumb-so-good.png" alt="Special Edition ft. Zara Larsson — So Good" width="1400" height="788" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></span>
       <div class="edition-body">
         <div class="edition-top">
           <div class="edition-vol">Vol. 01 · Editorial Design</div>
@@ -901,7 +927,7 @@
       </div>
     </a>
     <a href="after-hours.html" class="edition-card vol-02">
-      <img class="edition-thumb" src="../images/thumb-after-hours.png" alt="Special Edition ft. The Weeknd — After Hours" width="1400" height="788" loading="lazy" decoding="async"/>
+      <span class="plate-fig-frame edition-frame"><img class="edition-thumb" src="../images/thumb-after-hours.png" alt="Special Edition ft. The Weeknd — After Hours" width="1400" height="788" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></span>
       <div class="edition-body">
         <div class="edition-top">
           <div class="edition-vol">Vol. 02 · Advertising</div>
@@ -918,7 +944,7 @@
     </a>
   </div>
   <div class="hub-concept">
-              <h2 class="section-heading">The Concept</h2>
+              <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">The Concept</h2></div>
     <div class="body-text">
       <p>Special Editions is a two-volume series of editorial and advertising work built around music artists — treating their albums not as products to be marketed, but as worlds to be designed inside.</p>
       <p><strong>Vol. 01</strong> reimagines Zara Larsson's <em>So Good</em> as a full magazine editorial — six deliverables across typography, layout, photography direction, and packaging, published in NME / Best Music Mag format. <strong>Vol. 02</strong> builds three crowd culture campaigns around The Weeknd's <em>After Hours</em> — each targeting a distinct audience ideology drawn from the album's emotional terrain.</p>

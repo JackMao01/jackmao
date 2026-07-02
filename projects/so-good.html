@@ -461,7 +461,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--glass-border);background:rgba(20,8,16,.86);color:#f472b6;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#f472b6;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -665,6 +665,32 @@
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
     .case-v{font-size:.86rem;line-height:1.55;color:rgba(255,255,255,.62)}
+
+/* ══ Folio redesign: continue the index's printed-volume conceit ══ */
+.hub-hero { position:relative; }
+.hero-folio { position:absolute; top:6.4rem; right:3rem; text-align:right; font:500 0.66rem/1.7 'DM Mono',monospace; letter-spacing:0.14em; color:rgba(255,255,255,0.42); text-transform:uppercase; z-index:2; }
+.hero-folio b { color:rgba(255,255,255,0.72); font-weight:500; }
+@media (max-width:900px){ .hero-folio{ top:5.4rem; right:1.5rem; } }
+.plate-fig { margin:0; position:relative; }
+.plate-fig-frame { position:relative; border:1px solid rgba(255,255,255,0.09); border-radius:4px 4px 0 0; overflow:hidden; background:var(--navy2,#16152b); }
+.plate-fig-frame img, .plate-fig-frame iframe { display:block; width:100%; }
+.plate-fig-frame img { height:auto; }
+.cropmarks { position:absolute; inset:0.85rem; pointer-events:none; opacity:0.5; z-index:2; }
+.cropmarks i { position:absolute; width:15px; height:15px; }
+.cropmarks i::before,.cropmarks i::after { content:""; position:absolute; background:var(--lime,#ccff00); }
+.cropmarks i::before { width:100%; height:1px; } .cropmarks i::after { width:1px; height:100%; }
+.cropmarks .c1{top:0;left:0}.cropmarks .c1::before{top:0}.cropmarks .c1::after{left:0}
+.cropmarks .c2{top:0;right:0}.cropmarks .c2::before{top:0}.cropmarks .c2::after{right:0}
+.cropmarks .c3{bottom:0;left:0}.cropmarks .c3::before{bottom:0}.cropmarks .c3::after{left:0}
+.cropmarks .c4{bottom:0;right:0}.cropmarks .c4::before{bottom:0}.cropmarks .c4::after{right:0}
+.plate-fig-cap { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; border:1px solid rgba(255,255,255,0.09); border-top:none; border-radius:0 0 4px 4px; padding:0.68rem 0.9rem; background:rgba(22,21,43,0.55); font:400 0.66rem/1.5 'DM Mono',monospace; letter-spacing:0.06em; color:rgba(255,255,255,0.5); }
+.plate-fig-cap b { color:var(--lime,#ccff00); font-weight:500; white-space:nowrap; }
+.pdf-embed-wrap { position:relative; }
+.pl-tag { color:var(--lime,#ccff00); font-weight:500; }
+.sec-head { display:flex; align-items:baseline; gap:1.1rem; margin-top:3rem; }
+.sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
+.sec-head .section-heading { margin-top:0; }
+
 </style>
   <noscript>
     <style>
@@ -705,6 +731,7 @@
   <main>
 <!-- HERO -->
   <div class="project-hero">
+<div class="hero-folio" aria-hidden="true"><b>N°03 · EDITION 01</b><br/>So Good — Zara Larsson · 2017</div>
     <div class="hero-left">
       <div class="edition-tag">Special Edition — Vol. 01</div>
       <h1 class="hero-issue">So<br>Good.</h1>
@@ -757,46 +784,46 @@
     </div>
 
     <!-- ROUGHS -->
-    <h2 class="section-heading">01 — Roughs & Grid System</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Roughs & Grid System</h2></div>
     <div class="body-text">
       <p>Every editorial project begins with structure. The roughs phase established the underlying grid — a 12-column system adapted from classic NME layouts — and tested multiple typographic hierarchies before committing to a direction. Two headline approaches were explored in parallel: a condensed blackletter stacked vertically against the hairline letterforms that would become the final system.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-roughs.pdf" title="Roughs and grid studies"></iframe>
-      <div class="pdf-label"><span>Roughs — Layout & Grid Studies</span><a href="../images/zara-roughs.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;01</b> · Roughs — Layout & Grid Studies</span><a href="../images/zara-roughs.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- HEADLINE -->
-    <h2 class="section-heading">02 — Headline Typography</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">02</span><h2 class="section-heading">Headline Typography</h2></div>
     <div class="body-text">
       <p>The headline system was the most laboured element of the project. <strong>Meta OT Condensed Black</strong> set at 140pt was tested against <strong>Meta OT Hairline</strong> at 195pt — two extremes of the same typeface family in deliberate contrast. The final direction paired the condensed weight for "ZARA" against the hairline for "LARSSON", creating a visual push-pull that mirrors Larsson's own tension between pop accessibility and artistic ambition.</p>
       <p>Secondary headlines used <em>Avenir Heavy</em> as a subhead system, with pull quotes set in <em>Avenir Medium Oblique</em> — keeping the hierarchy clear across six layout variations.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-headline.pdf" title="Headline typography studies"></iframe>
-      <div class="pdf-label"><span>Headline — Typography System</span><a href="../images/zara-headline.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;02</b> · Headline — Typography System</span><a href="../images/zara-headline.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- BODY -->
-    <h2 class="section-heading">03 — Body Copy Layouts</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">03</span><h2 class="section-heading">Body Copy Layouts</h2></div>
     <div class="body-text">
       <p>Three body layout variations were developed, each exploring a different column configuration and reading rhythm. The copy — drawn from a real NME profile of Larsson — was set in <strong>Avenir Light 9pt</strong> throughout, giving the pages an airy editorial quality that never competes with the headline typography.</p>
       <p>The pull quote treatment evolved across iterations: from a simple italic inset to a fully centred typographic interruption that breaks the column grid entirely — the approach that made it into the final spread.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-body.pdf" title="Body copy layout studies"></iframe>
-      <div class="pdf-label"><span>Body — Copy Layout Variations</span><a href="../images/zara-body.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;03</b> · Body — Copy Layout Variations</span><a href="../images/zara-body.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- PHOTO -->
-    <h2 class="section-heading">04 — Photo Layouts</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">04</span><h2 class="section-heading">Photo Layouts</h2></div>
     <div class="body-text">
       <p>Photography integration was tested across two approaches. The first used a tight portrait strip — three stacked images of Larsson in pink — running vertically alongside the body text, giving the spread a catalogue-like efficiency. The second gave a single full-bleed image the entire left half of the spread, letting Larsson's presence overwhelm the page before the text takes over on the right.</p>
       <p>The second approach was selected for its editorial confidence — <strong>image first, then explanation</strong>.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-photo.pdf" title="Photo layout studies"></iframe>
-      <div class="pdf-label"><span>Photo — Image Layout Studies</span><a href="../images/zara-photo.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;04</b> · Photo — Image Layout Studies</span><a href="../images/zara-photo.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- STATS -->
@@ -807,14 +834,14 @@
     </div>
 
     <!-- DPS -->
-    <h2 class="section-heading">05 — Double Page Spread</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">05</span><h2 class="section-heading">Double Page Spread</h2></div>
     <div class="body-text">
       <p>The double page spread is the centrepiece of the project — the moment where every typographic and layout decision converges. <strong>"ZARA LARSSON"</strong> is set in an extreme condensed serif at near-poster scale, bleeding off the gutter, with Larsson's image occupying the full right half of the spread.</p>
       <p>Three DPS variations were developed: the first using custom typeface <em>Mark My Words</em> in a loose, expressive style; the second pairing it with a full-bleed pink photograph; the third combining <em>Beyond The Mountains</em> — a second custom face — with a high-contrast editorial composition. The final version leans into the handwritten-meets-editorial tension that defines the entire project.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-dps.pdf" title="Double page spread"></iframe>
-      <div class="pdf-label"><span>DPS — Double Page Spread (Final)</span><a href="../images/zara-dps.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;05</b> · DPS — Double Page Spread (Final)</span><a href="../images/zara-dps.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- TRACKLIST -->
@@ -839,25 +866,25 @@
     </div>
 
     <!-- POSTER -->
-    <h2 class="section-heading">06 — Concert Poster</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">06</span><h2 class="section-heading">Concert Poster</h2></div>
     <div class="body-text">
       <p>The poster brief called for a gig announcement for Larsson's show at the <strong>Phoenix Concert Theatre, Toronto — April 24, 2017</strong>. Two directions were developed: a clean black-and-white typographic poster using Avenir Black, and a full-bleed pink duotone poster using Univers Bold at 100pt — bold enough to read from across a street.</p>
       <p>The final version adopted the pink duotone with a heavily overexposed portrait, the name bleeding off the top edge. It captures the same oversized confidence as the DPS headline system, making the two pieces feel like parts of the same visual world.</p>
     </div>
-    <div class="pdf-embed-wrap poster">
+    <div class="pdf-embed-wrap poster"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-poster.pdf" title="Concert poster"></iframe>
-      <div class="pdf-label"><span>Poster — Phoenix Concert Theatre · 04.24.17</span><a href="../images/zara-poster.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;06</b> · Poster — Phoenix Concert Theatre · 04.24.17</span><a href="../images/zara-poster.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <!-- CD -->
-    <h2 class="section-heading">07 — CD Package Design</h2>
+    <div class="sec-head"><span class="sec-folio" aria-hidden="true">07</span><h2 class="section-heading">CD Package Design</h2></div>
     <div class="body-text">
       <p>The CD package extended the visual system into three dimensions — a foldout jewel case insert and a disc design. The front cover uses the wavy <em>So Good</em> logotype over a duotone portrait on a pink ground, with the tracklist running in reverse on the back panel. The disc itself mirrors the cover, with Larsson's portrait cropped into the circle format and the album title repeated as a graphic element in the centre.</p>
       <p>A second disc variation explored an all-over pattern treatment — repeating the wave logotype across the disc surface as texture, referencing the visual language of the title track's artwork.</p>
     </div>
-    <div class="pdf-embed-wrap tall">
+    <div class="pdf-embed-wrap tall"><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
       <iframe src="../images/zara-cd.pdf" title="CD package design"></iframe>
-      <div class="pdf-label"><span>CD — Package & Disc Design</span><a href="../images/zara-cd.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
+      <div class="pdf-label"><span><b class="pl-tag">PL.&nbsp;07</b> · CD — Package & Disc Design</span><a href="../images/zara-cd.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a></div>
     </div>
 
     <hr class="div" />
