@@ -874,7 +874,7 @@ body.intent .row-desc { display: none; }
 
 
 /* ===== Floating buttons — unified translucent design (all 3 identical) ===== */
-#nav-up::before, #qr-trigger::before, #askbot-launch::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background: rgba(22,21,43,0.42); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
+#nav-up::before, #qr-trigger::before, #askbot-launch::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
 #nav-up:hover::before, #qr-trigger:hover::before,
 #askbot-launch:hover::before, #askbot-launch[aria-expanded="true"]::before {
   border-color: rgba(204,255,0,0.45); background: rgba(204,255,0,0.06);
@@ -907,7 +907,7 @@ body.intent .row-desc { display: none; }
 .ask-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: center; transform-box: fill-box; animation: btt-spin 10s linear infinite; animation-play-state: paused; }
 #askbot-launch:hover .ask-ring, #askbot-launch:active .ask-ring, #askbot-launch[aria-expanded="true"] .ask-ring { animation-play-state: running; }
 
-@supports not ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {  }
+
 @media (max-width: 640px){
   #askbot-launch { bottom: calc(1.25rem + 80px + env(safe-area-inset-bottom)); right: 1.25rem; width: 64px; height: 64px; z-index: 100001; }
   
@@ -946,6 +946,22 @@ body.intent .row-desc { display: none; }
 .page-leaving #askbot-launch, .page-leaving #askbot-panel { opacity:0 !important; pointer-events:none !important; }
 
 
+
+
+/* ── back-to-top scroll-progress ring ── */
+.btt-progress-track { fill:none; stroke:rgba(255,255,255,0.10); stroke-width:2.5; }
+.btt-progress { fill:none; stroke:var(--lime); stroke-width:2.5; stroke-linecap:round;
+  stroke-dasharray:345.6; stroke-dashoffset:345.6;
+  transform:rotate(-90deg); transform-origin:60px 60px; }
+/* ── calm while scrolling down: discs recede, restore on pause/up/hover ── */
+body.scroll-calm #nav-up.visible,
+body.scroll-calm #qr-trigger.visible,
+body.scroll-calm #askbot-launch.visible { opacity:0.45; }
+body.scroll-calm #nav-up.visible:hover, body.scroll-calm #nav-up.visible:focus-visible,
+body.scroll-calm #qr-trigger.visible:hover, body.scroll-calm #qr-trigger.visible:focus-visible,
+body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.visible:focus-visible,
+body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
+#nav-up, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
 
 </style>
   <link rel="canonical" href="/"/>
@@ -1350,7 +1366,7 @@ body.intent .row-desc { display: none; }
   </div><!-- /#page -->
 
   <a id="nav-up" href="#top" aria-label="Back to top">
-    <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle class="btt-progress-track" cx="60" cy="60" r="55"/><circle class="btt-progress" cx="60" cy="60" r="55"/>
         <text class="btt-ring-text" x="65.23" y="22.36" transform="rotate(7.91 65.23 22.36)">B</text>
         <text class="btt-ring-text" x="75.29" y="25.21" transform="rotate(23.73 75.29 25.21)">A</text>
         <text class="btt-ring-text" x="84.19" y="30.70" transform="rotate(39.54 84.19 30.70)">C</text>
@@ -1905,10 +1921,25 @@ body.intent .row-desc { display: none; }
       try {
         var btt = document.getElementById('nav-up');
         var share = document.getElementById('qr-trigger');
+        var prog = document.querySelector('#nav-up .btt-progress');
+        var CIRC = 345.6, lastY = 0, calmTimer = null;
         function onScroll(){
           var y = window.scrollY || document.documentElement.scrollTop || 0;
           if (btt){ btt.classList.toggle('visible', y > 400); }
           if (share){ share.classList.toggle('visible', y > 400); }
+          if (prog){
+            var max = Math.max(1, (document.documentElement.scrollHeight - window.innerHeight));
+            var p = Math.min(1, Math.max(0, y / max));
+            prog.style.strokeDashoffset = (CIRC * (1 - p)).toFixed(1);
+          }
+          if (y > lastY + 2 && y > 400) {
+            document.body.classList.add('scroll-calm');
+          } else if (y < lastY - 2) {
+            document.body.classList.remove('scroll-calm');
+          }
+          lastY = y;
+          if (calmTimer) clearTimeout(calmTimer);
+          calmTimer = setTimeout(function(){ document.body.classList.remove('scroll-calm'); }, 320);
         }
         window.addEventListener('scroll', onScroll, { passive:true });
         onScroll();
