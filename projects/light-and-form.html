@@ -518,7 +518,7 @@
       body        { transition: none; }
     }
 
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#93c5fd;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
+    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);background-image:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#93c5fd;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
     #back-to-top.visible{opacity:1;pointer-events:auto;}
     #back-to-top:hover{transform:translateY(-2px);}
 
@@ -752,6 +752,18 @@
 .sec-head .sec-folio { font:800 clamp(2rem,3.4vw,2.9rem)/0.9 'Syne',sans-serif; letter-spacing:-0.04em; color:transparent; -webkit-text-stroke:1px rgba(204,255,0,0.5); flex:none; }
 .sec-head .section-heading { margin-top:0; }
 
+
+/* ══ INTENT layer — annotations beside the plates, carried over from the index ══ */
+.plate-note { display:none; margin-top:0.55rem; font:italic 400 0.72rem/1.65 'DM Mono',monospace; letter-spacing:0.03em; color:rgba(255,255,255,0.55); border-left:2px solid rgba(204,255,0,0.5); padding:0.15rem 0 0.15rem 0.75rem; }
+.plate-note b { color:var(--lime,#ccff00); font-weight:500; margin-right:0.2rem; }
+body.intent .plate-note { display:block; }
+.intent-btn { position:fixed; left:1.5rem; bottom:1.5rem; z-index:80; display:inline-flex; align-items:center; gap:0.45rem; font:500 0.62rem 'DM Mono',monospace; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.62); background:rgba(22,21,43,0.42); backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4); border:1px solid rgba(255,255,255,0.18); border-radius:999px; padding:0.5rem 0.9rem; cursor:pointer; transition:border-color .3s,color .3s; }
+.intent-btn .dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.35); transition:background .3s, box-shadow .3s; }
+.intent-btn:hover { border-color:rgba(204,255,0,0.45); color:rgba(255,255,255,0.85); }
+body.intent .intent-btn { color:var(--lime,#ccff00); border-color:rgba(204,255,0,0.45); }
+body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8px rgba(204,255,0,0.7); }
+@media (max-width:700px){ .intent-btn { left:1rem; bottom:calc(1rem + env(safe-area-inset-bottom)); } }
+
 </style>
   <link rel="preload" as="image" href="../images/waves-01.png" type="image/png" fetchpriority="high"/>
 <link rel="preload" as="image" href="../images/waves-02.png" type="image/png" fetchpriority="high"/>
@@ -835,7 +847,7 @@
       <p><strong>Color was the final decision.</strong> Deep navy and violet, punctuated by warm coral accents that interrupt the cool equilibrium — a chromatic echo of the structural tension already present in the forms.</p>
     </div>
 
-    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-01.png" width="1200" height="800" alt="Symmetrically Unorthodox — pink poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Symmetrically Unorthodox — pink colourway</span></figcaption></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-02.png" width="1200" height="800" alt="Symmetrically Unorthodox — blue poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;02</b><span>Symmetrically Unorthodox — blue colourway</span></figcaption></figure></div>
+    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-01.png" width="1200" height="800" alt="Symmetrically Unorthodox — pink poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Symmetrically Unorthodox — pink colourway</span></figcaption><span class="plate-note"><b>✦</b> the symmetry breaks on the third pass — earlier feels accidental, later feels timid.</span></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/waves-02.png" width="1200" height="800" alt="Symmetrically Unorthodox — blue poster"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;02</b><span>Symmetrically Unorthodox — blue colourway</span></figcaption><span class="plate-note"><b>✦</b> same system in a colder key — the grid holds at any temperature.</span></figure></div>
 
     <hr class="div"/>
 
@@ -846,7 +858,7 @@
       <p><strong>Serenity, here, is not the absence of shadow</strong> — it is what you find when you learn to work with it.</p>
     </div>
 
-    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>From Shadow to Serenity — first edit</span></figcaption></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>From Shadow to Serenity — revised edit</span></figcaption></figure></div>
+    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>From Shadow to Serenity — first edit</span></figcaption><span class="plate-note"><b>✦</b> the first edit kept too much sky. serenity is mostly subtraction.</span></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>From Shadow to Serenity — revised edit</span></figcaption><span class="plate-note"><b>✦</b> when the blue sky meets the blue sea — the line the whole series was chasing.</span></figure></div>
 
     <hr class="div"/>
 
@@ -1195,6 +1207,17 @@
     })();
   </script>
   <button type="button" id="back-to-top" aria-label="Back to top">↑</button>
+<button id="intent-toggle" class="intent-btn" type="button" aria-pressed="false"><span class="dot" aria-hidden="true"></span>intent</button>
+<script>
+(function(){
+  try {
+    var b=document.getElementById('intent-toggle'); if(!b) return;
+    function set(on){ document.body.classList.toggle('intent',on); b.setAttribute('aria-pressed',String(on)); try{localStorage.setItem('jm-intent',on?'1':'0');}catch(e){} }
+    try { if (localStorage.getItem('jm-intent')==='1') set(true); } catch(e){}
+    b.addEventListener('click',function(){ set(!document.body.classList.contains('intent')); });
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
 
