@@ -1,4 +1,4 @@
-const CACHE_NAME = "hana-v26";
+const CACHE_NAME = "hana-v29";
 const APP_ASSETS = [
   "./",
   "./index.html",
