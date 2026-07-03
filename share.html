@@ -375,6 +375,12 @@
 .plate-fig .qr-card { border-radius:4px 4px 0 0; }
 .colophon-line { font:400 .62rem/1.7 'DM Mono',monospace; letter-spacing:.12em; color:rgba(255,255,255,.34); text-transform:uppercase; text-align:center; margin:2.2rem 0 0; }
 
+
+@media (max-width: 700px) {
+  .folio-mark { position: static; display: block; text-align: center; margin: 0.85rem auto 0; padding: 0 1rem; }
+  .folio-mark br { display: none; }
+  .folio-mark b::after { content: "\00a0·\00a0"; color: inherit; font-weight: 400; }
+}
 </style>
   <noscript>
     <style>

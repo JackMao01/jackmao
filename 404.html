@@ -337,6 +337,12 @@ a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius
 .plate-fig { margin-bottom: 1.6rem; }
 .four-oh-four { margin-bottom: 0; }
 
+
+@media (max-width: 700px) {
+  .folio-mark { position: static; display: block; text-align: center; margin: 0.85rem auto 0; padding: 0 1rem; }
+  .folio-mark br { display: none; }
+  .folio-mark b::after { content: "\00a0·\00a0"; color: inherit; font-weight: 400; }
+}
 </style>
   <link rel="canonical" href="https://hellojackmao.com/404.html"/>
 

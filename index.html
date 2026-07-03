@@ -943,11 +943,6 @@ body.intent .row-desc { display: none; }
 
 
 
-/* ── back-to-top scroll-progress ring ── */
-.btt-progress-track { fill:none; stroke:rgba(255,255,255,0.10); stroke-width:2.5; }
-.btt-progress { fill:none; stroke:var(--lime); stroke-width:2.5; stroke-linecap:round;
-  stroke-dasharray:345.6; stroke-dashoffset:345.6;
-  transform:rotate(-90deg); transform-origin:60px 60px; }
 /* ── calm while scrolling down: discs recede, restore on pause/up/hover ── */
 body.scroll-calm #nav-up.visible,
 body.scroll-calm #qr-trigger.visible,
@@ -958,20 +953,6 @@ body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.v
 body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
 #nav-up, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
 
-
-/* ring-text hover spin (reuses btt-spin; progress arc stays fixed) */
-.ring-rot { transform-origin: 60px 60px; transform-box: view-box; animation: btt-spin 12s linear infinite; animation-play-state: paused; }
-#nav-up:hover .ring-rot, #nav-up:focus-visible .ring-rot,
-#qr-trigger:hover .ring-rot, #qr-trigger:focus-visible .ring-rot { animation-play-state: running; }
-/* one-time bot nudge */
-@keyframes ask-nudge {
-  0%,100% { box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
-  50% { box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 0 0 10px rgba(204,255,0,0.12), 0 0 22px rgba(204,255,0,0.35); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  #askbot-launch.nudge::before { animation: ask-nudge 1.2s ease-in-out 2; }
-}
-@media (prefers-reduced-motion: reduce) { .ring-rot { animation: none; } }
 
 </style>
   <link rel="canonical" href="/"/>
@@ -1376,8 +1357,8 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
   </div><!-- /#page -->
 
   <a id="nav-up" href="#top" aria-label="Back to top">
-    <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle class="btt-progress-track" cx="60" cy="60" r="55"/><circle class="btt-progress" cx="60" cy="60" r="55"/>
-        <g class="ring-rot"><text class="btt-ring-text" x="65.23" y="22.36" transform="rotate(7.91 65.23 22.36)">B</text>
+    <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <text class="btt-ring-text" x="65.23" y="22.36" transform="rotate(7.91 65.23 22.36)">B</text>
         <text class="btt-ring-text" x="75.29" y="25.21" transform="rotate(23.73 75.29 25.21)">A</text>
         <text class="btt-ring-text" x="84.19" y="30.70" transform="rotate(39.54 84.19 30.70)">C</text>
         <text class="btt-ring-text" x="91.26" y="38.40" transform="rotate(55.36 91.26 38.40)">K</text>
@@ -1397,7 +1378,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
         <text class="btt-ring-text" x="31.72" y="34.61" transform="rotate(311.92 31.72 34.61)">O</text>
         <text class="btt-ring-text" x="39.71" y="27.87" transform="rotate(327.73 39.71 27.87)">P</text>
         <text class="btt-ring-text" x="51.98" y="22.86" transform="rotate(347.82 51.98 22.86)">·</text>
-      </g></svg>
+      </svg>
     <svg class="btt-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="19" x2="12" y2="5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
       <polyline points="6,11 12,5 18,11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1408,7 +1389,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
   <div id="qr-wrap">
       <a id="qr-trigger" href="share.html" aria-label="Go to share page">
         <svg class="share-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <g class="ring-rot"><text class="share-ring-text" x="64.93" y="22.32" transform="rotate(7.45 64.93 22.32)">S</text>
+        <text class="share-ring-text" x="64.93" y="22.32" transform="rotate(7.45 64.93 22.32)">S</text>
         <text class="share-ring-text" x="74.45" y="24.85" transform="rotate(22.35 74.45 24.85)">H</text>
         <text class="share-ring-text" x="83.00" y="29.75" transform="rotate(37.25 83.00 29.75)">A</text>
         <text class="share-ring-text" x="90.01" y="36.68" transform="rotate(52.15 90.01 36.68)">R</text>
@@ -1430,7 +1411,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
         <text class="share-ring-text" x="32.99" y="33.27" transform="rotate(314.70 32.99 33.27)">A</text>
         <text class="share-ring-text" x="40.77" y="27.22" transform="rotate(329.60 40.77 27.22)">N</text>
         <text class="share-ring-text" x="52.44" y="22.76" transform="rotate(348.53 52.44 22.76)">·</text>
-      </g></svg>
+      </svg>
         <svg class="share-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
         <path d="M12 15V4M12 4L8 8M12 4l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1931,17 +1912,11 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
       try {
         var btt = document.getElementById('nav-up');
         var share = document.getElementById('qr-trigger');
-        var prog = document.querySelector('#nav-up .btt-progress');
-        var CIRC = 345.6, lastY = 0, calmTimer = null;
+        var lastY = 0, calmTimer = null;
         function onScroll(){
           var y = window.scrollY || document.documentElement.scrollTop || 0;
           if (btt){ btt.classList.toggle('visible', y > 400); }
           if (share){ share.classList.toggle('visible', y > 400); }
-          if (prog){
-            var max = Math.max(1, (document.documentElement.scrollHeight - window.innerHeight));
-            var p = Math.min(1, Math.max(0, y / max));
-            prog.style.strokeDashoffset = (CIRC * (1 - p)).toFixed(1);
-          }
           if (y > lastY + 2 && y > 400) {
             document.body.classList.add('scroll-calm');
           } else if (y < lastY - 2) {
@@ -2100,21 +2075,5 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
 </script>
 
 
-<script>
-(function(){
-  try {
-    if (sessionStorage.getItem('jm-bot-nudged')) return;
-    setTimeout(function(){
-      var b = document.getElementById('askbot-launch');
-      var p = document.getElementById('askbot-panel');
-      if (!b || (p && p.classList.contains('open'))) return;
-      if (b.getAttribute('aria-expanded') === 'true') return;
-      b.classList.add('nudge');
-      setTimeout(function(){ b.classList.remove('nudge'); }, 2600);
-      try { sessionStorage.setItem('jm-bot-nudged','1'); } catch(e) {}
-    }, 8000);
-  } catch(e) {}
-})();
-</script>
 </body>
 </html>
