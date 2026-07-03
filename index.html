@@ -754,11 +754,6 @@ body.intent .row-desc { display: none; }
       opacity: 1; transform: translateY(0); pointer-events: all;
     }
 
-#qr-trigger:hover::before,
-    #qr-trigger[aria-expanded="true"]::before {
-      border-color: rgba(204,255,0,0.5);
-      background: rgba(15,14,26,0.6);
-    }
 /* Spinning ring */
     .share-ring {
       position: absolute; inset: 0;
@@ -877,7 +872,7 @@ body.intent .row-desc { display: none; }
 #nav-up::before, #qr-trigger::before, #askbot-launch::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
 #nav-up:hover::before, #qr-trigger:hover::before,
 #askbot-launch:hover::before, #askbot-launch[aria-expanded="true"]::before {
-  border-color: rgba(204,255,0,0.45); background: rgba(204,255,0,0.06);
+  border-color: rgba(204,255,0,0.45); background-color: rgba(38,40,30,0.5);
 }
 .btt-ring-text, .share-ring-text, .ask-ring-text { font-family: 'DM Mono', monospace; font-size: 10.5px; fill: rgba(255,255,255,0.35); text-transform: uppercase; text-anchor: middle; dominant-baseline: central; }
 #nav-up:hover .btt-ring-text, #qr-trigger:hover .share-ring-text,
