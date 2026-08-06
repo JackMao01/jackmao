@@ -3069,6 +3069,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"CreativeWork","name":"Karina — A Study in Modern Iconography","creator":{"@type":"Person","name":"Jack Mao","url":"https://hellojackmao.com"},"description":"A self-initiated concept editorial featuring Karina of aespa — from debut to the 2026 Met Gala in Prada, with the LEMONADE era, designer's notes, and the æ-Card series.","dateCreated":"2026","url":"https://hellojackmao.com/projects/karina.html"}
   </script>
+  <link rel="stylesheet" href="../case-study-scan.css"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -3145,7 +3146,6 @@
         watched figures. This month, she made the Met steps in custom Prada.
       </p>
       <div class="hero-brief" aria-label="Karina case-study summary">
-        <div class="hero-role"><strong>What I did</strong> - Role: Editorial Direction, Art Direction, Visual Systems, Motion, Copywriting</div>
         <div class="hero-brief-grid">
           <div class="hero-brief-item">
             <h3 class="hero-brief-label">Challenge</h3>
@@ -3161,6 +3161,12 @@
           </div>
         </div>
       </div>
+        <dl class="case-evidence karina-evidence" aria-label="Project evidence">
+          <div><dt>Audience</dt><dd>Fashion, culture, and K-pop editorial readers</dd></div>
+          <div><dt>Channel</dt><dd>Responsive long-form web editorial</dd></div>
+          <div><dt>Deliverables</dt><dd>Art direction, motion, copy, cards, and plates</dd></div>
+          <div><dt>Evidence</dt><dd>A complete standalone interactive publication</dd></div>
+        </dl>
       <p class="byline">Words <span>Editorial</span> &nbsp;·&nbsp; Subject <span>Karina, of aespa</span></p>
     </div>
 
@@ -3568,10 +3574,10 @@
 
     <!-- Controls -->
     <div class="book-controls">
-      <button class="book-btn" id="bookPrev" disabled>← Prev</button>
+      <button type="button" class="book-btn" id="bookPrev" disabled>← Prev</button>
       <div class="book-progress" id="bookDots"></div>
       <span class="book-counter" id="bookCounter">i / 5</span>
-      <button class="book-btn" id="bookNext">Next →</button>
+      <button type="button" class="book-btn" id="bookNext">Next →</button>
     </div>
   </div>
 
@@ -4586,9 +4592,9 @@
 
 <!-- MODAL (single, populated by JS) -->
 <div class="pc-modal" id="pcModal" role="dialog" aria-modal="true" aria-hidden="true" inert>
-  <button class="pc-modal-close" id="pcModalClose" aria-label="Close">✕</button>
-  <button class="pc-modal-nav pc-modal-prev" id="pcModalPrev" aria-label="Previous card">‹</button>
-  <button class="pc-modal-nav pc-modal-next" id="pcModalNext" aria-label="Next card">›</button>
+  <button type="button" class="pc-modal-close" id="pcModalClose" aria-label="Close">✕</button>
+  <button type="button" class="pc-modal-nav pc-modal-prev" id="pcModalPrev" aria-label="Previous card">‹</button>
+  <button type="button" class="pc-modal-nav pc-modal-next" id="pcModalNext" aria-label="Next card">›</button>
   <div class="pc-modal-inner">
     <div class="pc-modal-card" id="pcModalCard"></div>
     <div class="pc-modal-body" id="pcModalBody"></div>
@@ -4660,7 +4666,7 @@
       <span>↑ Back to top</span>
     </a>
   </div>
-  <button class="jump-trigger" id="jumpTrigger" aria-label="Open jump menu" aria-expanded="false">
+  <button type="button" class="jump-trigger" id="jumpTrigger" aria-label="Open jump menu" aria-expanded="false">
     <span class="icon"><span></span></span>
   </button>
 </div>
