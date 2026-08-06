@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Browse Wayfarer’s long-form travel guides by place, author, and mood." />
+<link rel="canonical" href="https://hellojackmao.com/projects/wayfarer/guides.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/guides.html" />
+<meta property="og:title" content="Browse all guides — Wayfarer" />
+<meta property="og:description" content="Browse Wayfarer’s long-form travel guides by place, author, and mood." />
+<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design &amp; Illustration, Toronto, 2026." />
+<meta property="og:site_name" content="Jack Mao — Portfolio" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Browse all guides — Wayfarer" />
+<meta name="twitter:description" content="Browse Wayfarer’s long-form travel guides by place, author, and mood." />
+<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png" />
 <title>Browse all guides — Wayfarer</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
   :root { --ink:#111; --teal:#2aa89f; --muted:#6b6b6b; --line:rgba(0,0,0,0.1);
@@ -83,21 +98,22 @@
 </head>
 <body>
   <nav class="wf-nav">
-    <a href="../../index.html#work" aria-label="Back to Jack Mao portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(17,17,17,0.55);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(17,17,17,0.15);border-radius:9999px;padding:5px 11px;margin-right:14px;white-space:nowrap;">
+    <a href="/" aria-label="Back to portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(17,17,17,0.55);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(17,17,17,0.15);border-radius:9999px;padding:5px 11px;margin-right:14px;white-space:nowrap;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Jack Mao</a>
-    <a class="wf-brand" href="wayfarer.html">
+      Portfolio</a>
+    <a class="wf-brand" href="index.html">
       <svg width="26" height="26" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="none" stroke="#2aa89f" stroke-width="1.5" opacity="0.5"/><path d="M16 2 L19 16 L16 30 L13 16 Z" fill="#2aa89f"/><path d="M2 16 L16 13 L30 16 L16 19 Z" fill="#2aa89f" opacity="0.6"/><circle cx="16" cy="16" r="2.4" fill="#111"/></svg>
       <span class="wm">Wayfarer</span>
     </a>
     <div class="wf-navlinks">
       <a href="guides.html" class="active">All guides</a>
       <a href="share.html">Share your guide</a>
-      <a href="wayfarer.html#featured">Featured</a>
+      <a href="index.html#featured">Featured</a>
       <a class="wf-saved-pill" href="saved.html">Saved <span class="ct" id="savedCt">0</span></a>
     </div>
   </nav>
 
+  <main>
   <div class="head">
     <div class="eyebrow">The Library</div>
     <h1>Every guide, in one place.</h1>
@@ -115,6 +131,8 @@
   <div class="count" id="resultCount"></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none;">No guides match that yet — try a different place or mood.</div>
+
+  </main>
 
   <footer>© 2026 Wayfarer · A place to get lost reading about places.</footer>
 
