@@ -408,6 +408,27 @@ a:focus-visible { outline: 2px solid #ccff00; outline-offset: 4px; border-radius
       el.addEventListener('mouseenter', () => cur.style.width = cur.style.height = '36px');
       el.addEventListener('mouseleave', () => cur.style.width = cur.style.height = '14px');
     });
+
+    const discoverBtn = document.getElementById('discover-btn');
+    const discoverProjects = [
+      '/projects/light-and-form.html',
+      '/projects/special-editions.html',
+      '/projects/so-good.html',
+      '/projects/after-hours.html',
+      '/projects/karina.html',
+      '/projects/toronto-in-bloom.html',
+      '/projects/chronicles-of-elysium.html',
+      '/projects/tend-habit-tracker.html',
+      '/projects/coffee-nearby.html',
+      '/projects/wayfarer/index.html',
+      '/projects/hana/index.html'
+    ];
+    if (discoverBtn) {
+      discoverBtn.addEventListener('click', () => {
+        const index = Math.floor(Math.random() * discoverProjects.length);
+        discoverBtn.href = discoverProjects[index];
+      });
+    }
   
     // -- Haptic-style tap feedback --
     (function() {
