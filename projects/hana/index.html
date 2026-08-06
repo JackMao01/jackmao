@@ -495,13 +495,13 @@ body::before { content:""; position: fixed; inset: 0; z-index: -2; pointer-event
       </a>
     </div>
     <nav class="tabs top-center" role="tablist" aria-label="Sections">
-      <button role="tab" data-view="today" aria-selected="true">Today</button>
-      <button role="tab" data-view="path" aria-selected="false">Path</button>
-      <button role="tab" data-view="library" aria-selected="false">Library</button>
+      <button type="button" role="tab" data-view="today" aria-selected="true">Today</button>
+      <button type="button" role="tab" data-view="path" aria-selected="false">Path</button>
+      <button type="button" role="tab" data-view="library" aria-selected="false">Library</button>
     </nav>
     <div class="top-right">
       <span class="streak" id="streakPill" title="Daily streak">✦ <span id="streakNum">0</span></span>
-      <button class="gear" id="gearBtn" aria-label="Settings" title="Settings">⚙</button>
+    <button type="button" class="gear" id="gearBtn" aria-label="Settings" title="Settings">⚙</button>
     </div>
   </header>
 
@@ -517,16 +517,16 @@ body::before { content:""; position: fixed; inset: 0; z-index: -2; pointer-event
       <div class="grabber" aria-hidden="true"></div>
       <div class="sheet-head">
         <h2 id="sheetTitle">Hana</h2>
-        <button class="sheet-close" id="sheetClose" aria-label="Close">✕</button>
+    <button type="button" class="sheet-close" id="sheetClose" aria-label="Close">✕</button>
       </div>
       <div id="sheetBody"></div>
     </div>
   </div>
 
   <nav class="tabbar" aria-label="Sections">
-    <button data-view="today" aria-selected="true">Today</button>
-    <button data-view="path" aria-selected="false">Path</button>
-    <button data-view="library" aria-selected="false">Library</button>
+      <button type="button" data-view="today" aria-selected="true">Today</button>
+      <button type="button" data-view="path" aria-selected="false">Path</button>
+      <button type="button" data-view="library" aria-selected="false">Library</button>
   </nav>
 
   <div id="toast" role="status" aria-live="polite"></div>
@@ -1132,7 +1132,7 @@ function renderToday() {
         <div class="hero-ident" aria-hidden="true"><span class="hero-syl">한</span><span class="hero-rhythm">${rhythm}</span></div>
       </div>
       <div class="pod">
-        <button class="speak" data-say="${esc(pod[0])}" aria-label="Listen to the phrase of the day">▶</button>
+        <button type="button" class="speak" data-say="${esc(pod[0])}" aria-label="Listen to the phrase of the day">▶</button>
         <span><span class="pod-ko">${esc(pod[0])}</span><span class="pod-en">${esc(pod[1])} · ${esc(pod[2])}</span></span>
         <span class="pod-tag">phrase of the day</span>
       </div>
@@ -1185,7 +1185,7 @@ function greeting() {
   return "Good evening";
 }
 function step(kind, num, done, title, sub) {
-  return `<button class="step ${done ? "is-done" : ""}" data-step="${kind}">
+  return `<button type="button" class="step ${done ? "is-done" : ""}" data-step="${kind}">
     <span class="step-num">${done ? "✓" : num}</span>
     <span><span class="step-title">${esc(title)}</span><span class="step-sub" style="display:block">${esc(sub)}</span></span>
     <span class="step-go">${done ? "✓" : "→"}</span>
@@ -1201,7 +1201,7 @@ function introCard() {
       <div class="kicker">60-second check</div>
       <div class="qc-progress">Question ${qc.i + 1} of ${qc.qs.length}</div>
       <div class="qc-q">${esc(q.prompt)}</div>
-      <div class="quiz-opts">${q.options.map(o => `<button data-qc="${esc(o)}">${esc(o)}</button>`).join("")}</div>
+      <div class="quiz-opts">${q.options.map(o => `<button type="button" data-qc="${esc(o)}">${esc(o)}</button>`).join("")}</div>
     </div>`;
   }
   return `<div class="intro-surface" id="introCard">
@@ -1209,8 +1209,8 @@ function introCard() {
     <h2>A quiet home for your Korean practice.</h2>
     <p>One small loop, most days: review a little, learn a little, say one thing out loud. Where should we begin?</p>
     <div class="btn-row">
-      <button class="btn" id="introZero">I'm new to Hangul</button>
-      <button class="btn ghost" id="introCheck">I can read a little</button>
+        <button type="button" class="btn" id="introZero">I'm new to Hangul</button>
+        <button type="button" class="btn ghost" id="introCheck">I can read a little</button>
     </div>
   </div>`;
 }
@@ -1251,7 +1251,7 @@ function renderPath() {
     <div class="path-list">` +
     lessons.map((l, i) => {
       const done = state.done[i], cur = i === current;
-      return `<button class="lsn ${done ? "is-done" : ""} ${cur ? "is-current" : ""}" data-lsn="${i}">
+    return `<button type="button" class="lsn ${done ? "is-done" : ""} ${cur ? "is-current" : ""}" data-lsn="${i}">
         <span class="lsn-num">${done ? "✓" : i + 1}</span>
         <span>
           <span class="lsn-title">${esc(l.title)}</span>
@@ -1272,9 +1272,9 @@ function renderLibrary() {
     <div class="lib-bar">
       <input class="search" id="libSearch" type="search" placeholder="Search phrases…" value="${esc(libQ)}" aria-label="Search phrases">
       <div class="seg" role="tablist" aria-label="Library filter">
-        <button role="tab" data-lib="all" aria-selected="${libTab === "all"}">All</button>
-        <button role="tab" data-lib="mistakes" aria-selected="${libTab === "mistakes"}">Mistakes</button>
-        <button role="tab" data-lib="notes" aria-selected="${libTab === "notes"}">Notes</button>
+        <button type="button" role="tab" data-lib="all" aria-selected="${libTab === "all"}">All</button>
+        <button type="button" role="tab" data-lib="mistakes" aria-selected="${libTab === "mistakes"}">Mistakes</button>
+        <button type="button" role="tab" data-lib="notes" aria-selected="${libTab === "notes"}">Notes</button>
       </div>
     </div>
     <div id="libBody"></div>`;
@@ -1285,7 +1285,7 @@ function renderLibrary() {
 function phraseRow(li, piIdx) {
   const id = pid(li, piIdx), ph = lessons[li].phrases[piIdx];
   const hasNote = state.notes[id] ? "✎" : "";
-  return `<button class="ph" data-ph="${id}">
+      return `<button type="button" class="ph" data-ph="${id}">
     <span class="ph-dot ${statusDot(id)}"></span>
     <span><span class="ph-ko">${esc(ph[0])}</span><span class="ph-en" style="display:block">${esc(ph[1])} · ${esc(ph[2])}</span></span>
     <span class="ph-note-flag">${hasNote}</span>
@@ -1332,8 +1332,8 @@ function openPhraseSheet(id) {
   openSheet(lessons[li].title, `
     <div class="bigko">${esc(ph[0])}<small>${esc(ph[1])} — ${esc(ph[2])}</small></div>
     <p class="center muted" style="font-size:0.78rem;margin-bottom:0.9rem;">${esc(status)}${c && c.lapses ? " · " + c.lapses + " stumble" + (c.lapses > 1 ? "s" : "") : ""}</p>
-    <div class="runner-foot" style="margin-bottom:1rem;"><button class="btn" id="phSay">▶ Listen</button></div>
-    <label style="font-weight:800;font-size:0.78rem;display:block;margin-bottom:0.4rem;">Your note</label>
+    <div class="runner-foot" style="margin-bottom:1rem;"><button type="button" class="btn" id="phSay">▶ Listen</button></div>
+    <label for="phNote" style="font-weight:800;font-size:0.78rem;display:block;margin-bottom:0.4rem;">Your note</label>
     <textarea class="notearea" id="phNote" placeholder="A hook, a memory, a warning to future you…">${esc(state.notes[id] || "")}</textarea>
   `);
   $("#phSay").addEventListener("click", () => speak(ph[0]));
@@ -1359,16 +1359,16 @@ function runReview() {
       <div class="bigko">${esc(ph[0])}</div>
       <div class="reveal-zone" id="rev"></div>
       <div class="runner-foot" id="revBtns">
-        <button class="btn ghost" id="revSay">▶ Listen</button>
-        <button class="btn" id="revShow">Show answer</button>
+      <button type="button" class="btn ghost" id="revSay">▶ Listen</button>
+      <button type="button" class="btn" id="revShow">Show answer</button>
       </div>`;
     setProg(i / cards.length);
     $("#revSay").addEventListener("click", () => speak(ph[0]));
     $("#revShow").addEventListener("click", () => {
       $("#rev").innerHTML = `<div class="roman">${esc(ph[1])}</div><div class="meaning">${esc(ph[2])}</div>`;
       $("#revBtns").innerHTML = `
-        <button class="btn rose" id="revAgain">Again</button>
-        <button class="btn" id="revGood">Got it</button>`;
+      <button type="button" class="btn rose" id="revAgain">Again</button>
+      <button type="button" class="btn" id="revGood">Got it</button>`;
       $("#revAgain").addEventListener("click", () => { grade(id, false); next(); });
       $("#revGood").addEventListener("click", () => { grade(id, true); state.counters.reviews++; next(); });
     });
@@ -1381,7 +1381,7 @@ function runReview() {
         <div style="font-size:2rem;">✦</div>
         <h3 style="margin:0.5rem 0;">Review done</h3>
         <p class="muted" style="font-size:0.8rem;">${cards.length} cards. The boxes do the remembering.</p>
-        <div class="runner-foot" style="margin-top:1rem;"><button class="btn" id="revClose">Continue</button></div></div>`;
+      <div class="runner-foot" style="margin-top:1rem;"><button type="button" class="btn" id="revClose">Continue</button></div></div>`;
       $("#revClose").addEventListener("click", () => { closeSheet(); maybeFinishDay(); });
       return;
     }
@@ -1408,28 +1408,28 @@ function runLesson(li, fromToday) {
         <h3 style="font-size:1.5rem;font-weight:600;margin:0.6rem 0 0.35rem;">${esc(L.title)}</h3>
         <p class="muted" style="font-size:0.84rem;max-width:38ch;margin:0 auto;">${esc(L.focus)}</p>
       </div>
-      <div class="runner-foot" style="margin-top:1.2rem;"><button class="btn" data-next>Begin</button></div>`);
+      <div class="runner-foot" style="margin-top:1.2rem;"><button type="button" class="btn" data-next>Begin</button></div>`);
     else if (stage === "phrases") body(
       L.phrases.map((p, piIdx) => `
         <div class="phrase-line">
           <span><span class="ko">${esc(p[0])}</span><span class="en" style="display:block">${esc(p[1])} · ${esc(p[2])}</span></span>
-          <button class="notebtn" data-note="${pid(li, piIdx)}" aria-label="Add note">✎</button>
-          <button class="speak" data-say="${esc(p[0])}" aria-label="Listen">▶</button>
+          <button type="button" class="notebtn" data-note="${pid(li, piIdx)}" aria-label="Add note">✎</button>
+          <button type="button" class="speak" data-say="${esc(p[0])}" aria-label="Listen">▶</button>
         </div>`).join("") +
-      `<div class="runner-foot" style="margin-top:0.8rem;"><button class="btn" data-next>I've listened — quiz me</button></div>`);
+      `<div class="runner-foot" style="margin-top:0.8rem;"><button type="button" class="btn" data-next>I've listened — quiz me</button></div>`);
     else if (stage === "quiz") body(`
       <div class="qc-q" style="margin-top:0.2rem;">${esc(L.quiz.prompt)}</div>
-      <div class="quiz-opts">${L.quiz.options.map(o => `<button data-opt="${esc(o)}">${esc(o)}</button>`).join("")}</div>
-      <div class="runner-foot"><button class="btn" data-next disabled id="quizNext">Continue</button></div>`);
+      <div class="quiz-opts">${L.quiz.options.map(o => `<button type="button" data-opt="${esc(o)}">${esc(o)}</button>`).join("")}</div>
+      <div class="runner-foot"><button type="button" class="btn" data-next disabled id="quizNext">Continue</button></div>`);
     else if (stage === "build") {
       const order = sample(L.build, L.build.length);
       body(`
         <p class="muted center" style="font-size:0.8rem;margin-bottom:0.7rem;">Tap the words into order:</p>
         <div class="build-line" id="bLine" aria-live="polite"></div>
-        <div class="build-pool" id="bPool">${order.map(w => `<button class="chip-ko" data-w="${esc(w)}">${esc(w)}</button>`).join("")}</div>
+      <div class="build-pool" id="bPool">${order.map(w => `<button type="button" class="chip-ko" data-w="${esc(w)}">${esc(w)}</button>`).join("")}</div>
         <div class="runner-foot">
-          <button class="btn ghost" id="bHear">▶ Hear it</button>
-          <button class="btn" id="bCheck">Check</button>
+        <button type="button" class="btn ghost" id="bHear">▶ Hear it</button>
+        <button type="button" class="btn" id="bCheck">Check</button>
         </div>`);
       const line = $("#bLine"), pool = $("#bPool");
       const move = btn => { (btn.parentElement === pool ? line : pool).appendChild(btn); };
@@ -1444,12 +1444,12 @@ function runLesson(li, fromToday) {
     else if (stage === "shadow") {
       body(`
         <div class="bigko">${esc(L.sentence)}</div>
-        <button class="playbig" id="shPlay" aria-label="Play sentence">▶</button>
+      <button type="button" class="playbig" id="shPlay" aria-label="Play sentence">▶</button>
         <div class="micbars" id="micBars" aria-hidden="true">${"<i></i>".repeat(9)}</div>
         <p class="muted center" style="font-size:0.74rem;margin-bottom:0.9rem;">Play it, then say it out loud — twice is better.</p>
         <div class="runner-foot">
-          <button class="btn ghost small" id="micBtn">Show my voice level</button>
-          <button class="btn" data-next>I said it ✓</button>
+        <button type="button" class="btn ghost small" id="micBtn">Show my voice level</button>
+        <button type="button" class="btn" data-next>I said it ✓</button>
         </div>`);
       $("#shPlay").addEventListener("click", () => speak(L.sentence));
       $("#micBtn").addEventListener("click", async () => {
@@ -1483,7 +1483,7 @@ function runLesson(li, fromToday) {
         <div style="font-size:2.2rem;">한</div>
         <h3 style="margin:0.5rem 0;">${wasNew ? "Lesson " + (li + 1) + " done" : "Nice revisit"}</h3>
         <p class="muted" style="font-size:0.8rem;max-width:36ch;margin:0 auto;">${wasNew ? "Its phrases just joined your review boxes — they'll resurface tomorrow." : "Repetition is the whole secret."}</p>
-        <div class="runner-foot" style="margin-top:1.1rem;"><button class="btn" id="lsnClose">Continue</button></div></div>`);
+      <div class="runner-foot" style="margin-top:1.1rem;"><button type="button" class="btn" id="lsnClose">Continue</button></div></div>`);
       $("#lsnClose").addEventListener("click", () => { closeSheet(); maybeFinishDay(); });
       return;
     }
@@ -1525,9 +1525,9 @@ function runSpeak() {
   const L = lessons[pick];
   openSheet("Speak", `
     <div class="bigko">${esc(L.sentence)}<small>${esc(L.title)}</small></div>
-    <button class="playbig" id="spPlay" aria-label="Play sentence">▶</button>
+      <button type="button" class="playbig" id="spPlay" aria-label="Play sentence">▶</button>
     <p class="muted center" style="font-size:0.76rem;margin-bottom:1rem;">Out loud. The wall doesn't judge.</p>
-    <div class="runner-foot"><button class="btn" id="spDone">I said it ✓</button></div>`);
+      <div class="runner-foot"><button type="button" class="btn" id="spDone">I said it ✓</button></div>`);
   $("#spPlay").addEventListener("click", () => speak(L.sentence));
   $("#spDone").addEventListener("click", () => {
     state.today.speak = true; state.counters.shadows++; save();
@@ -1539,28 +1539,28 @@ function runSpeak() {
 function openSettings() {
   openSheet("Settings", `
     <div class="set-row">
-      <label>Daily goal<span class="hint">sizes your review batch</span></label>
-      <div class="seg">${[5, 15, 30].map(g => `<button data-goal="${g}" aria-selected="${state.goalMin === g}">${g} min</button>`).join("")}</div>
+      <span id="dailyGoalLabel">Daily goal<span class="hint">sizes your review batch</span></span>
+      <div class="seg" role="group" aria-labelledby="dailyGoalLabel">${[5, 15, 30].map(g => `<button type="button" data-goal="${g}" aria-selected="${state.goalMin === g}">${g} min</button>`).join("")}</div>
     </div>
     <div class="set-row">
-      <label>Voice<span class="hint">Korean voices on this device</span></label>
+      <label for="voiceSel">Voice<span class="hint">Korean voices on this device</span></label>
       <select id="voiceSel"></select>
     </div>
     <div class="set-row">
-      <label>Speed<span class="hint" id="rateVal">${state.voice.rate.toFixed(2)}×</span></label>
-      <input type="range" id="rateRange" min="0.6" max="1.3" step="0.05" value="${state.voice.rate}">
+      <label for="rateRange">Speed<span class="hint" id="rateVal">${state.voice.rate.toFixed(2)}×</span></label>
+      <input type="range" id="rateRange" min="0.6" max="1.3" step="0.05" value="${state.voice.rate}" aria-describedby="rateVal">
     </div>
     <div class="set-row">
-      <label>Pitch<span class="hint" id="pitchVal">${state.voice.pitch.toFixed(2)}</span></label>
-      <input type="range" id="pitchRange" min="0.7" max="1.3" step="0.05" value="${state.voice.pitch}">
+      <label for="pitchRange">Pitch<span class="hint" id="pitchVal">${state.voice.pitch.toFixed(2)}</span></label>
+      <input type="range" id="pitchRange" min="0.7" max="1.3" step="0.05" value="${state.voice.pitch}" aria-describedby="pitchVal">
     </div>
-    <div class="set-row"><label>Try it</label><button class="btn small" id="voiceTest">▶ 안녕하세요</button></div>
+    <div class="set-row"><span>Try it</span><button type="button" class="btn small" id="voiceTest">▶ 안녕하세요</button></div>
     <div class="set-row">
       <label>Your data<span class="hint">everything lives in this browser</span></label>
       <span class="btn-row">
-        <button class="btn ghost small" id="expBtn">Export</button>
-        <button class="btn ghost small" id="impBtn">Import</button>
-        <button class="btn rose small" id="rstBtn">Reset</button>
+        <button type="button" class="btn ghost small" id="expBtn">Export</button>
+        <button type="button" class="btn ghost small" id="impBtn">Import</button>
+        <button type="button" class="btn rose small" id="rstBtn">Reset</button>
       </span>
     </div>
     <input type="file" id="impFile" accept="application/json" hidden>
