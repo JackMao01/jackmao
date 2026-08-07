@@ -532,7 +532,7 @@
     }
 
     @media (max-width: 768px) {
-      :root { --mobile-tabbar-width: min(calc(100% - 1.5rem), 18rem); }
+      :root { --mobile-tabbar-width: min(calc(100% - 1.5rem), 17rem); }
       #back-to-top { bottom: calc(6.75rem + env(safe-area-inset-bottom)); }
       .mobile-tabbar {
         position: fixed;
@@ -543,12 +543,12 @@
         z-index: 120;
         transform: translateX(-50%);
         display: grid;
-        grid-template-columns: 3.35rem repeat(3, minmax(2.8rem, 1fr));
+        grid-template-columns: 3.35rem minmax(0, 1fr);
         align-items: center;
         justify-content: initial;
         gap: .45rem;
         width: var(--mobile-tabbar-width);
-        max-width: 18rem;
+        max-width: 17rem;
         height: auto;
         min-height: 4.25rem;
         padding: .55rem;
@@ -589,6 +589,10 @@
         background: transparent;
         transition: transform .22s cubic-bezier(.2,1.4,.3,1), background .22s, color .22s;
       }
+      .mobile-tab-link {
+        gap: .58rem;
+        padding: 0 1.1rem;
+      }
       .mobile-tab-link:active,
       .mobile-home-btn:active { transform: scale(.94); }
       .mobile-tab-link:hover,
@@ -602,6 +606,7 @@
       }
       .mobile-tab-icon,
       .mobile-home-icon { width: 1.32rem; height: 1.32rem; display: block; }
+      .mobile-tab-label { line-height: 1; }
       .mobile-tab-link[aria-expanded="true"] { color: #fff; background: rgba(255,255,255,.08); }
       .mobile-tabbar.is-hidden {
         opacity: 0;
@@ -658,6 +663,11 @@
         letter-spacing: .12em;
         text-transform: uppercase;
         color: var(--lime, #ccff00);
+      }
+      .mobile-menu-heading-secondary {
+        margin-top: .45rem;
+        padding-top: 1rem !important;
+        border-top: 1px solid rgba(255,255,255,.1);
       }
     }
 
@@ -909,27 +919,19 @@
     <span style="display:block;padding:.55rem .4rem .12rem;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.42);">Interactive Concepts</span>
               <a href="wayfarer/index.html">Wayfarer <span>2026</span></a>
               <a href="hana/index.html">Hana <span>2026</span></a>
-  </div>
-  <div class="mobile-action-menu" id="mobileAboutMenu" aria-label="About actions">
+    <span class="mobile-menu-heading-secondary" style="display:block;padding:.55rem .4rem .12rem;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.42);">More</span>
     <a href="https://canva.link/huhh6m9epfqgiju" target="_blank" rel="noopener noreferrer">View resume <span>Canva</span></a>
-  </div>
-  <div class="mobile-action-menu" id="mobileContactMenu" aria-label="Contact links">
     <a href="https://www.linkedin.com/in/jack-mao" target="_blank" rel="noopener noreferrer">LinkedIn <span>Profile</span></a>
     <a href="https://www.instagram.com/jjjackmao" target="_blank" rel="noopener noreferrer">Instagram <span>Social</span></a>
     <a href="https://www.behance.net/jackmao11" target="_blank" rel="noopener noreferrer">Behance <span>Work</span></a>
   </div>
-  <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile portfolio navigation">
+  <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile project navigation">
     <a class="mobile-home-btn" href="../" aria-label="Home" title="Home">
       <svg class="mobile-home-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 11.2 12 4.8l7.5 6.4v7.2a1.8 1.8 0 0 1-1.8 1.8h-3.2v-5.4h-5v5.4H6.3a1.8 1.8 0 0 1-1.8-1.8v-7.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
     </a>
-    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileWorkMenu" aria-label="Open project pages" aria-expanded="false" aria-controls="mobileWorkMenu" title="Work">
+    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileWorkMenu" aria-label="Open project menu" aria-expanded="false" aria-controls="mobileWorkMenu" title="Projects">
       <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.6c2.4-.7 4.6-.3 7 1.1 2.4-1.4 4.6-1.8 7-1.1v12.8c-2.4-.7-4.6-.3-7 1.1-2.4-1.4-4.6-1.8-7-1.1V5.6Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 6.7v12.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-    </button>
-    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileAboutMenu" aria-label="Open about menu" aria-expanded="false" aria-controls="mobileAboutMenu" title="About">
-      <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.2" r="3.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.6 19.4c.9-3.4 3.1-5.2 6.4-5.2s5.5 1.8 6.4 5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-    </button>
-    <button type="button" class="mobile-tab-link" data-mobile-menu="mobileContactMenu" aria-label="Open contact links" aria-expanded="false" aria-controls="mobileContactMenu" title="Contact">
-      <svg class="mobile-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 7.2h14.4v10.2H4.8V7.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m5.4 8 6.6 5.2L18.6 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="mobile-tab-label">Projects</span>
     </button>
   </nav>
 
