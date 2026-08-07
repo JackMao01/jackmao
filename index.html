@@ -2012,7 +2012,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
 </script>
 
 <!-- Ask-about-my-work bot -->
-<button id="askbot-launch" type="button" aria-label="Ask about my work">
+<button id="askbot-launch" type="button" aria-label="Ask about my work" aria-expanded="false" aria-controls="askbot-panel">
       <svg class="ask-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
         <text class="ask-ring-text" x="65.37" y="22.38" transform="rotate(8.12 65.37 22.38)">A</text>
         <text class="ask-ring-text" x="75.68" y="25.39" transform="rotate(24.37 75.68 25.39)">S</text>
@@ -2062,7 +2062,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
   // distinctive substrings only — no generic words like "you" that collide.
   var KB = [
     {k:["contact","hire","hiring","email","reach","available","job","role","work with","get in touch"], a:"Jack is open to designer, visual designer, and product design roles. Email <a href='mailto:jack.mao@torontomu.ca'>jack.mao@torontomu.ca</a>, or use the links in the footer."},
-    {k:["resume","cv","curriculum"], a:"The résumé link is in the top navigation — it opens Jack's full CV."},
+    {k:["resume","cv","curriculum"], a:"The résumé is available in the About section — <a href='https://canva.link/huhh6m9epfqgiju' target='_blank' rel='noopener noreferrer'>view Jack's résumé on Canva</a>."},
     {k:["game","elysium","chronicles"], a:"<a href='projects/chronicles-of-elysium.html'>Chronicles of Elysium</a> is a pitch-ready game concept — mechanics, a five-act narrative on the Hero's Journey, and an aesthetic system, produced end to end."},
     {k:["build","code","coding","develop","engineer","engineering","technical","program","swiftui"], a:"Yes — the interactive projects here actually run. Coffee Nearby is a single-file app with no framework, Tend is a native SwiftUI iOS build, and Wayfarer is a multi-page site. All designed and coded by Jack."},
     {k:["editorial","magazine","print","layout","publication"], a:"The editorial work includes <a href='projects/so-good.html'>So Good</a> (a full magazine reimagining of an album), <a href='projects/special-editions.html'>Special Editions</a>, and <a href='projects/light-and-form.html'>Light &amp; Form</a>."},
