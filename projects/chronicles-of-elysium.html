@@ -671,10 +671,30 @@
       }
     }
 
+    @media (max-width:768px){
+      body > nav:not(.mobile-tabbar){position:absolute;top:1.15rem;left:1.5rem;right:auto;width:auto;max-width:calc(100% - 3rem);min-height:0;padding:0;transform:none;z-index:20;gap:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+      body > nav:not(.mobile-tabbar)::before,body > nav:not(.mobile-tabbar) .nav-back,body > nav:not(.mobile-tabbar) .nav-dropdown{display:none!important}
+      body > nav:not(.mobile-tabbar) .nav-logo{width:auto;max-width:100%;overflow:visible;font-size:.78rem;line-height:1.2}
+      .case-summary-stack{border-radius:10px}
+      .case-summary-stack>.project-literal{padding:1rem}
+      .case-summary-stack>.case-frame{width:auto!important;max-width:none!important}
+      .case-summary-stack>.case-evidence{padding:0 1rem}
+      .case-summary-stack--hub{width:calc(100% - 2rem);margin-top:2rem}
+    }
+
     .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--lime,#ccff00);color:#0f0e1a;padding:.6rem 1rem;font-weight:700;border-radius:0 0 8px 0;text-decoration:none}
     .skip-link:focus{left:0}
 
     .case-frame{display:grid;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 0 3rem}
+    .case-summary-stack{margin:0 0 3rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.025)}
+    .case-summary-stack>.project-literal{margin:0;padding:1.15rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .case-summary-stack>.case-frame{margin:0;border:0;border-radius:0}
+    .case-summary-stack>.case-evidence{margin:0;padding:0 1.25rem;border-top:1px solid rgba(255,255,255,.1);border-bottom:0}
+    .case-summary-stack>.ai-disclaimer{margin:0;padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,.1)}
+    .case-summary-stack--hub{width:calc(100% - 6rem);max-width:1100px;margin:2.5rem auto 3rem}
+    .case-summary-stack .project-literal--hub,.case-summary-stack .case-evidence--hub{width:auto;max-width:none;margin:0}
+    .case-summary-stack.is-light{border-color:rgba(25,20,25,.14);background:rgba(251,250,246,.72)}
+    .case-summary-stack.is-light>.project-literal,.case-summary-stack.is-light>.case-evidence,.case-summary-stack.is-light>.ai-disclaimer{border-color:rgba(25,20,25,.14)}
     @media(min-width:680px){.case-frame{grid-template-columns:repeat(3,1fr)}}
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
@@ -767,13 +787,11 @@
   <!-- CONTENT -->
   <div class="project-content" id="main">
 
+    <div class="case-summary-stack">
     <div class="project-literal">
       <span class="project-type">Academic game-design project</span>
       <p class="project-literal-copy">As creator, designer, and producer, I developed a third-person action-adventure concept for RTA928, delivering core mechanics, key art, an aesthetic system, and a six-act narrative built from classical story structure.</p>
     </div>
-    <p class="project-intro">
-      A third-person action-adventure game built on Aristotle's Poetics and Joseph Campbell's Hero's Journey — following Kassandra, a humble musician, as she transforms into a legendary hero across the shattered world of Elysium.
-    </p>
         <div class="case-frame" role="list" aria-label="Project summary"><div class="case-cell" role="listitem"><span class="case-k">Challenge</span><span class="case-v">Give a third-person action-adventure a story spine that actually holds — not just set-pieces.</span></div><div class="case-cell" role="listitem"><span class="case-k">Direction</span><span class="case-v">Build the narrative on Aristotle's Poetics and Campbell's Hero's Journey, tracking Kassandra from musician to legend across Elysium.</span></div><div class="case-cell" role="listitem"><span class="case-k">Outcome</span><span class="case-v">A game concept where structure and world-building are designed together — narrative design, not just visuals.</span></div></div>
     <dl class="case-evidence" aria-label="Project evidence">
       <div><dt>Audience</dt><dd>Course critique and game-pitch readers</dd></div>
@@ -781,6 +799,7 @@
       <div><dt>Deliverables</dt><dd>Mechanics, key art, and six-act narrative</dd></div>
       <div><dt>Learning</dt><dd>Narrative and gameplay work best when co-designed</dd></div>
     </dl>
+    </div>
     <!-- KEY ART -->
     <div class="image-grid one-col">
       <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/kassandra-keyart.webp" alt="Kassandra key art"  loading="lazy" decoding="async" width="1024" height="1536"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;01</b><span>Kassandra — key art</span></figcaption></figure>

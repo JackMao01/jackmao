@@ -724,10 +724,30 @@
       }
     }
 
+    @media (max-width:768px){
+      body > nav:not(.mobile-tabbar){position:absolute;top:1.15rem;left:1.5rem;right:auto;width:auto;max-width:calc(100% - 3rem);min-height:0;padding:0;transform:none;z-index:20;gap:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+      body > nav:not(.mobile-tabbar)::before,body > nav:not(.mobile-tabbar) .nav-back,body > nav:not(.mobile-tabbar) .nav-dropdown{display:none!important}
+      body > nav:not(.mobile-tabbar) .nav-logo{width:auto;max-width:100%;overflow:visible;font-size:.78rem;line-height:1.2}
+      .case-summary-stack{border-radius:10px}
+      .case-summary-stack>.project-literal{padding:1rem}
+      .case-summary-stack>.case-frame{width:auto!important;max-width:none!important}
+      .case-summary-stack>.case-evidence{padding:0 1rem}
+      .case-summary-stack--hub{width:calc(100% - 2rem);margin-top:2rem}
+    }
+
     .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--lime,#ccff00);color:#0f0e1a;padding:.6rem 1rem;font-weight:700;border-radius:0 0 8px 0;text-decoration:none}
     .skip-link:focus{left:0}
 
     .case-frame{display:grid;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 0 3rem}
+    .case-summary-stack{margin:0 0 3rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.025)}
+    .case-summary-stack>.project-literal{margin:0;padding:1.15rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.1)}
+    .case-summary-stack>.case-frame{margin:0;border:0;border-radius:0}
+    .case-summary-stack>.case-evidence{margin:0;padding:0 1.25rem;border-top:1px solid rgba(255,255,255,.1);border-bottom:0}
+    .case-summary-stack>.ai-disclaimer{margin:0;padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,.1)}
+    .case-summary-stack--hub{width:calc(100% - 6rem);max-width:1100px;margin:2.5rem auto 3rem}
+    .case-summary-stack .project-literal--hub,.case-summary-stack .case-evidence--hub{width:auto;max-width:none;margin:0}
+    .case-summary-stack.is-light{border-color:rgba(25,20,25,.14);background:rgba(251,250,246,.72)}
+    .case-summary-stack.is-light>.project-literal,.case-summary-stack.is-light>.case-evidence,.case-summary-stack.is-light>.ai-disclaimer{border-color:rgba(25,20,25,.14)}
     @media(min-width:680px){.case-frame{grid-template-columns:repeat(3,1fr)}}
     .case-cell{background:var(--navy,#0f0e1a);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
     .case-k{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime,#ccff00)}
@@ -854,11 +874,11 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
 
   <div class="project-content" id="main">
 
+    <div class="case-summary-stack">
     <div class="project-literal">
       <span class="project-type">Self-directed visual study</span>
       <p class="project-literal-copy">As sole illustrator and photo editor, I created paired poster and photography studies to demonstrate one formal approach across media, delivering two visual series unified by light, symmetry, and shadow.</p>
     </div>
-    <p class="project-intro">Two practices, one instinct — illustration and photography united by a shared obsession with how light defines form. What a line does in pencil, shadow does in light.</p>
         <div class="case-frame" role="list" aria-label="Project summary">
           <div class="case-cell" role="listitem"><span class="case-k">Challenge</span><span class="case-v">Show that illustration and photo editing come from one design instinct — not two unrelated skills on a résumé.</span></div>
           <div class="case-cell" role="listitem"><span class="case-k">Direction</span><span class="case-v">Pair a symmetry-driven illustration series with a shadow-to-light photo study, so the same eye for form reads across both media.</span></div>
@@ -870,6 +890,7 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
       <div><dt>Deliverables</dt><dd>Two poster colourways and a photo series</dd></div>
       <div><dt>Learning</dt><dd>One formal system can connect both media</dd></div>
     </dl>
+    </div>
     <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Symmetrically Unorthodox — Illustration</h2></div>
     <div class="body-text">
       <p>Symmetrically Unorthodox began as an experiment in formal constraint. Start with perfect bilateral symmetry — then introduce controlled chaos. Each decision made with intention, never at random. The result is a series of illustrations that feel simultaneously balanced and unsettled: familiar forms made strange by subtle deviations from the expected.</p>
