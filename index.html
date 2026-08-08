@@ -922,6 +922,115 @@ body.intent .row-desc { display: none; }
 }
 #askbot-launch.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
 
+/* Mobile utility menu: Share + Ask in one floating control. */
+#mobile-utility { display: none; }
+@media (max-width: 768px) {
+  #mobile-utility {
+    display: block;
+    position: fixed;
+    right: 1.25rem;
+    bottom: calc(1.25rem + 76px + env(safe-area-inset-bottom));
+    z-index: 100002;
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  #mobile-utility.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  #mobile-utility-trigger {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    color: rgba(255,255,255,.72);
+    background: rgba(22,21,43,.78);
+    box-shadow: 0 8px 28px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.14);
+    backdrop-filter: blur(16px) saturate(1.35);
+    -webkit-backdrop-filter: blur(16px) saturate(1.35);
+    cursor: pointer;
+  }
+  #mobile-utility-trigger::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: inherit;
+    pointer-events: none;
+    transition: border-color .25s, background-color .25s;
+  }
+  #mobile-utility-trigger[aria-expanded="true"]::before {
+    border-color: rgba(204,255,0,.48);
+    background: rgba(204,255,0,.06);
+  }
+  .mobile-utility-icon {
+    position: relative;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-utility-menu {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + .75rem);
+    width: min(15rem, calc(100vw - 2.5rem));
+    display: grid;
+    gap: .45rem;
+    padding: .55rem;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    background: rgba(22,21,43,.96);
+    box-shadow: 0 18px 52px rgba(0,0,0,.48);
+    backdrop-filter: blur(20px) saturate(1.25);
+    -webkit-backdrop-filter: blur(20px) saturate(1.25);
+    opacity: 0;
+    transform: translateY(8px) scale(.98);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: opacity .22s cubic-bezier(.16,1,.3,1), transform .22s cubic-bezier(.16,1,.3,1);
+  }
+  #mobile-utility.open .mobile-utility-menu {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .mobile-utility-action {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: .8rem .9rem;
+    border: 0;
+    border-radius: 9px;
+    background: rgba(255,255,255,.055);
+    color: var(--cream);
+    font: 500 .66rem 'DM Mono', monospace;
+    letter-spacing: .1em;
+    text-align: left;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .mobile-utility-action:hover,
+  .mobile-utility-action:focus-visible {
+    color: var(--lime);
+    background: rgba(204,255,0,.08);
+    outline: none;
+  }
+}
+
 .ask-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: center; transform-box: fill-box; animation: btt-spin 10s linear infinite; animation-play-state: paused; }
 #askbot-launch:hover .ask-ring, #askbot-launch:active .ask-ring, #askbot-launch[aria-expanded="true"] .ask-ring { animation-play-state: running; }
 
@@ -975,6 +1084,12 @@ body.scroll-calm #qr-trigger.visible:hover, body.scroll-calm #qr-trigger.visible
 body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.visible:focus-visible,
 body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
 #nav-up, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
+
+@media (max-width: 768px) {
+  #qr-wrap,
+  #askbot-launch { display: none !important; }
+  #askbot-panel { right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
 
 
 </style>
@@ -1456,6 +1571,20 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
     </svg>
   </a>
 
+  <div id="mobile-utility" aria-label="Portfolio actions">
+    <button id="mobile-utility-trigger" type="button" aria-label="Open portfolio actions" aria-expanded="false" aria-controls="mobile-utility-menu" title="Portfolio actions">
+      <svg class="mobile-utility-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="6" cy="12" r="1.6" fill="currentColor"/>
+        <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+        <circle cx="18" cy="12" r="1.6" fill="currentColor"/>
+      </svg>
+    </button>
+    <div class="mobile-utility-menu" id="mobile-utility-menu">
+      <a class="mobile-utility-action" href="share.html"><span>Share portfolio</span><span aria-hidden="true">+</span></a>
+      <button class="mobile-utility-action" id="mobile-utility-ask" type="button"><span>Ask about my work</span><span aria-hidden="true">+</span></button>
+    </div>
+  </div>
+
   <!-- Share / QR button -->
   <div id="qr-wrap">
       <a id="qr-trigger" href="share.html" aria-label="Go to share page">
@@ -1835,10 +1964,37 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
       btt.addEventListener('mouseleave', () => { if (cursor) cursor.classList.remove('hovering'); });
     }
 
+    // -- Mobile portfolio actions --
+    (function() {
+      const utility = document.getElementById('mobile-utility');
+      const trigger = document.getElementById('mobile-utility-trigger');
+      if (!utility || !trigger) return;
+      const close = () => {
+        utility.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+      const update = () => {
+        const show = window.matchMedia('(max-width: 768px)').matches && window.scrollY > 400;
+        utility.classList.toggle('visible', show);
+        if (!show) close();
+      };
+      trigger.addEventListener('click', event => {
+        event.stopPropagation();
+        const open = utility.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+      utility.addEventListener('click', event => event.stopPropagation());
+      document.addEventListener('click', close);
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
 
     // -- Haptic-style tap feedback --
     (function() {
-      const targets = document.querySelectorAll('nav a, nav button, .mobile-tabbar a, .mobile-tabbar button, .mobile-action-menu a');
+      const targets = document.querySelectorAll('nav a, nav button, .mobile-tabbar a, .mobile-tabbar button, .mobile-action-menu a, #mobile-utility a, #mobile-utility button');
       if (!targets.length) return;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
@@ -2134,6 +2290,14 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
     launch.setAttribute('aria-expanded','false');
   }
   launch.addEventListener('click',open);
+  var mobileUtilityAsk=document.getElementById('mobile-utility-ask');
+  if(mobileUtilityAsk) mobileUtilityAsk.addEventListener('click',function(){
+    var utility=document.getElementById('mobile-utility');
+    var utilityTrigger=document.getElementById('mobile-utility-trigger');
+    if(utility) utility.classList.remove('open');
+    if(utilityTrigger) utilityTrigger.setAttribute('aria-expanded','false');
+    open();
+  });
   if(closeBtn) closeBtn.addEventListener('click',close);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) close(); });
   if(send) send.addEventListener('click',function(){ var v=input?input.value.trim():''; if(v){ ask(v); input.value=''; } });
