@@ -88,7 +88,7 @@
 
     @media print {
       body { background: #fff !important; color: #000 !important; cursor: auto !important; }
-      nav, .cursor, #page-veil, #scroll-progress, #nav-up,
+      nav, .cursor, #page-veil, #scroll-progress, #page-return-control,
       .next-project { display: none !important; }
       a { color: #000 !important; text-decoration: underline; }
       h1, h2, h3 { color: #000 !important; }
@@ -303,6 +303,26 @@
       display: block; max-width: 680px; margin: -0.85rem 0 1.55rem;
       color: var(--cream);
       font: 500 clamp(0.82rem, 1.3vw, 0.98rem)/1.8 'DM Mono', monospace;
+    }
+    .hero-scroll-cue {
+      position: absolute; left: clamp(1.2rem, 5vw, 4.5rem); bottom: 1.45rem; z-index: 3;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      color: rgba(255,255,255,0.72); text-decoration: none;
+      font: 500 0.58rem/1 'DM Mono', monospace; letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-cue svg { width: 15px; height: 15px; color: var(--lime); }
+    .hero-scroll-cue:hover, .hero-scroll-cue:focus-visible { color: var(--cream); }
+    .hero-scroll-cue:hover svg { animation: hero-scroll-nudge 0.75s var(--ease-out) infinite; }
+    @media (min-width: 769px) {
+      .hero-scroll-cue {
+        left: auto; right: clamp(1.2rem, 5vw, 4.5rem);
+        top: calc(100svh - 3rem); bottom: auto;
+      }
+    }
+    @keyframes hero-scroll-nudge {
+      0%, 100% { transform: translateY(-2px); }
+      50% { transform: translateY(3px); }
     }
     .hero-no-widow { display: inline-block; white-space: nowrap; }
     /* hero notes */
@@ -670,6 +690,7 @@ body.intent .row-desc { display: none; }
       .hero-sub { max-width: none; line-height: 1.68; margin-bottom: 1.35rem; }
       .hero-capabilities { max-width: none; margin-bottom: 2.65rem; }
       .hero-capabilities p { font-size: 0.6rem; line-height: 1.85; letter-spacing: 0.035em; }
+      .hero-scroll-cue { bottom: 1.2rem; font-size: 0.54rem; letter-spacing: 0.14em; }
       #hero .cropmarks, #hero .measure { display: none !important; }
       .about-inner { grid-template-columns: 1fr; }
       .about-right { order: -1; max-width: 420px; }
@@ -731,7 +752,7 @@ body.intent .row-desc { display: none; }
 
     /* ---- chrome widgets (preserved verbatim) ---- */
 /* -- Back to top -- */
-    #nav-up {
+    #page-return-control {
       position: fixed;
       bottom: 2rem; right: 2rem;
       width: 72px; height: 72px;
@@ -752,7 +773,7 @@ body.intent .row-desc { display: none; }
       pointer-events: none;
       will-change: opacity, transform;
     }
-#nav-up.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+#page-return-control.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
 
 
 .btt-ring {
@@ -761,9 +782,9 @@ body.intent .row-desc { display: none; }
       animation: btt-spin 10s linear infinite;
       animation-play-state: paused;
     }
-#nav-up:hover .btt-ring,
-    #nav-up:active .btt-ring,
-    #nav-up.spinning .btt-ring { animation-play-state: running; }
+#page-return-control:hover .btt-ring,
+    #page-return-control:active .btt-ring,
+    #page-return-control.spinning .btt-ring { animation-play-state: running; }
 
 /* ======================================
        V1 DESKTOP (≥769px) — strip glass, flush nav
@@ -816,12 +837,17 @@ body.intent .row-desc { display: none; }
       }}
 @media (max-width: 768px) {
 
-      #nav-up {
+      #page-return-control {
         bottom: calc(1.25rem + env(safe-area-inset-bottom));
         right: 1.25rem;
         width: 64px;
         height: 64px;
         z-index: 100001;
+      }
+      html:not(.controls-ready) #page-return-control {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
       }
 }
     /* ---- signature chrome: cursor, progress, dividers (preserved verbatim) ---- */
@@ -900,14 +926,14 @@ body.intent .row-desc { display: none; }
 
 
 /* ===== Floating buttons — unified translucent design (all 3 identical) ===== */
-#nav-up::before, #qr-trigger::before, #askbot-launch::before, #mobile-utility-trigger::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
-#nav-up:hover::before, #qr-trigger:hover::before,
+#page-return-control::before, #qr-trigger::before, #askbot-launch::before, #mobile-utility-trigger::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
+#page-return-control:hover::before, #qr-trigger:hover::before,
 #askbot-launch:hover::before, #askbot-launch[aria-expanded="true"]::before,
 #mobile-utility-trigger:hover::before, #mobile-utility-trigger[aria-expanded="true"]::before {
   border-color: rgba(204,255,0,0.45); background-color: rgba(38,40,30,0.5);
 }
 .btt-ring-text, .share-ring-text, .ask-ring-text, .utility-ring-text { font-family: 'DM Mono', monospace; font-size: 10.5px; fill: rgba(255,255,255,0.35); text-transform: uppercase; text-anchor: middle; dominant-baseline: central; }
-#nav-up:hover .btt-ring-text, #qr-trigger:hover .share-ring-text,
+#page-return-control:hover .btt-ring-text, #qr-trigger:hover .share-ring-text,
 #askbot-launch:hover .ask-ring-text, #askbot-launch[aria-expanded="true"] .ask-ring-text,
 #mobile-utility-trigger:hover .utility-ring-text, #mobile-utility-trigger[aria-expanded="true"] .utility-ring-text {
   fill: rgba(204,255,0,0.7);
@@ -916,7 +942,7 @@ body.intent .row-desc { display: none; }
   position: relative; z-index: 1; width: 22px; height: 22px;
   color: rgba(255,255,255,0.6); transition: color 0.3s; flex-shrink: 0;
 }
-#nav-up:hover .btt-arrow, #qr-trigger:hover .share-icon,
+#page-return-control:hover .btt-arrow, #qr-trigger:hover .share-icon,
 #askbot-launch:hover .ask-icon, #askbot-launch[aria-expanded="true"] .ask-icon,
 #mobile-utility-trigger:hover .mobile-utility-icon, #mobile-utility-trigger[aria-expanded="true"] .mobile-utility-icon {
   color: var(--lime);
@@ -1091,17 +1117,17 @@ body.intent .row-desc { display: none; }
 
 
 /* ── calm while scrolling down: discs recede, restore on pause/up/hover ── */
-body.scroll-calm #nav-up.visible,
+body.scroll-calm #page-return-control.visible,
 body.scroll-calm #qr-trigger.visible,
 body.scroll-calm #askbot-launch.visible,
-body.scroll-calm #mobile-utility.visible { opacity:0.45; }
-body.scroll-calm #nav-up.visible:hover, body.scroll-calm #nav-up.visible:focus-visible,
+body.scroll-calm #mobile-utility.visible:not(.is-entering) { opacity:0.45; }
+body.scroll-calm #page-return-control.visible:hover, body.scroll-calm #page-return-control.visible:focus-visible,
 body.scroll-calm #qr-trigger.visible:hover, body.scroll-calm #qr-trigger.visible:focus-visible,
 body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.visible:focus-visible,
 body.scroll-calm #askbot-launch[aria-expanded="true"],
 body.scroll-calm #mobile-utility.visible:hover,
 body.scroll-calm #mobile-utility.open { opacity:1; }
-#nav-up, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
+#page-return-control, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
 
 @media (max-width: 768px) {
   #qr-wrap,
@@ -1136,7 +1162,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   <noscript><style>
   /* No JS: scroll-gating can't run, so show the nav-up anchor unconditionally.
      It's a native <a href="#top">, so the jump-to-top still works without JS. */
-  #nav-up { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+  #page-return-control { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
 </style></noscript>
 </head>
 <body style="touch-action: pan-y;">
@@ -1184,6 +1210,13 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       </div>
 
       <span class="note n-r note-hero-tag">lime is rationed — it only ever marks signal: links, actions, annotations</span>
+      <a class="hero-scroll-cue" href="#work" aria-label="Scroll to explore selected work">
+        <span>Scroll to Explore</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <polyline points="6,13 12,19 18,13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </section>
 
     <!-- ============ MARQUEE ============ -->
@@ -1554,7 +1587,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   </footer>
   </div><!-- /#page -->
 
-  <a id="nav-up" href="#top" aria-label="Back to top">
+  <a id="page-return-control" href="#top" aria-label="Back to top">
     <svg class="btt-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
         <text class="btt-ring-text" x="65.23" y="22.36" transform="rotate(7.91 65.23 22.36)">B</text>
         <text class="btt-ring-text" x="75.29" y="25.21" transform="rotate(23.73 75.29 25.21)">A</text>
@@ -1979,8 +2012,9 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
     }
     startRevealObserver();
     // -- Back to top --
-    const btt = document.getElementById('nav-up');
+    const btt = document.getElementById('page-return-control');
     if (btt) {
+      document.documentElement.classList.add('controls-ready');
       btt.dataset.bttBound = '1';
       const updateBackToTop = () => {
         if (window.scrollY > 400) { btt.classList.add('visible'); }
@@ -2008,9 +2042,22 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         utility.classList.remove('open');
         trigger.setAttribute('aria-expanded', 'false');
       };
+      let enterTimer = null;
       const update = () => {
         const show = window.matchMedia('(max-width: 768px)').matches && window.scrollY > 400;
+        const wasVisible = utility.classList.contains('visible');
         utility.classList.toggle('visible', show);
+        if (show && !wasVisible) {
+          utility.classList.add('is-entering');
+        }
+        if (show && utility.classList.contains('is-entering')) {
+          if (enterTimer) window.clearTimeout(enterTimer);
+          enterTimer = window.setTimeout(() => utility.classList.remove('is-entering'), 360);
+        } else if (!show) {
+          utility.classList.remove('is-entering');
+          if (enterTimer) window.clearTimeout(enterTimer);
+          enterTimer = null;
+        }
         if (!show) close();
       };
       trigger.addEventListener('click', event => {
@@ -2172,7 +2219,8 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   (function(){
     function wire(){
       try {
-        var btt = document.getElementById('nav-up');
+        document.documentElement.classList.add('controls-ready');
+        var btt = document.getElementById('page-return-control');
         var share = document.getElementById('qr-trigger');
         var lastY = 0, calmTimer = null;
         function onScroll(){
