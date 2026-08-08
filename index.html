@@ -229,7 +229,7 @@
     }
     .note.n-r::before { background: linear-gradient(-90deg, var(--lime), transparent); margin-left: auto; box-shadow: 1px 0 0 var(--lime); }
     .note.n-r { text-align: right; }
-    body.intent .note, .note.always { opacity: 0.92; transform: none; }
+    body.intent .note { opacity: 0.92; transform: none; }
     /* baseline grid + crop marks */
     .blueprint { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.6s;
       background-image: repeating-linear-gradient(to bottom, rgba(204,255,0,0.035) 0 1px, transparent 1px 8px); }
@@ -305,13 +305,6 @@
       font: 500 clamp(0.82rem, 1.3vw, 0.98rem)/1.8 'DM Mono', monospace;
     }
     .hero-no-widow { display: inline-block; white-space: nowrap; }
-    .hero-foot { display: flex; align-items: center; gap: 2rem; }
-    .hero-scroll {
-      font: 400 0.66rem 'DM Mono', monospace; letter-spacing: 0.26em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); display: inline-flex; align-items: center; gap: 0.8rem;
-    }
-    .hero-scroll::after { content: ""; width: 56px; height: 1px; background: linear-gradient(90deg, var(--lime), transparent); animation: pulseLine 2.4s var(--ease-io) infinite; }
-    @keyframes pulseLine { 0%,100% { opacity: 0.4; transform: scaleX(0.6); transform-origin: left; } 50% { opacity: 1; transform: scaleX(1); } }
     /* hero notes */
     .note-hero-em { top: 31%; right: max(2vw, calc(50% - 620px)); }
     @media (max-width: 1380px) { .note-hero-em { top: auto; bottom: 7%; right: 2vw; } }
@@ -459,6 +452,13 @@
     .inspirations-section { max-width: 1280px; margin: clamp(5.5rem, 10vw, 8.5rem) auto 0; padding-top: clamp(2.6rem, 4vw, 3.4rem); border-top: 1px solid transparent; border-image: linear-gradient(90deg, rgba(255,85,51,0.55), rgba(255,85,51,0.12), transparent 70%) 1; }
     .inspirations-label { font: 500 0.68rem 'DM Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral); margin-bottom: 1.8rem; }
     .inspirations-label::before { content: "✦ "; color: var(--coral); }
+    .inspirations-toggle {
+      display: none; align-items: center; justify-content: center;
+      border: 1px solid rgba(15,14,26,0.24); border-radius: 99px;
+      background: transparent; color: var(--navy); cursor: pointer;
+      font: 500 0.62rem 'DM Mono', monospace; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.7rem 1rem;
+    }
     .inspirations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .inspiration-card { display: block; text-decoration: none; color: inherit; padding: 1.5rem 1.6rem; border: 1px solid rgba(15,14,26,0.14); border-radius: 6px; background: rgba(255,255,255,0.45); transition: all 0.25s var(--ease-out); }
     .inspiration-card:hover { transform: translateY(-3px); border-color: rgba(255,85,51,0.55); box-shadow: 0 18px 40px rgba(255,85,51,0.12); }
@@ -481,8 +481,7 @@
       font: 500 0.62rem 'DM Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.7); border: 1px solid var(--hair); padding: 0.5rem 1rem; border-radius: 99px;
     }
-    .avail-pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(204,255,0,0.9); animation: blip 2.2s infinite; }
-    @keyframes blip { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .avail-pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(204,255,0,0.72); }
     .contact-heading { font-size: clamp(2.6rem, 6.5vw, 4.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 1.4rem; }
     .contact-heading em { font-family: 'DM Serif Display', serif; font-style: italic; font-weight: 400; color: var(--purple-light); }
     .contact-sub { font: 400 0.85rem/1.8 'DM Mono', monospace; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 3rem; }
@@ -663,7 +662,6 @@ body.intent .row-desc { display: none; }
       .row-meta { grid-area: meta; text-align: left; }
       .row-folio { display: none; }
       .note { display: none; }
-      .note.always { display: block; position: static; transform: none; margin-top: 1.2rem; max-width: none; }
     }
     @media (max-width: 640px) {
       .grp { padding: 2.5rem 0 1.1rem; }
@@ -677,9 +675,13 @@ body.intent .row-desc { display: none; }
       .hero-sub { max-width: none; line-height: 1.68; margin-bottom: 1.35rem; }
       .hero-capabilities { max-width: none; margin-bottom: 2.65rem; }
       .hero-capabilities p { font-size: 0.6rem; line-height: 1.85; letter-spacing: 0.035em; }
+      #hero .cropmarks, #hero .measure { display: none !important; }
       .about-inner { grid-template-columns: 1fr; }
       .about-right { order: -1; max-width: 420px; }
-      .inspirations-grid { grid-template-columns: 1fr; }
+      .inspirations-label { margin-bottom: 0.8rem; }
+      .inspirations-toggle { display: inline-flex; margin-bottom: 1rem; }
+      .inspirations-grid { display: none; grid-template-columns: 1fr; }
+      .inspirations-section.is-open .inspirations-grid { display: grid; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; gap: 0.4rem; }
     }
@@ -694,7 +696,6 @@ body.intent .row-desc { display: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .marquee-inner { animation: none; }
-      .hero-scroll::after, .avail-pill::before { animation: none; }
       .fade-up, .word-reveal .word, .plate-img, .note { transition: none; }
       .fade-up, .word-reveal .word { opacity: 1; transform: none; }
     }
@@ -796,11 +797,6 @@ body.intent .row-desc { display: none; }
         left: 1.25rem;
         width: 64px; height: 64px;
       }}
-@media (prefers-reduced-motion: reduce) {
-
-      .hero-scroll, .avail-dot, .btt-arrow,
-      
-}
 @media (max-width: 768px) {
 
       #nav-up {
@@ -831,26 +827,16 @@ body.intent .row-desc { display: none; }
       width: 100%; height: 2px; border: none; margin: 0;
       background: linear-gradient(90deg, transparent, rgba(123,108,246,0.4),
                   rgba(204,255,0,0.4), rgba(255,85,51,0.3), transparent);
-      background-size: 200% 100%;
-      animation: gradient-slide 4s linear infinite;
-      will-change: background-position;
+      background-size: 200% 100%; background-position: 50% 0;
     }
 .dot-transition {
       width: 100%; height: 80px;
       position: relative; overflow: hidden; pointer-events: none;
     }
 .dot-transition svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.dt-dot { fill: rgba(123,108,246,0.18); animation: dt-pulse 4s ease-in-out infinite; }
-.dt-dot:nth-child(2n) { animation-delay: -1.3s; fill: rgba(204,255,0,0.12); }
-.dt-dot:nth-child(3n) { animation-delay: -2.7s; }
-.dt-dot:nth-child(4n) { animation-delay: -0.6s; fill: rgba(255,85,51,0.10); }
-@keyframes gradient-slide { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
-@keyframes dt-pulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
-@media (prefers-reduced-motion: reduce) {
-
-      .hero-scroll, .avail-dot, .btt-arrow,
-      
-}
+.dt-dot { fill: rgba(123,108,246,0.18); opacity: 0.5; }
+.dt-dot:nth-child(2n) { fill: rgba(204,255,0,0.12); opacity: 0.42; }
+.dt-dot:nth-child(4n) { fill: rgba(255,85,51,0.10); opacity: 0.38; }
 /* -- Page transition -- */
     #page-veil {
       position: fixed; inset: 0; z-index: 99999;
@@ -892,22 +878,25 @@ body.intent .row-desc { display: none; }
 
 
 /* ===== Floating buttons — unified translucent design (all 3 identical) ===== */
-#nav-up::before, #qr-trigger::before, #askbot-launch::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
+#nav-up::before, #qr-trigger::before, #askbot-launch::before, #mobile-utility-trigger::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background-color: rgba(22,21,43,0.42); background-image: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%), url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 6px 26px rgba(0,0,0,0.32), 0 1px 0 rgba(255,255,255,0.14) inset; }
 #nav-up:hover::before, #qr-trigger:hover::before,
-#askbot-launch:hover::before, #askbot-launch[aria-expanded="true"]::before {
+#askbot-launch:hover::before, #askbot-launch[aria-expanded="true"]::before,
+#mobile-utility-trigger:hover::before, #mobile-utility-trigger[aria-expanded="true"]::before {
   border-color: rgba(204,255,0,0.45); background-color: rgba(38,40,30,0.5);
 }
-.btt-ring-text, .share-ring-text, .ask-ring-text { font-family: 'DM Mono', monospace; font-size: 10.5px; fill: rgba(255,255,255,0.35); text-transform: uppercase; text-anchor: middle; dominant-baseline: central; }
+.btt-ring-text, .share-ring-text, .ask-ring-text, .utility-ring-text { font-family: 'DM Mono', monospace; font-size: 10.5px; fill: rgba(255,255,255,0.35); text-transform: uppercase; text-anchor: middle; dominant-baseline: central; }
 #nav-up:hover .btt-ring-text, #qr-trigger:hover .share-ring-text,
-#askbot-launch:hover .ask-ring-text, #askbot-launch[aria-expanded="true"] .ask-ring-text {
+#askbot-launch:hover .ask-ring-text, #askbot-launch[aria-expanded="true"] .ask-ring-text,
+#mobile-utility-trigger:hover .utility-ring-text, #mobile-utility-trigger[aria-expanded="true"] .utility-ring-text {
   fill: rgba(204,255,0,0.7);
 }
-.btt-arrow, .share-icon, .ask-icon {
+.btt-arrow, .share-icon, .ask-icon, .mobile-utility-icon {
   position: relative; z-index: 1; width: 22px; height: 22px;
   color: rgba(255,255,255,0.6); transition: color 0.3s; flex-shrink: 0;
 }
 #nav-up:hover .btt-arrow, #qr-trigger:hover .share-icon,
-#askbot-launch:hover .ask-icon, #askbot-launch[aria-expanded="true"] .ask-icon {
+#askbot-launch:hover .ask-icon, #askbot-launch[aria-expanded="true"] .ask-icon,
+#mobile-utility-trigger:hover .mobile-utility-icon, #mobile-utility-trigger[aria-expanded="true"] .mobile-utility-icon {
   color: var(--lime);
 }
 
@@ -954,30 +943,34 @@ body.intent .row-desc { display: none; }
     border-radius: 50%;
     padding: 0;
     color: rgba(255,255,255,.72);
-    background: rgba(22,21,43,.78);
-    box-shadow: 0 8px 28px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.14);
-    backdrop-filter: blur(16px) saturate(1.35);
-    -webkit-backdrop-filter: blur(16px) saturate(1.35);
+    background: transparent;
     cursor: pointer;
   }
   #mobile-utility-trigger::before {
     content: '';
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: inherit;
     pointer-events: none;
-    transition: border-color .25s, background-color .25s;
   }
-  #mobile-utility-trigger[aria-expanded="true"]::before {
-    border-color: rgba(204,255,0,.48);
-    background: rgba(204,255,0,.06);
+  .utility-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: btt-spin 10s linear infinite;
+    animation-play-state: paused;
   }
-  .mobile-utility-icon {
-    position: relative;
-    z-index: 1;
-    width: 24px;
-    height: 24px;
+  #mobile-utility-trigger:hover .utility-ring,
+  #mobile-utility-trigger:active .utility-ring,
+  #mobile-utility-trigger[aria-expanded="true"] .utility-ring {
+    animation-play-state: running;
+  }
+  .utility-ring-text {
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    transition: fill .3s;
   }
   .mobile-utility-menu {
     position: absolute;
@@ -1078,11 +1071,14 @@ body.intent .row-desc { display: none; }
 /* ── calm while scrolling down: discs recede, restore on pause/up/hover ── */
 body.scroll-calm #nav-up.visible,
 body.scroll-calm #qr-trigger.visible,
-body.scroll-calm #askbot-launch.visible { opacity:0.45; }
+body.scroll-calm #askbot-launch.visible,
+body.scroll-calm #mobile-utility.visible { opacity:0.45; }
 body.scroll-calm #nav-up.visible:hover, body.scroll-calm #nav-up.visible:focus-visible,
 body.scroll-calm #qr-trigger.visible:hover, body.scroll-calm #qr-trigger.visible:focus-visible,
 body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.visible:focus-visible,
-body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
+body.scroll-calm #askbot-launch[aria-expanded="true"],
+body.scroll-calm #mobile-utility.visible:hover,
+body.scroll-calm #mobile-utility.open { opacity:1; }
 #nav-up, #qr-trigger, #askbot-launch { transition: opacity 0.3s, transform 0.35s; }
 
 @media (max-width: 768px) {
@@ -1163,12 +1159,8 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
           <span class="hero-capabilities-label">What I can do for your team</span>
           <p>Campaign Content <span class="sep" aria-hidden="true">·</span> Social Media <span class="sep" aria-hidden="true">·</span> Event Communications <span class="sep" aria-hidden="true">·</span> Presentation/Design Support</p>
         </div>
-        <div class="hero-foot fade-up" data-delay="4">
-          <span class="hero-scroll">Scroll to explore</span>
-        </div>
       </div>
 
-      <span class="note n-r note-hero-em always">"built" is set in serif italic — the human hand inside the system. every choice here is annotated: toggle <b>intent</b> in the nav ↗</span>
       <span class="note n-r note-hero-tag">lime is rationed — it only ever marks signal: links, actions, annotations</span>
     </section>
 
@@ -1214,7 +1206,7 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
                   <span class="hana-jamo hana-j3" aria-hidden="true">ㄴ</span>
                   <span class="hana-syllable" aria-hidden="true">한</span>
                   <span class="hana-rhythm" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i></span></div>
-            <div class="cropmarks" style="opacity:0.4"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+            <div class="cropmarks"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
           </div>
           <div class="plate-cap"><b id="plate-num">PL.&nbsp;01</b><span id="plate-cap-text">Light &amp; Form · Illustration + Photo · 2021</span></div>
           <span class="note note-plate">crop marks: every image on this sheet is a decision, not a decoration</span>
@@ -1341,18 +1333,14 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
        <div class="about-left">
           <div class="about-label">About me</div>
           <h2 class="about-name">Jack<br><em>Mao</em></h2>
-          <p class="about-bio fade-up">I am a Toronto-based designer and illustrator working across editorial design, campaign concepts, illustration, and visual storytelling — and when a project calls for it, I build the interactive side myself, designing and shipping it as working software. My Creative Industries background at Toronto Metropolitan University gives me a mix of design craft, business context, and cultural strategy.</p>
-          <p class="about-bio fade-up" style="margin-top:0.9rem;transition-delay:0.12s">I am open to designer, visual designer, and product design roles in studio or in-house teams — especially where concept, image-making, and the ability to take an idea all the way to a working interface all matter.</p>
+          <p class="about-bio fade-up">I am a Toronto-based designer and illustrator working across editorial design, campaign concepts, illustration, visual storytelling, and interactive products. I carry ideas from image-making through working software, supported by a Creative Industries background at Toronto Metropolitan University that combines design craft, business context, and cultural strategy. I am open to designer, visual designer, and product design roles in studio or in-house teams.</p>
           <div class="skills-grid">
             <div class="skill-pill fade-up" data-delay="1">Illustration</div>
             <div class="skill-pill fade-up" data-delay="2">Editorial Design</div>
             <div class="skill-pill fade-up" data-delay="3">Branding</div>
-            <div class="skill-pill fade-up" data-delay="4">Game Design</div>
-            <div class="skill-pill fade-up" data-delay="5">Advertising</div>
-            <div class="skill-pill fade-up" data-delay="6">Social Media</div>
-            <div class="skill-pill fade-up" data-delay="7">UI/UX</div>
-            <div class="skill-pill fade-up" data-delay="8">Adobe Creative Suite</div>
-            <div class="skill-pill fade-up" data-delay="9">Figma</div>
+            <div class="skill-pill fade-up" data-delay="4">Advertising</div>
+            <div class="skill-pill fade-up" data-delay="5">Social Media</div>
+            <div class="skill-pill fade-up" data-delay="6">UI/UX</div>
           </div>
           <div class="about-links">
             <a class="about-link primary" href="#contact">Get in touch</a>
@@ -1372,7 +1360,8 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
       </div>
       <div class="inspirations-section">
         <div class="inspirations-label">Influences worth a click</div>
-        <div class="inspirations-grid">
+        <button class="inspirations-toggle" id="inspirations-toggle" type="button" aria-expanded="false" aria-controls="inspirations-grid">View all influences</button>
+        <div class="inspirations-grid" id="inspirations-grid">
           <a class="inspiration-card fade-up" data-delay="1" href="https://sophii.co/" target="_blank" rel="noopener noreferrer">
             <div class="inspiration-header">
               <div class="inspiration-name">Sophie Zhao</div>
@@ -1573,6 +1562,14 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
 
   <div id="mobile-utility" aria-label="Portfolio actions">
     <button id="mobile-utility-trigger" type="button" aria-label="Open portfolio actions" aria-expanded="false" aria-controls="mobile-utility-menu" title="Portfolio actions">
+      <svg class="utility-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <path id="utility-ring-path" d="M60 18a42 42 0 1 1-.1 0"/>
+        </defs>
+        <text class="utility-ring-text">
+          <textPath href="#utility-ring-path" startOffset="50%">Share + Ask + Share + Ask +</textPath>
+        </text>
+      </svg>
       <svg class="mobile-utility-icon" viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="6" cy="12" r="1.6" fill="currentColor"/>
         <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
@@ -1648,6 +1645,24 @@ body.scroll-calm #askbot-launch[aria-expanded="true"] { opacity:1; }
       layoutMeasure();
       window.addEventListener('resize', layoutMeasure);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutMeasure);
+    })();
+
+    // Mobile influences stay compact until the reader asks to see the full list.
+    (function() {
+      const section = document.querySelector('.inspirations-section');
+      const toggle = document.getElementById('inspirations-toggle');
+      if (!section || !toggle) return;
+
+      const setOpen = open => {
+        section.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.textContent = open ? 'Hide influences' : 'View all influences';
+        if (open) {
+          section.querySelectorAll('.inspiration-card').forEach(card => card.classList.add('is-visible'));
+        }
+      };
+
+      toggle.addEventListener('click', () => setOpen(!section.classList.contains('is-open')));
     })();
 
     // ── Live Toronto clock (hero folio) ──
