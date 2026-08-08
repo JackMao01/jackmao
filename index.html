@@ -691,7 +691,8 @@ body.intent .row-desc { display: none; }
       }
       .inspirations-reveal-hint {
         display: flex; align-items: center; justify-content: space-between;
-        position: absolute; z-index: 4; left: 0; right: 0; bottom: 0.1rem;
+        position: relative; z-index: 4; margin-top: 0.65rem; padding-top: 0.6rem;
+        border-top: 1px solid rgba(255,85,51,0.18);
         font: 500 0.6rem 'DM Mono', monospace; letter-spacing: 0.13em;
         text-transform: uppercase; color: var(--coral); pointer-events: none;
       }
@@ -989,8 +990,8 @@ body.intent .row-desc { display: none; }
     animation-play-state: running;
   }
   .utility-ring-text {
-    font-size: 9px;
-    letter-spacing: 1.8px;
+    font-size: 8.6px;
+    letter-spacing: 1.15px;
     transition: fill .3s;
   }
   .mobile-utility-menu {
@@ -1483,7 +1484,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </div>
         </a>
           </div>
-        <span class="inspirations-reveal-hint" aria-hidden="true">Reveal all influences <span>↓</span></span>
+        <span class="inspirations-reveal-hint" aria-hidden="true">Tap to explore the full list <span>↓</span></span>
         <button class="inspirations-reveal-hit" id="inspirations-reveal" type="button" aria-expanded="false" aria-controls="inspirations-grid" aria-label="Reveal all influences"></button>
       </div>
       <span class="note note-about" style="right:5%; top:3.2rem;">the page flips to daylight here — work reads in the dark, people read in the light</span>
@@ -1589,7 +1590,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           <path id="utility-ring-path" d="M60 18a42 42 0 1 1-.1 0"/>
         </defs>
         <text class="utility-ring-text">
-          <textPath href="#utility-ring-path" startOffset="50%">Share + Ask + Share + Ask +</textPath>
+          <textPath href="#utility-ring-path" startOffset="0%" textLength="260" lengthAdjust="spacing" text-anchor="start">Share &#183; Ask &#183; Share &#183; Ask &#183;</textPath>
         </text>
       </svg>
       <svg class="mobile-utility-icon" viewBox="0 0 24 24" aria-hidden="true">
