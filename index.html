@@ -1012,17 +1012,14 @@ body.intent .row-desc { display: none; }
     animation: btt-spin 10s linear infinite;
     animation-play-state: paused;
   }
-  #mobile-utility.visible .utility-ring {
-    animation-play-state: running;
-  }
   #mobile-utility-trigger:hover .utility-ring,
   #mobile-utility-trigger:active .utility-ring,
   #mobile-utility-trigger[aria-expanded="true"] .utility-ring {
     animation-play-state: running;
   }
   .utility-ring-text {
-    font-size: 8.4px;
-    letter-spacing: .85px;
+    font-size: 8.2px;
+    letter-spacing: .45px;
     transition: fill .3s;
   }
   .mobile-utility-menu {
@@ -1632,7 +1629,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           <path id="utility-ring-path" d="M60 18a42 42 0 1 1-.1 0"/>
         </defs>
         <text class="utility-ring-text">
-          <textPath href="#utility-ring-path" startOffset="50%" textLength="238" lengthAdjust="spacing" text-anchor="middle">SHARE &#183; ASK &#183; SHARE &#183; ASK</textPath>
+          <textPath href="#utility-ring-path" startOffset="7%" textLength="228" lengthAdjust="spacingAndGlyphs" text-anchor="start">SHARE &#183; ASK &#183; SHARE &#183; ASK</textPath>
         </text>
       </svg>
       <svg class="mobile-utility-icon" viewBox="0 0 24 24" aria-hidden="true">
