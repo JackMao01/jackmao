@@ -9,15 +9,15 @@
 <meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/golden-route.html" />
 <meta property="og:title" content="The Golden Route — Korea in the Grand Manner" />
 <meta property="og:description" content="An invitation-led journey through Korea, presented with grand-hotel restraint and a carefully paced itinerary." />
-<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design &amp; Illustration, Toronto, 2026." />
+<meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
 <meta property="og:site_name" content="Jack Mao — Portfolio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="The Golden Route — Korea in the Grand Manner" />
 <meta name="twitter:description" content="An invitation-led journey through Korea with a carefully paced itinerary." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <title>THE GOLDEN ROUTE — An Invitation to Korea, in the Grand Manner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1029,7 +1029,7 @@
       <h2>You Are <span class="gold">Cordially</span><br/>Invited</h2>
       <p class="lead">Seasons are intimate and limited. Leave your particulars, and our concierge will reply by hand with an embossed itinerary.</p>
 
-      <form class="inv-form" onsubmit="event.preventDefault(); this.querySelector('.inv-submit').textContent='Your Request Has Been Received';">
+      <form class="inv-form" onsubmit="event.preventDefault(); this.querySelector('.inv-submit').textContent='Prototype Complete — No Request Sent';">
         <div class="field">
           <label for="i-name">Your Name</label>
           <input type="text" id="i-name" placeholder="As it appears on your passport" required />
@@ -1051,7 +1051,7 @@
         </div>
         <button type="submit" class="inv-submit">Request Your Passage</button>
       </form>
-      <p class="inv-foot">By invitation &middot; Replies issued within seven days &middot; From Seoul</p>
+      <p class="inv-foot">Interactive concept only &middot; No request is sent &middot; Designed as a Wayfarer prototype</p>
     </div>
   </div>
 </section>
@@ -1070,9 +1070,9 @@
     <div class="foot-col">
       <h4>The Society</h4>
       <ul>
-        <li><a href="#">Our Philosophy</a></li>
-        <li><a href="#">Past Seasons</a></li>
-        <li><a href="#">The Concierge</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Our Philosophy</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Past Seasons</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">The Concierge</a></li>
       </ul>
     </div>
     <div class="foot-col">
@@ -1088,7 +1088,7 @@
       <ul>
         <li><span>Jung-gu, Seoul</span></li>
         <li><span>Daehan Minguk · 대한민국</span></li>
-        <li><a href="#">concierge@</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">concierge@</a></li>
       </ul>
     </div>
   </div>
@@ -1121,7 +1121,7 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
-<script src="wayfarer-shared.js"></script>
+<script src="wayfarer-shared.js?v=20260809-3"></script>
 <script>if(window.Wayfarer)Wayfarer.mountChrome("golden-route");</script>
 </body>
 </html>

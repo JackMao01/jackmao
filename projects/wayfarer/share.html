@@ -9,15 +9,15 @@
 <meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/share.html" />
 <meta property="og:title" content="Share your guide — Wayfarer" />
 <meta property="og:description" content="Draft a Wayfarer guide, preview it as a finished travel card, and join the contributor waitlist." />
-<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design &amp; Illustration, Toronto, 2026." />
+<meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
 <meta property="og:site_name" content="Jack Mao — Portfolio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Share your guide — Wayfarer" />
 <meta name="twitter:description" content="Draft a Wayfarer guide, preview it, and join the contributor waitlist." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <title>Share your guide — Wayfarer</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -243,8 +243,8 @@
         <div class="step" data-step="done">
           <div class="done">
             <div class="check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2aa89f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <h2>Your draft is saved.</h2>
-            <p>You're on the contributor waitlist. We'll be in touch when Wayfarer opens guide publishing — and your draft will be waiting for you.</p>
+            <h2>Your draft is saved locally.</h2>
+            <p>Prototype complete. No submission was sent and no waitlist entry was created. Your draft remains in this browser so you can continue exploring the concept.</p>
             <div class="nav-btns" style="justify-content:center;">
               <a class="btn btn-primary" href="saved.html">View your collection</a>
           <button type="button" class="btn btn-ghost" id="startAnother">Draft another</button>
@@ -253,7 +253,7 @@
         </div>
 
         <div class="nav-btns" id="navBtns">
-      <button type="button" class="btn btn-ghost" id="backBtn" style="visibility:hidden;">← Back</button>
+      <button type="button" class="btn btn-ghost" id="backBtn" aria-label="Return to the previous step" style="visibility:hidden;">← Back</button>
       <button type="button" class="btn btn-primary" id="nextBtn">Continue →</button>
         </div>
       </div>
@@ -288,7 +288,7 @@
 
   <footer>© 2026 Wayfarer · A place to get lost reading about places.</footer>
 
-<script src="wayfarer-shared.js"></script>
+<script src="wayfarer-shared.js?v=20260809-3"></script>
 <script>
   "use strict";
   var W = window.Wayfarer;
@@ -324,11 +324,14 @@
   SWATCHES.forEach(function(s, i){
     var d = document.createElement("button");
     d.className = "swatch" + (i===0?" on":""); d.type = "button";
+    d.setAttribute("aria-label", "Use colour theme " + (i + 1));
+    d.setAttribute("aria-pressed", i === 0 ? "true" : "false");
     d.style.background = "linear-gradient(160deg," + s.sky[0] + "," + s.sky[1] + ")";
     d.onclick = function(){
       draft.art = s;
-      Array.prototype.forEach.call(swWrap.children, function(c){ c.classList.remove("on"); });
+      Array.prototype.forEach.call(swWrap.children, function(c){ c.classList.remove("on"); c.setAttribute("aria-pressed", "false"); });
       d.classList.add("on"); updatePreview();
+      d.setAttribute("aria-pressed", "true");
     };
     swWrap.appendChild(d);
   });
@@ -421,7 +424,7 @@
     document.querySelectorAll("input, textarea").forEach(function(el){ el.value = ""; });
     document.querySelectorAll(".count span").forEach(function(c){ c.textContent = "0"; });
     Array.prototype.forEach.call(moodWrap.children, function(c){ c.classList.remove("on"); });
-    Array.prototype.forEach.call(swWrap.children, function(c, i){ c.classList.toggle("on", i===0); });
+    Array.prototype.forEach.call(swWrap.children, function(c, i){ c.classList.toggle("on", i===0); c.setAttribute("aria-pressed", i===0 ? "true" : "false"); });
     document.getElementById("navBtns").style.display = "flex";
     step = 0; showStep(0); updatePreview();
   });

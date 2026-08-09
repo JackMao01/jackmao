@@ -9,15 +9,15 @@
 <meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/shizuka.html" />
 <meta property="og:title" content="Shizuka — An Invitation to Spend a Season in Japan" />
 <meta property="og:description" content="An invitation to spend a season in Japan through quiet houses, thoughtful hospitality, and slow travel." />
-<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design &amp; Illustration, Toronto, 2026." />
+<meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
 <meta property="og:site_name" content="Jack Mao — Portfolio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Shizuka — An Invitation to Spend a Season in Japan" />
 <meta name="twitter:description" content="An invitation to spend a season in Japan through quiet houses and slow travel." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <title>Shizuka — An Invitation to Spend a Season in Japan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1535,7 +1535,7 @@
       </p>
     </div>
 
-    <form class="invite-form reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-bow span').textContent='Your Letter Has Been Received'; this.querySelector('.btn-bow').style.background='var(--sumi)';">
+    <form class="invite-form reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-bow span').textContent='Prototype Complete — No Letter Sent'; this.querySelector('.btn-bow').style.background='var(--sumi)';">
       <div class="field">
         <label for="i-name">Your Name</label>
         <input type="text" id="i-name" placeholder="As it appears on a passport" required />
@@ -1575,7 +1575,7 @@
     </form>
 
     <p class="invitation-foot reveal">
-      All correspondence answered by hand <span class="seal-dot"></span> Within seven days <span class="seal-dot"></span> From Kyoto
+      Interactive concept only <span class="seal-dot"></span> No correspondence is sent <span class="seal-dot"></span> Designed as a Wayfarer prototype
     </p>
   </div>
 </section>
@@ -1593,19 +1593,19 @@
     <div class="footer-col">
       <h4>The House</h4>
       <ul>
-        <li><a href="#">Our Philosophy</a></li>
-        <li><a href="#">The Founders</a></li>
-        <li><a href="#">Houses by Region</a></li>
-        <li><a href="#">Press &amp; Letters</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Our Philosophy</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">The Founders</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Houses by Region</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Press &amp; Letters</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Seasons</h4>
       <ul>
-        <li><a href="#">Spring · 春</a></li>
-        <li><a href="#">Summer · 夏</a></li>
-        <li><a href="#">Autumn · 秋</a></li>
-        <li><a href="#">Winter · 冬</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Spring · 春</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Summer · 夏</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Autumn · 秋</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">Winter · 冬</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1614,7 +1614,7 @@
         <li><span>Higashiyama-ku</span></li>
         <li><span>Kyoto 605</span></li>
         <li><span>Nihon · 日本</span></li>
-        <li><a href="#">letters@</a></li>
+        <li><a aria-disabled="true" tabindex="-1" title="Preview only">letters@</a></li>
       </ul>
     </div>
   </div>
@@ -1637,7 +1637,7 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
-<script src="wayfarer-shared.js"></script>
+<script src="wayfarer-shared.js?v=20260809-3"></script>
 <script>if(window.Wayfarer)Wayfarer.mountChrome("shizuka");</script>
 </body>
 </html>

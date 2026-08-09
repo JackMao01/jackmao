@@ -11,15 +11,15 @@
 <meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/"/>
 <meta property="og:title" content="Wayfarer — Get lost reading beautiful guides to places"/>
 <meta property="og:description" content="Long-form, beautifully typeset travel guides to real places."/>
-<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png"/>
+<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design & Illustration, Toronto, 2026."/>
+<meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey."/>
 <meta property="og:site_name" content="Jack Mao — Portfolio"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Wayfarer — Get lost reading beautiful guides to places"/>
 <meta name="twitter:description" content="Long-form, beautifully typeset travel guides to real places."/>
-<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png"/>
+<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -145,7 +145,7 @@
     display: flex; flex-direction: column; align-items: center; padding-left: 24px; padding-right: 24px; }
   .s1-h1 { font-family: var(--display); font-weight: 800; font-size: 84px; line-height: 1.0; letter-spacing: -3px;
     color: var(--ink); max-width: 1100px; }
-  .word { display: inline-block; margin-right: 0.25em; opacity: 0; }
+  .word { display: inline-block; opacity: 0; }
   .s1-para { font-weight: 400; font-size: 16px; color: rgba(0,0,0,0.55); line-height: 1.6;
     max-width: 480px; margin-top: 20px; opacity: 0; }
   .s1-cta { display: flex; gap: 16px; margin-top: 24px; padding-bottom: 0; opacity: 0; justify-content: center; }
@@ -679,7 +679,7 @@
       </a>
     </div>
   </nav>
-  <script src="wayfarer-shared.js"></script>
+  <script src="wayfarer-shared.js?v=20260809-3"></script>
   <script>
     (function(){
       function upd(){
@@ -705,11 +705,11 @@
   <!-- Section 1 -->
   <section id="s1">
     <main class="s1-main">
-      <h1 class="s1-h1" id="s1h1"></h1>
+      <h1 class="s1-h1" id="s1h1" aria-label="A place to discover your next journey.">A place to discover<br />your next journey.</h1>
       <p class="s1-para" id="s1para">People who know a place write beautiful guides to it — and you get lost reading them long before you ever pack a bag.</p>
       <div class="s1-cta" id="s1cta">
         <a class="btn-primary" href="#library">Start reading</a>
-        <a class="btn-secondary" href="share.html">Join the waitlist</a>
+        <a class="btn-secondary" href="share.html">Draft a guide</a>
       </div>
 
       <!-- Story card: tilts toward the cursor, auto-cycles destinations -->
@@ -1157,10 +1157,10 @@
           </div>
           <div class="sf-col">
             <h4>Wayfarer</h4>
-            <a href="#">About</a>
-            <a href="#">Contributors</a>
-            <a href="#">Journal</a>
-            <a href="#">Contact</a>
+            <a aria-disabled="true" tabindex="-1" title="Preview only">About</a>
+            <a href="guides.html">Contributors</a>
+            <a href="guides.html">Journal</a>
+            <a href="/#contact">Contact</a>
           </div>
         </div>
       </div>
@@ -1170,6 +1170,7 @@
 
 <script>
 "use strict";
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ============================================================= *
  *  DESTINATION ART — original inline SVG (swap for photography)  *
@@ -1235,8 +1236,9 @@ function bannerSVG(b, idx) {
  * ============================================================= */
 function buildWords(el, lines, perWordDelay, base) {
   let gi = 0;
+  el.replaceChildren();
   lines.forEach((line, li) => {
-    line.words.forEach((w) => {
+    line.words.forEach((w, wi) => {
       const span = document.createElement("span");
       span.className = "word";
       span.textContent = w;
@@ -1244,13 +1246,24 @@ function buildWords(el, lines, perWordDelay, base) {
       span.style.animation = "none";
       span.dataset.delay = (base + gi * perWordDelay).toFixed(3);
       el.appendChild(span);
+      if (wi < line.words.length - 1) el.appendChild(document.createTextNode(" "));
       gi++;
     });
-    if (li < lines.length - 1) el.appendChild(document.createElement("br"));
+    if (li < lines.length - 1) {
+      el.appendChild(document.createElement("br"));
+      el.appendChild(document.createTextNode(" "));
+    }
   });
 }
 
 function animateWords(el) {
+  if (REDUCED_MOTION) {
+    el.querySelectorAll(".word").forEach((span) => {
+      span.style.opacity = "1";
+      span.style.transform = "none";
+    });
+    return;
+  }
   el.querySelectorAll(".word").forEach((span) => {
     span.animate(
       [{ opacity: 0, transform: "translateY(28px)" }, { opacity: 1, transform: "translateY(0)" }],
@@ -1294,14 +1307,16 @@ function renderStory(idx) {
   const place = storyCard.querySelector(".sc-place");
   const link = storyCard.querySelector(".sc-link");
   // crossfade the art + headline
-  art.style.opacity = "0"; title.style.opacity = "0"; place.style.opacity = "0";
+  if (!REDUCED_MOTION) {
+    art.style.opacity = "0"; title.style.opacity = "0"; place.style.opacity = "0";
+  }
   setTimeout(() => {
     art.innerHTML = cardSVG(d, 0);
     title.textContent = d.name;
     place.textContent = d.tagline || "A guide worth getting lost in";
     if (link && d.link) link.href = d.link;
     art.style.opacity = "1"; title.style.opacity = "1"; place.style.opacity = "1";
-  }, 260);
+  }, REDUCED_MOTION ? 0 : 260);
   // progress bars: restart the fill animation by reflow toggle
   const bars = storyCard.querySelectorAll(".sc-bar-fill");
   bars.forEach((b, bi) => {
@@ -1311,7 +1326,7 @@ function renderStory(idx) {
   });
 }
 function storyNext() { storyIdx++; renderStory(storyIdx); }
-function startStoryTimer() { if (storyTimer) clearInterval(storyTimer); storyTimer = setInterval(storyNext, 3600); }
+function startStoryTimer() { if (storyTimer) clearInterval(storyTimer); if (!REDUCED_MOTION) storyTimer = setInterval(storyNext, 3600); }
 
 // Mouse tilt: normalize cursor to [-1,1] around viewport center, ease toward it.
 let tiltTX = 0, tiltTY = 0, tiltX = 0, tiltY = 0, tiltRAF = null;
@@ -1336,7 +1351,7 @@ function initStoryCard() {
   if (!storyCard) return;
   renderStory(0);
   startStoryTimer();
-  window.addEventListener("mousemove", onTiltMove, { passive: true });
+  if (!REDUCED_MOTION) window.addEventListener("mousemove", onTiltMove, { passive: true });
   // pause cycling on hover so a reader can dwell
   storyCard.addEventListener("mouseenter", () => { if (storyTimer) clearInterval(storyTimer); });
   storyCard.addEventListener("mouseleave", startStoryTimer);
@@ -1372,7 +1387,7 @@ function initQA() {
 
   function paint(i) {
     const item = QA[((i % QA.length) + QA.length) % QA.length];
-    body.classList.add("swap");      // blur + fade out
+    if (!REDUCED_MOTION) body.classList.add("swap");
     setTimeout(() => {
       qEl.textContent = item.q;
       aEl.textContent = item.a;
@@ -1380,10 +1395,10 @@ function initQA() {
       avEl.textContent = item.avatar;
       avEl.style.background = item.tint;
       body.classList.remove("swap"); // blur + fade back in
-    }, 420);
+    }, REDUCED_MOTION ? 0 : 420);
   }
   function next() { idx++; paint(idx); }
-  function start() { if (timer) clearInterval(timer); timer = setInterval(next, 4200); }
+  function start() { if (timer) clearInterval(timer); if (!REDUCED_MOTION) timer = setInterval(next, 4200); }
 
   paint(0);
   start();
@@ -1396,6 +1411,12 @@ function initQA() {
  * ============================================================= */
 function fadeUp(el, delaySec, opts) {
   opts = opts || {};
+  if (REDUCED_MOTION) {
+    el.style.opacity = "1";
+    el.style.transform = "none";
+    el.style.filter = "none";
+    return;
+  }
   const from = { opacity: 0, transform: "translateY(" + (opts.y || 20) + "px)" };
   const to = { opacity: 1, transform: "translateY(0)" };
   if (opts.blur) { from.filter = "blur(" + opts.blur + "px)"; to.filter = "blur(0px)"; }
@@ -1418,6 +1439,8 @@ const dotsWrap = document.getElementById("bannerDots");
 const dotEls = [];
 BANNERS.forEach((_, i) => {
   const d = document.createElement("button");
+  d.type = "button";
+  d.setAttribute("aria-label", "Show destination slide " + (i + 1));
   d.addEventListener("click", () => setSlide(i));
   dotsWrap.appendChild(d);
   dotEls.push(d);
@@ -1425,29 +1448,37 @@ BANNERS.forEach((_, i) => {
 let activeSlide = 0, slideTimer = null;
 function renderSlides() {
   slideEls.forEach((s, i) => {
-    s.animate([{ opacity: i === activeSlide ? 1 : 0, transform: i === activeSlide ? "scale(1)" : "scale(1.04)" }],
-      { duration: 500, easing: "ease-in-out", fill: "forwards" });
+    if (REDUCED_MOTION) {
+      s.style.opacity = i === activeSlide ? "1" : "0";
+      s.style.transform = "none";
+    } else {
+      s.animate([{ opacity: i === activeSlide ? 1 : 0, transform: i === activeSlide ? "scale(1)" : "scale(1.04)" }],
+        { duration: 500, easing: "ease-in-out", fill: "forwards" });
+    }
     dotEls[i].className = i === activeSlide ? "active" : "";
+    dotEls[i].setAttribute("aria-current", i === activeSlide ? "true" : "false");
   });
 }
 function setSlide(i) { activeSlide = (i + BANNERS.length) % BANNERS.length; renderSlides(); restartTimer(); }
-function restartTimer() { if (slideTimer) clearInterval(slideTimer); slideTimer = setInterval(() => setSlide(activeSlide + 1), 3000); }
+function restartTimer() { if (slideTimer) clearInterval(slideTimer); if (!REDUCED_MOTION) slideTimer = setInterval(() => setSlide(activeSlide + 1), 3000); }
 document.getElementById("bannerPrev").addEventListener("click", () => setSlide(activeSlide - 1));
 document.getElementById("bannerNext").addEventListener("click", () => setSlide(activeSlide + 1));
 
 /* pulsing rings */
-document.querySelector(".ring.r1").animate(
-  [{ transform: "scale(1)", opacity: 0.8 }, { transform: "scale(1.5)", opacity: 0 }],
-  { duration: 2000, iterations: Infinity, easing: "ease-out" });
-document.querySelector(".ring.r2").animate(
-  [{ transform: "scale(1)", opacity: 0.8 }, { transform: "scale(1.5)", opacity: 0 }],
-  { duration: 2000, iterations: Infinity, easing: "ease-out", delay: 500 });
+if (!REDUCED_MOTION) {
+  document.querySelector(".ring.r1").animate(
+    [{ transform: "scale(1)", opacity: 0.8 }, { transform: "scale(1.5)", opacity: 0 }],
+    { duration: 2000, iterations: Infinity, easing: "ease-out" });
+  document.querySelector(".ring.r2").animate(
+    [{ transform: "scale(1)", opacity: 0.8 }, { transform: "scale(1.5)", opacity: 0 }],
+    { duration: 2000, iterations: Infinity, easing: "ease-out", delay: 500 });
+}
 
 /* ============================================================= *
  *  SCROLL INDICATOR BUTTONS                                      *
  * ============================================================= */
-document.getElementById("scrollUp").addEventListener("click", () => window.scrollBy({ top: -window.innerHeight * 0.9, behavior: "smooth" }));
-document.getElementById("scrollDown").addEventListener("click", () => window.scrollBy({ top: window.innerHeight * 0.9, behavior: "smooth" }));
+document.getElementById("scrollUp").addEventListener("click", () => window.scrollBy({ top: -window.innerHeight * 0.9, behavior: REDUCED_MOTION ? "auto" : "smooth" }));
+document.getElementById("scrollDown").addEventListener("click", () => window.scrollBy({ top: window.innerHeight * 0.9, behavior: REDUCED_MOTION ? "auto" : "smooth" }));
 
 /* ============================================================= *
  *  INTERSECTION-DRIVEN SECTION REVEALS                           *
@@ -1536,6 +1567,7 @@ if (document.readyState === "complete" || document.readyState === "interactive")
     const slides = Array.from(rot.querySelectorAll(".fn-slide"));
     let i = 0;
     slides[0].classList.add("show");
+    if (REDUCED_MOTION) return;
     setInterval(() => {
       const cur = slides[i];
       cur.classList.remove("show");
@@ -1556,6 +1588,13 @@ if (document.readyState === "complete" || document.readyState === "interactive")
     const dot = document.getElementById("seasonDot");
     const big = document.getElementById("seasonBig");
     if (!rect) return;
+    if (REDUCED_MOTION) {
+      rect.setAttribute("width", "220");
+      if (conn) conn.style.opacity = "1";
+      if (dot) dot.style.opacity = "1";
+      if (big) big.textContent = "Oct";
+      return;
+    }
     // wipe reveal: width 0 -> 220 over 1.4s, delay 0.3s
     const start = performance.now() + 300;
     const dur = 1400;
@@ -1599,7 +1638,7 @@ if (document.readyState === "complete" || document.readyState === "interactive")
 
     // Pop nodes in by their delay.
     nodes.forEach((n) => {
-      const d = parseFloat(n.dataset.delay || "0") * 1000;
+      const d = REDUCED_MOTION ? 0 : parseFloat(n.dataset.delay || "0") * 1000;
       setTimeout(() => n.classList.add("in"), d);
     });
 

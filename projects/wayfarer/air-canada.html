@@ -9,15 +9,15 @@
 <meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/air-canada.html" />
 <meta property="og:title" content="Air Canada — Connecting Canada to the World" />
 <meta property="og:description" content="A concept travel experience connecting cabins, destinations, Aeroplan, and flight search in a polished editorial interface." />
-<meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design &amp; Illustration, Toronto, 2026." />
+<meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
 <meta property="og:site_name" content="Jack Mao — Portfolio" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Air Canada — Connecting Canada to the World" />
 <meta name="twitter:description" content="A concept travel experience connecting cabins, destinations, Aeroplan, and flight search." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png" />
+<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
 <title>Air Canada — Connecting Canada to the World</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -201,6 +201,11 @@
 
   .disclaimer { background: var(--paper); border-top: 1px solid var(--grid); color: var(--muted); text-align: center;
     font-size: 11px; letter-spacing: 0.03em; padding: 14px 24px; line-height: 1.5; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    .rv { opacity: 1 !important; transform: none !important; filter: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -339,15 +344,15 @@ Portfolio</a>
           <div class="name">Air<b>&nbsp;Canada</b></div>
           <p>Canada's flag carrier, connecting the country to the world since 1937.</p>
         </div>
-        <div class="foot-col"><h4>Travel</h4><ul><li><a href="#">Book a flight</a></li><li><a href="#">Manage booking</a></li><li><a href="#">Flight status</a></li><li><a href="#">Check in</a></li></ul></div>
-        <div class="foot-col"><h4>Aeroplan</h4><ul><li><a href="#">Join</a></li><li><a href="#">Your account</a></li><li><a href="#">Partners</a></li><li><a href="#">Status tiers</a></li></ul></div>
-        <div class="foot-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Newsroom</a></li></ul></div>
+    <div class="foot-col"><h4>Travel</h4><ul><li><a aria-disabled="true" tabindex="-1" title="Preview only">Book a flight</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Manage booking</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Flight status</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Check in</a></li></ul></div>
+    <div class="foot-col"><h4>Aeroplan</h4><ul><li><a aria-disabled="true" tabindex="-1" title="Preview only">Join</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Your account</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Partners</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Status tiers</a></li></ul></div>
+    <div class="foot-col"><h4>Company</h4><ul><li><a aria-disabled="true" tabindex="-1" title="Preview only">About</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Careers</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Sustainability</a></li><li><a aria-disabled="true" tabindex="-1" title="Preview only">Newsroom</a></li></ul></div>
       </div>
       <div class="foot-base"><span>© 2026 · Concept Demo</span><span>Toronto · Montréal · Vancouver</span></div>
     </div>
   </footer>
 
-  <div class="disclaimer">Design concept created for the Wayfare demo. Not affiliated with, endorsed by, or an official property of Air Canada. The mark shown is an original illustration, not the Air Canada trademark.</div>
+  <div class="disclaimer">Design concept created for the Wayfarer demo. Not affiliated with, endorsed by, or an official property of Air Canada. The mark shown is an original illustration, not the Air Canada trademark.</div>
 
 <script>
   const io = new IntersectionObserver(function(entries){
