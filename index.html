@@ -307,13 +307,14 @@
     .hero-scroll-cue {
       position: absolute; left: clamp(1.2rem, 5vw, 4.5rem); bottom: 1.45rem; z-index: 3;
       display: inline-flex; align-items: center; gap: 0.7rem;
-      color: rgba(255,255,255,0.72); text-decoration: none;
+      color: rgba(255,255,255,0.72);
       font: 500 0.58rem/1 'DM Mono', monospace; letter-spacing: 0.18em;
-      text-transform: uppercase;
+      text-transform: uppercase; user-select: none;
     }
-    .hero-scroll-cue svg { width: 15px; height: 15px; color: var(--lime); }
-    .hero-scroll-cue:hover, .hero-scroll-cue:focus-visible { color: var(--cream); }
-    .hero-scroll-cue:hover svg { animation: hero-scroll-nudge 0.75s var(--ease-out) infinite; }
+    .hero-scroll-cue svg {
+      width: 15px; height: 15px; color: var(--lime);
+      animation: hero-scroll-nudge 1.6s ease-in-out infinite;
+    }
     @media (min-width: 769px) {
       .hero-scroll-cue {
         left: clamp(1.2rem, 5vw, 4.5rem); right: auto;
@@ -734,6 +735,7 @@ body.intent .row-desc { display: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .marquee-inner, .gradient-divider, .dt-dot, .avail-pill::before { animation: none !important; }
+      .hero-scroll-cue svg { animation: none !important; transform: none; }
       .fade-up, .word-reveal .word, .plate-img, .note { transition: none; }
       .fade-up, .word-reveal .word { opacity: 1; transform: none; }
     }
@@ -1210,13 +1212,13 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       </div>
 
       <span class="note n-r note-hero-tag">lime is rationed — it only ever marks signal: links, actions, annotations</span>
-      <a class="hero-scroll-cue" href="#work" aria-label="Scroll to explore selected work">
+      <div class="hero-scroll-cue">
         <span>Scroll to Explore</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           <polyline points="6,13 12,19 18,13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </a>
+      </div>
     </section>
 
     <!-- ============ MARQUEE ============ -->
