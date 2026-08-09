@@ -6,6 +6,17 @@
 (function () {
   "use strict";
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
+    document.documentElement.classList.add("wfx-reduced-motion");
+    const motionStyle = document.createElement("style");
+    motionStyle.textContent =
+      "html.wfx-reduced-motion{scroll-behavior:auto !important;}" +
+      "html.wfx-reduced-motion *,html.wfx-reduced-motion *::before,html.wfx-reduced-motion *::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}" +
+      "html.wfx-reduced-motion .reveal,html.wfx-reduced-motion .rv,html.wfx-reduced-motion .word,html.wfx-reduced-motion .fcard{opacity:1 !important;transform:none !important;filter:none !important;}";
+    document.head.appendChild(motionStyle);
+  }
+
   /* ---- The guide catalog (the single source of truth) ------------------- */
   const GUIDES = [
     {
@@ -141,14 +152,17 @@
       + '</svg>';
   }
 
-  /* ---- Session store (saved guides + draft contributions) --------------- *
-   * Artifacts can't rely on localStorage, so we keep everything in a single
-   * JSON blob in window.name (survives same-tab navigation). One store now
-   * holds both the saved-guide ids and any in-progress contributor drafts. */
+  /* ---- Persistent store (saved guides + draft contributions) ------------ *
+   * Keep the prototype useful across tabs and return visits. The older
+   * window.name format remains as a migration and privacy-mode fallback. */
+  const STORE_KEY = "wayfarer-store-v1";
   let _store = { saved: [], drafts: [] };
   try {
-    if (window.name && window.name.indexOf("wf:") === 0) {
-      const raw = window.name.slice(3);
+    let raw = localStorage.getItem(STORE_KEY);
+    if (!raw && window.name && window.name.indexOf("wf:") === 0) {
+      raw = window.name.slice(3);
+    }
+    if (raw) {
       if (raw.charAt(0) === "{") {
         _store = JSON.parse(raw);
       } else {
@@ -161,8 +175,14 @@
   if (!_store.drafts) _store.drafts = [];
 
   function writeStore() {
-    try { window.name = "wf:" + JSON.stringify(_store); } catch (e) {}
+    const serialized = JSON.stringify(_store);
+    try {
+      localStorage.setItem(STORE_KEY, serialized);
+    } catch (e) {
+      try { window.name = "wf:" + serialized; } catch (fallbackError) {}
+    }
   }
+  writeStore();
 
   let saved = new Set(_store.saved);
   function persist() {
@@ -214,15 +234,17 @@
     var bar = document.createElement("div");
     bar.id = "wfx-bar";
     bar.setAttribute("style", [
-      "position:fixed", "top:0", "left:0", "right:0", "z-index:99999",
+      "position:fixed", "top:auto", "bottom:20px", "left:50%", "right:auto", "z-index:99999",
+      "width:min(680px,calc(100vw - 40px))",
       "display:grid", "grid-template-columns:1fr auto 1fr", "align-items:center",
       "gap:16px", "padding:10px 18px",
       "font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
       "background:rgba(20,20,20,0.72)", "backdrop-filter:blur(14px)",
       "-webkit-backdrop-filter:blur(14px)",
-      "border-bottom:1px solid rgba(255,255,255,0.12)",
-      "box-shadow:0 2px 20px rgba(0,0,0,0.18)",
-      "transform:translateY(-100%)", "transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)"
+      "border:1px solid rgba(255,255,255,0.16)", "border-radius:9999px",
+      "box-shadow:0 10px 34px rgba(0,0,0,0.28)",
+      "transform:translate(-50%,140%)",
+      "transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)"
     ].join(";"));
 
     var bookmark = function (filled) {
@@ -233,27 +255,37 @@
 
     bar.innerHTML =
       // LEFT: Back to Wayfarer
-      '<div style="justify-self:start;display:inline-flex;align-items:center;">' +
-        '<a href="index.html" style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:600;">' +
+      '<div class="wfx-left" style="justify-self:start;display:inline-flex;align-items:center;">' +
+        '<a href="index.html" aria-label="Back to Wayfarer" style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:600;">' +
           '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>' +
-          'Back to Wayfarer</a>' +
+          '<span class="wfx-label">Back to Wayfarer</span></a>' +
       '</div>' +
       // CENTER: save buttons
-      '<div style="justify-self:center;display:inline-flex;align-items:center;gap:8px;">' +
+      '<div class="wfx-center" style="justify-self:center;display:inline-flex;align-items:center;gap:8px;">' +
         '<a href="saved.html" id="wfx-saved" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:6px 11px;">Saved <span id="wfx-ct" style="background:#4ECDC4;color:#062a27;border-radius:9999px;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;">0</span></a>' +
         (cur ? '<button id="wfx-save" aria-label="Save this guide" style="display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:6px 13px;color:#fff;font-family:inherit;font-size:12px;font-weight:600;">' + bookmark(Saved.has(currentId)) + '<span id="wfx-save-tx">' + (Saved.has(currentId) ? "Saved" : "Save") + '</span></button>' : '') +
       '</div>' +
       // RIGHT: Next guide
-      '<div style="justify-self:end;display:inline-flex;align-items:center;">' +
-        (next ? '<a href="' + next.file + '" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:600;">Next guide<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>' : '') +
+      '<div class="wfx-right" style="justify-self:end;display:inline-flex;align-items:center;">' +
+        (next ? '<a href="' + next.file + '" aria-label="Next guide: ' + next.title + '" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:600;"><span class="wfx-label">Next guide</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>' : '') +
       '</div>';
 
     document.body.appendChild(bar);
-    // Nudge the page down so the fixed bar doesn't cover content.
+    document.body.classList.add("wfx-chrome-mounted");
+    // Keep the shared controls away from each guide's bespoke navigation.
     var padder = document.createElement("style");
-    padder.textContent = "body{padding-top:52px !important;}";
+    padder.textContent =
+      "body.wfx-chrome-mounted{padding-bottom:88px !important;}" +
+      "@media(max-width:640px){" +
+        "body.wfx-chrome-mounted{padding-bottom:calc(84px + env(safe-area-inset-bottom)) !important;}" +
+        "#wfx-bar{bottom:calc(12px + env(safe-area-inset-bottom)) !important;width:calc(100% - 24px) !important;grid-template-columns:40px minmax(0,1fr) 40px !important;gap:6px !important;padding:8px !important;}" +
+        "#wfx-bar .wfx-left,#wfx-bar .wfx-right{width:40px;height:40px;justify-content:center;}" +
+        "#wfx-bar .wfx-left a,#wfx-bar .wfx-right a{width:40px;height:40px;justify-content:center;}" +
+        "#wfx-bar .wfx-label,#wfx-bar #wfx-saved{display:none !important;}" +
+        "#wfx-bar #wfx-save{min-height:40px;padding:8px 15px !important;}" +
+      "}";
     document.head.appendChild(padder);
-    requestAnimationFrame(function () { bar.style.transform = "translateY(0)"; });
+    requestAnimationFrame(function () { bar.style.transform = "translate(-50%,0)"; });
 
     function syncCount() { var c = document.getElementById("wfx-ct"); if (c) c.textContent = Saved.count(); }
     syncCount();
@@ -279,6 +311,7 @@
     cardArt: cardArt,
     Saved: Saved,
     Drafts: Drafts,
+    prefersReducedMotion: prefersReducedMotion,
     mountChrome: mountChrome
   };
 })();
