@@ -1012,14 +1012,17 @@ body.intent .row-desc { display: none; }
     animation: btt-spin 10s linear infinite;
     animation-play-state: paused;
   }
+  #mobile-utility.visible .utility-ring {
+    animation-play-state: running;
+  }
   #mobile-utility-trigger:hover .utility-ring,
   #mobile-utility-trigger:active .utility-ring,
   #mobile-utility-trigger[aria-expanded="true"] .utility-ring {
     animation-play-state: running;
   }
   .utility-ring-text {
-    font-size: 8.6px;
-    letter-spacing: 1.15px;
+    font-size: 8.4px;
+    letter-spacing: .85px;
     transition: fill .3s;
   }
   .mobile-utility-menu {
@@ -1135,6 +1138,10 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   #qr-wrap,
   #askbot-launch { display: none !important; }
   #askbot-panel { right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .utility-ring { animation: none !important; }
 }
 
 
@@ -1625,7 +1632,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           <path id="utility-ring-path" d="M60 18a42 42 0 1 1-.1 0"/>
         </defs>
         <text class="utility-ring-text">
-          <textPath href="#utility-ring-path" startOffset="0%" textLength="260" lengthAdjust="spacing" text-anchor="start">Share &#183; Ask &#183; Share &#183; Ask &#183;</textPath>
+          <textPath href="#utility-ring-path" startOffset="50%" textLength="238" lengthAdjust="spacing" text-anchor="middle">SHARE &#183; ASK &#183; SHARE &#183; ASK</textPath>
         </text>
       </svg>
       <svg class="mobile-utility-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -2040,6 +2047,8 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       const utility = document.getElementById('mobile-utility');
       const trigger = document.getElementById('mobile-utility-trigger');
       if (!utility || !trigger) return;
+      if (trigger.dataset.utilityBound) return;
+      trigger.dataset.utilityBound = '1';
       const close = () => {
         utility.classList.remove('open');
         trigger.setAttribute('aria-expanded', 'false');
@@ -2224,11 +2233,28 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         document.documentElement.classList.add('controls-ready');
         var btt = document.getElementById('page-return-control');
         var share = document.getElementById('qr-trigger');
+        var utility = document.getElementById('mobile-utility');
+        var utilityTrigger = document.getElementById('mobile-utility-trigger');
+        var utilityEnterTimer = null;
         var lastY = 0, calmTimer = null;
         function onScroll(){
           var y = window.scrollY || document.documentElement.scrollTop || 0;
+          var showFloating = y > 400;
           if (btt){ btt.classList.toggle('visible', y > 400); }
           if (share){ share.classList.toggle('visible', y > 400); }
+          if (utility) {
+            var showUtility = window.matchMedia('(max-width: 768px)').matches && showFloating;
+            var utilityWasVisible = utility.classList.contains('visible');
+            utility.classList.toggle('visible', showUtility);
+            if (showUtility && !utilityWasVisible) {
+              utility.classList.add('is-entering');
+              if (utilityEnterTimer) clearTimeout(utilityEnterTimer);
+              utilityEnterTimer = setTimeout(function(){ utility.classList.remove('is-entering'); }, 420);
+            } else if (!showUtility) {
+              utility.classList.remove('is-entering', 'open');
+              if (utilityTrigger) utilityTrigger.setAttribute('aria-expanded', 'false');
+            }
+          }
           if (y > lastY + 2 && y > 400) {
             document.body.classList.add('scroll-calm');
           } else if (y < lastY - 2) {
@@ -2244,6 +2270,21 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         if (btt && !btt.dataset.bttBound){
           btt.dataset.bttBound = '1';
           btt.addEventListener('click', function(e){ e.preventDefault(); try { window.scrollTo({ top:0, behavior:'smooth' }); } catch(err){ window.scrollTo(0,0); } if(history.replaceState){ history.replaceState(null,'',location.pathname+location.search); } });
+        }
+        if (utility && utilityTrigger && !utilityTrigger.dataset.utilityBound) {
+          utilityTrigger.dataset.utilityBound = '1';
+          var closeUtility = function(){
+            utility.classList.remove('open');
+            utilityTrigger.setAttribute('aria-expanded', 'false');
+          };
+          utilityTrigger.addEventListener('click', function(event){
+            event.stopPropagation();
+            var isOpen = utility.classList.toggle('open');
+            utilityTrigger.setAttribute('aria-expanded', String(isOpen));
+          });
+          utility.addEventListener('click', function(event){ event.stopPropagation(); });
+          document.addEventListener('click', closeUtility);
+          document.addEventListener('keydown', function(event){ if (event.key === 'Escape') closeUtility(); });
         }
       } catch(e){ /* never throw */ }
     }
