@@ -6,18 +6,18 @@
   <meta name="theme-color" content="#fff3df">
   <meta name="description" content="A warm beginner Korean learning app with daily practice, read-aloud, shadowing, review, and progress tracking.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hellojackmao.com/projects/hana/">
-  <link rel="canonical" href="https://hellojackmao.com/projects/hana/"/>
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/hana/">
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/hana/"/>
   <meta property="og:title" content="Hana — Beginner Korean">
   <meta property="og:description" content="Learn Korean with warm daily practice, read-aloud, shadowing, and review.">
-  <meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png">
+  <meta property="og:image" content="https://www.hellojackmao.com/images/og-business-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design & Illustration, Toronto, 2026.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hana — Beginner Korean">
   <meta name="twitter:description" content="Learn Korean with warm daily practice, read-aloud, shadowing, and review.">
-  <meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png">
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-business-card.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='9' y='9' width='46' height='46' rx='14' fill='%23fff3df'/%3E%3Ctext x='32' y='32' text-anchor='middle' dominant-baseline='central' font-family='Apple SD Gothic Neo,Noto Sans KR,sans-serif' font-weight='800' font-size='33' fill='%2310a67a'%3E한%3C/text%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23fff3df'/%3E%3Ctext x='90' y='90' text-anchor='middle' dominant-baseline='central' font-family='Apple SD Gothic Neo,Noto Sans KR,sans-serif' font-weight='800' font-size='96' fill='%2310a67a'%3E한%3C/text%3E%3C/svg%3E" />
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
@@ -90,7 +90,7 @@ body::before { content:""; position: fixed; inset: 0; z-index: -2; pointer-event
     .brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; color: inherit; min-width: 0; }
     .brand-tile {
       width: 34px; height: 34px; border-radius: 10px; flex: none;
-      background: linear-gradient(135deg, var(--accent), #0c8a66);
+      background: linear-gradient(135deg, #087a5b, #075f49);
       color: #fff; font: 700 1.05rem/34px var(--font-ko-display); text-align: center;
       box-shadow: 0 6px 16px rgba(16, 166, 122, 0.35);
     }
@@ -486,8 +486,9 @@ body::before { content:""; position: fixed; inset: 0; z-index: -2; pointer-event
   --ink: #1b1f1d;
   --muted: #686e6a;
   --line: #dce0da;
-  --accent: #0b8f68;
-  --accent-strong: #087252;
+  --accent: #07634d;
+  --accent-strong: #05513f;
+  --accent-vivid: #10a67a;
   --accent-soft: #e1f3eb;
   --rose: #eb6b61;
   --gold: #d5a632;
@@ -521,7 +522,7 @@ body::after { color: rgba(11, 143, 104, 0.035); font-size: 22rem; right: -0.75re
 .back, .gear { background: rgba(255, 255, 255, 0.78); border-color: rgba(27, 31, 29, 0.11); }
 .back { border-radius: 10px; padding: 0.44rem 0.72rem; }
 .gear { border-radius: 10px; }
-.brand-tile { border-radius: 9px; background: var(--accent); box-shadow: 0 7px 18px rgba(11, 143, 104, 0.24); }
+.brand-tile { border-radius: 9px; background: var(--accent-vivid); box-shadow: 0 7px 18px rgba(16, 166, 122, 0.28); }
 .brand small { letter-spacing: 0.02em; }
 .tabs { padding: 0.25rem; border-radius: 12px; background: rgba(255, 255, 255, 0.72); border-color: rgba(27, 31, 29, 0.10); }
 .tabs button { border-radius: 9px; padding: 0.44rem 1rem; }
@@ -548,9 +549,9 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
 .hero-kicker { color: var(--mint); }
 .hero-line, .hero-card .pod-en, .hero-card .pod-tag { color: rgba(248, 248, 244, 0.64); }
 .hero-card .hero-jamo { color: rgba(255, 255, 255, 0.055); }
-.hero-syl { color: var(--mint); filter: drop-shadow(0 12px 28px rgba(116, 223, 180, 0.20)); }
+.hero-syl { color: var(--accent-vivid); filter: drop-shadow(0 12px 28px rgba(16, 166, 122, 0.24)); }
 .hero-rhythm i { background: rgba(255, 255, 255, 0.20); }
-.hero-rhythm i.on { background: var(--mint); box-shadow: 0 0 0 3px rgba(116, 223, 180, 0.14); }
+.hero-rhythm i.on { background: var(--accent-vivid); box-shadow: 0 0 0 3px rgba(16, 166, 122, 0.18); }
 .hero-card .dayring .track { stroke: rgba(255, 255, 255, 0.13); }
 .hero-card .dayring text { fill: #ffffff; }
 .pod { border-top-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.045); }
@@ -561,6 +562,8 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
 .intro-surface p { color: var(--muted); line-height: 1.65; }
 .btn { border-radius: 11px; background: var(--accent); box-shadow: 0 10px 24px rgba(11, 143, 104, 0.22); }
 .btn.ghost { background: rgba(255, 255, 255, 0.80); }
+.step[data-step="learn"]::before, .ph-dot.d-ok { background: var(--accent-vivid); }
+.path-meter .bar i, .progressline i { background: linear-gradient(90deg, var(--accent-vivid), var(--mint)); }
 
 .today-plan { max-width: 760px; margin: 1.5rem auto 0; }
 .section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
@@ -661,8 +664,10 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
 
 </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CreativeWork","name":"Hana — Beginner Korean","creator":{"@type":"Person","name":"Jack Mao","url":"https://hellojackmao.com"},"description":"A personal beginner-Korean learning app — daily practice, read-aloud, shadowing, review, and progress tracking. Designed and built end-to-end.","dateCreated":"2026","url":"https://hellojackmao.com/projects/hana/"}
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Hana — Beginner Korean","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A personal beginner-Korean learning app — daily practice, read-aloud, shadowing, review, and progress tracking. Designed and built end-to-end.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/hana/"}
   </script>
+  <link rel="stylesheet" href="../project-transitions.css">
+  <script defer src="../project-transitions.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -686,7 +691,7 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" style="view-transition-name: project-hero">
     <section class="view" id="view-today" aria-label="Today's practice"></section>
     <section class="view" id="view-path" hidden aria-label="Lesson path"></section>
     <section class="view" id="view-library" hidden aria-label="Phrase library"></section>
@@ -1347,7 +1352,7 @@ function renderToday() {
     html += planHtml;
   }
 
-  html += `<p class="foot-note"><strong>A working personal tool.</strong> I built Hana to teach myself Korean — every feature is real and runs entirely in your browser. Little and often: listen, speak, review.</p>`;
+  html += `<p class="foot-note"><strong>A self-initiated product, designed and built end to end.</strong> Hana turns beginner Korean into one repeatable daily loop: learn, speak, review. Fifteen lessons, browser speech, spaced repetition, and local progress tracking make the concept usable rather than presentational.</p>`;
   v.innerHTML = html;
 
   $$("[data-say]", v).forEach(el => el.addEventListener("click", () => speak(el.dataset.say)));
@@ -1759,7 +1764,7 @@ function openSettings() {
       </span>
     </div>
     <input type="file" id="impFile" accept="application/json" hidden>
-    <p class="muted" style="font-size:0.68rem;margin-top:0.9rem;line-height:1.6;">Method: little and often — listen, speak, review. Hana v2 · offline-ready · a personal tool by Jack Mao.</p>
+    <p class="muted" style="font-size:0.68rem;margin-top:0.9rem;line-height:1.6;"><strong>Product note:</strong> Hana was designed, written, and built by Jack Mao as a working personal learning system. Method: little and often — listen, speak, review. Hana v2 · offline-ready.</p>
   `);
   loadVoices();
   $$("[data-goal]").forEach(b => b.addEventListener("click", () => { state.goalMin = +b.dataset.goal; save(); openSettings(); }));
@@ -1823,5 +1828,6 @@ if ("serviceWorker" in navigator) {
     document.addEventListener("touchstart", unlock, { once:false, passive:true });
   })();
 </script>
+  <script defer src="../../analytics.js"></script>
 </body>
 </html>
