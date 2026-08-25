@@ -387,7 +387,11 @@
     .plate-img.p-split { display: flex; }
     .plate-img.p-split img { width: 50%; }
     .plate-img.p-tend { background: var(--cream); display: flex; align-items: center; justify-content: center; }
-    .plate-img.p-tend img { width: 44%; height: auto; filter: drop-shadow(0 18px 36px rgba(123,108,246,0.3)); }
+    .plate-img.p-tend img { width: min(62%, 22rem); height: min(82%, 22rem); object-fit: contain; filter: drop-shadow(0 18px 36px rgba(123,108,246,0.3)); }
+    .plate-img.p-karina, .plate-img.p-coffee { display: grid; place-items: center; }
+    .plate-img.p-karina { background: #e4ebef; }
+    .plate-img.p-coffee { background: #090806; }
+    .plate-img.p-karina img, .plate-img.p-coffee img { width: 100%; height: 100%; object-fit: contain; }
     .plate-img.p-wayfarer { background: linear-gradient(135deg, #0f2e2b, #16504a 55%, #0b3a36); display: flex; align-items: center; justify-content: center; }
     /* Hana plate — original light Hangul card (recovered) */
     .plate-img.hana-thumb { position: absolute; }
@@ -716,7 +720,10 @@ body.intent .row-desc { display: none; }
 
       .row-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
       .row-thumb.p-tend { background: var(--cream); display: flex; align-items: center; justify-content: center; }
-      .row-thumb.p-tend img { width: 62%; height: auto; }
+      .row-thumb.p-tend img { width: 78%; height: 78%; object-fit: contain; }
+      .row-thumb.p-karina { background: #e4ebef; }
+      .row-thumb.p-coffee { background: #090806; }
+      .row-thumb.p-karina img, .row-thumb.p-coffee img { object-fit: contain; }
       .row-thumb.p-wayfarer { background: linear-gradient(135deg, #0f2e2b, #16504a); display: flex; align-items: center; justify-content: center; }
       .row-thumb.p-wayfarer svg { width: 60%; height: 60%; }
       .row-thumb.p-hana { background: #fff3df; display: flex; align-items: center; justify-content: center; font: 700 1.9rem 'Syne', sans-serif; color: #10a67a; }
@@ -1301,11 +1308,11 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           <div class="plate">
             <div class="plate-img p-posters active" data-plate="0" aria-hidden="true"><img src="images/index-waves-02-640.webp" srcset="images/index-waves-02-320.webp 320w, images/index-waves-02-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="960" loading="lazy" decoding="async"/><img src="images/index-waves-01-640.webp" srcset="images/index-waves-01-320.webp 320w, images/index-waves-01-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="960" loading="lazy" decoding="async"/></div>
             <div class="plate-img p-stack" data-plate="1" aria-hidden="true"><img src="images/index-so-good-640.webp" srcset="images/index-so-good-320.webp 320w, images/index-so-good-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/><img src="images/index-after-hours-640.webp" srcset="images/index-after-hours-320.webp 320w, images/index-after-hours-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/></div>
-            <div class="plate-img p-cover-face" data-plate="2" aria-hidden="true"><img src="images/index-karina-640.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="509" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-karina" data-plate="2" aria-hidden="true"><img src="images/index-karina-640.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="509" loading="lazy" decoding="async"/></div>
             <div class="plate-img p-cover" data-plate="3" aria-hidden="true"><img src="images/index-toronto-in-bloom-640.webp" srcset="images/index-toronto-in-bloom-320.webp 320w, images/index-toronto-in-bloom-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="371" loading="lazy" decoding="async"/></div>
             <div class="plate-img" data-plate="4" aria-hidden="true"><img src="images/index-chronicles-640.webp" srcset="images/index-chronicles-320.webp 320w, images/index-chronicles-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/></div>
             <div class="plate-img p-tend" data-plate="5" aria-hidden="true"><img src="images/index-tend-640.webp" srcset="images/index-tend-320.webp 320w, images/index-tend-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="640" loading="lazy" decoding="async"/></div>
-            <div class="plate-img" data-plate="6" aria-hidden="true"><img src="images/index-coffee-nearby-640.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="371" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-coffee" data-plate="6" aria-hidden="true"><img src="images/index-coffee-nearby-640.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="371" loading="lazy" decoding="async"/></div>
             <div class="plate-img p-wayfarer" data-plate="7" aria-hidden="true"><svg viewBox="0 0 120 120" width="84" height="84" aria-hidden="true" style="filter:drop-shadow(0 6px 20px rgba(78,205,196,0.35));">
                     <path d="M60 14 L70 60 L60 106 L50 60 Z" fill="#4ECDC4"/>
                     <path d="M14 60 L60 50 L106 60 L60 70 Z" fill="#4ECDC4" opacity="0.6"/>
@@ -1348,7 +1355,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </a>
           <a class="row fade-up" href="projects/karina.html" aria-label="Karina — Self-initiated concept editorial, 2026" data-plate="2" data-cap="Karina · Concept Editorial · 2026">
             <span class="row-folio" aria-hidden="true">03</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/index-karina-320.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="96px" alt="" width="320" height="255" loading="lazy" decoding="async"/></span>
+            <span class="row-thumb p-karina" aria-hidden="true"><img src="images/index-karina-320.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="96px" alt="" width="320" height="255" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Karina</h3>
             <span class="row-meta">Concept Editorial · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
@@ -1387,7 +1394,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </a>
           <a class="row fade-up" href="projects/coffee-nearby.html" aria-label="Coffee Nearby — UI/UX and wearables web app, 2026" data-plate="6" data-cap="Coffee Nearby · UI/UX · Wearables Web App · 2026">
             <span class="row-folio" aria-hidden="true">07</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/index-coffee-nearby-320.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="96px" alt="" width="320" height="186" loading="lazy" decoding="async"/></span>
+            <span class="row-thumb p-coffee" aria-hidden="true"><img src="images/index-coffee-nearby-320.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="96px" alt="" width="320" height="186" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Coffee Nearby</h3>
             <span class="row-meta">UI/UX · Wearables Web App · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
