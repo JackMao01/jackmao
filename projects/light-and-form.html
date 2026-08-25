@@ -16,13 +16,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <title>Light & Form | Jack Mao</title>
   <meta name="description" content="Light & Form by Jack Mao — illustration and photo editing. Symmetrically Unorthodox and From Shadow to Serenity. Two practices, one instinct. Toronto, 2021."/>
-  <link rel="canonical" href="https://hellojackmao.com/projects/light-and-form.html"/>
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/light-and-form.html"/>
   <meta property="og:locale" content="en_CA"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://hellojackmao.com/projects/light-and-form.html"/>
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/light-and-form.html"/>
   <meta property="og:title" content="Light & Form — Jack Mao"/>
   <meta property="og:description" content="Light & Form by Jack Mao — illustration and photo editing. Symmetrically Unorthodox and From Shadow to Serenity. Two practices, one instinct. Toronto, 2021."/>
-  <meta property="og:image" content="https://hellojackmao.com/images/thumb-light-form.png"/>
+  <meta property="og:image" content="https://www.hellojackmao.com/images/thumb-light-form.png"/>
   <meta property="og:image:width" content="1400"/>
   <meta property="og:image:height" content="788"/>
   <meta property="og:image:alt" content="Light & Form — Jack Mao"/>
@@ -30,14 +30,14 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Light & Form — Jack Mao"/>
   <meta name="twitter:description" content="Light & Form by Jack Mao — illustration and photo editing. Symmetrically Unorthodox and From Shadow to Serenity. Two practices, one instinct. Toronto, 2021."/>
-  <meta name="twitter:image" content="https://hellojackmao.com/images/thumb-light-form.png"/>
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/thumb-light-form.png"/>
   <meta name="twitter:image:alt" content="Light & Form — Jack Mao"/>
   <link rel="preload" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.ttf" as="font" type="font/ttf" crossorigin/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CreativeWork","name":"Light & Form","creator":{"@type":"Person","name":"Jack Mao","url":"https://hellojackmao.com"},"description":"Illustration and photo editing — two practices united by the same instinct for light.","dateCreated":"2021","url":"https://hellojackmao.com/projects/light-and-form.html"}
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Light & Form","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"Illustration and photo editing — two practices united by the same instinct for light.","dateCreated":"2021","url":"https://www.hellojackmao.com/projects/light-and-form.html"}
   </script>
   <style>
     :root {
@@ -504,51 +504,6 @@
       .nav-dropdown-menu a,
       .active-page { padding: .9rem 1.05rem; }
     }
-    html.page-ready
-    html
-
-    /* ── Page transition — scale exit ── */
-    .page-ready
-    /* Scale-down exit on the main content wrapper */
-    body {
-      transition: transform .38s cubic-bezier(.4,0,1,1),
-                  opacity   .38s cubic-bezier(.4,0,1,1);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      body        { transition: none; }
-    }
-
-    #back-to-top{position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);background-image:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;color:#93c5fd;font-size:1.1rem;line-height:1;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;cursor:auto;}
-    #back-to-top.visible{opacity:1;pointer-events:auto;}
-    #back-to-top:hover{transform:translateY(-2px);}
-
-    #page-veil {
-      position:fixed;inset:0;z-index:100000;background:var(--veil-color,#0f0e1a);
-      opacity:1;pointer-events:auto;transition:opacity .42s cubic-bezier(.16,1,.3,1);
-    }
-    .page-ready #page-veil{opacity:0;pointer-events:none;}
-    body{transition:transform .38s cubic-bezier(.4,0,1,1),opacity .38s cubic-bezier(.4,0,1,1);}
-    .page-leaving body{transform:scale(0.97);opacity:0.4;}
-    @media(prefers-reduced-motion:reduce){#page-veil{transition:none;}body{transition:none;}}
-
-    /* ── View Transitions API ── */
-    @view-transition { navigation: auto; }
-    @media (prefers-reduced-motion: no-preference) {
-      ::view-transition-old(root) {
-        animation: vt-out 0.28s cubic-bezier(0.4, 0, 1, 1) both;
-      }
-      ::view-transition-new(root) {
-        animation: vt-in  0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-    }
-    @keyframes vt-out {
-      from { opacity: 1;   transform: scale(1);    }
-      to   { opacity: 0;   transform: scale(0.97); }
-    }
-    @keyframes vt-in {
-      from { opacity: 0;   transform: scale(1.01); }
-      to   { opacity: 1;   transform: scale(1);    }
-    }
     @media (prefers-reduced-motion: reduce) {
       ::view-transition-old(root),
       ::view-transition-new(root) { animation: none; }
@@ -799,7 +754,6 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
 <link rel="preload" as="image" href="../images/waves-02.png" type="image/png" fetchpriority="high"/>
   <noscript>
     <style>
-      #page-veil { display: none !important; }
       .reveal, .reveal-stagger > *, .category-fade, .word { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
@@ -826,12 +780,13 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
     @media(max-width:760px){.project-literal{grid-template-columns:1fr;gap:.5rem}.case-evidence,.karina-evidence{grid-template-columns:repeat(2,minmax(0,1fr))}.case-evidence>div:nth-child(3),.case-evidence>div:nth-child(4){border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div:nth-child(3),.case-evidence.is-light>div:nth-child(4),.karina-evidence>div:nth-child(3),.karina-evidence>div:nth-child(4){border-top-color:rgba(25,20,25,.12)}.case-evidence>div:nth-child(3){padding-left:0;border-left:0}.project-literal--hub,.case-evidence--hub{width:calc(100% - 2rem)}}
     @media(max-width:420px){.case-evidence,.karina-evidence{grid-template-columns:1fr}.case-evidence>div,.case-evidence>div+div{padding:.9rem 0;border-left:0}.case-evidence>div+div{border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div+div,.karina-evidence>div+div{border-top-color:rgba(25,20,25,.12)}}
   </style>
+  <link rel="stylesheet" href="project-transitions.css">
+  <script defer src="project-transitions.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
   <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
   <div class="cursor" id="cursor"></div>
-  <div id="page-veil" aria-hidden="true"></div>
 
   <nav aria-label="Main navigation">
     <a class="nav-logo" href="/">Jack Mao <span>|</span> Portfolio</a>
@@ -861,7 +816,7 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
   <main>
   <div class="project-hero" style="view-transition-name: project-hero">
 <div class="hero-folio" aria-hidden="true"><b>N°02 — PLATES</b><br/>Light &amp; Form · 2021</div>
-<div class="hero-posters" aria-hidden="true"><img src="../images/waves-02.png" alt="" loading="eager" decoding="async"/><img src="../images/waves-01.png" alt="" loading="eager" decoding="async"/></div>
+<div class="hero-posters" aria-hidden="true"><img src="../images/waves-02.png" alt="" width="683" height="1024" loading="eager" decoding="async"/><img src="../images/waves-01.png" alt="" width="683" height="1024" loading="eager" decoding="async"/></div>
     <div class="project-meta">
       <div><span class="meta-label">Category</span><span class="meta-value">Illustration + Photo Editing</span></div>
       <div><span class="meta-label">Year</span><span class="meta-value"><time datetime="2021">2021</time></span></div>
@@ -885,10 +840,10 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
           <div class="case-cell" role="listitem"><span class="case-k">Outcome</span><span class="case-v">A two-part study that argues a single thesis: light defines form, whatever the tool. A portfolio anchor for cross-disciplinary roles.</span></div>
         </div>
     <dl class="case-evidence" aria-label="Project evidence">
-      <div><dt>Audience</dt><dd>Creative and design hiring teams</dd></div>
-      <div><dt>Channel</dt><dd>Portfolio and print-style plates</dd></div>
-      <div><dt>Deliverables</dt><dd>Two poster colourways and a photo series</dd></div>
-      <div><dt>Learning</dt><dd>One formal system can connect both media</dd></div>
+      <div><dt>Role</dt><dd>Sole illustrator, photo editor, and art director</dd></div>
+      <div><dt>Process</dt><dd>Pencil studies, three symmetry passes, and digital refinement</dd></div>
+      <div><dt>Deliverables</dt><dd>Two poster colourways and two edited photo plates</dd></div>
+      <div><dt>Production proof</dt><dd>Four final plates carry one formal system across two media</dd></div>
     </dl>
     </div>
     <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Symmetrically Unorthodox — Illustration</h2></div>
@@ -909,7 +864,7 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
       <p><strong>Serenity, here, is not the absence of shadow</strong> — it is what you find when you learn to work with it.</p>
     </div>
 
-    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>From Shadow to Serenity — first edit</span></figcaption><span class="plate-note"><b>✦</b> the first edit kept too much sky. serenity is mostly subtraction.</span></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>From Shadow to Serenity — revised edit</span></figcaption><span class="plate-note"><b>✦</b> when the blue sky meets the blue sea — the line the whole series was chasing.</span></figure></div>
+    <div class="image-grid two-col"><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-01.png" width="1200" height="1800" alt="From Shadow to Serenity — first edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;03</b><span>From Shadow to Serenity — first edit</span></figcaption><span class="plate-note"><b>✦</b> the first edit kept too much sky. serenity is mostly subtraction.</span></figure><figure class="plate-fig"><div class="plate-fig-frame"><img loading="lazy" decoding="async" src="../images/serene-02.png" width="1200" height="1800" alt="From Shadow to Serenity — revised edit"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;04</b><span>From Shadow to Serenity — revised edit</span></figcaption><span class="plate-note"><b>✦</b> when the blue sky meets the blue sea — the line the whole series was chasing.</span></figure></div>
 
     <hr class="div"/>
 
@@ -1060,38 +1015,6 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
         obs.observe(el);
       });
     })();
-
-    // Standard project page transition
-    (function() {
-      const root = document.documentElement;
-      const veil = document.getElementById('page-veil');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const ready = () => {
-        root.classList.remove('page-leaving');
-        root.classList.add('page-ready');
-      };
-      if (veil && !reduceMotion) {
-        requestAnimationFrame(() => requestAnimationFrame(ready));
-      } else {
-        ready();
-      }
-      window.addEventListener('pageshow', ready);
-      document.addEventListener('click', event => {
-        const link = event.target.closest('a[href]');
-        if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (link.target === '_blank' || link.hasAttribute('download')) return;
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-        const url = new URL(href, window.location.href);
-        if (url.origin !== window.location.origin) return;
-        if (url.pathname === window.location.pathname && url.hash) return;
-        if (!veil || reduceMotion) return;
-        event.preventDefault();
-        root.classList.remove('page-ready');
-        root.classList.add('page-leaving');
-        setTimeout(() => { window.location.href = url.href; }, 360);
-      });
-    })();
     // -- Mobile contextual tab bar --
     (function() {
       const tabbar = document.getElementById('mobileTabbar');
@@ -1137,6 +1060,10 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
 
       document.addEventListener('click', event => {
         if (!tabbar.contains(event.target) && !menus.some(menu => menu.contains(event.target))) closeMenus();
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenus();
       });
 
       window.addEventListener('hashchange', closeMenus);
@@ -1189,64 +1116,6 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
       if (e.target.closest('#back-to-top'))
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  
-    // ── Page transition ──
-    (function() {
-      const root = document.documentElement;
-      const veil = document.getElementById('page-veil');
-      const rm   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const supportsVT = 'startViewTransition' in document;
-
-      // Page reveal on load
-      const ready = () => {
-        root.classList.remove('page-leaving');
-        root.classList.add('page-ready');
-      };
-      if (veil && !rm && !supportsVT) {
-        requestAnimationFrame(() => requestAnimationFrame(ready));
-      } else {
-        ready();
-      }
-
-      // bfcache restore
-      window.addEventListener('pageshow', e => {
-        if (e.persisted) {
-          if (veil) { veil.style.opacity = '0'; veil.style.pointerEvents = 'none'; }
-          root.classList.remove('page-leaving');
-          root.classList.add('page-ready');
-        }
-      });
-
-      // Navigation
-      document.addEventListener('click', e => {
-        const link = e.target.closest('a[href]');
-        if (!link || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        if (link.target === '_blank' || link.hasAttribute('download')) return;
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-        let url;
-        try { url = new URL(href, window.location.href); } catch { return; }
-        if (url.origin !== window.location.origin) return;
-        if (url.pathname === window.location.pathname && !url.hash) return;
-
-        e.preventDefault();
-
-        if (supportsVT && !rm) {
-          // Native View Transition — browser handles the crossfade
-          document.startViewTransition(() => {
-            window.location.href = url.href;
-          });
-        } else if (veil && !rm) {
-          // Fallback: veil + scale exit
-          root.classList.remove('page-ready');
-          root.classList.add('page-leaving');
-          setTimeout(() => { window.location.href = url.href; }, 320);
-        } else {
-          // Instant (reduced motion)
-          window.location.href = url.href;
-        }
-      });
-    })();
   </script>
   <button type="button" id="back-to-top" aria-label="Back to top">↑</button>
 <button id="intent-toggle" class="intent-btn" type="button" aria-pressed="false"><span class="dot" aria-hidden="true"></span>intent</button>
@@ -1260,5 +1129,6 @@ body.intent .intent-btn .dot { background:var(--lime,#ccff00); box-shadow:0 0 8p
   } catch(e) {}
 })();
 </script>
+  <script defer src="../analytics.js"></script>
 </body>
 </html>

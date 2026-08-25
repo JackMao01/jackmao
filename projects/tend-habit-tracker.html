@@ -16,13 +16,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <title>Tend Habit Tracker | Jack Mao</title>
   <meta name="description" content="Tend — a calm habit tracker app case study by Jack Mao. Product direction, UI/UX design, SwiftUI implementation, SwiftData persistence, reminders, themes, and App Store preparation."/>
-  <link rel="canonical" href="https://hellojackmao.com/projects/tend-habit-tracker.html"/>
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/tend-habit-tracker.html"/>
   <meta property="og:locale" content="en_CA"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://hellojackmao.com/projects/tend-habit-tracker.html"/>
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/tend-habit-tracker.html"/>
   <meta property="og:title" content="Tend Habit Tracker — Jack Mao"/>
   <meta property="og:description" content="A product and UI/UX case study for a calm SwiftUI habit tracker focused on small daily rituals, themes, reminders, journaling, and sustainable progress."/>
-  <meta property="og:image" content="https://hellojackmao.com/images/tend-app-store-icon.png"/>
+  <meta property="og:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png"/>
   <meta property="og:image:width" content="1024"/>
   <meta property="og:image:height" content="1024"/>
   <meta property="og:image:alt" content="Tend app icon with lavender leaf above pond ripples"/>
@@ -30,13 +30,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Tend Habit Tracker — Jack Mao"/>
   <meta name="twitter:description" content="A product and UI/UX case study for a calm SwiftUI habit tracker focused on small daily rituals, themes, reminders, journaling, and sustainable progress."/>
-  <meta name="twitter:image" content="https://hellojackmao.com/images/tend-app-store-icon.png"/>
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png"/>
   <meta name="twitter:image:alt" content="Tend app icon with lavender leaf above pond ripples"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CreativeWork","name":"Tend Habit Tracker","creator":{"@type":"Person","name":"Jack Mao","url":"https://hellojackmao.com"},"description":"Product and UI/UX case study for a calm SwiftUI habit tracker focused on small rituals, persistence, reminders, themes, and App Store preparation.","url":"https://hellojackmao.com/projects/tend-habit-tracker.html"}
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Tend Habit Tracker","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"Product and UI/UX case study for a calm SwiftUI habit tracker focused on small rituals, persistence, reminders, themes, and App Store preparation.","url":"https://www.hellojackmao.com/projects/tend-habit-tracker.html"}
   </script>
   <style>
     :root {
@@ -49,7 +49,7 @@
       --glass-bg:#fbfaf6;
       --glass-border:#e2dce8;
       --glass-border-top:#eee8f1;
-      --case-accent:#7057cf;
+      --case-accent:#49308d;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -893,56 +893,6 @@
         border-radius:28%;
       }
     }
-    html.page-ready
-    html
-
-    /* ── Page transition — scale exit ── */
-    #page-veil {
-      position: fixed;
-      inset: 0;
-      z-index: 100000;
-      background: var(--veil-color, var(--navy, #0f0e1a));
-      opacity: 1;
-      pointer-events: auto;
-      transition: opacity .42s cubic-bezier(.16,1,.3,1);
-    }
-    .page-ready #page-veil {
-      opacity: 0;
-      pointer-events: none;
-    }
-    /* Scale-down exit on the main content wrapper */
-    body {
-      transition: transform .38s cubic-bezier(.4,0,1,1),
-                  opacity   .38s cubic-bezier(.4,0,1,1);
-    }
-    .page-leaving body,
-    html.page-leaving body {
-      transform: scale(0.97);
-      opacity: 0.4;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #page-veil { transition: none; }
-      body        { transition: none; }
-    }
-
-    /* ── View Transitions API ── */
-    @view-transition { navigation: auto; }
-    @media (prefers-reduced-motion: no-preference) {
-      ::view-transition-old(root) {
-        animation: vt-out 0.28s cubic-bezier(0.4, 0, 1, 1) both;
-      }
-      ::view-transition-new(root) {
-        animation: vt-in  0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-    }
-    @keyframes vt-out {
-      from { opacity: 1;   transform: scale(1);    }
-      to   { opacity: 0;   transform: scale(0.97); }
-    }
-    @keyframes vt-in {
-      from { opacity: 0;   transform: scale(1.01); }
-      to   { opacity: 1;   transform: scale(1);    }
-    }
     @media (prefers-reduced-motion: reduce) {
       ::view-transition-old(root),
       ::view-transition-new(root) { animation: none; }
@@ -1190,7 +1140,7 @@
       .case-summary-stack--hub{width:calc(100% - 2rem);margin-top:2rem}
     }
 
-    .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--lime,#ccff00);color:#0f0e1a;padding:.6rem 1rem;font-weight:700;border-radius:0 0 8px 0;text-decoration:none}
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:#fff;color:#0f0e1a;padding:.6rem 1rem;font-weight:700;border:2px solid var(--case-accent,#49308d);border-radius:0 0 8px 0;text-decoration:none}
     .skip-link:focus{left:0}
 
     .case-frame{display:grid;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 0 3rem}
@@ -1211,8 +1161,8 @@
     /* Tend is a light-mode page — override the case-frame to match */
     .case-frame{background:var(--glass-border,#e2dce8);border:1px solid var(--glass-border,#e2dce8)}
     .case-cell{background:rgba(251,250,246,.86)}
-    .case-k{color:var(--case-accent,#7057cf)}
-    .case-v{color:#6a697a}
+    .case-k{color:var(--case-accent,#49308d)}
+    .case-v{color:#555461}
 
 /* ══ Folio redesign (light-theme variant): printed-volume conceit ══ */
 .project-hero { position:relative; }
@@ -1241,7 +1191,6 @@
   <link rel="preload" as="image" href="../images/tend-app-store-icon.png" type="image/png" fetchpriority="high"/>
   <noscript>
     <style>
-      #page-veil { display: none !important; }
       .reveal, .reveal-stagger > *, .category-fade, .word { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
@@ -1249,12 +1198,13 @@
   <style>
     .project-literal{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.85rem 1.15rem;align-items:start;margin:0 0 1.4rem;padding:0 0 1.15rem;border-bottom:1px solid rgba(255,255,255,.12);font-family:'DM Mono','JetBrains Mono',monospace;font-size:clamp(.78rem,1.15vw,.92rem);line-height:1.65;color:rgba(255,255,255,.78)}.project-type{display:inline-block;padding-top:.13rem;font-size:.58rem;font-weight:700;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--case-accent,var(--lime,#ccff00))}.project-literal-copy{margin:0}.case-evidence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:-2rem 0 3rem;padding:0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}.ai-disclaimer+.case-evidence{margin-top:0}.case-evidence>div{min-width:0;padding:1rem 1.1rem 1.05rem 0}.case-evidence>div+div{padding-left:1.1rem;border-left:1px solid rgba(255,255,255,.1)}.case-evidence dt{margin:0 0 .45rem;font-family:'DM Mono','JetBrains Mono',monospace;font-size:.56rem;font-weight:700;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:var(--case-accent,var(--lime,#ccff00))}.case-evidence dd{margin:0;font-size:.78rem;line-height:1.55;color:rgba(255,255,255,.68)}.project-literal.is-light,.karina-literal{border-bottom-color:rgba(25,20,25,.14);color:rgba(25,20,25,.78)}.case-evidence.is-light,.karina-evidence{border-color:rgba(25,20,25,.14)}.case-evidence.is-light>div+div,.karina-evidence>div+div{border-left-color:rgba(25,20,25,.12)}.case-evidence.is-light dd,.karina-evidence dd{color:rgba(25,20,25,.66)}.project-literal--hub,.case-evidence--hub{width:calc(100% - 6rem);max-width:1100px;margin-right:auto;margin-left:auto}.project-literal--hub{margin-top:2.5rem}.case-evidence--hub{margin-top:0}.karina-literal{margin-bottom:1.25rem;font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;letter-spacing:.02em}.karina-evidence{margin:18px 0 0;grid-template-columns:repeat(4,minmax(0,1fr))}.karina-evidence dt{color:var(--accent,#9f192d)}.karina-evidence dd{font-family:'Inter Tight',sans-serif;font-size:12px}@media(max-width:760px){.project-literal{grid-template-columns:1fr;gap:.5rem}.case-evidence,.karina-evidence{grid-template-columns:repeat(2,minmax(0,1fr))}.case-evidence>div:nth-child(3),.case-evidence>div:nth-child(4){border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div:nth-child(3),.case-evidence.is-light>div:nth-child(4),.karina-evidence>div:nth-child(3),.karina-evidence>div:nth-child(4){border-top-color:rgba(25,20,25,.12)}.case-evidence>div:nth-child(3){padding-left:0;border-left:0}.project-literal--hub,.case-evidence--hub{width:calc(100% - 2rem)}}@media(max-width:420px){.case-evidence,.karina-evidence{grid-template-columns:1fr}.case-evidence>div,.case-evidence>div+div{padding:.9rem 0;border-left:0}.case-evidence>div+div{border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div+div,.karina-evidence>div+div{border-top-color:rgba(25,20,25,.12)}}
   </style>
+  <link rel="stylesheet" href="project-transitions.css">
+  <script defer src="project-transitions.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
   <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
   <div class="cursor" id="cursor"></div>
-  <div id="page-veil" aria-hidden="true"></div>
   <nav aria-label="Main navigation">
     <a class="nav-logo" href="/">Jack Mao <span>|</span> Portfolio</a>
     <a class="nav-back" href="../">Home</a>
@@ -1305,14 +1255,14 @@
         <span class="project-type">Self-initiated product</span>
         <p class="project-literal-copy">As product designer and SwiftUI builder, I created a calm iOS habit tracker from browser prototype through native implementation, delivering onboarding, persistence, reminders, themes, and App Store-ready launch materials.</p>
       </div>
-        <div class="case-frame" role="list" aria-label="Project summary"><div class="case-cell" role="listitem"><span class="case-k">Challenge</span><span class="case-v">Build a habit tracker that feels calm, not gamified or guilt-driven — and ship it for real.</span></div><div class="case-cell" role="listitem"><span class="case-k">Direction</span><span class="case-v">Prototype tone and flow in the browser first, then build native in SwiftUI: persistence, reminders, onboarding, themes.</span></div><div class="case-cell" role="listitem"><span class="case-k">Outcome</span><span class="case-v">A finished iOS product from concept to native build: it compiles in Xcode, runs in the simulator, retains data across relaunches, and ships with onboarding and local reminders — proof of end-to-end product design and delivery.</span></div></div>
+        <div class="case-frame" role="list" aria-label="Project summary"><div class="case-cell" role="listitem"><span class="case-k">Challenge</span><span class="case-v">Build a habit tracker that feels calm, not gamified or guilt-driven — and ship it for real.</span></div><div class="case-cell" role="listitem"><span class="case-k">Direction</span><span class="case-v">Prototype tone and flow in the browser first, then build native in SwiftUI: persistence, reminders, onboarding, themes.</span></div><div class="case-cell" role="listitem"><span class="case-k">Outcome</span><span class="case-v">A working native iOS product with persistent habits, onboarding, themes, journaling, and local reminders.</span></div></div>
       <p class="ai-disclaimer"><strong>Design authorship note:</strong> The product direction, interface decisions, visual system, and final design choices are mine. Parts of the build and prototype were vibe-coded with AI as a development collaborator.</p>
 
       <dl class="case-evidence is-light" aria-label="Project evidence">
-        <div><dt>Audience</dt><dd>People building small daily habits</dd></div>
-        <div><dt>Channel</dt><dd>Native iOS with SwiftUI and SwiftData</dd></div>
-        <div><dt>Deliverables</dt><dd>Onboarding, reminders, themes, and launch assets</dd></div>
-        <div><dt>Evidence</dt><dd>Runs in Xcode and persists data across relaunches</dd></div>
+        <div><dt>Audience</dt><dd>Habit builders seeking a low-pressure daily routine</dd></div>
+        <div><dt>Channel</dt><dd>Native iOS app built in SwiftUI with SwiftData</dd></div>
+        <div><dt>Deliverables</dt><dd>Onboarding, home, calendar, journal, reminders, three themes, and launch assets</dd></div>
+        <div><dt>Proof</dt><dd>Working Xcode build; habit and journal data persist across relaunches</dd></div>
       </dl>
       </div>
       <div class="sec-head"><span class="sec-folio" aria-hidden="true">01</span><h2 class="section-heading">Snapshots</h2></div>
@@ -1353,15 +1303,15 @@
       <div class="final-design-grid">
         <div class="final-design-card">
           <div class="snapshot-label">Home Page</div>
-          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-home.png" alt="Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview" width="2508" height="1304" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;07</b><span>Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview</span></figcaption></figure>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-home.webp" alt="Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview" width="2508" height="1304" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;07</b><span>Final Tend Home page design with habit list, progress ring, weekly strip, and theme preview</span></figcaption></figure>
         </div>
         <div class="final-design-card">
           <div class="snapshot-label">Calendar Page</div>
-          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-calendar.png" alt="Final Tend Calendar page design with month view, daily summary, and theme preview" width="2508" height="1303" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;08</b><span>Final Tend Calendar page design with month view, daily summary, and theme preview</span></figcaption></figure>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-calendar.webp" alt="Final Tend Calendar page design with month view, daily summary, and theme preview" width="2508" height="1303" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;08</b><span>Final Tend Calendar page design with month view, daily summary, and theme preview</span></figcaption></figure>
         </div>
         <div class="final-design-card">
           <div class="snapshot-label">Journal Page</div>
-          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-journal.png" alt="Final Tend Journal page design with reflection prompts and theme preview" width="2508" height="1305" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;09</b><span>Final Tend Journal page design with reflection prompts and theme preview</span></figcaption></figure>
+          <figure class="plate-fig"><div class="plate-fig-frame"><img src="../images/tend-final-journal.webp" alt="Final Tend Journal page design with reflection prompts and theme preview" width="2508" height="1305" loading="lazy" decoding="async"/><div class="cropmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div></div><figcaption class="plate-fig-cap"><b>PL.&nbsp;09</b><span>Final Tend Journal page design with reflection prompts and theme preview</span></figcaption></figure>
         </div>
       </div>
 
@@ -1443,13 +1393,13 @@
       <div class="next-label">Next project</div>
       <div class="next-title">Coffee Nearby</div>
     </div>
-    <div class="next-arrow">→</div>
+    <div class="next-arrow" aria-hidden="true">→</div>
   </a>
 
   <footer>
     <span>Jack Mao</span>
     <span>© <time datetime="2026">2026</time> — All rights reserved</span>
-    <span>Built with <span style="color:#ff3333;">♥</span> + Figma</span>
+    <span>Built with <span style="color:#ff3333;" aria-hidden="true">♥</span> + Figma</span>
   </footer>
   <button type="button" id="back-to-top" aria-label="Back to top">↑</button>
   <div class="mobile-action-menu" id="mobileWorkMenu" aria-label="Project pages" data-grouped="1" style="max-height:min(72vh,600px);overflow-y:auto;">
@@ -1552,38 +1502,6 @@
       btt.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
     if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Standard project page transition
-    (function() {
-      const root = document.documentElement;
-      const veil = document.getElementById('page-veil');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const ready = () => {
-        root.classList.remove('page-leaving');
-        root.classList.add('page-ready');
-      };
-      if (veil && !reduceMotion) {
-        requestAnimationFrame(() => requestAnimationFrame(ready));
-      } else {
-        ready();
-      }
-      window.addEventListener('pageshow', ready);
-      document.addEventListener('click', event => {
-        const link = event.target.closest('a[href]');
-        if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (link.target === '_blank' || link.hasAttribute('download')) return;
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-        const url = new URL(href, window.location.href);
-        if (url.origin !== window.location.origin) return;
-        if (url.pathname === window.location.pathname && url.hash) return;
-        if (!veil || reduceMotion) return;
-        event.preventDefault();
-        root.classList.remove('page-ready');
-        root.classList.add('page-leaving');
-        setTimeout(() => { window.location.href = url.href; }, 360);
-      });
-    })();
     // -- Mobile contextual tab bar --
     (function() {
       const tabbar = document.getElementById('mobileTabbar');
@@ -1631,6 +1549,10 @@
         if (!tabbar.contains(event.target) && !menus.some(menu => menu.contains(event.target))) closeMenus();
       });
 
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenus();
+      });
+
       window.addEventListener('hashchange', closeMenus);
       window.addEventListener('pagehide', closeMenus);
       window.addEventListener('scroll', () => {
@@ -1672,64 +1594,7 @@
         });
       });
     })();
-  
-    // ── Page transition ──
-    (function() {
-      const root = document.documentElement;
-      const veil = document.getElementById('page-veil');
-      const rm   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const supportsVT = 'startViewTransition' in document;
-
-      // Page reveal on load
-      const ready = () => {
-        root.classList.remove('page-leaving');
-        root.classList.add('page-ready');
-      };
-      if (veil && !rm && !supportsVT) {
-        requestAnimationFrame(() => requestAnimationFrame(ready));
-      } else {
-        ready();
-      }
-
-      // bfcache restore
-      window.addEventListener('pageshow', e => {
-        if (e.persisted) {
-          if (veil) { veil.style.opacity = '0'; veil.style.pointerEvents = 'none'; }
-          root.classList.remove('page-leaving');
-          root.classList.add('page-ready');
-        }
-      });
-
-      // Navigation
-      document.addEventListener('click', e => {
-        const link = e.target.closest('a[href]');
-        if (!link || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        if (link.target === '_blank' || link.hasAttribute('download')) return;
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-        let url;
-        try { url = new URL(href, window.location.href); } catch { return; }
-        if (url.origin !== window.location.origin) return;
-        if (url.pathname === window.location.pathname && !url.hash) return;
-
-        e.preventDefault();
-
-        if (supportsVT && !rm) {
-          // Native View Transition — browser handles the crossfade
-          document.startViewTransition(() => {
-            window.location.href = url.href;
-          });
-        } else if (veil && !rm) {
-          // Fallback: veil + scale exit
-          root.classList.remove('page-ready');
-          root.classList.add('page-leaving');
-          setTimeout(() => { window.location.href = url.href; }, 320);
-        } else {
-          // Instant (reduced motion)
-          window.location.href = url.href;
-        }
-      });
-    })();
   </script>
+  <script defer src="../analytics.js"></script>
 </body>
 </html>

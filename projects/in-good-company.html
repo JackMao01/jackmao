@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" class="igc-edition-page igc-editorial">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, follow, max-image-preview:large">
+  <!-- This personal-practice page is intentionally unlisted but supports direct sharing and rich link previews. -->
+  <meta name="theme-color" content="#10100f">
+  <title>In Good Company | Portrait Archive | Jack Mao</title>
+  <meta name="description" content="In Good Company is an ongoing personal portrait photography practice by Jack Mao.">
+  <meta name="author" content="Jack Mao">
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/in-good-company.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:site_name" content="Jack Mao | Portfolio">
+  <meta property="og:title" content="In Good Company | Portrait Archive">
+  <meta property="og:description" content="An ongoing portrait practice about friendship, presence, and the small gestures that emerge when the camera is allowed to linger.">
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/in-good-company.html">
+  <meta property="og:image" content="https://www.hellojackmao.com/images/in-good-company/sunpark/sunpark-01-toronto.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1600">
+  <meta property="og:image:alt" content="Sunpark photographed in Trinity Bellwoods Park with the Toronto skyline behind her.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In Good Company | Portrait Archive">
+  <meta name="twitter:description" content="An ongoing portrait practice by Jack Mao about friendship, presence, and everyday gestures.">
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/in-good-company/sunpark/sunpark-01-toronto.webp">
+  <meta name="twitter:image:alt" content="Sunpark photographed in Trinity Bellwoods Park with the Toronto skyline behind her.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #141512;
+      --paper: #f3f0e8;
+      --muted: #716d64;
+      --line: rgba(16,16,15,.18);
+      --glass: rgba(16,16,15,.7);
+      --signal: #cbc7bd;
+      --ease: cubic-bezier(.16,1,.3,1);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Syne", Arial, sans-serif; }
+    body.viewer-open { overflow: hidden; }
+    img { display: block; width: 100%; }
+    .hero-grid img, .contact-sheet img, .collection-cover img, .album-grid img, .viewer-stage img {
+      pointer-events: none; user-select: none; -webkit-user-select: none;
+      -webkit-user-drag: none; -webkit-touch-callout: none;
+    }
+    .hero-grid video, .collection-cover video, .album-grid video, .viewer-stage video {
+      user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+    }
+    .hero-placeholder:has(img,video)::after,
+    .collection-cover:has(img,video)::after,
+    .frame-button:has(img,video)::after,
+    .viewer-stage:has(img,video)::after {
+      content: "© Jack Mao"; position: absolute; right: .7rem; bottom: .6rem; z-index: 8;
+      padding: .28rem .42rem; border-radius: 2px; pointer-events: none;
+      background: rgba(8,8,7,.5); color: rgba(255,255,255,.82);
+      font: 500 .52rem/1 "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase;
+      backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    }
+    .hero-placeholder:has(img,video)::after { top: 5.25rem; bottom: auto; }
+    button, a { font: inherit; }
+    button { color: inherit; }
+
+    .skip-link {
+      position: fixed; top: 1rem; left: 1rem; z-index: 1000;
+      transform: translateY(-180%); padding: .7rem 1rem;
+      border: 1px solid var(--ink); background: var(--paper); color: var(--ink);
+    }
+    .skip-link:focus { transform: none; }
+
+    .site-nav {
+      position: fixed; top: 1rem; left: 50%; z-index: 100;
+      width: min(900px, calc(100% - 2rem)); min-height: 48px;
+      transform: translateX(-50%); display: grid;
+      grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem;
+      padding: .65rem .9rem; border: 1px solid rgba(255,255,255,.26);
+      border-radius: 999px; background: var(--glass); color: #fff;
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,.2);
+      font: 500 .64rem "DM Mono", monospace;
+      letter-spacing: .08em; text-transform: uppercase;
+      transition: opacity .3s, transform .35s var(--ease);
+    }
+    .site-nav.is-hidden { opacity: 0; transform: translate(-50%, -14px); pointer-events: none; }
+    .site-nav a { color: inherit; text-decoration: none; }
+    .site-nav a:last-child { justify-self: end; }
+    .site-nav-status { color: var(--signal); }
+    .edition-switch {
+      display: inline-flex; align-items: center; justify-self: center; gap: .12rem;
+      padding: .16rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
+      background: rgba(255,255,255,.08); view-transition-name: igc-edition-switch;
+    }
+    .edition-switch a {
+      padding: .4rem .58rem; border-radius: 999px; color: rgba(255,255,255,.62);
+      white-space: nowrap; transition: background .2s ease, color .2s ease;
+    }
+    .edition-switch a:hover { color: #fff; }
+    .edition-switch a[aria-current="page"] { background: #fff; color: var(--ink); }
+    .edition-short { display: none; }
+
+    .hero {
+      position: relative; min-height: 92svh; overflow: hidden;
+      display: flex; align-items: flex-end; background: #1c1c1a; color: #fff;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: clamp(1rem,2vw,2rem); z-index: 2; pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) left top / 42px 1px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) left top / 1px 42px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) right top / 42px 1px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) right top / 1px 42px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) left bottom / 42px 1px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) left bottom / 1px 42px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) right bottom / 42px 1px no-repeat,
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)) right bottom / 1px 42px no-repeat;
+    }
+    .hero-grid { position: absolute; inset: 0; display: block; }
+    .hero-placeholder {
+      position: relative; width: 100%; height: 100%; min-width: 0; background: #292927;
+    }
+    .hero-placeholder::before {
+      content: attr(data-slot); position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%); color: rgba(255,255,255,.34);
+      font: 500 .64rem "DM Mono", monospace; letter-spacing: .14em;
+      text-align: center; text-transform: uppercase; white-space: nowrap;
+    }
+    .hero-placeholder:has(img)::before { display: none; }
+    .hero-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; view-transition-name: igc-lead-image; }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(110deg, rgba(0,0,0,.12) 28%, rgba(0,0,0,.02) 55%), linear-gradient(to bottom, rgba(0,0,0,.04) 35%, rgba(0,0,0,.82) 100%);
+    }
+    .hero-copy {
+      position: relative; z-index: 3; width: min(1500px,100%); margin: 0 auto;
+      padding: clamp(7rem,11vw,11rem) clamp(1.25rem,5vw,5rem) clamp(2.5rem,6vw,5rem);
+    }
+    .mono {
+      font: 500 .65rem/1.5 "DM Mono", monospace;
+      letter-spacing: .15em; text-transform: uppercase;
+    }
+    .hero-kicker { margin: 0 0 1rem; color: var(--signal); }
+    h1, h2 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; letter-spacing: 0; }
+    h1 { max-width: 1100px; margin: 0; font-size: clamp(4.5rem,11vw,10.5rem); line-height: .82; }
+    .hero-copy h1 { view-transition-name: igc-title; }
+    .hero-bottom {
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem;
+      margin-top: clamp(2.5rem,7vw,6rem); padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.38);
+    }
+    .hero-intro { max-width: 660px; margin: 0; font-size: clamp(1rem,1.7vw,1.3rem); line-height: 1.55; }
+    .hero-meta { color: rgba(255,255,255,.7); white-space: nowrap; }
+    .hero-meta::before {
+      content: ""; width: .36rem; height: .36rem; display: inline-block;
+      margin-right: .65rem; border-radius: 50%; background: var(--signal); vertical-align: .08em;
+    }
+
+    .contact-sheet {
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: minmax(180px,.8fr) repeat(6,minmax(72px,1fr));
+      gap: clamp(.55rem,.85vw,.8rem); width: min(1180px, calc(100% - 3rem));
+      margin: clamp(3rem,6vw,6rem) auto clamp(5rem,9vw,9rem);
+      padding: clamp(.65rem,1vw,.85rem); overflow: hidden;
+      border: 1px solid rgba(20,21,18,.09); border-radius: 8px;
+      background: rgba(255,255,255,.68); color: var(--ink);
+      box-shadow: 0 18px 45px rgba(20,21,18,.08), inset 0 1px 0 rgba(255,255,255,.8);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      animation: contact-sheet-float 7s ease-in-out infinite;
+      will-change: transform;
+    }
+    .contact-sheet::before { content: none; }
+    @keyframes contact-sheet-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .contact-sheet-intro {
+      display: flex; flex-direction: column; justify-content: space-between; gap: .7rem;
+      height: 122px; padding: .3rem clamp(.65rem,1.2vw,1rem) .3rem 0;
+      border-right: 1px solid var(--line); background: transparent; color: var(--ink);
+      transition: opacity .28s ease, transform .28s var(--ease);
+    }
+    .proof-labels { display: flex; flex-direction: column; gap: .45rem; }
+    .proof-controls { display: flex; align-items: center; gap: .35rem; }
+    .proof-nav {
+      display: inline-grid; place-items: center; width: 2rem; height: 2rem; padding: 0;
+      border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink);
+      font: 500 .85rem/1 "DM Mono", monospace; cursor: pointer;
+      transition: color .22s ease, background .22s ease, border-color .22s ease, transform .22s var(--ease);
+    }
+    .proof-nav:hover, .proof-nav:focus-visible {
+      border-color: var(--ink); background: var(--ink); color: var(--paper); transform: translateY(-1px);
+    }
+    .proof-nav:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .proof-position { min-width: 3.5rem; text-align: center; color: var(--muted); white-space: nowrap; }
+    .contact-frame {
+      position: relative; height: 122px; display: block;
+      padding: 0; overflow: hidden; border: 0;
+      background: transparent; color: var(--muted);
+      font: 500 .55rem/1.35 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase;
+      transition: transform .5s var(--ease), color .3s ease, opacity .28s ease;
+    }
+    .contact-frame:nth-child(even) { background: transparent; }
+    .contact-frame::before, .contact-frame::after { content: none; }
+    .contact-frame img {
+      position: relative; inset: auto; width: 100%; height: 100%; min-height: 0;
+      object-fit: cover; border: 1px solid rgba(16,16,15,.12); transition: filter .4s ease;
+    }
+    .contact-frame span { display: none; }
+    .contact-frame:hover { transform: translateY(-4px); color: var(--ink); }
+    .contact-frame:hover img { filter: contrast(1.025); }
+    .contact-sheet.is-switching .contact-sheet-intro,
+    .contact-sheet.is-switching .contact-frame { opacity: 0; transform: translateY(5px); }
+    .contact-sheet.is-revealing .contact-frame { animation: proof-frame-in .5s var(--ease) both; }
+    .contact-sheet.is-revealing .contact-frame:nth-child(3) { animation-delay: .04s; }
+    .contact-sheet.is-revealing .contact-frame:nth-child(4) { animation-delay: .08s; }
+    .contact-sheet.is-revealing .contact-frame:nth-child(5) { animation-delay: .12s; }
+    .contact-sheet.is-revealing .contact-frame:nth-child(6) { animation-delay: .16s; }
+    .contact-sheet.is-revealing .contact-frame:nth-child(7) { animation-delay: .2s; }
+    @keyframes proof-frame-in {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .archive-index {
+      width: min(1450px, calc(100% - 2.5rem)); margin: 0 auto;
+      padding: clamp(5rem,10vw,10rem) 0 clamp(4rem,8vw,8rem);
+    }
+    .index-head {
+      display: grid; grid-template-columns: minmax(130px,.35fr) 1fr;
+      gap: clamp(2rem,7vw,8rem); margin-bottom: clamp(3rem,6vw,6rem);
+    }
+    .index-head h2 { max-width: 950px; margin: 0; font-size: clamp(2.8rem,6vw,6.4rem); line-height: .98; }
+    .collection-grid {
+      display: grid; grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: clamp(1rem,2.5vw,2.5rem);
+    }
+    .collection-card {
+      min-width: 0; padding: clamp(.85rem,1.5vw,1.25rem) 0 0;
+      border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line);
+      transition: opacity .25s, transform .25s;
+    }
+    .collection-card.is-filtered { display: none; }
+    .collection-trigger {
+      width: 100%; display: flex; flex-direction: column;
+      gap: clamp(1rem,1.8vw,1.5rem); padding: 0 0 clamp(1.5rem,3vw,2.75rem);
+      border: 0; background: transparent; color: inherit; text-align: left; text-decoration: none; cursor: pointer;
+    }
+    .collection-trigger:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+    .collection-cover {
+      position: relative; order: -1; width: 100%; aspect-ratio: 4 / 5;
+      display: block; overflow: hidden; background: #d7d5cd;
+    }
+    .image-placeholder {
+      position: relative; width: 100%; min-height: 100%; display: grid; place-items: center;
+      background: #d7d5cd; color: rgba(16,16,15,.45);
+      border: 1px solid rgba(16,16,15,.12);
+      font: 500 .62rem "DM Mono", monospace; letter-spacing: .13em;
+      text-align: center; text-transform: uppercase;
+    }
+    .folio-strip { position: relative; width: 100%; height: 100%; }
+    .folio-frame {
+      position: absolute; inset: 0; min-width: 0; margin: 0;
+      border: 0; background: #d7d5cd; opacity: 0;
+      transition: opacity .6s ease, transform .8s var(--ease), filter .5s ease;
+    }
+    .folio-frame:first-child { opacity: 1; }
+    .folio-frame::after {
+      content: none;
+    }
+    .folio-frame img { width: 100%; height: 100%; object-fit: cover; transition: filter .5s ease, transform .8s var(--ease); }
+    .collection-trigger:is(:hover,:focus-visible) .folio-frame { animation: chapter-crossfade 6s ease-in-out infinite; }
+    .collection-trigger:is(:hover,:focus-visible) .folio-frame:nth-child(2) { animation-delay: 2s; }
+    .collection-trigger:is(:hover,:focus-visible) .folio-frame:nth-child(3) { animation-delay: 4s; }
+    .collection-trigger:is(:hover,:focus-visible) .folio-frame img { filter: contrast(1.025); transform: scale(1.018); }
+    @keyframes chapter-crossfade {
+      0%, 27% { opacity: 1; }
+      34%, 94% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .folio-pending {
+      width: 100%; min-height: clamp(230px,27vw,380px); display: grid; place-items: center;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      color: var(--muted); background: rgba(16,16,15,.025);
+    }
+    .collection-copy {
+      min-width: 0; display: flex; flex-direction: column; align-items: flex-start;
+      min-height: clamp(245px,23vw,330px); padding: .35rem 0 0; border: 0;
+    }
+    .collection-sequence { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; }
+    .sequence-view {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 1.9rem;
+      padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 999px;
+      color: var(--ink); background: transparent; white-space: nowrap;
+      transition: color .22s ease, background .22s ease, border-color .22s ease, transform .22s var(--ease);
+    }
+    .collection-trigger:is(:hover,:focus-visible) .sequence-view {
+      border-color: var(--ink); background: var(--ink); color: var(--paper); transform: translateY(-1px);
+    }
+    .collection-copy h3 { margin: auto 0 .85rem; font-family: "DM Serif Display", Georgia, serif; font-size: clamp(3.1rem,6vw,6.7rem); font-weight: 400; line-height: .9; }
+    .collection-copy span { color: var(--muted); }
+    .collection-detail { max-width: 520px; margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .collection-facts {
+      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem 1.25rem;
+      width: 100%; margin-top: 1.5rem; padding-top: .85rem; border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .collection-facts span { display: flex; justify-content: space-between; gap: .75rem; }
+    .collection-facts b { color: var(--ink); font-weight: 500; }
+    .collection-card[aria-current="true"] .collection-copy h3::after { content: " / Selected"; color: var(--muted); font: 500 .58rem "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .collection-card[aria-current="true"] .collection-sequence > .mono { color: var(--signal); }
+    .collection-trigger[aria-disabled="true"] { cursor: default; }
+
+    .active-archive { position: relative; background: var(--paper); color: var(--ink); border-top: 1px solid var(--ink); }
+    .album {
+      display: none; width: min(1380px, calc(100% - 2.5rem)); margin: 0 auto;
+      padding: clamp(4rem,8vw,8rem) 0 clamp(6rem,12vw,12rem);
+    }
+    .album.is-active { display: block; animation: album-in .5s var(--ease) both; }
+    @keyframes album-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .album-head {
+      display: grid; grid-template-columns: minmax(150px,.28fr) minmax(0,1fr); align-items: start;
+      gap: clamp(2rem,7vw,7rem); padding: 2rem 0 clamp(3rem,7vw,7rem); border-bottom: 1px solid var(--ink);
+    }
+    .album-head h2 { margin: 0; font-size: clamp(3.2rem,8vw,8.5rem); line-height: .88; }
+    .album-description { max-width: 680px; margin: 1.5rem 0 0; color: var(--muted); font-size: clamp(1rem,1.6vw,1.25rem); line-height: 1.65; }
+    .album-meta { color: var(--signal); }
+    .album-notes {
+      grid-column: 2; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem;
+      margin-top: clamp(2rem,4vw,4rem); padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .album-note { display: flex; flex-direction: column; gap: .4rem; color: var(--muted); }
+    .album-note b { color: var(--ink); font-weight: 500; }
+    .album-grid {
+      display: grid; grid-template-columns: repeat(12,minmax(0,1fr));
+      align-items: start; gap: clamp(2rem,4vw,4rem) clamp(1rem,2vw,2rem);
+      padding-top: clamp(3rem,7vw,7rem);
+    }
+    #sunpark .album-grid { row-gap: clamp(4rem,8vw,9rem); }
+    #sunpark .frame.offset { margin-top: clamp(4rem,10vw,11rem); }
+    #richelle .album-grid { row-gap: clamp(1.75rem,3vw,3.5rem); }
+    #richelle .frame.full { grid-column: 3 / span 8; }
+    #richelle .frame.offset { margin-top: clamp(1rem,3vw,3rem); }
+    #richelle .editorial-interruption { margin: clamp(1.5rem,3.5vw,3.5rem) 0; }
+    .frame { position: relative; grid-column: 2 / span 5; margin: 0; opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .frame::before {
+      content: none;
+    }
+    .frame.right { grid-column: 7 / span 5; }
+    .frame.is-visible { opacity: 1; transform: none; }
+    .frame.wide { grid-column: 3 / span 8; }
+    .frame.full { grid-column: 1 / -1; }
+    .frame.offset { margin-top: clamp(3rem,8vw,8rem); }
+    .frame-button { position: relative; width: 100%; padding: clamp(.3rem,.5vw,.5rem); overflow: hidden; border: 1px solid rgba(16,16,15,.2); border-radius: 1px; background: #faf9f5; cursor: zoom-in; }
+    .frame-button:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+    .frame-button > img { width: 100%; height: auto; transition: transform .7s var(--ease), filter .4s; }
+    .frame-button:hover > img { transform: scale(1.012); filter: saturate(1.035); }
+    .frame-button .image-placeholder { min-height: 0; aspect-ratio: 4 / 5; background: #282825; color: rgba(255,255,255,.42); border-color: rgba(255,255,255,.14); transition: background .3s; }
+    .frame-button:hover .image-placeholder { background: #30302d; }
+    .frame-caption { display: flex; justify-content: space-between; gap: 1rem; margin-top: .55rem; color: var(--muted); }
+    .frame-caption b { color: var(--signal); font-weight: 500; }
+    .editorial-interruption {
+      grid-column: 1 / -1; display: grid; grid-template-columns: minmax(150px,.28fr) minmax(0,1fr);
+      gap: clamp(2rem,7vw,7rem); margin: clamp(2rem,6vw,6rem) 0;
+      padding: clamp(2.5rem,5vw,5rem) 0;
+      border-top: 1px solid var(--signal); border-bottom: 1px solid var(--signal);
+      text-align: left;
+    }
+    .editorial-interruption > .mono { color: var(--signal); }
+    .editorial-interruption blockquote { max-width: 900px; margin: 0; color: var(--ink); font-family: "DM Serif Display", Georgia, serif; font-size: clamp(2.5rem,5.8vw,6rem); line-height: 1; }
+
+    .closing { width: min(1450px, calc(100% - 2.5rem)); margin: 0 auto; padding: clamp(6rem,13vw,13rem) 0 clamp(4rem,8vw,8rem); }
+    .closing h2 { max-width: 1100px; margin: 0; font-size: clamp(3.2rem,8vw,8rem); line-height: .94; }
+    .closing-note { max-width: 680px; margin: clamp(2rem,4vw,4rem) 0 0; color: var(--muted); font-size: clamp(1rem,1.5vw,1.2rem); line-height: 1.65; }
+    .consent-authorship-note {
+      max-width: 760px; margin: clamp(2rem,4vw,3.5rem) 0 0; padding-top: 1rem;
+      border-top: 1px solid var(--line); color: var(--muted);
+      font-size: clamp(.85rem,1.15vw,1rem); line-height: 1.65;
+    }
+    .consent-authorship-note strong { color: var(--ink); font-weight: 600; }
+    .portfolio-return {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      min-height: 2.75rem; margin-top: 1.75rem; padding: .75rem 1.05rem;
+      border: 1px solid rgba(15,14,26,.78); border-radius: 999px;
+      color: #ccff00; background: #0f0e1a; text-decoration: none;
+      font: 600 .62rem/1 "DM Mono", monospace; letter-spacing: .09em; text-transform: uppercase;
+      transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .portfolio-return:hover, .portfolio-return:focus-visible {
+      transform: translateY(-2px); border-color: #0f0e1a; background: #1b192b;
+      box-shadow: 0 10px 24px rgba(15,14,26,.2);
+    }
+    .portfolio-return:focus-visible { outline: 2px solid #0f0e1a; outline-offset: 3px; }
+    .closing-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.75rem; }
+    .closing-actions .portfolio-return { margin-top: 0; }
+    .portfolio-return.is-secondary { background: transparent; color: var(--ink); }
+    .closing-row { display: flex; justify-content: space-between; gap: 2rem; margin-top: clamp(3rem,7vw,6rem); padding-top: 1rem; border-top: 1px solid var(--line); }
+    footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem clamp(1.25rem,4vw,4rem); border-top: 1px solid var(--line); }
+
+    .viewer {
+      position: fixed; inset: 0; z-index: 500; width: 100%; height: 100%;
+      display: grid; grid-template-rows: auto 1fr auto;
+      padding: max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-right)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-left));
+      background: rgba(8,8,7,.98); color: #fff;
+      opacity: 0; visibility: hidden; transition: opacity .25s;
+    }
+    .viewer.is-open { opacity: 1; visibility: visible; }
+    .viewer-bar { min-width: 0; min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .viewer-copy { min-width: 0; display: grid; gap: .2rem; }
+    .viewer-caption { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .viewer-note {
+      max-width: 680px; margin: 0; color: rgba(255,255,255,.62);
+      font-size: .76rem; line-height: 1.45;
+    }
+    .viewer-note:empty { display: none; }
+    .viewer-stage { position: relative; min-width: 0; min-height: 0; display: grid; place-items: center; padding: 1rem; touch-action: pan-y; }
+    .viewer-stage .image-placeholder {
+      width: min(760px,90vw); min-height: min(72svh,900px);
+      background: #20201e; color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.2);
+    }
+    .viewer-stage > img { width: auto; height: auto; max-width: min(100%,1500px); max-height: 78svh; object-fit: contain; }
+    .viewer-close, .viewer-nav { min-width: 44px; min-height: 44px; padding: .55rem .75rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: transparent; color: #fff; cursor: pointer; }
+    .viewer-close:focus-visible, .viewer-nav:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .viewer-controls { flex: 0 0 auto; display: flex; gap: .5rem; }
+
+    .back-top {
+      position: fixed; right: 1.2rem; bottom: calc(1.2rem + env(safe-area-inset-bottom)); z-index: 90;
+      width: 48px; height: 48px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.3); border-radius: 50%;
+      background: var(--glass); color: #fff; text-decoration: none;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      opacity: 0; transform: translateY(10px); pointer-events: none;
+      transition: opacity .3s, transform .35s var(--ease);
+    }
+    .back-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+
+    @keyframes igc-editorial-copy-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html.igc-arriving-from-index .hero-kicker,
+      html.igc-arriving-from-index .hero-bottom {
+        animation: igc-editorial-copy-in 440ms cubic-bezier(.16,1,.3,1) 330ms both;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-nav { grid-template-columns: 1fr auto; }
+      .site-nav-status { display: none; }
+      .site-nav > a:last-child { display: none; }
+      .edition-switch { justify-self: end; font-size: .56rem; }
+      .edition-switch a { padding: .38rem .5rem; }
+      .edition-long { display: none; }
+      .edition-short { display: inline; }
+      .hero { min-height: 84svh; }
+      .hero-placeholder img { object-position: 72% center; }
+      .hero-bottom, .closing-row, footer { flex-direction: column; align-items: flex-start; }
+      .hero-meta { margin-top: 1rem; }
+      .contact-sheet {
+        width: calc(100% - 2rem); display: grid; grid-template-columns: clamp(194px,54vw,216px);
+        grid-auto-flow: column; grid-auto-columns: minmax(112px,31vw);
+        gap: .55rem; padding: .65rem; overflow-x: auto;
+        scroll-snap-type: x proximity; overscroll-behavior-x: contain; scrollbar-width: none;
+      }
+      .contact-sheet::-webkit-scrollbar { display: none; }
+      .contact-sheet-intro {
+        grid-column: auto; min-width: 0; height: 138px; gap: .65rem;
+        padding: .45rem 1rem .45rem .25rem; scroll-snap-align: start;
+      }
+      .proof-labels { min-width: 0; gap: .3rem; }
+      .proof-labels .mono {
+        max-width: 100%; white-space: normal; overflow-wrap: anywhere; line-height: 1.45;
+      }
+      .proof-controls { width: 100%; flex-wrap: nowrap; gap: .5rem; }
+      .proof-nav { flex: 0 0 1.9rem; width: 1.9rem; height: 1.9rem; }
+      .proof-position { flex: 0 0 3.4rem; min-width: 3.4rem; font-size: .52rem; }
+      .contact-frame { height: 138px; scroll-snap-align: start; }
+      .contact-frame:hover { transform: none; }
+      .viewer-bar:last-child { align-items: flex-end; }
+      .viewer-copy { max-width: calc(100% - 104px); }
+      .viewer-caption { white-space: normal; line-height: 1.35; }
+      .viewer-note { font-size: .7rem; }
+      .index-head { grid-template-columns: 1fr; }
+      .collection-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .collection-trigger { gap: 1rem; padding-bottom: 1.5rem; }
+      .collection-copy { min-height: 215px; padding: 0; }
+      .collection-copy h3 { font-size: clamp(2.8rem,14vw,5rem); }
+      .collection-cover { min-width: 0; max-width: 100%; aspect-ratio: 4 / 5; }
+      .folio-pending { min-height: 150px; }
+      .album-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .album-head { grid-template-columns: 1fr; gap: 1.25rem; }
+      .album-notes { grid-column: 1; grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .editorial-interruption { grid-template-columns: 1fr; gap: 1.5rem; }
+      .frame, .frame.right, .frame.wide, .frame.full, .editorial-interruption { grid-column: auto; }
+      #richelle .frame.full { grid-column: auto; }
+      .frame.offset, #sunpark .frame.offset, #richelle .frame.offset { margin-top: 0; }
+      #sunpark .album-grid { row-gap: 4.5rem; }
+      #richelle .album-grid { row-gap: 2.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .frame { opacity: 1; transform: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="project-transitions.css?v=20260822-igc2">
+  <script defer src="project-transitions.js?v=20260822-igc2"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#collections">Skip to collections</a>
+
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <a href="../">Jack Mao | Portfolio</a>
+    <div class="edition-switch" aria-label="In Good Company editions"><a href="in-good-company-light.html"><span class="edition-long">Moving Index</span><span class="edition-short" aria-hidden="true">Index</span></a><a href="in-good-company.html" aria-current="page">Editorial</a></div>
+    <a href="#collections">Archive 01</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="hero-grid" aria-hidden="true">
+        <div class="hero-placeholder" data-slot="Hero portrait / Full bleed"><img src="../images/in-good-company/sunpark/sunpark-01-toronto-800.webp" srcset="../images/in-good-company/sunpark/sunpark-01-toronto-800.webp 800w, ../images/in-good-company/sunpark/sunpark-01-toronto.webp 2400w" sizes="100vw" alt="" width="2400" height="1600" loading="eager" fetchpriority="high" draggable="false"></div>
+      </div>
+      <div class="hero-copy">
+        <p class="hero-kicker mono">Portrait journal / Roll 001 / Toronto</p>
+        <h1>In Good<br>Company</h1>
+        <div class="hero-bottom">
+          <p class="hero-intro">An ongoing portrait practice about friendship, presence, and the small gestures that emerge when the camera is allowed to linger.</p>
+          <span class="hero-meta mono">Frame 01 of 09 / Selected edit</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="contact-sheet" aria-label="Portrait archive preview" data-proof-roll="sunpark">
+      <div class="contact-sheet-intro">
+        <div class="proof-labels">
+          <span class="mono" data-proof-title>Sunpark / Proofs</span>
+          <span class="mono" data-proof-meta>06 frames<br>Toronto / Spring</span>
+        </div>
+        <div class="proof-controls" aria-label="Choose portrait proof roll">
+          <button class="proof-nav proof-prev" type="button" aria-label="Previous proof roll">&larr;</button>
+          <span class="proof-position mono" aria-live="polite">01 / 02</span>
+          <button class="proof-nav proof-next" type="button" aria-label="Next proof roll">&rarr;</button>
+        </div>
+      </div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-02-portrait-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"><span>F02 / Sunpark</span></div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-03-over-shoulder-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"><span>F03 / Sunpark</span></div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-04-in-company-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"><span>F04 / Sunpark</span></div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-05-blossom-study-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"><span>F05 / Sunpark</span></div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-06-blossom-reach-800.webp" alt="" width="1343" height="2400" loading="lazy" draggable="false"><span>F06 / Sunpark</span></div>
+      <div class="contact-frame"><img src="../images/in-good-company/sunpark/sunpark-07-blossom-close-800.webp" alt="" width="1461" height="2400" loading="lazy" draggable="false"><span>F07 / Sunpark</span></div>
+    </section>
+
+    <section class="archive-index" id="collections" aria-labelledby="collections-title">
+      <div class="index-head">
+        <span class="mono">Roll index / 001–002</span>
+        <h2 id="collections-title">Two people. Two places. Portrait sequences shaped by attention, conversation, and time spent together.</h2>
+      </div>
+
+      <div class="collection-grid">
+        <article class="collection-card" data-category="portrait" data-collection="sunpark" aria-current="true">
+          <a class="collection-trigger" href="#sunpark" aria-controls="sunpark" aria-label="View Sunpark collection">
+            <div class="collection-copy"><div class="collection-sequence"><span class="mono">Sequence 01 / 09 frames</span><span class="sequence-view mono" aria-hidden="true">View &rarr;</span></div><h3>Sunpark</h3><p class="collection-detail">A spring walk through Trinity Bellwoods Park, photographed between the Toronto skyline, flowering branches, and the visual rhythm of a city shifting into spring.</p><div class="collection-facts mono"><span>Place <b>Toronto - Trinity Bellwoods Park</b></span><span>Type <b>Photo essay</b></span></div></div>
+            <div class="collection-cover" aria-hidden="true">
+              <div class="folio-strip">
+                <figure class="folio-frame" data-code="IGC / R001 / F02"><img src="../images/in-good-company/sunpark/sunpark-02-portrait-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"></figure>
+                <figure class="folio-frame" data-code="IGC / R001 / F05"><img src="../images/in-good-company/sunpark/sunpark-05-blossom-study-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"></figure>
+                <figure class="folio-frame" data-code="IGC / R001 / F09"><img src="../images/in-good-company/sunpark/sunpark-09-closing-portrait-800.webp" alt="" width="1600" height="2400" loading="lazy" draggable="false"></figure>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="collection-card" data-category="observed" data-collection="richelle">
+          <a class="collection-trigger" href="#richelle" aria-controls="richelle" aria-label="View Richelle collection">
+            <div class="collection-copy"><div class="collection-sequence"><span class="mono">Sequence 02 / 09 frames</span><span class="sequence-view mono" aria-hidden="true">View &rarr;</span></div><h3>Richelle</h3><p class="collection-detail">An evening at Luna Bakery, photographed in warm lamplight as conversation shifted between direct portraits, passing glances, and unguarded expressions.</p><div class="collection-facts mono"><span>Place <b>Toronto - Luna Bakery</b></span><span>Type <b>Portrait study</b></span></div></div>
+            <div class="collection-cover" aria-hidden="true">
+              <div class="folio-strip">
+                <figure class="folio-frame" data-code="IGC / R002 / F01"><img src="../images/in-good-company/richelle/richelle-01-window-repose.webp" alt="" width="2009" height="2400" loading="lazy" draggable="false"></figure>
+                <figure class="folio-frame" data-code="IGC / R002 / F02"><img src="../images/in-good-company/richelle/richelle-02-golden-eye-contact.webp" alt="" width="1991" height="2400" loading="lazy" draggable="false"></figure>
+                <figure class="folio-frame" data-code="IGC / R002 / F03"><img src="../images/in-good-company/richelle/richelle-03-window-close.webp" alt="" width="1941" height="2400" loading="lazy" draggable="false"></figure>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="active-archive" aria-live="polite" data-edit="EDIT / 001">
+      <article class="album is-active" id="sunpark" data-album="sunpark" data-edit="001">
+        <header class="album-head">
+          <span class="album-meta mono">Roll 001 / Sequence 01</span>
+          <div><h2>Sunpark</h2><p class="album-description">A spring walk through Trinity Bellwoods Park, photographed between the Toronto skyline, flowering branches, and the visual rhythm of a city shifting into spring.</p></div>
+          <div class="album-notes mono"><span class="album-note">Location<b>Toronto - Trinity Bellwoods Park</b></span><span class="album-note">Season<b>Spring</b></span><span class="album-note">Method<b>Directed + observed</b></span><span class="album-note">Edit<b>09 frames</b></span></div>
+        </header>
+        <div class="album-grid">
+          <figure class="frame full" data-frame="IGC–R001–F01" data-caption="Across the park / Sunpark" data-note="The skyline establishes the walk before the portrait begins."><button class="frame-button" type="button" data-placeholder="Across the park / Sunpark" aria-label="Open Across the park photograph"><img src="../images/in-good-company/sunpark/sunpark-01-toronto-800.webp" srcset="../images/in-good-company/sunpark/sunpark-01-toronto-800.webp 800w, ../images/in-good-company/sunpark/sunpark-01-toronto.webp 2400w" sizes="(max-width: 760px) calc(100vw - 2rem), 90vw" alt="Sunpark standing in a Toronto park with the CN Tower framed by trees" width="2400" height="1600" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>01 / 09</b><span>Across the park / Toronto</span></figcaption></figure>
+          <figure class="frame" data-frame="IGC–R001–F02" data-caption="Under the canopy / Sunpark"><button class="frame-button" type="button" data-placeholder="Under the canopy / Sunpark" aria-label="Open Under the canopy photograph"><img src="../images/in-good-company/sunpark/sunpark-02-portrait-800.webp" srcset="../images/in-good-company/sunpark/sunpark-02-portrait-800.webp 800w, ../images/in-good-company/sunpark/sunpark-02-portrait.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Low-angle portrait of Sunpark beneath a green tree canopy" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>02 / 09</b><span>Under the canopy</span></figcaption></figure>
+          <figure class="frame right offset" data-frame="IGC–R001–F03" data-caption="Turning toward the skyline / Sunpark"><button class="frame-button" type="button" data-placeholder="Turning toward the skyline / Sunpark" aria-label="Open Turning toward the skyline photograph"><img src="../images/in-good-company/sunpark/sunpark-03-over-shoulder-800.webp" srcset="../images/in-good-company/sunpark/sunpark-03-over-shoulder-800.webp 800w, ../images/in-good-company/sunpark/sunpark-03-over-shoulder.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Sunpark looking over her shoulder toward the Toronto skyline" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>03 / 09</b><span>Turning toward the skyline</span></figcaption></figure>
+          <figure class="frame wide" data-frame="IGC–R001–F04" data-caption="In good company / Sunpark" data-note="Conversation briefly becomes part of the composition."><button class="frame-button" type="button" data-placeholder="In good company / Sunpark" aria-label="Open In good company photograph"><img src="../images/in-good-company/sunpark/sunpark-04-in-company-800.webp" srcset="../images/in-good-company/sunpark/sunpark-04-in-company-800.webp 800w, ../images/in-good-company/sunpark/sunpark-04-in-company.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 68vw" alt="Sunpark laughing with a friend beneath red spring blossoms" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>04 / 09</b><span>In good company</span></figcaption></figure>
+          <aside class="editorial-interruption"><span class="mono">Field note / Spring in Toronto</span><blockquote>A walk became a portrait session when the blossoms arrived.</blockquote></aside>
+          <figure class="frame" data-frame="IGC–R001–F05" data-caption="Reaching for spring / Sunpark" data-note="The blossoms changed the direction of the walk."><button class="frame-button" type="button" data-placeholder="Reaching for spring / Sunpark" aria-label="Open Reaching for spring photograph"><img src="../images/in-good-company/sunpark/sunpark-05-blossom-study-800.webp" srcset="../images/in-good-company/sunpark/sunpark-05-blossom-study-800.webp 800w, ../images/in-good-company/sunpark/sunpark-05-blossom-study.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Sunpark reaching toward red blossoms" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>05 / 09</b><span>Reaching for spring</span></figcaption></figure>
+          <figure class="frame right" data-frame="IGC–R001–F06" data-caption="Among the blossoms / Sunpark"><button class="frame-button" type="button" data-placeholder="Among the blossoms / Sunpark" aria-label="Open Among the blossoms photograph"><img src="../images/in-good-company/sunpark/sunpark-06-blossom-reach-800.webp" srcset="../images/in-good-company/sunpark/sunpark-06-blossom-reach-800.webp 800w, ../images/in-good-company/sunpark/sunpark-06-blossom-reach.webp 1343w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Sunpark framed beneath a dense canopy of red blossoms" width="1343" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>06 / 09</b><span>Among the blossoms</span></figcaption></figure>
+          <figure class="frame wide offset" data-frame="IGC–R001–F07" data-caption="Between branches / Sunpark"><button class="frame-button" type="button" data-placeholder="Between branches / Sunpark" aria-label="Open Between branches photograph"><img src="../images/in-good-company/sunpark/sunpark-07-blossom-close-800.webp" srcset="../images/in-good-company/sunpark/sunpark-07-blossom-close-800.webp 800w, ../images/in-good-company/sunpark/sunpark-07-blossom-close.webp 1461w" sizes="(max-width: 760px) calc(100vw - 2rem), 68vw" alt="Sunpark smiling through flowering branches" width="1461" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>07 / 09</b><span>Between branches</span></figcaption></figure>
+          <figure class="frame" data-frame="IGC–R001–F08" data-caption="Park portrait / Sunpark"><button class="frame-button" type="button" data-placeholder="Park portrait / Sunpark" aria-label="Open Park portrait photograph"><img src="../images/in-good-company/sunpark/sunpark-08-park-portrait-800.webp" srcset="../images/in-good-company/sunpark/sunpark-08-park-portrait-800.webp 800w, ../images/in-good-company/sunpark/sunpark-08-park-portrait.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Sunpark standing beneath trees with the CN Tower in the distance" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>08 / 09</b><span>Park portrait</span></figcaption></figure>
+          <figure class="frame right offset" data-frame="IGC–R001–F09" data-caption="The skyline stays / Sunpark"><button class="frame-button" type="button" data-placeholder="The skyline stays / Sunpark" aria-label="Open The skyline stays photograph"><img src="../images/in-good-company/sunpark/sunpark-09-closing-portrait-800.webp" srcset="../images/in-good-company/sunpark/sunpark-09-closing-portrait-800.webp 800w, ../images/in-good-company/sunpark/sunpark-09-closing-portrait.webp 1600w" sizes="(max-width: 760px) calc(100vw - 2rem), 42vw" alt="Closing portrait of Sunpark beneath trees with the CN Tower behind her" width="1600" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>09 / 09</b><span>The skyline stays</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="album" id="richelle" data-album="richelle" data-edit="002">
+        <header class="album-head">
+          <span class="album-meta mono">Roll 002 / Sequence 02</span>
+          <div><h2>Richelle</h2><p class="album-description">An evening at Luna Bakery, photographed in warm lamplight as conversation shifted between direct portraits, passing glances, and unguarded expressions.</p></div>
+          <div class="album-notes mono"><span class="album-note">Location<b>Toronto - Luna Bakery</b></span><span class="album-note">Setting<b>Golden hour to dusk</b></span><span class="album-note">Method<b>Observed portraiture</b></span><span class="album-note">Edit<b>09 frames</b></span></div>
+        </header>
+        <div class="album-grid">
+          <figure class="frame full" data-frame="IGC-R002-F01" data-caption="Window repose / Richelle" data-note="The last sunlight set the tone before the room turned inward."><button class="frame-button" type="button" data-placeholder="Window repose / Richelle" aria-label="Open Window repose photograph"><img src="../images/in-good-company/richelle/richelle-01-window-repose.webp" alt="Richelle resting against a chair in warm sunset light" width="2009" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>01 / 09</b><span>Window repose</span></figcaption></figure>
+          <figure class="frame" data-frame="IGC-R002-F02" data-caption="Into the light / Richelle" data-note="Direct eye contact held against the glow of the bakery window."><button class="frame-button" type="button" data-placeholder="Into the light / Richelle" aria-label="Open Into the light photograph"><img src="../images/in-good-company/richelle/richelle-02-golden-eye-contact.webp" alt="Richelle looking toward the camera with sunset light behind her" width="1991" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>02 / 09</b><span>Into the light</span></figcaption></figure>
+          <figure class="frame right offset" data-frame="IGC-R002-F03" data-caption="Window study / Richelle"><button class="frame-button" type="button" data-placeholder="Window study / Richelle" aria-label="Open Window study photograph"><img src="../images/in-good-company/richelle/richelle-03-window-close.webp" alt="Close portrait of Richelle framed by a glowing bakery window" width="1941" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>03 / 09</b><span>Window study</span></figcaption></figure>
+          <aside class="editorial-interruption"><span class="mono">Field note / After dusk</span><blockquote>The room stayed still. The expression kept changing.</blockquote></aside>
+          <figure class="frame wide" data-frame="IGC-R002-F04" data-caption="Lamplight / Richelle" data-note="The lamp became the room's second subject."><button class="frame-button" type="button" data-placeholder="Lamplight / Richelle" aria-label="Open Lamplight photograph"><img src="../images/in-good-company/richelle/richelle-01-lamplight.webp" alt="Richelle smiling beneath a warm floor lamp" width="1800" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>04 / 09</b><span>Lamplight</span></figcaption></figure>
+          <figure class="frame" data-frame="IGC-R002-F05" data-caption="Caught looking / Richelle" data-note="Eye contact turns an observed moment into a portrait."><button class="frame-button" type="button" data-placeholder="Caught looking / Richelle" aria-label="Open Caught looking photograph"><img src="../images/in-good-company/richelle/richelle-02-eye-contact.webp" alt="Richelle making eye contact while holding a cold drink" width="1800" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>05 / 09</b><span>Caught looking</span></figcaption></figure>
+          <figure class="frame right offset" data-frame="IGC-R002-F06" data-caption="First sip / Richelle"><button class="frame-button" type="button" data-placeholder="First sip / Richelle" aria-label="Open First sip photograph"><img src="../images/in-good-company/richelle/richelle-03-first-sip.webp" alt="Richelle taking a sip beneath the lamp" width="1800" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>06 / 09</b><span>First sip</span></figcaption></figure>
+          <figure class="frame wide" data-frame="IGC-R002-F07" data-caption="Across the room / Richelle"><button class="frame-button" type="button" data-placeholder="Across the room / Richelle" aria-label="Open Across the room photograph"><img src="../images/in-good-company/richelle/richelle-04-side-glance.webp" alt="Richelle glancing across the room while taking a sip" width="1800" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>07 / 09</b><span>Across the room</span></figcaption></figure>
+          <figure class="frame" data-frame="IGC-R002-F08" data-caption="A quiet moment / Richelle"><button class="frame-button" type="button" data-placeholder="A quiet moment / Richelle" aria-label="Open A quiet moment photograph"><img src="../images/in-good-company/richelle/richelle-05-quiet-moment.webp" alt="Richelle looking down while stirring her drink" width="1800" height="2400" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>08 / 09</b><span>A quiet moment</span></figcaption></figure>
+          <figure class="frame right" data-frame="IGC-R002-F09" data-caption="Three expressions / Richelle" data-note="Three expressions, held together as one small sequence."><button class="frame-button" type="button" data-placeholder="Three expressions / Richelle" aria-label="Open Three expressions contact study"><img src="../images/in-good-company/richelle/richelle-06-contact-study.webp" alt="Three-frame contact study of Richelle beneath warm lamplight" width="1320" height="2346" loading="lazy" draggable="false"></button><figcaption class="frame-caption mono"><b>09 / 09</b><span>Three expressions</span></figcaption></figure>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="closing">
+      <span class="mono">Working note</span>
+      <h2>Made with people, not simply of them.</h2>
+      <p class="closing-note">An ongoing portrait archive built through collaboration, trust, and time spent together. New rolls will be added as the practice grows.</p>
+      <p class="consent-authorship-note"><strong>Consent &amp; authorship note:</strong> These portraits were made collaboratively and are shared with the knowledge and consent of the people shown. Photography, creative direction, image selection, editing, and retouching are by Jack Mao.</p>
+      <div class="closing-actions">
+        <a class="portfolio-return" href="in-good-company-light.html">Return to Moving Index <span aria-hidden="true">&rarr;</span></a>
+        <a class="portfolio-return is-secondary" href="../">Back to Portfolio <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="closing-row"><span class="mono">Photography / Direction / Retouching</span><span class="mono">Portrait archive / Ongoing</span></div>
+    </section>
+  </main>
+
+  <footer><span class="mono">Jack Mao / Toronto</span><span class="mono">Personal practice / Ongoing</span></footer>
+  <a class="back-top" href="#top" aria-label="Back to top">&uarr;</a>
+
+  <div class="viewer" role="dialog" aria-modal="true" aria-label="Photograph viewer" aria-hidden="true">
+    <div class="viewer-bar"><span class="viewer-count mono">01 / 01</span><button class="viewer-close" type="button" aria-label="Close viewer">Close</button></div>
+    <div class="viewer-stage"><div class="image-placeholder">Portrait placeholder</div></div>
+    <div class="viewer-bar"><div class="viewer-copy"><span class="viewer-caption mono"></span><p class="viewer-note"></p></div><div class="viewer-controls"><button class="viewer-nav viewer-prev" type="button" aria-label="Previous photograph">&larr;</button><button class="viewer-nav viewer-next" type="button" aria-label="Next photograph">&rarr;</button></div></div>
+  </div>
+
+  <script>
+    (function () {
+      const cards = Array.from(document.querySelectorAll('.collection-card'));
+      const albums = Array.from(document.querySelectorAll('.album'));
+      const archive = document.querySelector('.active-archive');
+      const viewer = document.querySelector('.viewer');
+      const viewerStage = viewer.querySelector('.viewer-stage');
+      const viewerCaption = viewer.querySelector('.viewer-caption');
+      const viewerNote = viewer.querySelector('.viewer-note');
+      const viewerCount = viewer.querySelector('.viewer-count');
+      const closeButton = viewer.querySelector('.viewer-close');
+      const prevButton = viewer.querySelector('.viewer-prev');
+      const nextButton = viewer.querySelector('.viewer-next');
+      const nav = document.querySelector('.site-nav');
+      const backTop = document.querySelector('.back-top');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const proofRail = document.querySelector('.contact-sheet');
+      const proofTitle = proofRail.querySelector('[data-proof-title]');
+      const proofMeta = proofRail.querySelector('[data-proof-meta]');
+      const proofPosition = proofRail.querySelector('.proof-position');
+      const proofPrevious = proofRail.querySelector('.proof-prev');
+      const proofNext = proofRail.querySelector('.proof-next');
+      const proofFrames = Array.from(proofRail.querySelectorAll('.contact-frame'));
+      const protectedAreaSelector = '.hero-grid, .contact-sheet, .collection-cover, .album-grid, .viewer-stage';
+      const protectedMediaSelector = '.hero-grid img, .contact-sheet img, .collection-cover img, .album-grid img, .viewer-stage img, .hero-grid video, .collection-cover video, .album-grid video, .viewer-stage video';
+      const proofRolls = [
+        {
+          id: 'sunpark', title: 'Sunpark / Proofs', meta: ['06 selected', 'Toronto / Spring'],
+          frames: [
+            ['../images/in-good-company/sunpark/sunpark-02-portrait.webp', 1600, 2400, 'F02 / Sunpark'],
+            ['../images/in-good-company/sunpark/sunpark-03-over-shoulder.webp', 1600, 2400, 'F03 / Sunpark'],
+            ['../images/in-good-company/sunpark/sunpark-04-in-company.webp', 1600, 2400, 'F04 / Sunpark'],
+            ['../images/in-good-company/sunpark/sunpark-05-blossom-study.webp', 1600, 2400, 'F05 / Sunpark'],
+            ['../images/in-good-company/sunpark/sunpark-06-blossom-reach.webp', 1343, 2400, 'F06 / Sunpark'],
+            ['../images/in-good-company/sunpark/sunpark-07-blossom-close.webp', 1461, 2400, 'F07 / Sunpark']
+          ]
+        },
+        {
+          id: 'richelle', title: 'Richelle / Proofs', meta: ['06 selected', 'Toronto / Evening'],
+          frames: [
+            ['../images/in-good-company/richelle/richelle-01-window-repose.webp', 2009, 2400, 'F01 / Richelle'],
+            ['../images/in-good-company/richelle/richelle-02-golden-eye-contact.webp', 1991, 2400, 'F02 / Richelle'],
+            ['../images/in-good-company/richelle/richelle-03-window-close.webp', 1941, 2400, 'F03 / Richelle'],
+            ['../images/in-good-company/richelle/richelle-01-lamplight.webp', 1800, 2400, 'F04 / Richelle'],
+            ['../images/in-good-company/richelle/richelle-03-first-sip.webp', 1800, 2400, 'F06 / Richelle'],
+            ['../images/in-good-company/richelle/richelle-06-contact-study.webp', 1320, 2346, 'F09 / Richelle']
+          ]
+        }
+      ];
+      let activeButtons = [];
+      let currentIndex = 0;
+      let returnFocus = null;
+      let lastY = 0;
+      let proofRollIndex = 0;
+      let proofSwapTimer = null;
+      let proofRevealTimer = null;
+      let touchStartX = null;
+      let touchStartY = null;
+
+      function updateProofContent(roll) {
+        proofRail.dataset.proofRoll = roll.id;
+        proofTitle.textContent = roll.title;
+        proofMeta.replaceChildren(roll.meta[0], document.createElement('br'), roll.meta[1]);
+        proofPosition.textContent = String(proofRollIndex + 1).padStart(2, '0') + ' / ' + String(proofRolls.length).padStart(2, '0');
+        proofFrames.forEach((frame, index) => {
+          const [src, width, height, label] = roll.frames[index];
+          const image = frame.querySelector('img');
+          image.src = roll.id === 'sunpark' ? src.replace('.webp', '-800.webp') : src;
+          image.removeAttribute('srcset');
+          image.width = width;
+          image.height = height;
+          frame.querySelector('span').textContent = label;
+        });
+      }
+
+      function showProofRoll(index, animate = true) {
+        proofRollIndex = (index + proofRolls.length) % proofRolls.length;
+        const roll = proofRolls[proofRollIndex];
+        clearTimeout(proofSwapTimer);
+        clearTimeout(proofRevealTimer);
+        proofRail.classList.remove('is-revealing');
+        if (!animate || reduceMotion) {
+          proofRail.classList.remove('is-switching');
+          updateProofContent(roll);
+          return;
+        }
+        proofRail.classList.add('is-switching');
+        proofSwapTimer = setTimeout(() => {
+          updateProofContent(roll);
+          proofRail.classList.remove('is-switching');
+          proofRail.classList.add('is-revealing');
+          proofRevealTimer = setTimeout(() => proofRail.classList.remove('is-revealing'), 900);
+        }, 300);
+      }
+
+      function protectMedia(root) {
+        root.querySelectorAll(protectedMediaSelector).forEach(media => {
+          media.setAttribute('draggable', 'false');
+          if (media.tagName === 'VIDEO') {
+            media.setAttribute('controlslist', 'nodownload noremoteplayback');
+            media.setAttribute('disablepictureinpicture', '');
+          }
+        });
+      }
+
+      protectMedia(document);
+      new MutationObserver(mutations => {
+        if (mutations.some(mutation => mutation.addedNodes.length)) protectMedia(document);
+      }).observe(document.body, { childList: true, subtree: true });
+
+      document.addEventListener('contextmenu', event => {
+        if (event.target.closest(protectedAreaSelector)) event.preventDefault();
+      });
+      document.addEventListener('dragstart', event => {
+        if (event.target.matches(protectedMediaSelector)) event.preventDefault();
+      });
+
+      function revealFrames(album) {
+        const frames = Array.from(album.querySelectorAll('.frame'));
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          frames.forEach(frame => frame.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .12 });
+        frames.forEach(frame => observer.observe(frame));
+      }
+
+      function collectionFromHash() {
+        const id = decodeURIComponent(window.location.hash.slice(1));
+        return albums.some(album => album.dataset.album === id) ? id : null;
+      }
+
+      function updateCollectionUrl(id) {
+        if (window.location.hash === '#' + id) return;
+        const url = new URL(window.location.href);
+        url.hash = id;
+        window.history.pushState({ collection: id }, '', url);
+      }
+
+      function activateCollection(id, shouldScroll, updateUrl = false) {
+        cards.forEach(card => card.setAttribute('aria-current', String(card.dataset.collection === id)));
+        albums.forEach(album => album.classList.toggle('is-active', album.dataset.album === id));
+        const activeAlbum = albums.find(album => album.dataset.album === id);
+        if (activeAlbum) {
+          const proofIndex = proofRolls.findIndex(roll => roll.id === id);
+          if (proofIndex !== -1 && proofIndex !== proofRollIndex) showProofRoll(proofIndex);
+          archive.dataset.edit = 'EDIT / ' + activeAlbum.dataset.edit;
+          activeButtons = Array.from(activeAlbum.querySelectorAll('.frame-button'));
+          revealFrames(activeAlbum);
+          if (updateUrl) updateCollectionUrl(id);
+          if (shouldScroll) archive.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+
+      function stepProofRoll(direction) {
+        const nextIndex = (proofRollIndex + direction + proofRolls.length) % proofRolls.length;
+        showProofRoll(nextIndex);
+        activateCollection(proofRolls[nextIndex].id, false, true);
+      }
+
+      proofPrevious.addEventListener('click', () => stepProofRoll(-1));
+      proofNext.addEventListener('click', () => stepProofRoll(1));
+
+      cards.forEach(card => {
+        const trigger = card.querySelector('.collection-trigger');
+        if (trigger.matches('[aria-disabled="true"]')) return;
+        trigger.addEventListener('click', event => {
+          event.preventDefault();
+          activateCollection(card.dataset.collection, true, true);
+        });
+      });
+
+      proofRolls[1].frames.forEach(([src]) => {
+        const image = new Image();
+        image.src = src;
+      });
+
+      function preloadFrame(index) {
+        if (!activeButtons.length) return;
+        const button = activeButtons[(index + activeButtons.length) % activeButtons.length];
+        const sourceImage = button.querySelector('img');
+        if (!sourceImage) return;
+        const preload = new Image();
+        preload.src = sourceImage.currentSrc || sourceImage.src;
+      }
+
+      function showFrame(index) {
+        if (!activeButtons.length) return;
+        currentIndex = (index + activeButtons.length) % activeButtons.length;
+        const button = activeButtons[currentIndex];
+        const frame = button.closest('.frame');
+        const sourceImage = button.querySelector('img');
+        if (sourceImage) {
+          const image = sourceImage.cloneNode(false);
+          image.removeAttribute('loading');
+          image.removeAttribute('fetchpriority');
+          image.alt = sourceImage.alt || frame.dataset.caption || 'Portrait photograph';
+          viewerStage.replaceChildren(image);
+        } else {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'image-placeholder';
+          placeholder.textContent = button.dataset.placeholder || 'Portrait placeholder';
+          viewerStage.replaceChildren(placeholder);
+        }
+        viewerCaption.textContent = frame.dataset.caption || '';
+        viewerNote.textContent = frame.dataset.note || '';
+        viewerCount.textContent = String(currentIndex + 1).padStart(2,'0') + ' / ' + String(activeButtons.length).padStart(2,'0');
+        preloadFrame(currentIndex - 1);
+        preloadFrame(currentIndex + 1);
+      }
+
+      function openViewer(button) {
+        activeButtons = Array.from(button.closest('.album').querySelectorAll('.frame-button'));
+        returnFocus = button;
+        showFrame(activeButtons.indexOf(button));
+        viewer.classList.add('is-open');
+        viewer.setAttribute('aria-hidden','false');
+        document.body.classList.add('viewer-open');
+        closeButton.focus();
+      }
+
+      function closeViewer() {
+        viewer.classList.remove('is-open');
+        viewer.setAttribute('aria-hidden','true');
+        document.body.classList.remove('viewer-open');
+        const placeholder = document.createElement('div');
+        placeholder.className = 'image-placeholder';
+        placeholder.textContent = 'Portrait placeholder';
+        viewerStage.replaceChildren(placeholder);
+        if (returnFocus) returnFocus.focus();
+      }
+
+      document.querySelectorAll('.frame-button').forEach(button => button.addEventListener('click', () => openViewer(button)));
+      closeButton.addEventListener('click', closeViewer);
+      prevButton.addEventListener('click', () => showFrame(currentIndex - 1));
+      nextButton.addEventListener('click', () => showFrame(currentIndex + 1));
+      viewerStage.addEventListener('touchstart', event => {
+        if (event.touches.length !== 1) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+      }, { passive: true });
+      viewerStage.addEventListener('touchend', event => {
+        if (touchStartX === null || touchStartY === null || event.changedTouches.length !== 1) return;
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        const deltaY = event.changedTouches[0].clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+        if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.15) return;
+        showFrame(currentIndex + (deltaX < 0 ? 1 : -1));
+      }, { passive: true });
+      document.addEventListener('keydown', event => {
+        if (!viewer.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+          closeViewer();
+          return;
+        }
+        if (event.key === 'ArrowLeft') showFrame(currentIndex - 1);
+        if (event.key === 'ArrowRight') showFrame(currentIndex + 1);
+        if (event.key === 'Tab') {
+          const viewerControls = [closeButton, prevButton, nextButton].filter(control => !control.disabled);
+          const firstControl = viewerControls[0];
+          const lastControl = viewerControls[viewerControls.length - 1];
+          if (event.shiftKey && document.activeElement === firstControl) {
+            event.preventDefault();
+            lastControl.focus();
+          } else if (!event.shiftKey && document.activeElement === lastControl) {
+            event.preventDefault();
+            firstControl.focus();
+          }
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY || 0;
+        backTop.classList.toggle('is-visible', y > 500);
+        if (y > lastY + 5 && y > 140) nav.classList.add('is-hidden');
+        if (y < lastY - 5) nav.classList.remove('is-hidden');
+        lastY = Math.max(y,0);
+      }, { passive: true });
+
+      window.addEventListener('hashchange', () => {
+        const id = collectionFromHash();
+        if (id) activateCollection(id, true, false);
+      });
+
+      const initialCollection = collectionFromHash();
+      activateCollection(initialCollection || 'sunpark', false, false);
+      if (initialCollection) {
+        window.requestAnimationFrame(() => archive.scrollIntoView({ behavior: 'auto', block: 'start' }));
+      }
+    })();
+  </script>
+  <script defer src="../analytics.js"></script>
+</body>
+</html>

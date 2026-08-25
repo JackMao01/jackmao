@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
-<title>Coffee Nearby Demo | Jack Mao</title>
-<meta name="description" content="A fixed-format Coffee Nearby demo for Meta wearable-style navigation, built around D-pad input, amber terminal visuals, and nearby coffee discovery.">
-<link rel="canonical" href="https://hellojackmao.com/projects/coffee-finder-amber.html">
+<title>Coffee Nearby Interactive Demo | Jack Mao</title>
+<meta name="description" content="The fixed-format interactive companion to the Coffee Nearby case study, built around D-pad input, amber terminal visuals, and nearby coffee discovery.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.hellojackmao.com/projects/coffee-nearby.html">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://hellojackmao.com/projects/coffee-finder-amber.html">
-<meta property="og:title" content="Coffee Nearby Demo | Jack Mao">
-<meta property="og:description" content="A fixed-format Coffee Nearby demo for Meta wearable-style navigation, D-pad input, amber terminal visuals, and nearby coffee discovery.">
-<meta property="og:image" content="https://hellojackmao.com/images/coffee-nearby-index-cover.png">
+<meta property="og:url" content="https://www.hellojackmao.com/projects/coffee-nearby.html">
+<meta property="og:title" content="Coffee Nearby Interactive Demo | Jack Mao">
+<meta property="og:description" content="The interactive companion to the Coffee Nearby case study, built around D-pad input, amber terminal visuals, and nearby coffee discovery.">
+<meta property="og:image" content="https://www.hellojackmao.com/images/coffee-nearby-index-cover.png">
 <meta property="og:image:alt" content="Coffee Nearby amber terminal interface">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Coffee Nearby Demo | Jack Mao">
-<meta name="twitter:description" content="A fixed-format Coffee Nearby demo for Meta wearable-style navigation, D-pad input, amber terminal visuals, and nearby coffee discovery.">
-<meta name="twitter:image" content="https://hellojackmao.com/images/coffee-nearby-index-cover.png">
+<meta name="twitter:title" content="Coffee Nearby Interactive Demo | Jack Mao">
+<meta name="twitter:description" content="The interactive companion to the Coffee Nearby case study, built around D-pad input, amber terminal visuals, and nearby coffee discovery.">
+<meta name="twitter:image" content="https://www.hellojackmao.com/images/coffee-nearby-index-cover.png">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
@@ -33,7 +34,7 @@
   :root {
     --amber:        #FFB000;
     --amber-bright: #FFD060;
-    --amber-dim:    #8C6000;
+    --amber-dim:    #C18400;
     --amber-faint:  rgba(255, 176, 0, 0.15);
     --bg:           #000000;
     --font-mono:    "SF Mono", "Menlo", "Consolas", "Courier New", monospace;
@@ -70,6 +71,18 @@
       rgba(255, 176, 0, 0.03) 3px
     );
     z-index: 100;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* Screens */
@@ -725,6 +738,9 @@
 </head>
 <body>
 
+<main id="main">
+<h1 class="sr-only">Coffee Nearby interactive demo</h1>
+
 <!-- WELCOME -->
 <div class="screen active" id="screen-welcome">
   <div class="statusbar">
@@ -968,6 +984,8 @@
     </button>
   </div>
 </div>
+
+</main>
 
 <script>
 'use strict';
@@ -2126,5 +2144,6 @@ window.addEventListener('load', () => {
   }
 });
 </script>
+  <script defer src="../analytics.js"></script>
 </body>
 </html>

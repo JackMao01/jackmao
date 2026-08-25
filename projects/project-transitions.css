@@ -1,0 +1,206 @@
+@view-transition {
+  navigation: auto;
+}
+
+html.igc-edition-page,
+html.igc-edition-leaving,
+html.igc-arriving-from-editorial {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.igc-transition-proxy {
+  position: fixed;
+  z-index: 12;
+  top: 50%;
+  left: 50%;
+  width: min(24vw, 320px);
+  height: min(32vw, 430px);
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background: #f5f5f3;
+  box-shadow: 0 1.4rem 4rem rgba(17, 17, 17, 0.14);
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -46%) scale(0.94);
+  view-transition-name: igc-lead-image;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: jm-transition-out 280ms cubic-bezier(0.4, 0, 1, 1) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: jm-transition-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  html.jm-transitions body {
+    transition:
+      opacity 280ms cubic-bezier(0.4, 0, 1, 1),
+      transform 280ms cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  html.jm-transitions.jm-page-leaving body {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  html.igc-edition-page::view-transition-old(root) {
+    animation: igc-root-out 560ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  html.igc-edition-page::view-transition-new(root) {
+    animation: igc-root-in 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  html.igc-edition-leaving .igc-transition-proxy {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition:
+      opacity 140ms ease,
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.igc-arriving-from-editorial .igc-transition-proxy {
+    animation: igc-proxy-settle 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  ::view-transition-group(igc-title),
+  ::view-transition-group(igc-lead-image) {
+    animation-duration: 620ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::view-transition-group(igc-edition-switch) {
+    z-index: 30;
+    animation-duration: 520ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::view-transition-group(igc-title) {
+    z-index: 20;
+  }
+
+  ::view-transition-group(igc-lead-image) {
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  ::view-transition-image-pair(igc-title),
+  ::view-transition-image-pair(igc-edition-switch),
+  ::view-transition-image-pair(igc-lead-image) {
+    isolation: auto;
+  }
+
+  ::view-transition-old(igc-title),
+  ::view-transition-new(igc-title),
+  ::view-transition-old(igc-edition-switch),
+  ::view-transition-new(igc-edition-switch),
+  ::view-transition-old(igc-lead-image),
+  ::view-transition-new(igc-lead-image) {
+    height: 100%;
+    animation-duration: 620ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: normal;
+  }
+}
+
+@keyframes jm-transition-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes jm-transition-in {
+  from {
+    opacity: 0;
+    transform: scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes igc-root-out {
+  from {
+    opacity: 1;
+    filter: saturate(1);
+  }
+
+  to {
+    opacity: 0;
+    filter: saturate(0.88);
+  }
+}
+
+@keyframes igc-root-in {
+  from {
+    opacity: 0;
+    filter: saturate(0.88);
+  }
+
+  to {
+    opacity: 1;
+    filter: saturate(1);
+  }
+}
+
+@keyframes igc-proxy-settle {
+  0%, 72% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  body,
+  html.jm-page-leaving body {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .igc-transition-proxy {
+    display: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(igc-title),
+  ::view-transition-new(igc-title),
+  ::view-transition-old(igc-edition-switch),
+  ::view-transition-new(igc-edition-switch),
+  ::view-transition-old(igc-lead-image),
+  ::view-transition-new(igc-lead-image) {
+    animation: none;
+  }
+}

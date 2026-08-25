@@ -11,11 +11,11 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbf8f1'/%3E%3Ctext x='32' y='48' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='44' font-weight='400' fill='%238c1d2a'%3Eæ%3C/text%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23fbf8f1'/%3E%3Ctext x='90' y='130' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='120' font-weight='400' fill='%238c1d2a'%3Eæ%3C/text%3E%3C/svg%3E" />
 <meta name="description" content="A concept editorial — a self-initiated design exercise featuring Karina of aespa — six years from debut to the 2026 Met Gala, in Prada. Plus the LEMONADE era, designer's notes, and the æ-Card series." />
-  <link rel="canonical" href="https://hellojackmao.com/projects/karina.html"/>
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/karina.html"/>
 
 <!-- Open Graph / Facebook / iMessage / Discord -->
 <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://hellojackmao.com/projects/karina.html" />
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/karina.html" />
 <meta property="og:title" content="Karina — A Study in Modern Iconography" />
 <meta property="og:description" content="From Kwangya to couture. The 2026 Met Gala, the LEMONADE era, and six years of aespa's leader — as an editorial feature." />
 <meta property="og:image" content="../images/karina-og-image.png?v=3" />
@@ -1713,7 +1713,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: #76572d;
     font-weight: 600;
     margin-bottom: 14px;
   }
@@ -1875,6 +1875,46 @@
     height: 80px;
     border: 0;
   }
+  .spotify-placeholder {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.38);
+  }
+  .spotify-load {
+    appearance: none;
+    border: 1px solid rgba(26,42,8,0.24);
+    border-radius: 999px;
+    min-height: 42px;
+    padding: 0 18px;
+    background: #1a2a08;
+    color: #f8f5ea;
+    font: 700 10px/1 'Inter Tight', sans-serif;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform .25s ease, background-color .25s ease, color .25s ease;
+  }
+  .spotify-load:hover {
+    transform: translateY(-2px);
+    background: var(--accent, #9f192d);
+  }
+  .spotify-load:focus-visible {
+    transform: translateY(-2px);
+    background: var(--accent, #9f192d);
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+  }
+  .spotify-external {
+    color: #1a2a08;
+    font: 700 9px/1.35 'Inter Tight', sans-serif;
+    letter-spacing: 1.35px;
+    text-transform: uppercase;
+    text-underline-offset: 3px;
+  }
 
   /* Listen section (classics — sits AFTER the lemonade era as a callback) */
   .listen-classics {
@@ -1945,6 +1985,11 @@
     width: 100%;
     height: 80px;
     border: 0;
+  }
+  @media (max-width: 520px) {
+    .spotify-placeholder { align-items: stretch; flex-direction: column; }
+    .spotify-load { width: 100%; }
+    .spotify-external { align-self: center; }
   }
 
   /* WDA sub-feature — light-mode counterpart to the Lemonade green section above */
@@ -2521,10 +2566,11 @@
     }
     .portfolio-home { display: none; }
     .portfolio-logo {
-      max-width: calc(100% - 6.8rem);
-      overflow: hidden;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: none;
       white-space: nowrap;
-      font-size: clamp(12px, 3.6vw, 14px);
+      font-size: clamp(10.5px, 2.8vw, 13px);
     }
     .portfolio-dropdown { position: static; margin-left: auto; flex: 0 0 auto; }
     .portfolio-dropdown-btn {
@@ -2988,69 +3034,6 @@
     }
   }
 
-    /* ── Page transition — scale exit ── */
-    #page-veil {
-      position: fixed;
-      inset: 0;
-      z-index: 100000;
-      background: var(--veil-color, #fbf8f1);
-      opacity: 1;
-      pointer-events: auto;
-      transition: opacity .42s cubic-bezier(.16,1,.3,1);
-    }
-    .page-ready #page-veil {
-      opacity: 0;
-      pointer-events: none;
-    }
-    /* Scale-down exit on the main content wrapper */
-    body {
-      transition: transform .38s cubic-bezier(.4,0,1,1),
-                  opacity   .38s cubic-bezier(.4,0,1,1);
-    }
-    .page-leaving body,
-    html.page-leaving body {
-      transform: scale(0.97);
-      opacity: 0.4;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #page-veil { transition: none; }
-      body { transition: none; }
-    }
-
-    /* ── View Transitions API ── */
-    @view-transition { navigation: auto; }
-    /* paint the transition backdrop with Karina's cream so the dark→light
-       hand-off never exposes the browser's grey default canvas */
-    :root { background-color: #fbf8f1; }
-    ::view-transition { background: #fbf8f1; }
-    ::view-transition-new(root) { background: #fbf8f1; }
-    /* Karina's hero figure sits ~2 screens below the fold on mobile, so morphing
-       into it just shows a dark page. Disable the named morph on small screens —
-       clean instant navigation reads far better. Desktop keeps the morph. */
-    @media (max-width: 859px){
-      .hero-morph-band { display: none !important; view-transition-name: none !important; }
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      ::view-transition-old(root) {
-        animation: vt-out 0.28s cubic-bezier(0.4, 0, 1, 1) both;
-      }
-      ::view-transition-new(root) {
-        animation: vt-in  0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
-      }
-    }
-    @keyframes vt-out {
-      from { opacity: 1;   transform: scale(1);    }
-      to   { opacity: 0;   transform: scale(0.97); }
-    }
-    @keyframes vt-in {
-      from { opacity: 0;   transform: scale(1.01); }
-      to   { opacity: 1;   transform: scale(1);    }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      ::view-transition-old(root),
-      ::view-transition-new(root) { animation: none; }
-    }
-
     /* ── Scroll progress (added for cohesion) ── */
     #scroll-progress {
       position: fixed; top: 0; left: 0; height: 2px; width: 0;
@@ -3062,27 +3045,35 @@
 </style>
   <noscript>
     <style>
-      #page-veil { display: none !important; }
       .reveal, .reveal-stagger > *, .category-fade, .word { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
 <style>::view-transition-group(project-hero){animation-duration:.5s;animation-timing-function:cubic-bezier(.16,1,.3,1)}::view-transition-old(project-hero),::view-transition-new(project-hero){height:100%;width:100%;object-fit:cover}</style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CreativeWork","name":"Karina — A Study in Modern Iconography","creator":{"@type":"Person","name":"Jack Mao","url":"https://hellojackmao.com"},"description":"A self-initiated concept editorial featuring Karina of aespa — from debut to the 2026 Met Gala in Prada, with the LEMONADE era, designer's notes, and the æ-Card series.","dateCreated":"2026","url":"https://hellojackmao.com/projects/karina.html"}
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Karina — A Study in Modern Iconography","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A self-initiated concept editorial featuring Karina of aespa — from debut to the 2026 Met Gala in Prada, with the LEMONADE era, designer's notes, and the æ-Card series.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/karina.html"}
   </script>
   <style>
     .project-literal{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.85rem 1.15rem;align-items:start;margin:0 0 1.4rem;padding:0 0 1.15rem;border-bottom:1px solid rgba(255,255,255,.12);font-family:'DM Mono','JetBrains Mono',monospace;font-size:clamp(.78rem,1.15vw,.92rem);line-height:1.65;color:rgba(255,255,255,.78)}.project-type{display:inline-block;padding-top:.13rem;font-size:.58rem;font-weight:700;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--case-accent,var(--lime,#ccff00))}.project-literal-copy{margin:0}.case-evidence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:-2rem 0 3rem;padding:0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}.ai-disclaimer+.case-evidence{margin-top:0}.case-evidence>div{min-width:0;padding:1rem 1.1rem 1.05rem 0}.case-evidence>div+div{padding-left:1.1rem;border-left:1px solid rgba(255,255,255,.1)}.case-evidence dt{margin:0 0 .45rem;font-family:'DM Mono','JetBrains Mono',monospace;font-size:.56rem;font-weight:700;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:var(--case-accent,var(--lime,#ccff00))}.case-evidence dd{margin:0;font-size:.78rem;line-height:1.55;color:rgba(255,255,255,.68)}.project-literal.is-light,.karina-literal{border-bottom-color:rgba(25,20,25,.14);color:rgba(25,20,25,.78)}.case-evidence.is-light,.karina-evidence{border-color:rgba(25,20,25,.14)}.case-evidence.is-light>div+div,.karina-evidence>div+div{border-left-color:rgba(25,20,25,.12)}.case-evidence.is-light dd,.karina-evidence dd{color:rgba(25,20,25,.66)}.project-literal--hub,.case-evidence--hub{width:calc(100% - 6rem);max-width:1100px;margin-right:auto;margin-left:auto}.project-literal--hub{margin-top:2.5rem}.case-evidence--hub{margin-top:0}.karina-literal{margin-bottom:1.25rem;font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;letter-spacing:.02em}.karina-evidence{margin:18px 0 0;grid-template-columns:repeat(4,minmax(0,1fr))}.karina-evidence dt{color:var(--accent,#9f192d)}.karina-evidence dd{font-family:'Inter Tight',sans-serif;font-size:12px}@media(max-width:760px){.project-literal{grid-template-columns:1fr;gap:.5rem}.case-evidence,.karina-evidence{grid-template-columns:repeat(2,minmax(0,1fr))}.case-evidence>div:nth-child(3),.case-evidence>div:nth-child(4){border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div:nth-child(3),.case-evidence.is-light>div:nth-child(4),.karina-evidence>div:nth-child(3),.karina-evidence>div:nth-child(4){border-top-color:rgba(25,20,25,.12)}.case-evidence>div:nth-child(3){padding-left:0;border-left:0}.project-literal--hub,.case-evidence--hub{width:calc(100% - 2rem)}}@media(max-width:420px){.case-evidence,.karina-evidence{grid-template-columns:1fr}.case-evidence>div,.case-evidence>div+div{padding:.9rem 0;border-left:0}.case-evidence>div+div{border-top:1px solid rgba(255,255,255,.1)}.case-evidence.is-light>div+div,.karina-evidence>div+div{border-top-color:rgba(25,20,25,.12)}}
   </style>
+  <style>
+    :root { background-color: #fbf8f1; }
+    ::view-transition { background: #fbf8f1; }
+    ::view-transition-new(root) { background: #fbf8f1; }
+    @media (max-width: 859px) {
+      .hero-morph-band { display: none !important; view-transition-name: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="project-transitions.css">
+  <script defer src="project-transitions.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <div class="cursor" id="cursor"></div>
-<div id="page-veil" aria-hidden="true"></div>
   <div id="scroll-progress"></div>
 
 <nav class="portfolio-header" aria-label="Portfolio navigation">
-  <a class="portfolio-logo" href="/">Jack Mao <span>|</span> Portfolio</a>
+  <a class="portfolio-logo" href="/">Jack Mao <span aria-hidden="true">|</span> Portfolio</a>
   <a class="portfolio-home" href="../">Home</a>
   <div class="portfolio-dropdown">
     <button type="button" class="portfolio-dropdown-btn" aria-label="Open project navigation" aria-expanded="false" aria-controls="portfolioProjectDropdown">Projects</button>
@@ -3121,7 +3112,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main">
 <!-- HERO -->
 <header class="hero">
   <div class="meta-row">
@@ -3151,24 +3142,24 @@
       <div class="hero-brief" aria-label="Karina case-study summary">
         <div class="hero-brief-grid">
           <div class="hero-brief-item">
-            <h3 class="hero-brief-label">Challenge</h3>
-            <p>Translate a fan editorial into a portfolio case study that can carry fashion analysis, pop-cultural storytelling, and interaction design without losing its magazine voice.</p>
+            <h2 class="hero-brief-label">Challenge</h2>
+            <p>Turn a fan editorial into a credible portfolio case study without losing its magazine voice.</p>
           </div>
           <div class="hero-brief-item">
-            <h3 class="hero-brief-label">Direction</h3>
-            <p>Build a magazine-style longform page with custom typography, page-turn interaction, visual plates, motion, and mobile liquid-glass navigation.</p>
+            <h2 class="hero-brief-label">Direction</h2>
+            <p>Combine custom typography, page-turn interaction, visual plates, motion, and responsive navigation in one longform system.</p>
           </div>
           <div class="hero-brief-item">
-            <h3 class="hero-brief-label">Outcome</h3>
-            <p>A standalone editorial project that frames Karina through identity, couture, image-making, and interaction design while still fitting the portfolio system.</p>
+            <h2 class="hero-brief-label">Outcome</h2>
+            <p>A standalone cultural editorial connecting identity, couture, image-making, and interaction design.</p>
           </div>
         </div>
       </div>
         <dl class="case-evidence karina-evidence" aria-label="Project evidence">
           <div><dt>Audience</dt><dd>Fashion, culture, and K-pop editorial readers</dd></div>
           <div><dt>Channel</dt><dd>Responsive long-form web editorial</dd></div>
-          <div><dt>Deliverables</dt><dd>Art direction, motion, copy, cards, and plates</dd></div>
-          <div><dt>Evidence</dt><dd>A complete standalone interactive publication</dd></div>
+          <div><dt>Deliverables</dt><dd>Editorial art direction, responsive layout, copy, motion, interaction, and social cards</dd></div>
+          <div><dt>Proof</dt><dd>Five visual plates, one motion loop, a flippable notebook, and 17 on-demand track players</dd></div>
         </dl>
       <p class="byline">Words <span>Editorial</span> &nbsp;·&nbsp; Subject <span>Karina, of aespa</span></p>
     </div>
@@ -3194,7 +3185,7 @@
 </header>
 
 <!-- PROFILE -->
-<section class="section" id="main">
+<section class="section" id="profile">
   <div class="kicker">The Subject</div>
   <h2 class="section-title">Profile, <em>in brief.</em></h2>
 
@@ -3368,8 +3359,8 @@
       </div>
     </figure>
     <figure class="look-frame l-4">
-      <video class="look-img look-video" poster="../images/karina-flash-front-01.jpg" muted playsinline autoplay loop preload="metadata" aria-label="Looping backstage motion plate of Karina in the Prada look">
-        <source src="../images/karina-met-loop.webm" type="video/webm">
+      <video class="look-img look-video" poster="../images/karina-flash-front-01.jpg" muted playsinline loop preload="none" aria-label="Looping backstage motion plate of Karina in the Prada look">
+        <source data-src="../images/karina-met-loop.webm" type="video/webm">
       </video>
       <div class="look-content">
         <div class="look-num">04</div>
@@ -3399,7 +3390,7 @@
             <div class="page-body">
               <p>This is the kind of breakdown a fashion editor would pull from a designer interview — the construction logic behind one custom dress.</p>
               <p>Each spread on the right covers one element of Karina's look: silhouette, archive provenance, the hanbok neckline, the cape, and the final read.</p>
-              <p style="color: var(--gold); font-style: italic; font-family: 'Fraunces', serif; margin-top: 18px;">Turn the page to begin →</p>
+              <p style="color: #76572d; font-style: italic; font-family: 'Fraunces', serif; margin-top: 18px;">Turn the page to begin →</p>
             </div>
           </div>
           <div class="page-folio">
@@ -3548,7 +3539,7 @@
                 <div class="page-body">
                   <p>The Met steps are the most-photographed twelve seconds of the fashion year. A cape is a deliberate tool for that distance — it gives the look a silhouette readable from forty feet away.</p>
                   <p>Compare to the satin column alone: at distance, it would simply read as "white dress." With the cape, the figure has shape, weight, and a frame.</p>
-                  <p style="color: var(--gold); font-style: italic; font-family: 'Fraunces', serif;">— Made for the long lens, not the close crop.</p>
+                  <p style="color: #76572d; font-style: italic; font-family: 'Fraunces', serif;">— Made for the long lens, not the close crop.</p>
                 </div>
               </div>
               <div class="page-folio"><span>Staging</span><span>08.</span></div>
@@ -3680,7 +3671,7 @@
             <div class="track-feat" style="text-align:right;">feat. G-DRAGON</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — WDA (Whole Different Animal) (feat. G-DRAGON) by aespa" src="https://open.spotify.com/embed/track/5U91cIDMrNEdsDBavYuQQh?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — WDA (Whole Different Animal) (feat. G-DRAGON) by aespa" data-src="https://open.spotify.com/embed/track/5U91cIDMrNEdsDBavYuQQh?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3694,7 +3685,7 @@
             <div class="track-feat" style="text-align:right;">Double title · electronic dance</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — LEMONADE by aespa" src="https://open.spotify.com/embed/track/2oR7jPvWPC08Su4KYmKR3O?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — LEMONADE by aespa" data-src="https://open.spotify.com/embed/track/2oR7jPvWPC08Su4KYmKR3O?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3708,7 +3699,7 @@
             <div class="track-feat" style="text-align:right;">Rough synth bass</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — SHAKIN' by aespa" src="https://open.spotify.com/embed/track/4hWEH4DPWe6rot4JHJUMr4?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — SHAKIN' by aespa" data-src="https://open.spotify.com/embed/track/4hWEH4DPWe6rot4JHJUMr4?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3722,7 +3713,7 @@
             <div class="track-feat" style="text-align:right;">Guitar-led pop-rock</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — Can't Help Myself by aespa" src="https://open.spotify.com/embed/track/1ubVpU4mU0xbgq2FM3k5id?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Can't Help Myself by aespa" data-src="https://open.spotify.com/embed/track/1ubVpU4mU0xbgq2FM3k5id?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3736,7 +3727,7 @@
             <div class="track-feat" style="text-align:right;">Hyperpop</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — Camouflage by aespa" src="https://open.spotify.com/embed/track/4bqn9QgIrsgRy6HjcYhxak?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Camouflage by aespa" data-src="https://open.spotify.com/embed/track/4bqn9QgIrsgRy6HjcYhxak?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3750,7 +3741,7 @@
             <div class="track-feat" style="text-align:right;">Album cut</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — Bite by aespa" src="https://open.spotify.com/embed/track/5M7EPlVtfHdqlxY628HvHx?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Bite by aespa" data-src="https://open.spotify.com/embed/track/5M7EPlVtfHdqlxY628HvHx?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3764,7 +3755,7 @@
             <div class="track-feat" style="text-align:right;">feat. Ty Dolla $ign · electronic dance</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — Switchblade (feat. Ty Dolla $ign) by aespa" src="https://open.spotify.com/embed/track/3KHbQsyerMst6uLw8JiAwu?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Switchblade (feat. Ty Dolla $ign) by aespa" data-src="https://open.spotify.com/embed/track/3KHbQsyerMst6uLw8JiAwu?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3778,7 +3769,7 @@
             <div class="track-feat" style="text-align:right;">Bouncy, minimal dance</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — Roll by aespa" src="https://open.spotify.com/embed/track/3UW9TYmzopPvD1Gte1a5NN?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Roll by aespa" data-src="https://open.spotify.com/embed/track/3UW9TYmzopPvD1Gte1a5NN?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3792,7 +3783,7 @@
             <div class="track-feat" style="text-align:right;">R&amp;B</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — My Plan by aespa" src="https://open.spotify.com/embed/track/4in8lrVCzPgXK9iTBJHrWO?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — My Plan by aespa" data-src="https://open.spotify.com/embed/track/4in8lrVCzPgXK9iTBJHrWO?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3806,7 +3797,7 @@
             <div class="track-feat" style="text-align:right;">Pop-rock</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — 'Til We Die by aespa" src="https://open.spotify.com/embed/track/3bKpQla1Cn6WF7vZqb0MRZ?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — 'Til We Die by aespa" data-src="https://open.spotify.com/embed/track/3bKpQla1Cn6WF7vZqb0MRZ?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3820,7 +3811,7 @@
             <div class="track-feat" style="text-align:right;">Digital exclusive · feat. Becky G</div>
           </div>
           <div class="player-embed">
-            <iframe title="Spotify player — LEMONADE (feat. Becky G) by aespa" src="https://open.spotify.com/embed/track/4NMJt97p0KujNuQsLcC7Ut?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — LEMONADE (feat. Becky G) by aespa" data-src="https://open.spotify.com/embed/track/4NMJt97p0KujNuQsLcC7Ut?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <span class="now-playing">Sample</span>
@@ -3843,7 +3834,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">The cultural reset</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — Armageddon" src="https://open.spotify.com/embed/track/5lKnZbdGCBViitE1Ce5TZh?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Armageddon" data-src="https://open.spotify.com/embed/track/5lKnZbdGCBViitE1Ce5TZh?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -3857,7 +3848,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">First Global Top 10</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — Whiplash" src="https://open.spotify.com/embed/track/3coRPMnFg2dJcPu5RMloa9?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Whiplash" data-src="https://open.spotify.com/embed/track/3coRPMnFg2dJcPu5RMloa9?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -3871,7 +3862,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">Confidence as posture</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — Drama" src="https://open.spotify.com/embed/track/5XWlyfo0kZ8LF7VSyfS4Ew?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Drama" data-src="https://open.spotify.com/embed/track/5XWlyfo0kZ8LF7VSyfS4Ew?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -3885,7 +3876,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">Hyperpop arrival</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — Savage" src="https://open.spotify.com/embed/track/3dbLT62Cvs46Ju7a8gpr36?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — Savage" data-src="https://open.spotify.com/embed/track/3dbLT62Cvs46Ju7a8gpr36?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -3899,7 +3890,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">The chorus that rewired 4th gen</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — 2021 single" src="https://open.spotify.com/embed/track/2zrhoHlFKxFTRF5aMyxMoQ?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — 2021 single" data-src="https://open.spotify.com/embed/track/2zrhoHlFKxFTRF5aMyxMoQ?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -3913,7 +3904,7 @@
             <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1a2a08; opacity:0.6;">Where it began</div>
           </div>
           <div class="classic-embed">
-            <iframe title="Spotify player — debut single" src="https://open.spotify.com/embed/track/1t2qYCAjUAoGfeFeoBlK51?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe title="Spotify player — debut single" data-src="https://open.spotify.com/embed/track/1t2qYCAjUAoGfeFeoBlK51?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -4724,42 +4715,6 @@
 })();
 
 (function () {
-  const root = document.documentElement;
-  const veil = document.getElementById('page-veil');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ready = () => {
-    root.classList.remove('page-leaving');
-    root.classList.add('page-ready');
-  };
-
-  if (veil && !reduceMotion) {
-    requestAnimationFrame(() => requestAnimationFrame(ready));
-  } else {
-    ready();
-  }
-
-  window.addEventListener('pageshow', ready);
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[href]');
-    if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (link.target === '_blank' || link.hasAttribute('download')) return;
-
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-
-    const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin) return;
-    if (url.pathname === window.location.pathname && url.hash) return;
-    if (!veil || reduceMotion) return;
-
-    event.preventDefault();
-    root.classList.remove('page-ready');
-    root.classList.add('page-leaving');
-    setTimeout(() => { window.location.href = url.href; }, 360);
-  });
-})();
-
-(function () {
   const pages = Array.from(document.querySelectorAll('.book .page'));
   const totalPages = pages.length;
   const prevBtn = document.getElementById('bookPrev');
@@ -5331,70 +5286,83 @@
   }
 
 })();
-  
-    // ── Page transition ──
-    (function() {
-      const root = document.documentElement;
-      const veil = document.getElementById('page-veil');
-      const rm   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const supportsVT = 'startViewTransition' in document;
-      const A = {
-        'chronicles-of-elysium.html': '#120f1a',
-        '../': '#fbf8f1', '../index.html': '#fbf8f1',
+
+    // Load each Spotify player only when its individual control is selected.
+    (function () {
+      document.querySelectorAll('.player-embed iframe[data-src], .classic-embed iframe[data-src]').forEach(frame => {
+        const host = frame.parentElement;
+        const embedUrl = frame.dataset.src;
+        const playerTitle = frame.title || 'Spotify player';
+        const externalUrl = embedUrl.replace('/embed/', '/').split('?')[0];
+        const placeholder = document.createElement('div');
+        placeholder.className = 'spotify-placeholder';
+
+        const loadButton = document.createElement('button');
+        loadButton.type = 'button';
+        loadButton.className = 'spotify-load';
+        loadButton.textContent = 'Load player';
+        loadButton.setAttribute('aria-label', `Load ${playerTitle}`);
+
+        const externalLink = document.createElement('a');
+        externalLink.className = 'spotify-external';
+        externalLink.href = externalUrl;
+        externalLink.target = '_blank';
+        externalLink.rel = 'noopener noreferrer';
+        externalLink.textContent = 'Open in Spotify';
+
+        loadButton.addEventListener('click', () => {
+          frame.src = embedUrl;
+          frame.removeAttribute('data-src');
+          frame.loading = 'eager';
+          placeholder.replaceWith(frame);
+        }, { once: true });
+
+        placeholder.append(loadButton, externalLink);
+        frame.remove();
+        host.appendChild(placeholder);
+      });
+    })();
+
+    // Keep the motion plate on its poster until it approaches the viewport.
+    (function () {
+      const motion = document.querySelector('.look-video');
+      const source = motion && motion.querySelector('source[data-src]');
+      if (!motion || !source) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let nearViewport = false;
+      let loaded = false;
+
+      const ensureLoaded = () => {
+        if (loaded || reduceMotion.matches) return;
+        source.src = source.dataset.src;
+        source.removeAttribute('data-src');
+        motion.load();
+        loaded = true;
       };
 
-      // Page reveal on load
-      const ready = () => {
-        root.classList.remove('page-leaving');
-        root.classList.add('page-ready');
+      const syncPlayback = () => {
+        if (reduceMotion.matches || document.hidden || !nearViewport) {
+          motion.pause();
+          return;
+        }
+        ensureLoaded();
+        motion.play().catch(() => {});
       };
-      if (veil && !rm && !supportsVT) {
-        requestAnimationFrame(() => requestAnimationFrame(ready));
+
+      if ('IntersectionObserver' in window) {
+        const motionObserver = new IntersectionObserver(entries => {
+          nearViewport = entries[0].isIntersecting;
+          syncPlayback();
+        }, { rootMargin: '300px 0px', threshold: 0.01 });
+        motionObserver.observe(motion);
       } else {
-        ready();
+        nearViewport = true;
+        syncPlayback();
       }
 
-      // bfcache restore
-      window.addEventListener('pageshow', e => {
-        if (e.persisted) {
-          if (veil) { veil.style.opacity = '0'; veil.style.pointerEvents = 'none'; }
-          root.classList.remove('page-leaving');
-          root.classList.add('page-ready');
-        }
-      });
-
-      // Navigation
-      document.addEventListener('click', e => {
-        const link = e.target.closest('a[href]');
-        if (!link || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        if (link.target === '_blank' || link.hasAttribute('download')) return;
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-        let url;
-        try { url = new URL(href, window.location.href); } catch { return; }
-        if (url.origin !== window.location.origin) return;
-        if (url.pathname === window.location.pathname && !url.hash) return;
-
-        e.preventDefault();
-
-        if (supportsVT && !rm) {
-          // Native View Transition — browser handles the crossfade
-          document.startViewTransition(() => {
-            window.location.href = url.href;
-          });
-        } else if (veil && !rm) {
-          // Fallback: veil + scale exit
-          const dest = href.split('/').pop() || 'index.html';
-          const colour = A[href] || A[dest] || '#fbf8f1';
-          if (veil) veil.style.background = colour;
-          root.classList.remove('page-ready');
-          root.classList.add('page-leaving');
-          setTimeout(() => { window.location.href = url.href; }, 320);
-        } else {
-          // Instant (reduced motion)
-          window.location.href = url.href;
-        }
-      });
+      document.addEventListener('visibilitychange', syncPlayback);
+      reduceMotion.addEventListener?.('change', syncPlayback);
     })();
     // ── Scroll progress (added for cohesion) ──
     window.addEventListener('scroll', () => {
@@ -5405,5 +5373,6 @@
       }
     }, { passive: true });
   </script>
+  <script defer src="../analytics.js"></script>
 </body>
 </html>
