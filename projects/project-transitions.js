@@ -236,3 +236,48 @@
     window.setTimeout(navigate, 280);
   });
 })();
+
+(() => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let control = document.querySelector('#back-to-top, .back-top, [data-portfolio-back-top]');
+
+  if (!control) {
+    control = document.createElement('button');
+    control.type = 'button';
+    control.innerHTML = '<span aria-hidden="true">\u2191</span>';
+    control.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(control);
+  }
+
+  control.classList.add('portfolio-back-top');
+  control.setAttribute('data-portfolio-back-top', '');
+
+  let framePending = false;
+  const updateVisibility = () => {
+    framePending = false;
+    const threshold = Math.max(360, window.innerHeight * 0.45);
+    const visible = window.scrollY > threshold;
+    control.classList.toggle('visible', visible);
+    control.setAttribute('aria-hidden', String(!visible));
+    control.tabIndex = visible ? 0 : -1;
+  };
+
+  const queueVisibilityUpdate = () => {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(updateVisibility);
+  };
+
+  control.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion.matches ? 'auto' : 'smooth'
+    });
+  });
+
+  window.addEventListener('scroll', queueVisibilityUpdate, { passive: true });
+  window.addEventListener('resize', queueVisibilityUpdate, { passive: true });
+  window.addEventListener('pageshow', queueVisibilityUpdate);
+  updateVisibility();
+})();
