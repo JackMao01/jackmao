@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Wayfarer — Get lost reading beautiful guides to places</title>
 <meta name="description" content="Wayfarer — a travel-guide platform designed to be read slowly. Long-form, beautifully typeset guides to real places. A product design project by Jack Mao."/>
-<link rel="canonical" href="https://hellojackmao.com/projects/wayfarer/"/>
+<link rel="canonical" href="https://www.hellojackmao.com/projects/wayfarer/"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/"/>
+<meta property="og:url" content="https://www.hellojackmao.com/projects/wayfarer/"/>
 <meta property="og:title" content="Wayfarer — Get lost reading beautiful guides to places"/>
 <meta property="og:description" content="Long-form, beautifully typeset travel guides to real places."/>
-<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png"/>
+<meta property="og:image" content="https://www.hellojackmao.com/images/wayfarer-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey."/>
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Wayfarer — Get lost reading beautiful guides to places"/>
 <meta name="twitter:description" content="Long-form, beautifully typeset travel guides to real places."/>
-<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png"/>
+<meta name="twitter:image" content="https://www.hellojackmao.com/images/wayfarer-og.png"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -149,6 +149,34 @@
   .s1-para { font-weight: 400; font-size: 16px; color: rgba(0,0,0,0.55); line-height: 1.6;
     max-width: 480px; margin-top: 20px; opacity: 0; }
   .s1-cta { display: flex; gap: 16px; margin-top: 24px; padding-bottom: 0; opacity: 0; justify-content: center; }
+
+  /* Compact product-system map */
+  .system-map { border-top: 1px solid rgba(17,17,17,0.12); border-bottom: 1px solid rgba(17,17,17,0.12); background: rgba(255,255,255,0.38); }
+  .system-map-inner { max-width: 1200px; margin: 0 auto; padding: 30px 32px 0; }
+  .system-map-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding-bottom: 24px; }
+  .system-map-head .eyebrow { opacity: 1; margin: 0 0 8px; }
+  .system-map-head h2 { font-family: var(--display); font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.08; letter-spacing: -0.03em; }
+  .system-map-head p { max-width: 490px; margin: 0; color: rgba(17,17,17,0.58); font-size: 0.88rem; line-height: 1.6; }
+  .system-map-steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(17,17,17,0.12); }
+  .system-step { min-width: 0; padding: 19px 16px 22px; color: var(--ink); text-decoration: none; transition: background .2s ease; }
+  .system-step + .system-step { border-left: 1px solid rgba(17,17,17,0.12); }
+  .system-step:hover { background: rgba(78,205,196,0.08); }
+  .system-step .n { display: block; margin-bottom: 9px; color: rgba(17,17,17,0.42); font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; }
+  .system-step strong { display: block; margin-bottom: 5px; font-size: 0.88rem; }
+  .system-step span:last-child { display: block; color: rgba(17,17,17,0.55); font-size: 0.74rem; line-height: 1.45; }
+  @media (max-width: 900px) {
+    .system-map-head { align-items: start; flex-direction: column; gap: 10px; }
+    .system-map-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .system-step:nth-child(4) { border-left: 0; }
+    .system-step:nth-child(n+4) { border-top: 1px solid rgba(17,17,17,0.12); }
+  }
+  @media (max-width: 560px) {
+    .system-map-inner { padding: 26px 20px 0; }
+    .system-map-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .system-step:nth-child(3), .system-step:nth-child(5) { border-left: 0; }
+    .system-step:nth-child(4) { border-left: 1px solid rgba(17,17,17,0.12); }
+    .system-step:nth-child(n+3) { border-top: 1px solid rgba(17,17,17,0.12); }
+  }
 
   /* shared buttons */
   .btn-primary { background: var(--ink); color: #fff; font-size: 15px; font-weight: 600;
@@ -592,6 +620,8 @@
     .hd-card{ transition:opacity .2s ease; }
   }
 </style>
+  <link rel="stylesheet" href="../project-transitions.css">
+  <script defer src="../project-transitions.js"></script>
 </head>
 <body>
 
@@ -703,7 +733,7 @@
   </div>
 
   <!-- Section 1 -->
-  <section id="s1">
+  <section id="s1" style="view-transition-name: project-hero">
     <main class="s1-main">
       <h1 class="s1-h1" id="s1h1" aria-label="A place to discover your next journey.">A place to discover<br />your next journey.</h1>
       <p class="s1-para" id="s1para">People who know a place write beautiful guides to it — and you get lost reading them long before you ever pack a bag.</p>
@@ -735,6 +765,26 @@
         </div>
       </div>
     </main>
+  </section>
+
+  <section class="system-map" aria-labelledby="systemMapTitle">
+    <div class="system-map-inner">
+      <div class="system-map-head">
+        <div>
+          <div class="eyebrow">THE PRODUCT SYSTEM</div>
+          <h2 id="systemMapTitle">One journey, six connected layers.</h2>
+        </div>
+        <p>Wayfarer connects discovery, long-form reading, contributor identity, editorial perspectives, personal collections, and guided publishing in one travel platform.</p>
+      </div>
+      <div class="system-map-steps" role="list" aria-label="Wayfarer product layers">
+        <a class="system-step" href="guides.html" role="listitem"><span class="n">01</span><strong>Routes</strong><span>Find a place through mood and intent.</span></a>
+        <a class="system-step" href="guides.html" role="listitem"><span class="n">02</span><strong>Guides</strong><span>Read stories with useful ground detail.</span></a>
+        <a class="system-step" href="author.html?author=shizuka" role="listitem"><span class="n">03</span><strong>Profiles</strong><span>Keep every guide tied to its local voice.</span></a>
+        <a class="system-step" href="seorak-review.html" role="listitem"><span class="n">04</span><strong>Reviews</strong><span>Add edited cultural perspectives.</span></a>
+        <a class="system-step" href="saved.html" role="listitem"><span class="n">05</span><strong>Saved</strong><span>Turn reading into a personal collection.</span></a>
+        <a class="system-step" href="share.html" role="listitem"><span class="n">06</span><strong>Share</strong><span>Guide contributors from idea to draft.</span></a>
+      </div>
+    </div>
   </section>
 
   <!-- Section 2 -->
@@ -1774,5 +1824,6 @@ if (document.readyState === "complete" || document.readyState === "interactive")
       }
     })();
   </script>
+  <script defer src="../../analytics.js"></script>
 </body>
 </html>

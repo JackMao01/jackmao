@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Hello, Toronto is a colourful civic welcome experience built around neighbourhoods, culture, and an interactive city pass." />
-<link rel="canonical" href="https://hellojackmao.com/projects/wayfarer/hello-toronto.html" />
+<link rel="canonical" href="https://www.hellojackmao.com/projects/wayfarer/hello-toronto.html" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/hello-toronto.html" />
+<meta property="og:url" content="https://www.hellojackmao.com/projects/wayfarer/hello-toronto.html" />
 <meta property="og:title" content="Hello, Toronto — A City in Primary Colours" />
 <meta property="og:description" content="A colourful civic welcome experience built around neighbourhoods, culture, and an interactive city pass." />
-<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
+<meta property="og:image" content="https://www.hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Hello, Toronto — A City in Primary Colours" />
 <meta name="twitter:description" content="A colourful civic welcome experience built around Toronto neighbourhoods and culture." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
+<meta name="twitter:image" content="https://www.hellojackmao.com/images/wayfarer-og.png" />
 <title>HELLO, TORONTO — A City in Primary Colours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -735,7 +735,7 @@
     line-height: 1.6;
   }
 
-  .foot-col h4 {
+  .foot-col h3 {
     font-family: var(--mono);
     font-size: 0.66rem;
     font-weight: 700;
@@ -801,10 +801,27 @@
       .sec-titleblock { padding: 0.9rem 1.1rem; min-width: 0; }
       .sec-titleblock h2 { font-size: 1.45rem; line-height: 1.06; }
       .sec-titleblock .label { font-size: 0.62rem; letter-spacing: 0.14em; }
+      .hood { grid-template-columns: 64px minmax(0, 1fr); gap: 1rem; padding: 1.5rem; }
+      .hood > div:last-child { min-width: 0; }
+      .hood h3 { overflow-wrap: anywhere; }
     }
 
     html, body { max-width: 100%; overflow-x: hidden; }
 </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../project-transitions.css">
+  <script defer src="../project-transitions.js"></script>
 </head>
 <body>
 
@@ -1102,7 +1119,7 @@
       <p>A civic welcome project. One city, built in primary colours, assembled by everyone who lives here — and open to everyone who visits.</p>
     </div>
     <div class="foot-col">
-      <h4>Discover</h4>
+      <h3>Discover</h3>
       <ul>
         <li><a href="#why">Why Toronto</a></li>
         <li><a href="#hoods">Neighbourhoods</a></li>
@@ -1111,7 +1128,7 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h4>The Pass</h4>
+      <h3>The Pass</h3>
       <ul>
         <li><a href="#pass">What's Included</a></li>
         <li><a aria-disabled="true" tabindex="-1" title="Preview only">For Families</a></li>
@@ -1120,7 +1137,7 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h4>Find Us</h4>
+      <h3>Find Us</h3>
       <ul>
         <li><span>Nathan Phillips Square</span></li>
         <li><span>Toronto, ON</span></li>
@@ -1146,5 +1163,6 @@
 
 <script src="wayfarer-shared.js?v=20260809-3"></script>
 <script>if(window.Wayfarer)Wayfarer.mountChrome("hello-toronto");</script>
+  <script defer src="../../analytics.js"></script>
 </body>
 </html>

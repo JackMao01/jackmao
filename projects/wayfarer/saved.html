@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Review and manage the Wayfarer guides saved to your personal travel collection." />
-<link rel="canonical" href="https://hellojackmao.com/projects/wayfarer/saved.html" />
+<link rel="canonical" href="https://www.hellojackmao.com/projects/wayfarer/saved.html" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://hellojackmao.com/projects/wayfarer/saved.html" />
+<meta property="og:url" content="https://www.hellojackmao.com/projects/wayfarer/saved.html" />
 <meta property="og:title" content="Saved guides — Wayfarer" />
 <meta property="og:description" content="Review and manage the Wayfarer guides saved to your personal travel collection." />
-<meta property="og:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
+<meta property="og:image" content="https://www.hellojackmao.com/images/wayfarer-og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Wayfarer travel guides interface with the headline A place to discover your next journey." />
@@ -17,9 +17,9 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Saved guides — Wayfarer" />
 <meta name="twitter:description" content="Review and manage your saved Wayfarer travel guides." />
-<meta name="twitter:image" content="https://hellojackmao.com/images/wayfarer-og.png" />
+<meta name="twitter:image" content="https://www.hellojackmao.com/images/wayfarer-og.png" />
 <title>Saved guides — Wayfarer</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%232aa89f'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%232aa89f' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E" />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root { --ink:#111; --teal:#2aa89f; --muted:#6b6b6b; --line:rgba(0,0,0,0.1);
@@ -85,8 +85,27 @@
   .note span { font-size:0.78rem; color:var(--muted); background:rgba(0,0,0,0.03); border:1px solid var(--line);
     border-radius:10px; padding:10px 14px; display:inline-block; line-height:1.5; }
 
+  .page-close { max-width:1200px; margin:0 auto; padding:0 32px 64px; }
+  .page-close-inner { display:grid; grid-template-columns:180px minmax(0,1fr); gap:28px; padding-top:24px; border-top:1px solid var(--line); }
+  .page-close .k { font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); }
+  .page-close p { max-width:680px; margin:0; font-size:0.98rem; line-height:1.65; color:var(--muted); }
+  @media (max-width:640px){ .page-close-inner{ grid-template-columns:1fr; gap:10px; } }
+
   footer { border-top:1px solid var(--line); padding:32px; text-align:center; font-size:0.8rem; color:var(--muted); }
 </style>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../project-transitions.css">
+  <script defer src="../project-transitions.js"></script>
 </head>
 <body>
   <nav class="wf-nav">
@@ -116,6 +135,13 @@
   <div class="grid" id="grid"></div>
   <div id="emptyWrap"></div>
   <div class="note" id="noteWrap"></div>
+
+  <section class="page-close" aria-label="Saved collection purpose">
+    <div class="page-close-inner">
+      <span class="k">From reading to planning</span>
+      <p>Saved guides turn individual stories into a personal travel shelf. The interaction is intentionally small, but it closes the gap between discovering a place and imagining a journey of your own.</p>
+    </div>
+  </section>
 
   </main>
 
@@ -197,5 +223,6 @@
   render();
   refreshCount();
 </script>
+  <script defer src="../../analytics.js"></script>
 </body>
 </html>
