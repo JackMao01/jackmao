@@ -239,25 +239,35 @@
 
 (() => {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const backTopMode = document.documentElement.dataset.backTop || '';
+
+  if (backTopMode === 'none' || backTopMode === 'native-menu') {
+    return;
+  }
+
   let control = document.querySelector('#back-to-top, .back-top, [data-portfolio-back-top]');
 
   if (!control) {
     control = document.createElement('button');
     control.type = 'button';
+    control.className = 'portfolio-back-top-fallback';
     control.innerHTML = '<span aria-hidden="true">\u2191</span>';
     control.setAttribute('aria-label', 'Back to top');
+    control.setAttribute('data-generated-back-top', '');
     document.body.appendChild(control);
   }
 
-  control.classList.add('portfolio-back-top');
   control.setAttribute('data-portfolio-back-top', '');
 
   let framePending = false;
   const updateVisibility = () => {
     framePending = false;
-    const threshold = Math.max(360, window.innerHeight * 0.45);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const preferredThreshold = Math.max(360, window.innerHeight * 0.45);
+    const threshold = Math.min(preferredThreshold, maxScroll * 0.65);
     const visible = window.scrollY > threshold;
     control.classList.toggle('visible', visible);
+    control.classList.toggle('is-visible', visible);
     control.setAttribute('aria-hidden', String(!visible));
     control.tabIndex = visible ? 0 : -1;
   };
