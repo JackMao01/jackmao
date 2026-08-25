@@ -7,10 +7,10 @@
   <meta name="description" content="Jack Mao is a Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
     <meta property="og:locale" content="en_CA"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://hellojackmao.com/"/>
+  <meta property="og:url" content="https://www.hellojackmao.com/"/>
   <meta property="og:title" content="Jack Mao | Portfolio 2026"/>
   <meta property="og:description" content="A Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
-  <meta property="og:image" content="https://hellojackmao.com/images/og-business-card.png"/>
+  <meta property="og:image" content="https://www.hellojackmao.com/images/og-business-card.png"/>
   <meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design & Illustration, Toronto, 2026."/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
@@ -18,15 +18,19 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Jack Mao | Portfolio 2026"/>
   <meta name="twitter:description" content="A Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
-  <meta name="twitter:image" content="https://hellojackmao.com/images/og-business-card.png"/>
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-business-card.png"/>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="icon" href="favicon.ico" sizes="any"/>
+  <link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-serif-display-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="favicon.ico" sizes="any"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-  <link rel="manifest" href="site.webmanifest"/>  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <link rel="manifest" href="site.webmanifest"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="apple-mobile-web-app-title" content="Jack Mao"/>
   <meta name="theme-color" content="#0f0e1a"/>
@@ -38,7 +42,44 @@
       window.scrollTo(0, 0);
     }
   </script>
-  <style>    * { -webkit-tap-highlight-color: transparent; }
+  <style>
+    @font-face {
+      font-family: 'Syne';
+      src: url('fonts/syne-latin-wght-normal.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 400 800;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'DM Mono';
+      src: url('fonts/dm-mono-latin-400-normal.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'DM Mono';
+      src: url('fonts/dm-mono-latin-500-normal.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 500;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'DM Serif Display';
+      src: url('fonts/dm-serif-display-latin-400-normal.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'DM Serif Display';
+      src: url('fonts/dm-serif-display-latin-400-italic.woff2') format('woff2');
+      font-style: italic;
+      font-weight: 400;
+      font-display: block;
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
 
 /* -- Print styles -- */
 
@@ -58,11 +99,6 @@
     /* body must NEVER transform — a transformed body becomes the containing
        block for the fixed nav and unpins it from the viewport */
     body { transform: none !important; }
-    @media (prefers-reduced-motion: reduce) {
-      #page-veil { transition: none; }
-      #page { transition: none; }
-    }
-
     /* ── View Transitions API ── */
     @view-transition { navigation: auto; }
     @media (prefers-reduced-motion: no-preference) {
@@ -81,11 +117,6 @@
       from { opacity: 0;   transform: scale(1.01); }
       to   { opacity: 1;   transform: scale(1);    }
     }
-    @media (prefers-reduced-motion: reduce) {
-      ::view-transition-old(root),
-      ::view-transition-new(root) { animation: none; }
-    }
-
     @media print {
       body { background: #fff !important; color: #000 !important; cursor: auto !important; }
       nav, .cursor, #page-veil, #scroll-progress, #page-return-control,
@@ -105,10 +136,6 @@
     .haptic-target.haptic-press {
       transform: scale(.96);
     }
-    @media (prefers-reduced-motion: reduce) {
-      .haptic-target.haptic-press { transform: none !important; }
-    }
-
     /* Hana card — Hangul syllable construction (ㅎ+ㅏ+ㄴ → 한) */
     .project-thumb-wrap.hana-thumb{position:relative;overflow:hidden;
       background:
@@ -135,21 +162,20 @@
     .project-card:hover .hana-thumb .hana-syllable{transform:scale(1.06);}
     .project-card:hover .hana-thumb .hana-rhythm i.on{transform:scale(1.35);}
     @media (prefers-reduced-motion: reduce){
+      #page-veil, #page { transition: none; }
+      ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+      .haptic-target.haptic-press { transform: none !important; }
       .hana-thumb .hana-jamo,.hana-thumb .hana-syllable,.hana-thumb .hana-rhythm i{transition:none;}
       .project-card:hover .hana-thumb .hana-jamo,.project-card:hover .hana-thumb .hana-syllable,
       .project-card:hover .hana-thumb .hana-rhythm i.on{transform:none;}
     }
 </style>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
   <style>
     /* ============ PROOF OF INTENT — index redesign ============ */
     :root {
       --navy: #0f0e1a; --navy2: #16152b;
       --purple: #7B6CF6; --purple-light: #a99cf8;
-      --lime: #ccff00; --coral: #ff5533;
+      --lime: #ccff00; --coral: #ff5533; --coral-text: #b83722;
       --cream: #f5f0e8; --cream2: #e8e0d0;
       --white: #ffffff; --muted: #7c7991;
       --hair: rgba(255,255,255,0.10);
@@ -412,7 +438,7 @@
       font: 800 clamp(2rem, 3.4vw, 2.9rem)/0.9 'Syne', sans-serif; letter-spacing: -0.04em;
       color: transparent; -webkit-text-stroke: 1px rgba(204,255,0,0.5);
     }
-    .grp h2 { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.6rem; }
+    .grp h2 { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.6rem; scroll-margin-top: 7rem; }
     .grp p { font: 400 0.72rem/1.7 'DM Mono', monospace; color: var(--muted); max-width: 52ch; }
     .row {
       display: grid; grid-template-columns: 2.4rem 1fr auto auto; align-items: center; gap: 1.4rem;
@@ -441,7 +467,7 @@
     .fade-up.is-visible, .fade-up.visible, body.no-js .fade-up { opacity: 1; transform: none; }
 
     /* ---------- ABOUT / COLOPHON ---------- */
-    #about { background: var(--cream); color: var(--navy); padding: clamp(6rem, 10vw, 9rem) clamp(1.2rem, 5vw, 4.5rem); position: relative; }
+    #about { --coral: #c83b20; background: var(--cream); color: var(--navy); padding: clamp(6rem, 10vw, 9rem) clamp(1.2rem, 5vw, 4.5rem); position: relative; }
     #about .note { color: #5c6e00; }
     #about .note::before { background: linear-gradient(90deg, #8aa300, transparent); box-shadow: -1px 0 0 #8aa300; }
     .about-inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(3rem, 6vw, 6rem); max-width: 1280px; margin: 0 auto; align-items: start; }
@@ -463,6 +489,42 @@
     .about-link.primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,14,26,0.3); }
     .about-link.secondary { border: 1px solid rgba(15,14,26,0.3); color: var(--navy); }
     .about-link.secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
+    .about-practice {
+      display: grid; grid-template-columns: minmax(120px, .28fr) minmax(0, 1fr) auto;
+      align-items: center; gap: clamp(1.5rem, 4vw, 4rem);
+      max-width: 1280px; margin: clamp(4.5rem, 8vw, 7rem) auto 0;
+      padding: clamp(1.5rem, 3vw, 2.4rem) 0;
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(90deg, rgba(15,14,26,0.52), rgba(15,14,26,0.14) 52%, transparent 88%) 1;
+    }
+    .about-practice-label {
+      display: block;
+      margin: 0;
+      color: var(--coral);
+      font: 600 0.65rem/1.4 'DM Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .about-practice-copy {
+      max-width: 36rem;
+      margin: 0;
+      color: rgba(15,14,26,0.82);
+      font: italic 400 clamp(1.15rem, 1.8vw, 1.45rem)/1.5 'DM Serif Display', serif;
+    }
+    .about-practice-actions { display: flex; justify-self: end; }
+    .about-practice-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+      min-height: 2.25rem; padding: 0.55rem 0.85rem; border: 1px solid rgba(15,14,26,0.78);
+      border-radius: 4px; color: var(--lime); background: var(--navy); text-decoration: none;
+      font: 600 0.6rem/1 'DM Mono', monospace; letter-spacing: 0.09em; text-transform: uppercase;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), color 0.25s var(--ease-out);
+    }
+    .about-practice-btn:hover { transform: translateY(-2px); border-color: var(--navy); background: #1b192b; }
+    .about-practice-btn:hover { box-shadow: 0 10px 24px rgba(15,14,26,0.2); }
+    @media (max-width: 900px) {
+      .about-practice { grid-template-columns: 1fr auto; gap: 0.8rem 1.5rem; }
+      .about-practice-label { grid-column: 1 / -1; }
+    }
     .about-photo-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 3/4; box-shadow: 0 30px 70px rgba(15,14,26,0.22); }
     .about-badge {
       position: absolute; top: 1rem; left: 1rem; background: rgba(15,14,26,0.88); color: var(--white);
@@ -471,8 +533,8 @@
     }
     .about-badge small { color: var(--lime); font-size: 1em; }
     .inspirations-section { max-width: 1280px; margin: clamp(5.5rem, 10vw, 8.5rem) auto 0; padding-top: clamp(2.6rem, 4vw, 3.4rem); border-top: 1px solid transparent; border-image: linear-gradient(90deg, rgba(255,85,51,0.55), rgba(255,85,51,0.12), transparent 70%) 1; position: relative; }
-    .inspirations-label { font: 500 0.68rem 'DM Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral); margin-bottom: 1.8rem; }
-    .inspirations-label::before { content: "✦ "; color: var(--coral); }
+    .inspirations-label { font: 500 0.68rem 'DM Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-text); margin-bottom: 1.8rem; }
+    .inspirations-label::before { content: "✦ "; color: var(--coral-text); }
     .inspirations-reveal-hit, .inspirations-reveal-hint { display: none; }
     .inspirations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .inspiration-card { display: block; text-decoration: none; color: inherit; padding: 1.5rem 1.6rem; border: 1px solid rgba(15,14,26,0.14); border-radius: 6px; background: rgba(255,255,255,0.45); transition: all 0.25s var(--ease-out); }
@@ -630,9 +692,6 @@ body.intent .row-desc { display: none; }
         margin: 1rem 0 0; text-align: left; transform: none; opacity: 0.92; }
       body.intent .note.n-r:not(.note-keys):not(.note-plate)::before { margin-left: 0;
         background: linear-gradient(90deg, var(--lime), transparent); box-shadow: -1px 0 0 var(--lime); }
-    }
-
-    @media (max-width: 1060px) {
       .work-grid { grid-template-columns: 1fr; }
       .plate-sticky { display: none; }
       .row { grid-template-columns: auto 1fr auto; }
@@ -695,6 +754,8 @@ body.intent .row-desc { display: none; }
       #hero .cropmarks, #hero .measure { display: none !important; }
       .about-inner { grid-template-columns: 1fr; }
       .about-right { order: -1; max-width: 420px; }
+      .about-practice { grid-template-columns: 1fr; gap: 0.75rem; }
+      .about-practice-actions { justify-self: start; margin-top: 0.25rem; }
       .inspirations-label { margin-bottom: 0.8rem; }
       .inspirations-grid {
         display: grid; grid-template-columns: 1fr; max-height: 112px; overflow: hidden;
@@ -716,7 +777,7 @@ body.intent .row-desc { display: none; }
         position: relative; z-index: 4; margin-top: 0.65rem; padding-top: 0.6rem;
         border-top: 1px solid rgba(255,85,51,0.18);
         font: 500 0.6rem 'DM Mono', monospace; letter-spacing: 0.13em;
-        text-transform: uppercase; color: var(--coral); pointer-events: none;
+        text-transform: uppercase; color: var(--coral-text); pointer-events: none;
       }
       .inspirations-reveal-hint span { font-size: 0.9rem; }
       .inspirations-section.is-open .inspirations-reveal-hit,
@@ -726,18 +787,13 @@ body.intent .row-desc { display: none; }
     }
     
     @media (max-width: 400px) {
-      .nav-logo { font-size: 0.66rem; letter-spacing: 0.02em; }
-      .nav-links { gap: 0.55rem; }
-      .nav-links a { font-size: 0.53rem; letter-spacing: 0.05em; }
-      .intent-btn { padding: 0.32rem 0.5rem; font-size: 0.5rem; letter-spacing: 0.1em; gap: 0.3rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .marquee-inner, .gradient-divider, .dt-dot, .avail-pill::before { animation: none !important; }
-      .hero-scroll-cue svg { animation: none !important; transform: none; }
-      .fade-up, .word-reveal .word, .plate-img, .note { transition: none; }
-      .fade-up, .word-reveal .word { opacity: 1; transform: none; }
+      nav { gap: 0.45rem; padding-left: 0.75rem; padding-right: 0.75rem; }
+      .nav-logo { flex: 0 0 auto; font-size: 0.62rem; letter-spacing: 0; }
+      .nav-logo span { margin-inline: 0.18rem; }
+      .nav-links { min-width: 0; gap: 0.4rem; }
+      .nav-links a { font-size: 0.49rem; letter-spacing: 0.02em; }
+      .intent-btn { padding: 0.29rem 0.38rem; font-size: 0.47rem; letter-spacing: 0.06em; gap: 0.22rem; }
+      .intent-btn i { width: 6px; height: 6px; }
     }
 
     /* ---- cross-page morph: plate → project hero ---- */
@@ -830,28 +886,6 @@ body.intent .row-desc { display: none; }
       animation-play-state: running;
     }
 
-@media (max-width: 768px) {
-
-      #qr-wrap {
-        bottom: calc(1.25rem + env(safe-area-inset-bottom));
-        left: 1.25rem;
-        width: 64px; height: 64px;
-      }}
-@media (max-width: 768px) {
-
-      #page-return-control {
-        bottom: calc(1.25rem + env(safe-area-inset-bottom));
-        right: 1.25rem;
-        width: 64px;
-        height: 64px;
-        z-index: 100001;
-      }
-      html:not(.controls-ready) #page-return-control {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-      }
-}
     /* ---- signature chrome: cursor, progress, dividers (preserved verbatim) ---- */
 /* -- Cursor -- */
     .cursor {
@@ -902,11 +936,6 @@ body.intent .row-desc { display: none; }
       transition: width 0.1s linear;
       pointer-events: none;
     }
-/* share icon (recovered) */
-
-/* QR icon base (recovered verbatim) */
- { position: relative; z-index: 1; width: 22px; height: 22px; color: rgba(15,14,26,0.9); transition: color .3s; flex-shrink: 0; }
-
 /* Fallback: if backdrop-filter is unavailable (hardened/blocker browsers),
    give the floating buttons a solid fill so they stay clearly visible. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -964,6 +993,24 @@ body.intent .row-desc { display: none; }
 /* Mobile utility menu: Share + Ask in one floating control. */
 #mobile-utility { display: none; }
 @media (max-width: 768px) {
+  #qr-wrap {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    left: 1.25rem;
+    width: 64px;
+    height: 64px;
+  }
+  #page-return-control {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    right: 1.25rem;
+    width: 64px;
+    height: 64px;
+    z-index: 100001;
+  }
+  html:not(.controls-ready) #page-return-control {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
   #mobile-utility {
     display: block;
     position: fixed;
@@ -1072,16 +1119,20 @@ body.intent .row-desc { display: none; }
     background: rgba(204,255,0,.08);
     outline: none;
   }
+  #qr-wrap,
+  #askbot-launch {
+    display: none !important;
+  }
+  #askbot-panel {
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
 }
 
 .ask-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: center; transform-box: fill-box; animation: btt-spin 10s linear infinite; animation-play-state: paused; }
 #askbot-launch:hover .ask-ring, #askbot-launch:active .ask-ring, #askbot-launch[aria-expanded="true"] .ask-ring { animation-play-state: running; }
 
 
-@media (max-width: 640px){
-  #askbot-launch { bottom: calc(1.25rem + 80px + env(safe-area-inset-bottom)); right: 1.25rem; width: 64px; height: 64px; z-index: 100001; }
-  
-}
 /* panel */
 #askbot-panel {
   position: fixed; right: 2rem; bottom: calc(2rem + 88px); z-index: 100002;
@@ -1093,12 +1144,10 @@ body.intent .row-desc { display: none; }
   transition: opacity .26s cubic-bezier(.16,1,.3,1), transform .26s cubic-bezier(.16,1,.3,1);
 }
 #askbot-panel.open { opacity: 1; transform: none; pointer-events: auto; }
-@media (max-width: 640px){ #askbot-panel { right: 1.25rem; bottom: calc(1.25rem + 72px + env(safe-area-inset-bottom)); } }
-@media (prefers-reduced-motion: reduce){ #askbot-panel{ transition: opacity .15s; transform: none; }  }
 .askbot-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.08);}
 .askbot-head .t{font-weight:800;font-size:.98rem;font-family:'Syne',sans-serif;color:var(--cream);}
 .askbot-head .s{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-top:.15rem;}
-.askbot-close{background:none;border:0;color:var(--muted);font-size:1.4rem;line-height:1;cursor:pointer;padding:.2rem .4rem;border-radius:8px;}
+.askbot-close{background:none;border:0;color:#aaa7bd;font-size:1.4rem;line-height:1;cursor:pointer;padding:.2rem .4rem;border-radius:8px;}
 .askbot-close:hover{color:var(--cream);background:rgba(255,255,255,.06);}
 .askbot-log{flex:1;overflow-y:auto;padding:1.1rem;display:flex;flex-direction:column;gap:.7rem;}
 .askbot-log .msg{max-width:85%;padding:.7rem .9rem;border-radius:14px;font-size:.88rem;line-height:1.55;font-family:'Syne',sans-serif;}
@@ -1112,7 +1161,7 @@ body.intent .row-desc { display: none; }
 .askbot-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:var(--cream);font-family:'Syne',sans-serif;font-size:.88rem;padding:.6rem .8rem;outline:none;}
 .askbot-input input:focus{border-color:var(--purple-light);}
 .askbot-input button{background:var(--lime);border:0;border-radius:10px;color:var(--navy);font-weight:800;padding:0 .9rem;cursor:pointer;font-family:'Syne',sans-serif;}
-.askbot-foot{text-align:center;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--muted);padding:0 0 .7rem;text-transform:uppercase;}
+.askbot-foot{text-align:center;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:#aaa7bd;padding:0 0 .7rem;text-transform:uppercase;}
 .page-leaving #askbot-launch, .page-leaving #askbot-panel { opacity:0 !important; pointer-events:none !important; }
 
 
@@ -1131,19 +1180,19 @@ body.scroll-calm #mobile-utility.visible:hover,
 body.scroll-calm #mobile-utility.open { opacity:1; }
 #page-return-control, #qr-trigger, #askbot-launch, #mobile-utility { transition: opacity 0.3s, transform 0.35s; }
 
-@media (max-width: 768px) {
-  #qr-wrap,
-  #askbot-launch { display: none !important; }
-  #askbot-panel { right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); }
-}
-
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-inner, .gradient-divider, .dt-dot, .avail-pill::before,
   .utility-ring { animation: none !important; }
+  .hero-scroll-cue svg { animation: none !important; transform: none; }
+  .fade-up, .word-reveal .word, .plate-img, .note { transition: none; }
+  .fade-up, .word-reveal .word { opacity: 1; transform: none; }
+  #askbot-panel { transition: opacity .15s; transform: none; }
 }
 
 
 </style>
-  <link rel="canonical" href="/"/>
+  <link rel="canonical" href="https://www.hellojackmao.com/"/>
 
   <script type="application/ld+json">
   {
@@ -1152,10 +1201,10 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       "mainEntity": {
         "@type": "Person",
         "name": "Jack Mao",
-        "url": "https://hellojackmao.com",
+        "url": "https://www.hellojackmao.com",
         "jobTitle": "Designer & Illustrator",
         "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
-        "sameAs": ["https://www.linkedin.com/in/jack-mao", "https://hellojackmao.com"]
+        "sameAs": ["https://www.linkedin.com/in/jack-mao", "https://www.hellojackmao.com"]
       }
     }
   </script>
@@ -1207,8 +1256,8 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           <span class="word-reveal"><span class="word" style="transition-delay:0.44s">intent<span class="dot">.</span></span></span>
         </h1>
         <div class="measure" id="hero-measure" aria-hidden="true"><b id="hero-measure-val"></b></div>
-        <p class="hero-sub word-reveal"><span class="word" style="transition-delay:0.55s">I’m&nbsp;</span><span class="word" style="transition-delay:0.585s">a&nbsp;</span><span class="word" style="transition-delay:0.62s">Toronto-based&nbsp;</span><span class="word" style="transition-delay:0.655s">creative&nbsp;</span><span class="word" style="transition-delay:0.69s">designer&nbsp;</span><span class="word" style="transition-delay:0.725s">turning&nbsp;</span><span class="word" style="transition-delay:0.76s">ideas&nbsp;</span><span class="word" style="transition-delay:0.795s">into&nbsp;</span><span class="word" style="transition-delay:0.83s">thoughtful&nbsp;</span><span class="word" style="transition-delay:0.865s">visuals,&nbsp;</span><span class="word" style="transition-delay:0.9s">compelling&nbsp;</span><span class="word" style="transition-delay:0.935s">stories,&nbsp;</span><span class="word" style="transition-delay:0.97s">and&nbsp;</span><span class="word" style="transition-delay:1.005s">polished&nbsp;</span><span class="word" style="transition-delay:1.04s">experiences&nbsp;</span><span class="hero-no-widow"><span class="word" style="transition-delay:1.075s">from&nbsp;</span><span class="word" style="transition-delay:1.11s">concept&nbsp;</span><span class="word" style="transition-delay:1.145s">to&nbsp;</span><span class="word" style="transition-delay:1.18s">delivery.</span></span></p>
-        <p class="hero-build-note word-reveal"><span class="word" style="transition-delay:1.25s">When&nbsp;</span><span class="word" style="transition-delay:1.285s">an&nbsp;</span><span class="word" style="transition-delay:1.32s">idea&nbsp;</span><span class="word" style="transition-delay:1.355s">needs&nbsp;</span><span class="word" style="transition-delay:1.39s">to&nbsp;</span><span class="word" style="transition-delay:1.425s">work,&nbsp;</span><span class="hero-no-widow"><span class="word" style="transition-delay:1.46s">I&nbsp;</span><span class="word" style="transition-delay:1.495s">build&nbsp;</span><span class="word" style="transition-delay:1.53s">it&nbsp;</span><span class="word" style="transition-delay:1.565s">too.</span></span></p>
+        <p class="hero-sub word-reveal"><span class="word" style="transition-delay:0.55s">I’m&nbsp;</span><span class="word" style="transition-delay:0.585s">a&nbsp;</span><span class="word" style="transition-delay:0.62s">Toronto-based&nbsp;</span><span class="word" style="transition-delay:0.655s">creative&nbsp;</span><span class="word" style="transition-delay:0.69s">designer&nbsp;</span><span class="word" style="transition-delay:0.725s">turning&nbsp;</span><span class="word" style="transition-delay:0.76s">ideas&nbsp;</span><span class="word" style="transition-delay:0.795s">into&nbsp;</span><span class="word" style="transition-delay:0.83s">thoughtful&nbsp;</span><span class="word" style="transition-delay:0.865s">visuals,&nbsp;</span><span class="word" style="transition-delay:0.9s">compelling&nbsp;</span><span class="word" style="transition-delay:0.935s">stories,&nbsp;</span><span class="word" style="transition-delay:0.97s">and&nbsp;</span><span class="word" style="transition-delay:1.005s">polished&nbsp;</span><span class="word" style="transition-delay:1.04s">experiences&nbsp;</span><span class="word hero-no-widow" style="transition-delay:1.075s">from&nbsp;concept&nbsp;to&nbsp;delivery.</span></p>
+        <p class="hero-build-note word-reveal"><span class="word" style="transition-delay:1.25s">When&nbsp;</span><span class="word" style="transition-delay:1.285s">an&nbsp;</span><span class="word" style="transition-delay:1.32s">idea&nbsp;</span><span class="word" style="transition-delay:1.355s">needs&nbsp;</span><span class="word" style="transition-delay:1.39s">to&nbsp;</span><span class="word" style="transition-delay:1.425s">work,&nbsp;</span><span class="word hero-no-widow" style="transition-delay:1.46s">I&nbsp;build&nbsp;it&nbsp;too.</span></p>
         <div class="hero-capabilities fade-up" data-delay="3" aria-label="What I can do for your team">
           <span class="hero-capabilities-label">What I can do for your team</span>
           <p>Campaign Content <span class="sep" aria-hidden="true">·</span> Social Media <span class="sep" aria-hidden="true">·</span> Event Communications <span class="sep" aria-hidden="true">·</span> Presentation/Design Support</p>
@@ -1250,13 +1299,13 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       <div class="work-grid">
         <div class="plate-sticky" aria-hidden="true">
           <div class="plate">
-            <div class="plate-img p-posters active" data-plate="0" aria-hidden="true"><img src="images/waves-02.png" alt="" loading="lazy" decoding="async"/><img src="images/waves-01.png" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img p-stack" data-plate="1" aria-hidden="true"><img src="images/thumb-so-good.png" alt="" loading="lazy" decoding="async"/><img src="images/thumb-after-hours.png" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img p-cover-face" data-plate="2" aria-hidden="true"><img src="images/karina-og-image.png" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img p-cover" data-plate="3" aria-hidden="true"><img src="images/toronto-bloom-canopy.jpeg" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img" data-plate="4" aria-hidden="true"><img src="images/thumb-chronicles.webp" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img p-tend" data-plate="5" aria-hidden="true"><img src="images/tend-app-store-icon.png" alt="" loading="lazy" decoding="async"/></div>
-            <div class="plate-img" data-plate="6" aria-hidden="true"><img src="images/coffee-nearby-index-cover.png" alt="" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-posters active" data-plate="0" aria-hidden="true"><img src="images/index-waves-02-640.webp" srcset="images/index-waves-02-320.webp 320w, images/index-waves-02-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="960" loading="lazy" decoding="async"/><img src="images/index-waves-01-640.webp" srcset="images/index-waves-01-320.webp 320w, images/index-waves-01-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="960" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-stack" data-plate="1" aria-hidden="true"><img src="images/index-so-good-640.webp" srcset="images/index-so-good-320.webp 320w, images/index-so-good-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/><img src="images/index-after-hours-640.webp" srcset="images/index-after-hours-320.webp 320w, images/index-after-hours-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-cover-face" data-plate="2" aria-hidden="true"><img src="images/index-karina-640.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="509" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-cover" data-plate="3" aria-hidden="true"><img src="images/index-toronto-in-bloom-640.webp" srcset="images/index-toronto-in-bloom-320.webp 320w, images/index-toronto-in-bloom-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="371" loading="lazy" decoding="async"/></div>
+            <div class="plate-img" data-plate="4" aria-hidden="true"><img src="images/index-chronicles-640.webp" srcset="images/index-chronicles-320.webp 320w, images/index-chronicles-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="360" loading="lazy" decoding="async"/></div>
+            <div class="plate-img p-tend" data-plate="5" aria-hidden="true"><img src="images/index-tend-640.webp" srcset="images/index-tend-320.webp 320w, images/index-tend-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="640" loading="lazy" decoding="async"/></div>
+            <div class="plate-img" data-plate="6" aria-hidden="true"><img src="images/index-coffee-nearby-640.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="(max-width: 720px) 96px, 520px" alt="" width="640" height="371" loading="lazy" decoding="async"/></div>
             <div class="plate-img p-wayfarer" data-plate="7" aria-hidden="true"><svg viewBox="0 0 120 120" width="84" height="84" aria-hidden="true" style="filter:drop-shadow(0 6px 20px rgba(78,205,196,0.35));">
                     <path d="M60 14 L70 60 L60 106 L50 60 Z" fill="#4ECDC4"/>
                     <path d="M14 60 L60 50 L106 60 L60 70 Z" fill="#4ECDC4" opacity="0.6"/>
@@ -1274,7 +1323,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         </div>
 
         <div class="toc">
-          <div class="grp fade-up">
+          <div class="grp">
             <span class="grp-num" aria-hidden="true">01</span>
             <div>
               <h2 id="editorial-projects">Editorial &amp; Visual Direction</h2>
@@ -1283,37 +1332,37 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </div>
           <a class="row fade-up" href="projects/light-and-form.html" aria-label="Light &amp; Form — Illustration and photography, 2021" data-plate="0" data-cap="Light & Form · Illustration + Photo · 2021">
             <span class="row-folio" aria-hidden="true">01</span>
-            <span class="row-thumb p-posters" aria-hidden="true"><img src="images/waves-02.png" alt="" loading="lazy"/><img src="images/waves-01.png" alt="" loading="lazy"/></span>
+            <span class="row-thumb p-posters" aria-hidden="true"><img src="images/index-waves-02-320.webp" srcset="images/index-waves-02-320.webp 320w, images/index-waves-02-640.webp 640w" sizes="96px" alt="" width="320" height="480" loading="lazy" decoding="async"/><img src="images/index-waves-01-320.webp" srcset="images/index-waves-01-320.webp 320w, images/index-waves-01-640.webp 640w" sizes="96px" alt="" width="320" height="480" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Light &amp; Form</h3>
             <span class="row-meta">Illustration + Photo · 2021</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">Where illustration meets photography — turning ordinary frames into composed, deliberate images.</span><span class="row-note">opens quiet on purpose — light before noise</span>
+            <span class="row-desc" aria-hidden="true">Two coordinated visual series: paired poster colourways and an edited photography study.</span><span class="row-note">opens quiet on purpose — light before noise</span>
           </a>
           <a class="row fade-up" href="projects/special-editions.html" aria-label="Special Editions — Editorial and advertising, 2017 and 2022" data-plate="1" data-cap="Special Editions · Editorial & Advertising · 2017 / 2022">
             <span class="row-folio" aria-hidden="true">02</span>
-            <span class="row-thumb p-stack" aria-hidden="true"><img src="images/thumb-so-good.png" alt="" loading="lazy"/><img src="images/thumb-after-hours.png" alt="" loading="lazy"/></span>
+            <span class="row-thumb p-stack" aria-hidden="true"><img src="images/index-so-good-320.webp" srcset="images/index-so-good-320.webp 320w, images/index-so-good-640.webp 640w" sizes="96px" alt="" width="320" height="180" loading="lazy" decoding="async"/><img src="images/index-after-hours-320.webp" srcset="images/index-after-hours-320.webp 320w, images/index-after-hours-640.webp 640w" sizes="96px" alt="" width="320" height="180" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Special Editions</h3>
             <span class="row-meta">Editorial &amp; Advertising · 2017 / 2022</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">Two music-culture covers, five years apart — Zara Larsson editorial and a Weeknd campaign.</span><span class="row-note">two eras on one spread: range without shouting</span>
+            <span class="row-desc" aria-hidden="true">Six editorial studies and three campaign directions across print, social, exhibition, and OOH.</span><span class="row-note">two eras on one spread: range without shouting</span>
           </a>
           <a class="row fade-up" href="projects/karina.html" aria-label="Karina — Self-initiated concept editorial, 2026" data-plate="2" data-cap="Karina · Concept Editorial · 2026">
             <span class="row-folio" aria-hidden="true">03</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/karina-og-image.png" alt="" loading="lazy"/></span>
+            <span class="row-thumb" aria-hidden="true"><img src="images/index-karina-320.webp" srcset="images/index-karina-320.webp 320w, images/index-karina-640.webp 640w" sizes="96px" alt="" width="320" height="255" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Karina</h3>
             <span class="row-meta">Concept Editorial · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">A self-initiated editorial imagining six years of Karina — debut to the 2026 Met Gala in Prada.</span><span class="row-note">no client, no brief — just taste, which is riskier</span>
+            <span class="row-desc" aria-hidden="true">A responsive long-form editorial combining art direction, motion, copy, cards, and photographic plates.</span><span class="row-note">no client, no brief — just taste, which is riskier</span>
           </a>
           <a class="row fade-up" href="projects/toronto-in-bloom.html" aria-label="Toronto in Bloom — Social media photography and motion, 2026" data-plate="3" data-cap="Toronto in Bloom · Social Media · 2026">
             <span class="row-folio" aria-hidden="true">04</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/toronto-bloom-canopy.jpeg" alt="" loading="lazy"/></span>
+            <span class="row-thumb" aria-hidden="true"><img src="images/index-toronto-in-bloom-320.webp" srcset="images/index-toronto-in-bloom-320.webp 320w, images/index-toronto-in-bloom-640.webp 640w" sizes="96px" alt="" width="320" height="186" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Toronto in Bloom</h3>
             <span class="row-meta">Social Media · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">Social content that treats a seasonal moment like an editorial shoot.</span><span class="row-note">sequenced for the scroll, not the single frame</span>
+            <span class="row-desc" aria-hidden="true">Four grid posts and three motion clips published within a two-week bloom window, earning 513 likes.</span><span class="row-note">sequenced for the scroll, not the single frame</span>
           </a>
-          <div class="grp fade-up">
+          <div class="grp">
             <span class="grp-num" aria-hidden="true">02</span>
             <div>
               <h2 id="product-projects">Design Systems &amp; Product</h2>
@@ -1322,29 +1371,29 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </div>
           <a class="row fade-up" href="projects/chronicles-of-elysium.html" aria-label="Chronicles of Elysium — Game design, 2023" data-plate="4" data-cap="Chronicles of Elysium · Game Design · 2023">
             <span class="row-folio" aria-hidden="true">05</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/thumb-chronicles.webp" alt="" loading="lazy"/></span>
+            <span class="row-thumb" aria-hidden="true"><img src="images/index-chronicles-320.webp" srcset="images/index-chronicles-320.webp 320w, images/index-chronicles-640.webp 640w" sizes="96px" alt="" width="320" height="180" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Chronicles of Elysium</h3>
             <span class="row-meta">Game Design · 2023</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">Game design that treats narrative as architecture — built on classical story structure.</span><span class="row-note">worldbuilding is systems thinking in costume</span>
+            <span class="row-desc" aria-hidden="true">A pitch-ready game concept spanning mechanics, key art, and a six-act narrative.</span><span class="row-note">worldbuilding is systems thinking in costume</span>
           </a>
           <a class="row fade-up" href="projects/tend-habit-tracker.html" aria-label="Tend — UI/UX and SwiftUI app, 2026" data-plate="5" data-cap="Tend · UI/UX · SwiftUI App · 2026">
             <span class="row-folio" aria-hidden="true">06</span>
-            <span class="row-thumb p-tend" aria-hidden="true"><img src="images/tend-app-store-icon.png" alt="" loading="lazy"/></span>
+            <span class="row-thumb p-tend" aria-hidden="true"><img src="images/index-tend-320.webp" srcset="images/index-tend-320.webp 320w, images/index-tend-640.webp 640w" sizes="96px" alt="" width="320" height="320" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Tend</h3>
             <span class="row-meta">UI/UX · SwiftUI App · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">A habit tracker that rethinks the streak — designed, built, and persisted in SwiftUI / SwiftData.</span><span class="row-note">the interface is the habit</span>
+            <span class="row-desc" aria-hidden="true">A native SwiftUI and SwiftData build with persistent habits, reminders, themes, and journaling.</span><span class="row-note">the interface is the habit</span>
           </a>
           <a class="row fade-up" href="projects/coffee-nearby.html" aria-label="Coffee Nearby — UI/UX and wearables web app, 2026" data-plate="6" data-cap="Coffee Nearby · UI/UX · Wearables Web App · 2026">
             <span class="row-folio" aria-hidden="true">07</span>
-            <span class="row-thumb" aria-hidden="true"><img src="images/coffee-nearby-index-cover.png" alt="" loading="lazy"/></span>
+            <span class="row-thumb" aria-hidden="true"><img src="images/index-coffee-nearby-320.webp" srcset="images/index-coffee-nearby-320.webp 320w, images/index-coffee-nearby-640.webp 640w" sizes="96px" alt="" width="320" height="186" loading="lazy" decoding="async"/></span>
             <h3 class="row-title">Coffee Nearby</h3>
             <span class="row-meta">UI/UX · Wearables Web App · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">Wearable-first product design — geolocation coffee search inside the constraints of smart glasses.</span><span class="row-note">a watch-sized screen did the art direction</span>
+            <span class="row-desc" aria-hidden="true">A dependency-free wearable prototype using geolocation and live OpenStreetMap data.</span><span class="row-note">a watch-sized screen did the art direction</span>
           </a>
-          <div class="grp fade-up">
+          <div class="grp">
             <span class="grp-num" aria-hidden="true">03</span>
             <div>
               <h2 id="interactive-projects">Interactive Concepts</h2>
@@ -1362,7 +1411,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
             <h3 class="row-title">Wayfarer</h3>
             <span class="row-meta">Product Design · Travel Platform · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">A travel-guide platform designed to be read slowly — long-form guides to real places.</span><span class="row-note">not a mockup — a working platform. open it</span>
+            <span class="row-desc" aria-hidden="true">A thirteen-page responsive travel platform with guides, saved places, sharing, and author views.</span><span class="row-note">not a mockup — a working platform. open it</span>
           </a>
           <a class="row fade-up" href="projects/hana/index.html" aria-label="Hana — Personal Korean practice tool, 2026" data-plate="8" data-cap="Hana · Personal Tool · Korean Practice · 2026">
             <span class="row-folio" aria-hidden="true">09</span>
@@ -1370,7 +1419,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
             <h3 class="row-title">Hana</h3>
             <span class="row-meta">Personal Tool · Korean Practice · 2026</span>
             <span class="row-arrow" aria-hidden="true">→</span>
-            <span class="row-desc" aria-hidden="true">A personal language-learning app — daily drills, read-aloud, and progress tracking, shipped end-to-end.</span><span class="row-note">the most honest brief: teaching myself</span>
+            <span class="row-desc" aria-hidden="true">A working Korean practice tool with daily drills, read-aloud exercises, review, and local progress.</span><span class="row-note">the most honest brief: teaching myself</span>
           </a>
         </div>
       </div>
@@ -1417,6 +1466,15 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
               <small>Available for work</small>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="about-practice fade-up">
+        <span class="about-practice-label">Personal practice</span>
+        <p class="about-practice-copy">I enjoy photographing friends and shaping everyday moments into small editorial portrait stories.</p>
+        <div class="about-practice-actions">
+          <a class="about-practice-btn" href="projects/in-good-company-light.html" aria-label="View In Good Company photography project">
+            In Good Company <span aria-hidden="true">&#8594;</span>
+          </a>
         </div>
       </div>
       <div class="inspirations-section" id="influences">
@@ -1494,22 +1552,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
             </div>
           </a>
 
-          <a class="inspiration-card fade-up" data-delay="6" href="https://sauhee.design/" target="_blank" rel="noopener noreferrer">
-            <div class="inspiration-header">
-              <div class="inspiration-name">Shannon Sauhee Han</div>
-              <div class="inspiration-arrow">↗</div>
-            </div>
-            <div class="inspiration-role">Product Designer — Seattle</div>
-            <p class="inspiration-desc">A reference for framing complex systems around connection, delight, and tangible outcomes.</p>
-            <div class="inspiration-tags">
-              <span>Systems</span>
-              <span>Research</span>
-              <span>Product Design</span>
-            </div>
-          </a>
-        
-        
-        <a class="inspiration-card fade-up" data-delay="7" href="https://www.rachelchen.tech/" target="_blank" rel="noopener noreferrer">
+        <a class="inspiration-card fade-up" data-delay="6" href="https://www.rachelchen.tech/" target="_blank" rel="noopener noreferrer">
           <div class="inspiration-header">
             <div class="inspiration-name">Rachel Chen</div>
             <div class="inspiration-arrow">↗</div>
@@ -1913,9 +1956,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
     })();
 
-  </script>
-
-  <script>
     // -- Image protection --
     document.addEventListener('contextmenu', e => {
       if (e.target.tagName === 'IMG' || e.target.tagName === 'IFRAME') {
@@ -1934,20 +1974,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           document.querySelectorAll('.section-word-reveal').forEach(el => wordObs.observe(el));
       }
 
-      // 3. Parallax — scroll-linked hero background
-      const parallaxBg = document.getElementById('parallax-bg');
-      if (parallaxBg && !prefersReducedMotion) {
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              parallaxBg.style.transform = 'translateY(' + (window.scrollY * 0.22) + 'px)';
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
-      }
     }
     // -- Cursor --
     const cursor = document.getElementById('cursor');
@@ -2031,58 +2057,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       }, { once: true });
     }
     startRevealObserver();
-    // -- Back to top --
-    const btt = document.getElementById('page-return-control');
-    if (btt) {
-      document.documentElement.classList.add('controls-ready');
-      btt.dataset.bttBound = '1';
-      const updateBackToTop = () => {
-        if (window.scrollY > 400) { btt.classList.add('visible'); }
-        else { btt.classList.remove('visible'); }
-      };
-      window.addEventListener('scroll', updateBackToTop, { passive: true });
-      updateBackToTop();
-      btt.addEventListener('click', (e) => {
-        e.preventDefault();
-        btt.classList.add('spinning');
-        try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (err) { window.scrollTo(0, 0); }
-        if (history.replaceState) { try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {} }
-        setTimeout(() => btt.classList.remove('spinning'), 1200);
-      });
-      btt.addEventListener('mouseenter', () => { if (cursor) cursor.classList.add('hovering'); });
-      btt.addEventListener('mouseleave', () => { if (cursor) cursor.classList.remove('hovering'); });
-    }
-
-    // -- Mobile portfolio actions --
-    (function() {
-      const utility = document.getElementById('mobile-utility');
-      const trigger = document.getElementById('mobile-utility-trigger');
-      if (!utility || !trigger) return;
-      if (trigger.dataset.utilityBound) return;
-      trigger.dataset.utilityBound = '1';
-      const close = () => {
-        utility.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      };
-      const update = () => {
-        const show = window.matchMedia('(max-width: 768px)').matches && window.scrollY > 400;
-        utility.classList.toggle('visible', show);
-        if (!show) close();
-      };
-      trigger.addEventListener('click', event => {
-        event.stopPropagation();
-        const open = utility.classList.toggle('open');
-        trigger.setAttribute('aria-expanded', String(open));
-      });
-      utility.addEventListener('click', event => event.stopPropagation());
-      document.addEventListener('click', close);
-      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      update();
-    })();
-
-
     // -- Haptic-style tap feedback --
     (function() {
       const targets = document.querySelectorAll('nav a, nav button, .mobile-tabbar a, .mobile-tabbar button, .mobile-action-menu a, #mobile-utility a, #mobile-utility button');
@@ -2125,17 +2099,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         if (wrap) wrap.classList.toggle('near-limit', len > 540);
       });
     })();
-    // -- Scroll progress --
-    (function() {
-      var bar = document.getElementById('scroll-progress');
-      if (!bar) return;
-      window.addEventListener('scroll', function() {
-        var s = document.documentElement;
-        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-        bar.style.width = Math.min(pct, 100) + '%';
-      }, { passive: true });
-    })();
-  
     // ── Page transition ──
     (function() {
       const root = document.documentElement;
@@ -2207,9 +2170,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         if (cur) cur.classList.remove('hovering');
       });
     })();
-  </script>
-
-<script>
   /* Hero reveal failsafe: above-the-fold content must never stay hidden if the
      reveal observer is delayed. Reveal hero fade-ups + words shortly after load. */
   (function(){
@@ -2221,10 +2181,8 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
     if (document.readyState==='complete') setTimeout(showHero,1200);
     else window.addEventListener('load', function(){ setTimeout(showHero,1200); });
   })();
-</script>
-<script>
-  /* Resilient floating-button wiring — runs independently of the main script block
-     so an error (or content blocker) elsewhere can never leave these buttons stuck hidden. */
+  /* Shared scroll coordinator: progress, parallax, and floating controls update
+     together in one animation frame instead of competing for every scroll event. */
   (function(){
     function wire(){
       try {
@@ -2233,12 +2191,26 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         var share = document.getElementById('qr-trigger');
         var utility = document.getElementById('mobile-utility');
         var utilityTrigger = document.getElementById('mobile-utility-trigger');
-        var lastY = 0, calmTimer = null;
-        function onScroll(){
+        var progress = document.getElementById('scroll-progress');
+        var parallax = document.getElementById('parallax-bg');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var lastY = 0, calmTimer = null, framePending = false;
+
+        function renderScroll(){
+          framePending = false;
           var y = window.scrollY || document.documentElement.scrollTop || 0;
           var showFloating = y > 400;
-          if (btt){ btt.classList.toggle('visible', y > 400); }
-          if (share){ share.classList.toggle('visible', y > 400); }
+
+          if (progress) {
+            var root = document.documentElement;
+            var available = Math.max(root.scrollHeight - root.clientHeight, 1);
+            progress.style.width = Math.min((y / available) * 100, 100) + '%';
+          }
+          if (parallax && !reduceMotion) {
+            parallax.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+          }
+          if (btt) btt.classList.toggle('visible', showFloating);
+          if (share) share.classList.toggle('visible', showFloating);
           if (utility) {
             var showUtility = window.matchMedia('(max-width: 768px)').matches && showFloating;
             utility.classList.toggle('visible', showUtility);
@@ -2255,13 +2227,26 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           lastY = y;
           if (calmTimer) clearTimeout(calmTimer);
           calmTimer = setTimeout(function(){ document.body.classList.remove('scroll-calm'); }, 320);
+          document.dispatchEvent(new CustomEvent('homepage:scroll', { detail: { y: y } }));
         }
-        window.addEventListener('scroll', onScroll, { passive:true });
-        onScroll();
-        // Ensure nav-up click always works even if its main handler never bound.
+        function requestScroll(){
+          if (framePending) return;
+          framePending = true;
+          window.requestAnimationFrame(renderScroll);
+        }
+        window.addEventListener('scroll', requestScroll, { passive:true });
+        window.addEventListener('resize', requestScroll);
+        renderScroll();
+
         if (btt && !btt.dataset.bttBound){
           btt.dataset.bttBound = '1';
-          btt.addEventListener('click', function(e){ e.preventDefault(); try { window.scrollTo({ top:0, behavior:'smooth' }); } catch(err){ window.scrollTo(0,0); } if(history.replaceState){ history.replaceState(null,'',location.pathname+location.search); } });
+          btt.addEventListener('click', function(e){
+            e.preventDefault();
+            btt.classList.add('spinning');
+            try { window.scrollTo({ top:0, behavior:reduceMotion ? 'auto' : 'smooth' }); } catch(err){ window.scrollTo(0,0); }
+            if(history.replaceState){ try { history.replaceState(null,'',location.pathname+location.search); } catch(err){} }
+            setTimeout(function(){ btt.classList.remove('spinning'); }, 1200);
+          });
         }
         if (utility && utilityTrigger && !utilityTrigger.dataset.utilityBound) {
           utilityTrigger.dataset.utilityBound = '1';
@@ -2313,7 +2298,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.4A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-<div id="askbot-panel" role="dialog" aria-label="Ask about Jack's work" aria-hidden="true">
+<div id="askbot-panel" role="dialog" aria-label="Ask about Jack's work" aria-hidden="true" inert>
     <div class="askbot-head">
       <div>
         <div class="t">Ask about my work</div>
@@ -2364,6 +2349,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   var input=document.getElementById('askbot-text');
   var send=document.getElementById('askbot-send');
   var greeted=false;
+  var returnFocus=launch;
 
   function add(text, who){
     if(!log) return;
@@ -2397,36 +2383,46 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       chipsWrap.appendChild(b);
     });
   }
-  function open(){
+  function open(opener){
+    returnFocus=opener || launch;
+    panel.removeAttribute('inert');
     panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
     launch.setAttribute('aria-expanded','true');
     if(!greeted){ add(GREETING,'bot'); renderChips(); greeted=true; }
     setTimeout(function(){ input.focus(); }, 120);
   }
-  function close(){
+  function close(restoreFocus){
     panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+    panel.setAttribute('inert','');
     launch.setAttribute('aria-expanded','false');
+    if(restoreFocus && returnFocus) returnFocus.focus();
   }
-  launch.addEventListener('click',open);
+  launch.addEventListener('click',function(){ open(launch); });
   var mobileUtilityAsk=document.getElementById('mobile-utility-ask');
   if(mobileUtilityAsk) mobileUtilityAsk.addEventListener('click',function(){
     var utility=document.getElementById('mobile-utility');
     var utilityTrigger=document.getElementById('mobile-utility-trigger');
     if(utility) utility.classList.remove('open');
     if(utilityTrigger) utilityTrigger.setAttribute('aria-expanded','false');
-    open();
+    open(utilityTrigger || mobileUtilityAsk);
   });
-  if(closeBtn) closeBtn.addEventListener('click',close);
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) close(); });
+  if(closeBtn) closeBtn.addEventListener('click',function(){ close(true); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&panel.classList.contains('open')) close(true); });
   if(send) send.addEventListener('click',function(){ var v=input?input.value.trim():''; if(v){ ask(v); input.value=''; } });
   if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter'){ var v=input.value.trim(); if(v){ ask(v); input.value=''; } } });
 
-  // Scroll-gate the launcher like the other floating buttons.
-  function gate(){ if(window.scrollY>400){ launch.classList.add('visible'); } else { launch.classList.remove('visible'); if(panel.classList.contains('open')) close(); } }
-  window.addEventListener('scroll', gate, {passive:true}); gate();
+  // Follow the homepage's shared scroll coordinator.
+  function gate(event){
+    var y = event && event.detail ? event.detail.y : (window.scrollY || document.documentElement.scrollTop || 0);
+    if(y > 400){ launch.classList.add('visible'); }
+    else { launch.classList.remove('visible'); if(panel.classList.contains('open')) close(false); }
+  }
+  document.addEventListener('homepage:scroll', gate);
+  gate();
 })();
 </script>
 
 
+  <script defer src="analytics.js"></script>
 </body>
 </html>

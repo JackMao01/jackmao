@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /secret.html
 
-Sitemap: https://hellojackmao.com/sitemap.xml
+Sitemap: https://www.hellojackmao.com/sitemap.xml
