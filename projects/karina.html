@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://www.hellojackmao.com/projects/karina.html" />
 <meta property="og:title" content="Karina — A Study in Modern Iconography" />
 <meta property="og:description" content="From Kwangya to couture. The 2026 Met Gala, the LEMONADE era, and six years of aespa's leader — as an editorial feature." />
-<meta property="og:image" content="../images/karina-og-image.png?v=3" />
+<meta property="og:image" content="../images/karina-og-image.png?v=4" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Karina at the 2026 Met Gala in custom Prada — editorial cover: 'The quiet weight of a signature.'" />
@@ -29,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Karina — A Study in Modern Iconography" />
 <meta name="twitter:description" content="From Kwangya to couture. The Met Gala, the LEMONADE era, six years of aespa's leader." />
-<meta name="twitter:image" content="../images/karina-og-image.png?v=3" />
+<meta name="twitter:image" content="../images/karina-og-image.png?v=4" />
 <meta name="twitter:image:alt" content="Karina at the 2026 Met Gala — editorial cover." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2869,19 +2869,25 @@
       text-shadow: none;
     }
 
-    /* Floating glass jump menu — only on mobile */
+    /* Floating glass jump menu */
     .jump-menu {
       display: block !important;
     }
   }
 
-  /* The floating jump-to-section menu — hidden by default, shown above @ mobile */
+  /* The floating jump-to-section menu */
   .jump-menu {
-    display: none;
+    display: block;
     position: fixed;
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     right: 16px;
     z-index: 110;
+  }
+  @media (min-width: 901px) {
+    .jump-menu {
+      right: 24px;
+      bottom: 24px;
+    }
   }
   .jump-trigger {
     width: 56px;
@@ -3122,7 +3128,7 @@
   </div>
 
   <a class="hero-morph-band" href="#profile" aria-label="Karina — Met Gala 2026, Prada" style="view-transition-name: project-hero">
-    <img src="../images/karina-og-image.png" alt="Karina at the 2026 Met Gala in Prada — cover: The quiet weight of a signature" loading="eager" decoding="async" width="1232" height="980" />
+    <img src="../images/karina-og-image.png?v=4" alt="Karina at the 2026 Met Gala in Prada — cover: The quiet weight of a signature" loading="eager" decoding="async" width="1232" height="980" />
   </a>
 
   <h1 class="hero-headline">
@@ -4623,7 +4629,7 @@
   </div>
 </footer>
 
-<!-- FLOATING GLASS JUMP MENU (mobile only) -->
+  <!-- FLOATING GLASS JUMP MENU -->
 <div class="jump-menu" id="jumpMenu" role="navigation" aria-label="Jump to section">
   <div class="jump-panel" id="jumpPanel">
     <div class="jump-panel-label">Jump to section</div>

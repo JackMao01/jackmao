@@ -22,7 +22,7 @@
   <meta property="og:url" content="https://www.hellojackmao.com/projects/tend-habit-tracker.html"/>
   <meta property="og:title" content="Tend Habit Tracker — Jack Mao"/>
   <meta property="og:description" content="A product and UI/UX case study for a calm SwiftUI habit tracker focused on small daily rituals, themes, reminders, journaling, and sustainable progress."/>
-  <meta property="og:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png"/>
+  <meta property="og:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png?v=2"/>
   <meta property="og:image:width" content="1024"/>
   <meta property="og:image:height" content="1024"/>
   <meta property="og:image:alt" content="Tend app icon with lavender leaf above pond ripples"/>
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Tend Habit Tracker — Jack Mao"/>
   <meta name="twitter:description" content="A product and UI/UX case study for a calm SwiftUI habit tracker focused on small daily rituals, themes, reminders, journaling, and sustainable progress."/>
-  <meta name="twitter:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png"/>
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/tend-app-store-icon.png?v=2"/>
   <meta name="twitter:image:alt" content="Tend app icon with lavender leaf above pond ripples"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -487,8 +487,8 @@
     }
     #back-to-top {
       position:fixed; right:1.5rem; bottom:1.5rem; z-index:80; width:44px; height:44px;
-      border-radius:50%; border:1px solid rgba(255,255,255,0.18);background:rgba(22,21,43,0.42);background-image:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 42%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.05) 100%),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 6px 26px rgba(0,0,0,0.32),0 1px 0 rgba(255,255,255,0.14) inset;
-      color:var(--lime); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
+      border-radius:50%; border:1px solid rgba(112,87,207,.22);background:rgba(251,250,246,.82);background-image:linear-gradient(135deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.28) 44%, rgba(255,255,255,0) 65%, rgba(112,87,207,.05) 100%),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");backdrop-filter:blur(16px) saturate(1.25);-webkit-backdrop-filter:blur(16px) saturate(1.25);box-shadow:0 10px 30px rgba(54,45,71,.15),0 1px 0 rgba(255,255,255,.94) inset;
+      color:var(--purple); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
       cursor:auto;
     }
     #back-to-top.visible { opacity:1; pointer-events:auto; }
@@ -682,10 +682,12 @@
       #back-to-top {
         right:1rem;
         bottom:1rem;
-        background:var(--glass-bg);
-        backdrop-filter:var(--glass-blur-sm);
-        -webkit-backdrop-filter:var(--glass-blur-sm);
-        box-shadow:var(--glass-shadow);
+        border-color:rgba(112,87,207,.22);
+        background:rgba(251,250,246,.88);
+        backdrop-filter:blur(16px) saturate(1.25);
+        -webkit-backdrop-filter:blur(16px) saturate(1.25);
+        box-shadow:0 10px 30px rgba(54,45,71,.15),0 1px 0 rgba(255,255,255,.94) inset;
+        color:var(--purple);
       }
     }
     @media (max-width: 900px) {
@@ -1188,7 +1190,7 @@
 .coffee-demo-frame { position:relative; }
 
 </style>
-  <link rel="preload" as="image" href="../images/tend-app-store-icon.png" type="image/png" fetchpriority="high"/>
+  <link rel="preload" as="image" href="../images/tend-app-store-icon.png?v=2" type="image/png" fetchpriority="high"/>
   <noscript>
     <style>
       .reveal, .reveal-stagger > *, .category-fade, .word { opacity: 1 !important; transform: none !important; }
@@ -1243,7 +1245,7 @@
         </div>
       </div>
       <div class="hero-panel" aria-label="Tend app progress snapshot">
-        <img class="hero-icon" src="../images/tend-app-store-icon.png" alt="Tend app icon with lavender leaf above pond ripples" width="1024" height="1024" loading="eager" decoding="async"/>
+        <img class="hero-icon" src="../images/tend-app-store-icon.png?v=2" alt="Tend app icon with lavender leaf above pond ripples" width="1024" height="1024" loading="eager" decoding="async"/>
       </div>
     </section>
 
