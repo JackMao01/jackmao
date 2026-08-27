@@ -10,16 +10,10 @@
   <meta property="og:url" content="https://www.hellojackmao.com/"/>
   <meta property="og:title" content="Jack Mao | Portfolio 2026"/>
   <meta property="og:description" content="A Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
-  <meta property="og:image" content="https://www.hellojackmao.com/images/og-business-card.png"/>
-  <meta property="og:image:alt" content="Jack Mao — business card on the studio desk. Design & Illustration, Toronto, 2026."/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
   <meta property="og:site_name" content="Jack Mao Portfolio"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Jack Mao | Portfolio 2026"/>
   <meta name="twitter:description" content="A Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
-  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-business-card.png"/>
-  
   <link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/dm-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -386,12 +380,25 @@
     .plate-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .plate-img.p-split { display: flex; }
     .plate-img.p-split img { width: 50%; }
-    .plate-img.p-tend { background: #f1ece7; overflow: hidden; }
-    .plate-img.p-tend img { width: 100%; height: 100%; object-fit: contain; object-position: center; filter: drop-shadow(0 18px 36px rgba(123,108,246,0.3)); }
+    .plate-img.p-tend { background: #f5f2ef; overflow: hidden; display: grid; place-items: center; }
+    .plate-img.p-tend img {
+      width: min(56%, 390px);
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      border: 1px solid rgba(123,108,246,.14);
+      border-radius: 22%;
+      box-shadow: 0 22px 48px rgba(123,108,246,.18);
+    }
     .plate-img.p-karina, .plate-img.p-coffee { overflow: hidden; }
     .plate-img.p-karina { background: #e4ebef; }
     .plate-img.p-coffee { background: #090806; }
-    .plate-img.p-karina img, .plate-img.p-coffee img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+    /* These covers use different native ratios from the 3:2 plate. Fill from a
+       project-specific focal point so only expendable background is trimmed. */
+    .plate-img.p-karina img, .plate-img.p-coffee img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .plate-img.p-karina img { object-position: 50% 0%; }
+    .plate-img.p-coffee img { object-position: 50% 50%; }
     .plate-img.p-wayfarer { background: linear-gradient(135deg, #0f2e2b, #16504a 55%, #0b3a36); display: flex; align-items: center; justify-content: center; }
     /* Hana plate — original light Hangul card (recovered) */
     .plate-img.hana-thumb { position: absolute; }
@@ -719,11 +726,22 @@ body.intent .row-desc { display: none; }
 
 
       .row-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .row-thumb.p-tend { background: #f1ece7; }
-      .row-thumb.p-tend img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+      .row-thumb.p-tend { background: #f5f2ef; display: grid; place-items: center; }
+      .row-thumb.p-tend img {
+        width: 68%;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;
+        border: 1px solid rgba(123,108,246,.14);
+        border-radius: 22%;
+        box-shadow: 0 5px 12px rgba(123,108,246,.16);
+      }
       .row-thumb.p-karina { background: #e4ebef; }
       .row-thumb.p-coffee { background: #090806; }
-      .row-thumb.p-karina img, .row-thumb.p-coffee img { object-fit: contain; object-position: center; }
+      .row-thumb.p-karina img, .row-thumb.p-coffee img { object-fit: cover; }
+      .row-thumb.p-karina img { object-position: 50% 0%; }
+      .row-thumb.p-coffee img { object-position: 50% 50%; }
       .row-thumb.p-wayfarer { background: linear-gradient(135deg, #0f2e2b, #16504a); display: flex; align-items: center; justify-content: center; }
       .row-thumb.p-wayfarer svg { width: 60%; height: 60%; }
       .row-thumb.p-hana { background: #fff3df; display: flex; align-items: center; justify-content: center; font: 700 1.9rem 'Syne', sans-serif; color: #10a67a; }
@@ -1226,7 +1244,13 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
      It's a native <a href="#top">, so the jump-to-top still works without JS. */
   #page-return-control { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
 </style></noscript>
-</head>
+    <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta name="twitter:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design."></head>
 <body style="touch-action: pan-y;">
   <span id="top" aria-hidden="true" style="position:absolute;top:0;left:0"></span>
 
