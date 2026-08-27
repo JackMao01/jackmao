@@ -676,7 +676,7 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
   <header class="top">
     <div class="top-left">
       <a class="back" href="/" aria-label="Back to Jack Mao portfolio">←<span>&nbsp;Portfolio</span></a>
-      <a class="brand" href="#main" aria-label="Hana home">
+      <a class="brand" href="#main" aria-label="한, Hana home">
         <span class="brand-tile" aria-hidden="true">한</span>
         <span><b>Hana</b><small>a quiet Korean practice</small></span>
       </a>
@@ -710,10 +710,10 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
     </div>
   </div>
 
-  <nav class="tabbar" aria-label="Sections">
-      <button type="button" data-view="today" aria-selected="true">Today</button>
-      <button type="button" data-view="path" aria-selected="false">Path</button>
-      <button type="button" data-view="library" aria-selected="false">Library</button>
+  <nav class="tabbar" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" data-view="today" aria-selected="true">Today</button>
+      <button type="button" role="tab" data-view="path" aria-selected="false">Path</button>
+      <button type="button" role="tab" data-view="library" aria-selected="false">Library</button>
   </nav>
 
   <div id="toast" role="status" aria-live="polite"></div>
