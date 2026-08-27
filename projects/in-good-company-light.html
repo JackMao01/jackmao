@@ -10,11 +10,8 @@
   <meta property="og:type" content="website"><meta property="og:locale" content="en_CA"><meta property="og:site_name" content="Jack Mao | Portfolio"><meta property="og:title" content="In Good Company | Moving Portrait Index">
   <meta property="og:description" content="Portraits of friends, moving at the pace they were made.">
   <meta property="og:url" content="https://www.hellojackmao.com/projects/in-good-company-light.html">
-  <meta property="og:image" content="https://www.hellojackmao.com/images/in-good-company/sunpark/sunpark-01-toronto.webp">
-  <meta property="og:image:type" content="image/webp"><meta property="og:image:width" content="2400"><meta property="og:image:height" content="1600"><meta property="og:image:alt" content="Sunpark photographed in Trinity Bellwoods Park with the Toronto skyline behind her.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="In Good Company | Moving Portrait Index"><meta name="twitter:description" content="Portraits of friends, moving at the pace they were made."><meta name="twitter:image" content="https://www.hellojackmao.com/images/in-good-company/sunpark/sunpark-01-toronto.webp"><meta name="twitter:image:alt" content="Sunpark photographed in Trinity Bellwoods Park with the Toronto skyline behind her.">
-  <link rel="icon" href="../favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <meta name="twitter:title" content="In Good Company | Moving Portrait Index"><meta name="twitter:description" content="Portraits of friends, moving at the pace they were made."><link rel="icon" href="../favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Syne:wght@500;600&display=swap" rel="stylesheet">
@@ -41,7 +38,13 @@
     @media(prefers-reduced-motion:no-preference){html.igc-edition-leaving .motion-field .rail-track{animation-play-state:paused;opacity:.7}html.igc-arriving-from-editorial .title-char{opacity:1;font-variation-settings:"opsz" 112,"wght" 430,"SOFT" 68,"WONK" 1;transform:none;transition:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.title-char{opacity:1!important;font-variation-settings:"opsz" 112,"wght" 430,"SOFT" 68,"WONK" 1!important;transform:none!important}.rail{overflow-x:auto;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}.rail-track{opacity:1!important;transform:none!important}.rail-segment:nth-child(2){display:none}}
   </style>
-</head>
+  <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta name="twitter:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design."></head>
 <body>
   <header class="page-header">
     <nav class="utility-bar" aria-label="Page controls"><a class="utility-link" href="../"><span>Portfolio</span><span aria-hidden="true">&larr;</span></a><div class="edition-switch" aria-label="In Good Company editions"><a href="in-good-company-light.html" aria-current="page"><span class="edition-long">Moving Index</span><span class="edition-short" aria-hidden="true">Index</span></a><a href="in-good-company.html">Editorial</a></div><button class="share-button" id="shareButton" type="button"><span>Share index</span><span aria-hidden="true">+</span></button></nav>
@@ -72,7 +75,12 @@
     function open(i,trigger){viewIndex=i;lastFocus=trigger.closest('[aria-hidden="true"]')?null:trigger;update();viewer.classList.add("is-open");viewer.ariaHidden="false";document.body.style.overflow="hidden";viewer.querySelector(".viewer-close").focus()}
     function close(){viewer.classList.remove("is-open");viewer.ariaHidden="true";document.body.style.overflow="";lastFocus?.focus()}
     function step(n){viewIndex=(viewIndex+n+active.length)%active.length;update()}
-    filters.forEach(b=>b.onclick=async()=>{filters.forEach(x=>x.setAttribute("aria-pressed",x===b));field.classList.remove("is-interacting");reset();await build(b.dataset.filter)});
+    async function selectFilter(filter){const button=filters.find(item=>item.dataset.filter===filter);if(!button)return;filters.forEach(item=>item.setAttribute("aria-pressed",String(item===button)));field.classList.remove("is-interacting");reset();await build(filter)}
+    filters.forEach(button=>button.onclick=()=>selectFilter(button.dataset.filter));
+    let swipeStartX=null,swipeStartY=null,suppressSwipeClick=false;
+    field.addEventListener("touchstart",event=>{if(event.touches.length!==1)return;swipeStartX=event.touches[0].clientX;swipeStartY=event.touches[0].clientY},{passive:true});
+    field.addEventListener("touchend",event=>{if(swipeStartX===null||swipeStartY===null||event.changedTouches.length!==1)return;const deltaX=event.changedTouches[0].clientX-swipeStartX,deltaY=event.changedTouches[0].clientY-swipeStartY;swipeStartX=null;swipeStartY=null;if(Math.abs(deltaX)<56||Math.abs(deltaX)<=Math.abs(deltaY)*1.25)return;const order=["all","sunpark","richelle"],current=filters.find(item=>item.getAttribute("aria-pressed")==="true")?.dataset.filter||"all",next=(order.indexOf(current)+(deltaX<0?1:-1)+order.length)%order.length;suppressSwipeClick=true;selectFilter(order[next]);setTimeout(()=>{suppressSwipeClick=false},350)},{passive:true});
+    field.addEventListener("click",event=>{if(!suppressSwipeClick)return;event.preventDefault();event.stopPropagation()},true);
     const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches,finePointer=matchMedia("(hover:hover) and (pointer:fine)").matches;requestAnimationFrame(()=>requestAnimationFrame(()=>titleLockup.classList.add("is-title-ready")));if(!reducedMotion&&finePointer){titleLockup.onpointermove=titleProximity;titleLockup.onpointerleave=resetTitle;field.onpointerenter=()=>field.classList.add("is-interacting");field.onpointermove=proximity;field.onpointerleave=()=>{field.classList.remove("is-interacting");reset()}}
     viewer.querySelector(".viewer-close").onclick=close;viewer.querySelector(".viewer-prev").onclick=()=>step(-1);viewer.querySelector(".viewer-next").onclick=()=>step(1);viewer.onclick=e=>{if(e.target===viewer)close()};document.onkeydown=e=>{if(!viewer.classList.contains("is-open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)};
     document.querySelector("#shareButton").onclick=async()=>{const data={title:"In Good Company",text:"A moving portrait index by Jack Mao.",url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.url);status.classList.add("is-visible");setTimeout(()=>status.classList.remove("is-visible"),2200)}}catch(e){if(e.name!=="AbortError"){status.textContent="Use the browser address to share";status.classList.add("is-visible")}}};
