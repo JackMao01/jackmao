@@ -16,6 +16,7 @@
   <meta name="twitter:description" content="A Toronto-based creative marketer and designer turning ideas into campaign content, social stories, event-ready materials, and polished digital experiences."/>
   <link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/dm-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/dm-serif-display-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" href="favicon.ico" sizes="any"/>
@@ -764,6 +765,10 @@ body.intent .row-desc { display: none; }
       .note { display: none; }
     }
     @media (max-width: 640px) {
+      #hero {
+        justify-content: flex-start;
+        padding-top: clamp(7.5rem, 18svh, 9.75rem);
+      }
       .grp { padding: 2.5rem 0 1.1rem; }
       .row { padding: 1.1rem 0.2rem; }
       .nav-links { gap: 0.7rem; }
