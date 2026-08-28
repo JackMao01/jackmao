@@ -583,6 +583,16 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
 .step-num { border-radius: 11px; }
 .step.is-done { opacity: 0.58; }
 .foot-note { max-width: 760px; margin-left: auto; margin-right: auto; border-left-width: 2px; border-left-color: var(--accent); }
+.project-signal { max-width: 960px; margin: 0 auto 1.45rem; padding: 0.95rem 0 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.project-signal-copy { margin: 0 0 0.85rem; color: rgba(27, 31, 29, 0.74); font-size: 0.76rem; line-height: 1.65; }
+.project-signal-copy strong { color: var(--accent-strong); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.project-signal dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+.project-signal dl > div { min-width: 0; padding: 0 0.85rem 0.9rem 0; }
+.project-signal dl > div + div { padding-left: 0.85rem; border-left: 1px solid var(--line); }
+.project-signal dt { margin-bottom: 0.28rem; color: var(--accent-strong); font-size: 0.56rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase; }
+.project-signal dd { margin: 0; color: var(--muted); font-size: 0.67rem; line-height: 1.48; }
 
 .view-heading { margin-bottom: 1.35rem; }
 .view-heading h1 { margin: 0.25rem 0 0.45rem; font-size: clamp(1.9rem, 4.5vw, 2.65rem); font-weight: 600; line-height: 1.08; }
@@ -632,6 +642,9 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
 }
 @media (max-width: 899px) {
   .today-cols { display: block; }
+  .project-signal dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-signal dl > div:nth-child(3), .project-signal dl > div:nth-child(4) { padding-top: 0.8rem; border-top: 1px solid var(--line); }
+  .project-signal dl > div:nth-child(3) { padding-left: 0; border-left: 0; }
 }
 @media (max-width: 560px) {
   main { padding: 1rem 0.9rem 6.75rem; }
@@ -641,6 +654,10 @@ main { max-width: 1080px; padding-top: clamp(1.25rem, 3vw, 2rem); }
   .hero-syl { font-size: 3.15rem; }
   .hero-line { line-height: 1.55; }
   .pod { margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem; }
+  .project-signal { margin-bottom: 1.25rem; padding-top: 0.85rem; }
+  .project-signal-copy { font-size: 0.72rem; }
+  .project-signal dl > div { padding-right: 0.65rem; }
+  .project-signal dl > div + div { padding-left: 0.65rem; }
   .intro-surface { padding: 1.55rem 0.1rem 0.75rem; }
   .intro-surface h2 { font-size: 1.95rem; }
   .today-plan { margin-top: 1.25rem; }
@@ -1325,6 +1342,16 @@ function renderToday() {
       </div>
     </section>`;
 
+  html += `<section class="project-signal" aria-label="Project summary">
+    <p class="project-signal-copy"><strong>Self-initiated product</strong> As sole product designer and front-end builder, I turned a self-directed brief for calmer beginner Korean practice into 15 lessons, daily drills, read-aloud exercises, review, and a working browser tool with local progress tracking.</p>
+    <dl aria-label="Project evidence">
+      <div><dt>Audience</dt><dd>Beginner Korean learners building a daily rhythm</dd></div>
+      <div><dt>Brief</dt><dd>Make short practice feel calm, repeatable, and useful</dd></div>
+      <div><dt>Deliverables</dt><dd>Today, Path, Library, speech, review, and settings</dd></div>
+      <div><dt>Proof</dt><dd>15 lessons with local progress, notes, mistakes, goals, and streaks</dd></div>
+    </dl>
+  </section>`;
+
   if (state.streak.last === todayStr()) {
     html += `<div class="banner"><span class="big">✦</span><span>Today is done — ${state.streak.days}-day streak. Come back tomorrow, or wander the Path.</span></div>`;
   }
@@ -1352,8 +1379,6 @@ function renderToday() {
   } else {
     html += planHtml;
   }
-
-  html += `<p class="foot-note"><strong>A self-initiated product, designed and built end to end.</strong> Hana turns beginner Korean into one repeatable daily loop: learn, speak, review. Fifteen lessons, browser speech, spaced repetition, and local progress tracking make the concept usable rather than presentational.</p>`;
   v.innerHTML = html;
 
   $$("[data-say]", v).forEach(el => el.addEventListener("click", () => speak(el.dataset.say)));
