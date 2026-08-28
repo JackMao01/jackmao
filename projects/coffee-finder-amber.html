@@ -917,7 +917,7 @@
 
   <div class="detail-buttons">
     <button class="focusable btn-small" id="btn-favorite" type="button">
-      <span id="btn-favorite-label">☆ ADD TO FAVORITES</span>
+      <span id="btn-favorite-label">☆ ADD TO FAVOURITES</span>
     </button>
     <button class="focusable btn-small" id="btn-back" type="button">BACK TO LIST</button>
   </div>
@@ -1679,8 +1679,8 @@ function updateFavoriteButton() {
   const label = document.getElementById('btn-favorite-label');
   if (!label || !state.selectedShop) return;
   label.textContent = isFavorite(state.selectedShop)
-    ? '★ REMOVE FAVORITE'
-    : '☆ ADD TO FAVORITES';
+    ? '★ REMOVE FAVOURITE'
+    : '☆ ADD TO FAVOURITES';
 }
 
 function updateCompassNote() {
