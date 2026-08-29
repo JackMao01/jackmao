@@ -9,6 +9,7 @@
   const isMovingIndex = pageName === movingIndexPage;
   const isEditorial = pageName === editorialPage;
   const isIgcEdition = isMovingIndex || isEditorial;
+  const compactViewport = window.matchMedia('(max-width: 760px)');
 
   root.classList.add('jm-transitions');
 
@@ -46,11 +47,14 @@
         );
       }
 
-      if (direction === 'to-editorial' && isEditorial) {
+      if (direction === 'to-editorial' && isEditorial && !compactViewport.matches) {
         const leadSource = window.sessionStorage.getItem('igc-lead-source');
         const heroImage = document.querySelector('.hero-placeholder img');
         if (leadSource && heroImage) {
-          heroImage.src = leadSource;
+          const compactSource = leadSource.replace(/\.webp(?:\?.*)?$/i, '-360.webp').replace('-360-360.webp', '-360.webp');
+          const fullSource = leadSource.replace('-360.webp', '.webp');
+          heroImage.src = compactSource;
+          heroImage.srcset = `${compactSource} 360w, ${fullSource} 2400w`;
 
           const frameMatch = leadSource.match(/\/(sunpark|richelle)\/[^/]*-(\d{2})-/i);
           if (frameMatch) {
@@ -64,13 +68,13 @@
               kicker.textContent = `Portrait journal / Roll ${isRichelleFrame ? '002' : '001'} / Toronto`;
             }
             if (meta) {
-              meta.textContent = `Frame ${frameNumber} of ${isRichelleFrame ? '06' : '09'} / Selected edit`;
+              meta.textContent = `Frame ${frameNumber} of 09 / Selected edit`;
             }
           }
         }
       }
 
-      if (direction === 'to-index' && isMovingIndex) {
+      if (direction === 'to-index' && isMovingIndex && !compactViewport.matches) {
         createIgcTransitionProxy(
           window.sessionStorage.getItem('igc-lead-source'),
           true
@@ -132,7 +136,7 @@
         goingToEditorial ? 'to-editorial' : 'to-index'
       );
 
-      if (goingToEditorial) {
+      if (goingToEditorial && !compactViewport.matches) {
         const visibleLeadImage = getVisibleLeadImage();
         const leadImage = visibleLeadImage || document.querySelector('.motion-field .photo-card:not([aria-hidden="true"]) img');
         if (leadImage) {
@@ -146,12 +150,14 @@
         } else {
           window.sessionStorage.removeItem('igc-lead-source');
         }
-      } else {
+      } else if (goingToIndex && !compactViewport.matches) {
         const heroImage = document.querySelector('.hero-placeholder img');
-        const leadSource = heroImage?.getAttribute('src') || heroImage?.src;
+        const leadSource = heroImage?.currentSrc || heroImage?.getAttribute('src') || heroImage?.src;
         if (leadSource) {
           window.sessionStorage.setItem('igc-lead-source', leadSource);
         }
+      } else {
+        window.sessionStorage.removeItem('igc-lead-source');
       }
     } catch (_) {
       // Storage is an enhancement, not a navigation requirement.
@@ -212,7 +218,10 @@
         root.classList.add('jm-page-leaving');
       }
 
-      window.setTimeout(navigate, typeof document.startViewTransition === 'function' ? 140 : 280);
+      const transitionDelay = typeof document.startViewTransition === 'function'
+        ? (compactViewport.matches ? 24 : 140)
+        : (compactViewport.matches ? 180 : 280);
+      window.setTimeout(navigate, transitionDelay);
       return;
     }
 

@@ -184,6 +184,7 @@
     .collection-cover {
       position: relative; order: -1; width: 100%; aspect-ratio: 4 / 5;
       display: block; overflow: hidden; background: #d7d5cd;
+      transition: transform .32s var(--ease);
     }
     .image-placeholder {
       position: relative; width: 100%; min-height: 100%; display: grid; place-items: center;
@@ -406,6 +407,12 @@
       }
       .collection-grid::-webkit-scrollbar { display: none; }
       .collection-card { scroll-snap-align: center; }
+      .collection-card.is-previewing .folio-frame { animation: chapter-crossfade 6s ease-in-out infinite; }
+      .collection-card.is-previewing .folio-frame:nth-child(2) { animation-delay: 2s; }
+      .collection-card.is-previewing .folio-frame:nth-child(3) { animation-delay: 4s; }
+      .collection-card.is-previewing .folio-frame img { filter: contrast(1.025); transform: scale(1.018); }
+      .collection-card.is-previewing .sequence-view { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+      .collection-card.is-pressing .collection-cover { transform: scale(.99); }
       .collection-trigger { gap: 1rem; padding-bottom: 1.5rem; }
       .collection-copy { min-height: 215px; padding: 0; }
       .collection-copy h3 { font-size: clamp(2.8rem,14vw,5rem); }
@@ -427,8 +434,8 @@
       .frame { opacity: 1; transform: none; }
     }
   </style>
-  <link rel="stylesheet" href="project-transitions.css?v=20260822-igc2">
-  <script defer src="project-transitions.js?v=20260822-igc2"></script>
+  <link rel="stylesheet" href="project-transitions.css?v=20260828-igc4">
+  <script defer src="project-transitions.js?v=20260828-igc4"></script>
   <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -575,7 +582,9 @@
       const nextButton = viewer.querySelector('.viewer-next');
       const nav = document.querySelector('.site-nav');
       const backTop = document.querySelector('.back-top');
+      const collectionGrid = document.querySelector('.collection-grid');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const touchLayout = window.matchMedia('(max-width: 760px), (hover: none), (pointer: coarse)');
       const protectedAreaSelector = '.hero-grid, .collection-cover, .album-grid, .viewer-stage';
       const protectedMediaSelector = '.hero-grid img, .collection-cover img, .album-grid img, .viewer-stage img, .hero-grid video, .collection-cover video, .album-grid video, .viewer-stage video';
       let activeButtons = [];
@@ -657,6 +666,24 @@
           activateCollection(card.dataset.collection, true, true);
         });
       });
+
+      if (touchLayout.matches && !reduceMotion && 'IntersectionObserver' in window) {
+        const previewRatios = new Map(cards.map(card => [card, 0]));
+        const previewObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => previewRatios.set(entry.target, entry.intersectionRatio));
+          const centered = cards.reduce((best, card) => previewRatios.get(card) > previewRatios.get(best) ? card : best, cards[0]);
+          cards.forEach(card => card.classList.toggle('is-previewing', card === centered && previewRatios.get(card) >= .45));
+        }, { root: collectionGrid, threshold: [.35,.45,.6,.75] });
+        cards.forEach(card => previewObserver.observe(card));
+      }
+
+      collectionGrid.addEventListener('pointerdown', event => {
+        if (event.pointerType !== 'touch') return;
+        event.target.closest('.collection-card')?.classList.add('is-pressing');
+      }, { passive: true });
+      ['pointerup','pointercancel','pointerleave'].forEach(type => collectionGrid.addEventListener(type, () => {
+        cards.forEach(card => card.classList.remove('is-pressing'));
+      }, { passive: true }));
 
       function preloadFrame(index) {
         if (!activeButtons.length) return;

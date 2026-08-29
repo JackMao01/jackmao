@@ -184,6 +184,33 @@ html.igc-arriving-from-editorial {
   }
 }
 
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .igc-transition-proxy {
+    display: none;
+  }
+
+  html.igc-editorial .hero-placeholder img {
+    view-transition-name: none;
+  }
+
+  html.igc-edition-page::view-transition-old(root) {
+    animation: igc-mobile-root-out 260ms cubic-bezier(0.4, 0, 1, 1) both;
+  }
+
+  html.igc-edition-page::view-transition-new(root) {
+    animation: igc-mobile-root-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  ::view-transition-group(igc-title),
+  ::view-transition-group(igc-edition-switch),
+  ::view-transition-old(igc-title),
+  ::view-transition-new(igc-title),
+  ::view-transition-old(igc-edition-switch),
+  ::view-transition-new(igc-edition-switch) {
+    animation-duration: 380ms;
+  }
+}
+
 @keyframes jm-transition-out {
   from {
     opacity: 1;
@@ -230,6 +257,16 @@ html.igc-arriving-from-editorial {
     opacity: 1;
     filter: saturate(1);
   }
+}
+
+@keyframes igc-mobile-root-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+@keyframes igc-mobile-root-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes igc-proxy-settle {
