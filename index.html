@@ -351,8 +351,9 @@
     .word-reveal.is-visible .word, body.no-js .word-reveal .word { opacity: 1; transform: none; }
 
     /* ---------- MARQUEE ---------- */
-    .marquee-wrap { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 1.15rem 0; overflow: hidden; position: relative; background: rgba(22,21,43,0.45); transition: transform 0.22s ease-out; will-change: transform; }
-    .marquee-inner { display: flex; width: max-content; animation: marquee 34s linear infinite; }
+    .marquee-wrap { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 1.15rem 0; overflow: hidden; position: relative; background: rgba(22,21,43,0.45); transition: transform 0.22s ease-out; }
+    .marquee-inner { display: flex; width: max-content; animation: marquee 34s linear infinite; animation-play-state: paused; }
+    .marquee-wrap.is-in-view .marquee-inner { animation-play-state: running; will-change: transform; }
     .marquee-span { display: flex; gap: 2.4rem; padding-right: 2.4rem; font: 500 0.72rem 'DM Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); white-space: nowrap; }
     .marquee-span b { color: var(--lime); font-weight: 400; }
     @keyframes marquee { to { transform: translateX(-50%); } }
@@ -496,13 +497,21 @@
     .about-link.secondary { border: 1px solid rgba(15,14,26,0.3); color: var(--navy); }
     .about-link.secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
     .about-practice {
-      display: grid; grid-template-columns: minmax(120px, .28fr) minmax(0, 1fr) auto;
-      align-items: center; gap: clamp(1.5rem, 4vw, 4rem);
-      max-width: 1280px; margin: clamp(4.5rem, 8vw, 7rem) auto 0;
-      padding: clamp(1.5rem, 3vw, 2.4rem) 0;
-      border-top: 1px solid transparent;
-      border-image: linear-gradient(90deg, rgba(15,14,26,0.52), rgba(15,14,26,0.14) 52%, transparent 88%) 1;
+      display: grid;
+      grid-template-columns: minmax(112px, .16fr) minmax(280px, .37fr) minmax(270px, .39fr) auto;
+      align-items: center;
+      gap: clamp(1.25rem, 2.6vw, 2.6rem);
+      max-width: 1280px;
+      margin: clamp(3.75rem, 6vw, 5.25rem) auto 0;
+      padding: clamp(1.15rem, 2.2vw, 1.8rem) 0;
+      border-top: 1px solid rgba(15,14,26,0.28);
+      border-bottom: 1px solid rgba(15,14,26,0.12);
+      color: var(--navy);
+      text-decoration: none;
+      position: relative;
     }
+    .about-practice:focus-visible { outline: 2px solid var(--coral); outline-offset: 8px; }
+    .about-practice-label-group { align-self: start; padding-top: 0.25rem; }
     .about-practice-label {
       display: block;
       margin: 0;
@@ -511,25 +520,104 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+    .about-practice-count {
+      display: block;
+      margin-top: 0.45rem;
+      color: rgba(15,14,26,0.5);
+      font: 500 0.58rem/1.4 'DM Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-practice-media {
+      position: relative;
+      height: clamp(128px, 12vw, 164px);
+      min-width: 0;
+      isolation: isolate;
+    }
+    .about-practice-shot {
+      position: absolute;
+      top: 4px;
+      width: 39%;
+      height: calc(100% - 8px);
+      overflow: hidden;
+      border: 3px solid var(--white);
+      border-radius: 4px;
+      box-shadow: 0 16px 34px rgba(15,14,26,0.18);
+      transition: transform 0.55s var(--ease-out), box-shadow 0.55s var(--ease-out);
+    }
+    .about-practice-shot:nth-child(1) { left: 3%; z-index: 2; transform: translateY(5px) rotate(-4deg); }
+    .about-practice-shot:nth-child(2) { left: 30.5%; z-index: 1; transform: translateY(-2px) rotate(1deg); }
+    .about-practice-shot:nth-child(3) { right: 3%; z-index: 3; transform: translateY(4px) rotate(4deg); }
+    .about-practice-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s var(--ease-out), filter 0.65s var(--ease-out);
+    }
+    .about-practice-shot:nth-child(1) img { object-position: 50% 58%; }
+    .about-practice-shot:nth-child(2) img { object-position: 48% 48%; }
+    .about-practice-shot:nth-child(3) img { object-position: 50% 43%; }
+    .about-practice:hover .about-practice-shot:nth-child(1),
+    .about-practice:focus-visible .about-practice-shot:nth-child(1) { transform: translateX(-5%) translateY(5px) rotate(-6deg); }
+    .about-practice:hover .about-practice-shot:nth-child(2),
+    .about-practice:focus-visible .about-practice-shot:nth-child(2) { transform: translateY(-7px) rotate(0); box-shadow: 0 22px 42px rgba(15,14,26,0.22); }
+    .about-practice:hover .about-practice-shot:nth-child(3),
+    .about-practice:focus-visible .about-practice-shot:nth-child(3) { transform: translateX(5%) translateY(4px) rotate(6deg); }
+    .about-practice:hover .about-practice-shot img,
+    .about-practice:focus-visible .about-practice-shot img { transform: scale(1.04); }
+    .about-practice-body { min-width: 0; }
+    .about-practice-title {
+      display: block;
+      margin: 0 0 0.45rem;
+      color: var(--navy);
+      font: 400 clamp(1.55rem, 2.4vw, 2.25rem)/1.05 'DM Serif Display', serif;
+      letter-spacing: 0;
+    }
     .about-practice-copy {
-      max-width: 36rem;
+      display: block;
       margin: 0;
-      color: rgba(15,14,26,0.82);
-      font: italic 400 clamp(1.15rem, 1.8vw, 1.45rem)/1.5 'DM Serif Display', serif;
+      max-width: 34rem;
+      color: rgba(15,14,26,0.72);
+      font: 400 clamp(0.82rem, 1.1vw, 0.98rem)/1.65 'Syne', sans-serif;
     }
-    .about-practice-actions { display: flex; justify-self: end; }
-    .about-practice-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
-      min-height: 2.25rem; padding: 0.55rem 0.85rem; border: 1px solid rgba(15,14,26,0.78);
-      border-radius: 4px; color: var(--lime); background: var(--navy); text-decoration: none;
-      font: 600 0.6rem/1 'DM Mono', monospace; letter-spacing: 0.09em; text-transform: uppercase;
-      transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out), background 0.25s var(--ease-out), color 0.25s var(--ease-out);
+    .about-practice-meta {
+      display: block;
+      margin-top: 0.8rem;
+      color: rgba(15,14,26,0.5);
+      font: 500 0.56rem/1.5 'DM Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .about-practice-btn:hover { transform: translateY(-2px); border-color: var(--navy); background: #1b192b; }
-    .about-practice-btn:hover { box-shadow: 0 10px 24px rgba(15,14,26,0.2); }
+    .about-practice-action {
+      display: inline-flex;
+      align-items: center;
+      justify-self: end;
+      gap: 0.7rem;
+      color: var(--navy);
+      white-space: nowrap;
+      font: 600 0.58rem/1 'DM Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-practice-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.45rem;
+      height: 2.45rem;
+      border: 1px solid rgba(15,14,26,0.72);
+      border-radius: 50%;
+      font-size: 1rem;
+      transition: transform 0.3s var(--ease-out), background 0.3s var(--ease-out), color 0.3s var(--ease-out);
+    }
+    .about-practice:hover .about-practice-arrow,
+    .about-practice:focus-visible .about-practice-arrow { transform: translateX(4px); background: var(--navy); color: var(--lime); }
     @media (max-width: 900px) {
-      .about-practice { grid-template-columns: 1fr auto; gap: 0.8rem 1.5rem; }
-      .about-practice-label { grid-column: 1 / -1; }
+      .about-practice { grid-template-columns: minmax(240px, .9fr) minmax(0, 1.1fr); gap: 1rem 1.5rem; }
+      .about-practice-label-group { grid-column: 1 / -1; }
+      .about-practice-media { grid-row: 2 / 4; height: 190px; }
+      .about-practice-action { justify-self: start; }
     }
     .about-photo-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 3/4; box-shadow: 0 30px 70px rgba(15,14,26,0.22); }
     .about-badge {
@@ -539,6 +627,7 @@
     }
     .about-badge small { color: var(--lime); font-size: 1em; }
     .inspirations-section { max-width: 1280px; margin: clamp(5.5rem, 10vw, 8.5rem) auto 0; padding-top: clamp(2.6rem, 4vw, 3.4rem); border-top: 1px solid transparent; border-image: linear-gradient(90deg, rgba(255,85,51,0.55), rgba(255,85,51,0.12), transparent 70%) 1; position: relative; }
+    .about-practice + .inspirations-section { margin-top: clamp(3.25rem, 5vw, 4.75rem); }
     .inspirations-label { font: 500 0.68rem 'DM Mono', monospace; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-text); margin-bottom: 1.8rem; }
     .inspirations-label::before { content: "✦ "; color: var(--coral-text); }
     .inspirations-reveal-hit, .inspirations-reveal-hint { display: none; }
@@ -778,8 +867,12 @@ body.intent .row-desc { display: none; }
       #hero .cropmarks, #hero .measure { display: none !important; }
       .about-inner { grid-template-columns: 1fr; }
       .about-right { order: -1; max-width: 420px; }
-      .about-practice { grid-template-columns: 1fr; gap: 0.75rem; }
-      .about-practice-actions { justify-self: start; margin-top: 0.25rem; }
+      .about-practice { grid-template-columns: 1fr; gap: 1rem; padding: 1.2rem 0 1.35rem; }
+      .about-practice-label-group { grid-column: auto; }
+      .about-practice-media { grid-row: auto; height: 176px; }
+      .about-practice-action { justify-self: start; margin-top: 0.15rem; }
+      .about-practice-title { font-size: 1.7rem; }
+      .about-practice + .inspirations-section { margin-top: 3rem; }
       .inspirations-label { margin-bottom: 0.8rem; }
       .inspirations-grid {
         display: grid; grid-template-columns: 1fr; max-height: 112px; overflow: hidden;
@@ -917,7 +1010,7 @@ body.intent .row-desc { display: none; }
     /* ---- signature chrome: cursor, progress, dividers (preserved verbatim) ---- */
 /* -- Cursor -- */
     .cursor {
-      position: fixed; left: -100px; top: -100px;
+      position: fixed; left: 0; top: 0;
       width: 14px; height: 14px;
       background: var(--lime);
       border-radius: 50%;
@@ -926,7 +1019,8 @@ body.intent .row-desc { display: none; }
       transform: translate(-50%, -50%);
       transition: width .2s, height .2s, background .2s;
       mix-blend-mode: difference;
-      will-change: left, top;
+      transform: translate3d(-100px, -100px, 0);
+      will-change: transform;
     }
 .cursor.hovering { width: 42px; height: 42px; }
 /* -- Dividers -- */
@@ -1213,6 +1307,17 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
   .marquee-inner, .gradient-divider, .dt-dot, .avail-pill::before,
   .utility-ring { animation: none !important; }
   .hero-scroll-cue svg { animation: none !important; transform: none; }
+  .about-practice-shot, .about-practice-shot img, .about-practice-arrow { transition: none !important; }
+  .about-practice:hover .about-practice-shot:nth-child(1),
+  .about-practice:focus-visible .about-practice-shot:nth-child(1) { transform: translateY(5px) rotate(-4deg) !important; }
+  .about-practice:hover .about-practice-shot:nth-child(2),
+  .about-practice:focus-visible .about-practice-shot:nth-child(2) { transform: translateY(-2px) rotate(1deg) !important; }
+  .about-practice:hover .about-practice-shot:nth-child(3),
+  .about-practice:focus-visible .about-practice-shot:nth-child(3) { transform: translateY(4px) rotate(4deg) !important; }
+  .about-practice:hover .about-practice-shot img,
+  .about-practice:focus-visible .about-practice-shot img,
+  .about-practice:hover .about-practice-arrow,
+  .about-practice:focus-visible .about-practice-arrow { transform: none !important; }
   .fade-up, .word-reveal .word, .plate-img, .note { transition: none; }
   .fade-up, .word-reveal .word { opacity: 1; transform: none; }
   #askbot-panel { transition: opacity .15s; transform: none; }
@@ -1501,15 +1606,25 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           </div>
         </div>
       </div>
-      <div class="about-practice fade-up">
-        <span class="about-practice-label">Personal practice</span>
-        <p class="about-practice-copy">I enjoy photographing friends and shaping everyday moments into small editorial portrait stories.</p>
-        <div class="about-practice-actions">
-          <a class="about-practice-btn" href="projects/in-good-company-light.html" aria-label="View In Good Company photography project">
-            In Good Company <span aria-hidden="true">&#8594;</span>
-          </a>
-        </div>
-      </div>
+      <a class="about-practice fade-up" href="projects/in-good-company-light.html" aria-label="View In Good Company, editorial portrait stories featuring Sunpark and Richelle">
+        <span class="about-practice-label-group">
+          <span class="about-practice-label">Personal practice</span>
+          <span class="about-practice-count">Portrait stories</span>
+        </span>
+        <span class="about-practice-media" aria-hidden="true">
+          <span class="about-practice-shot"><img src="images/in-good-company/sunpark/sunpark-07-blossom-close-360.webp" alt="" width="360" height="540" loading="lazy" decoding="async"></span>
+          <span class="about-practice-shot"><img src="images/in-good-company/sunpark/sunpark-01-toronto-360.webp" alt="" width="360" height="225" loading="lazy" decoding="async"></span>
+          <span class="about-practice-shot"><img src="images/in-good-company/richelle/richelle-02-golden-eye-contact-360.webp" alt="" width="360" height="432" loading="lazy" decoding="async"></span>
+        </span>
+        <span class="about-practice-body">
+          <span class="about-practice-title" role="heading" aria-level="3">In Good Company</span>
+          <span class="about-practice-copy">Friends, light, and the ordinary moments between poses, photographed as small editorial stories.</span>
+          <span class="about-practice-meta">Sunpark · Richelle · Toronto, 2026</span>
+        </span>
+        <span class="about-practice-action" aria-hidden="true">
+          View moving index <span class="about-practice-arrow">&#8594;</span>
+        </span>
+      </a>
       <div class="inspirations-section" id="influences">
         <div class="inspirations-label">Influences worth a click</div>
         <div class="inspirations-grid" id="inspirations-grid">
@@ -1818,7 +1933,7 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
     (function() {
       var el = document.getElementById('tor-clock');
       if (!el) return;
-      var fmt;
+      var fmt, timer = null;
       try {
         fmt = new Intl.DateTimeFormat('en-CA', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Toronto', timeZoneName: 'short' });
       } catch (e) { return; }
@@ -1833,8 +1948,14 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           el.textContent = ' — ' + h + ':' + m + (tz ? ' ' + tz : '');
         } catch (e) {}
       }
-      tick();
-      setInterval(tick, 15000);
+      function schedule() {
+        if (timer) clearTimeout(timer);
+        if (document.hidden) return;
+        tick();
+        timer = setTimeout(schedule, 60050 - (Date.now() % 60000));
+      }
+      document.addEventListener('visibilitychange', schedule);
+      schedule();
     })();
 
     // ── Logo long-press → secret page ──
@@ -1970,8 +2091,9 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
 
     // ── Marquee coverage: clone the strip until the loop can never run empty ──
     (function () {
+      var wrap = document.querySelector('.marquee-wrap');
       var inner = document.querySelector('.marquee-inner');
-      if (!inner) return;
+      if (!wrap || !inner) return;
       var base = inner.querySelector('.marquee-span');
       if (!base) return;
       function fill() {
@@ -1980,13 +2102,28 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         var need = Math.ceil((window.innerWidth * 2 + 240) / w);
         if (need < 2) need = 2;
         if (need % 2) need++;                       /* even count keeps -50% seamless */
+        while (inner.children.length > need) inner.lastElementChild.remove();
         for (var i = inner.children.length; i < need; i++) {
           inner.appendChild(base.cloneNode(true));
         }
       }
+      function syncVisibility(inView) {
+        wrap.classList.toggle('is-in-view', inView && !document.hidden);
+      }
       fill();
       window.addEventListener('resize', fill);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) { syncVisibility(entry.isIntersecting); });
+        }, { rootMargin: '100px 0px' }).observe(wrap);
+      } else {
+        syncVisibility(true);
+      }
+      document.addEventListener('visibilitychange', function() {
+        var rect = wrap.getBoundingClientRect();
+        syncVisibility(rect.bottom > -100 && rect.top < window.innerHeight + 100);
+      });
     })();
 
     // -- Image protection --
@@ -2010,12 +2147,17 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
     }
     // -- Cursor --
     const cursor = document.getElementById('cursor');
-    cursor.style.left = '-100px';
-    cursor.style.top = '-100px';
-
+    let cursorFrame = 0;
+    let cursorX = -100;
+    let cursorY = -100;
     document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+      if (cursorFrame) return;
+      cursorFrame = requestAnimationFrame(() => {
+        cursorFrame = 0;
+        cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0)';
+      });
     });
 
     document.querySelectorAll('a, button, .project-card').forEach(el => {
@@ -2197,19 +2339,6 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
       });
     })();
   
-    // ── Share button cursor hover (navigation handled by global link handler) ──
-    (function() {
-      var btn = document.getElementById('qr-trigger');
-      if (!btn) return;
-      btn.addEventListener('mouseenter', function () {
-        var cur = document.getElementById('cursor');
-        if (cur) cur.classList.add('hovering');
-      });
-      btn.addEventListener('mouseleave', function () {
-        var cur = document.getElementById('cursor');
-        if (cur) cur.classList.remove('hovering');
-      });
-    })();
   /* Hero reveal failsafe: above-the-fold content must never stay hidden if the
      reveal observer is delayed. Reveal hero fade-ups + words shortly after load. */
   (function(){
@@ -2233,8 +2362,12 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
         var utilityTrigger = document.getElementById('mobile-utility-trigger');
         var progress = document.getElementById('scroll-progress');
         var parallax = document.getElementById('parallax-bg');
+        var hero = document.getElementById('hero');
+        var mobileQuery = window.matchMedia('(max-width: 768px)');
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var lastY = 0, calmTimer = null, framePending = false;
+        var parallaxLimit = hero ? hero.offsetHeight : 0;
+        var lastParallax = null;
 
         function renderScroll(){
           framePending = false;
@@ -2247,12 +2380,16 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
             progress.style.width = Math.min((y / available) * 100, 100) + '%';
           }
           if (parallax && !reduceMotion) {
-            parallax.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+            var nextParallax = Math.min(y, parallaxLimit) * 0.22;
+            if (nextParallax !== lastParallax) {
+              parallax.style.transform = 'translateY(' + nextParallax + 'px)';
+              lastParallax = nextParallax;
+            }
           }
           if (btt) btt.classList.toggle('visible', showFloating);
           if (share) share.classList.toggle('visible', showFloating);
           if (utility) {
-            var showUtility = window.matchMedia('(max-width: 768px)').matches && showFloating;
+            var showUtility = mobileQuery.matches && showFloating;
             utility.classList.toggle('visible', showUtility);
             if (!showUtility) {
               utility.classList.remove('open');
@@ -2275,7 +2412,10 @@ body.scroll-calm #mobile-utility.open { opacity:1; }
           window.requestAnimationFrame(renderScroll);
         }
         window.addEventListener('scroll', requestScroll, { passive:true });
-        window.addEventListener('resize', requestScroll);
+        window.addEventListener('resize', function() {
+          parallaxLimit = hero ? hero.offsetHeight : 0;
+          requestScroll();
+        });
         renderScroll();
 
         if (btt && !btt.dataset.bttBound){
