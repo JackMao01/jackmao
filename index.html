@@ -1141,14 +1141,9 @@ body.intent .row-desc { display: none; }
     z-index: 100002;
     width: 64px;
     height: 64px;
-    opacity: 0;
-    transform: translateY(10px);
     pointer-events: none;
-    transition: opacity .3s, transform .35s;
   }
   #mobile-utility.visible {
-    opacity: 1;
-    transform: none;
     pointer-events: auto;
   }
   #mobile-utility-trigger {
@@ -1164,6 +1159,16 @@ body.intent .row-desc { display: none; }
     color: rgba(255,255,255,.72);
     background: transparent;
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity .3s, transform .35s;
+    will-change: opacity, transform;
+  }
+  #mobile-utility.visible #mobile-utility-trigger {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
   #mobile-utility-trigger::before {
     content: '';
@@ -1293,14 +1298,14 @@ body.intent .row-desc { display: none; }
 body.scroll-calm #page-return-control.visible,
 body.scroll-calm #qr-trigger.visible,
 body.scroll-calm #askbot-launch.visible,
-body.scroll-calm #mobile-utility.visible { opacity:0.45; }
+body.scroll-calm #mobile-utility.visible #mobile-utility-trigger { opacity:0.45; }
 body.scroll-calm #page-return-control.visible:hover, body.scroll-calm #page-return-control.visible:focus-visible,
 body.scroll-calm #qr-trigger.visible:hover, body.scroll-calm #qr-trigger.visible:focus-visible,
 body.scroll-calm #askbot-launch.visible:hover, body.scroll-calm #askbot-launch.visible:focus-visible,
 body.scroll-calm #askbot-launch[aria-expanded="true"],
-body.scroll-calm #mobile-utility.visible:hover,
-body.scroll-calm #mobile-utility.open { opacity:1; }
-#page-return-control, #qr-trigger, #askbot-launch, #mobile-utility { transition: opacity 0.3s, transform 0.35s; }
+body.scroll-calm #mobile-utility.visible:hover #mobile-utility-trigger,
+body.scroll-calm #mobile-utility.open #mobile-utility-trigger { opacity:1; }
+#page-return-control, #qr-trigger, #askbot-launch, #mobile-utility-trigger { transition: opacity 0.3s, transform 0.35s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
