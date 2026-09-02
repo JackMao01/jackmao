@@ -92,9 +92,35 @@
     }
   }
 
-  const resetPage = () => {
+  const resetPage = (event) => {
     navigating = false;
-    root.classList.remove('jm-page-leaving');
+    root.classList.remove('jm-page-leaving', 'igc-edition-leaving', 'igc-to-editorial', 'igc-to-index');
+
+    const navigationEntry = window.performance?.getEntriesByType?.('navigation')?.[0];
+    const restoredFromHistory = Boolean(event?.persisted || navigationEntry?.type === 'back_forward');
+    if (!restoredFromHistory) return;
+
+    root.classList.remove('igc-arriving-from-index', 'igc-arriving-from-editorial');
+    document.querySelectorAll('.igc-transition-proxy').forEach((proxy) => proxy.remove());
+
+    if (isMovingIndex) {
+      const field = document.querySelector('.motion-field');
+      const title = document.querySelector('.title-lockup');
+      document.querySelectorAll('.motion-field img').forEach((image) => {
+        image.style.removeProperty('view-transition-name');
+      });
+
+      window.requestAnimationFrame(() => {
+        title?.classList.add('is-title-ready');
+        if (!field) return;
+        const rect = field.getBoundingClientRect();
+        field.classList.add('is-ready', 'is-moving');
+        field.classList.toggle(
+          'is-in-view',
+          !document.hidden && rect.bottom > -160 && rect.top < window.innerHeight + 160
+        );
+      });
+    }
   };
 
   window.addEventListener('pageshow', resetPage);

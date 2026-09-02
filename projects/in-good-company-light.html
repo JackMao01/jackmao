@@ -95,6 +95,6 @@
     document.querySelector("#shareButton").onclick=async()=>{const data={title:"In Good Company",text:"A moving portrait index by Jack Mao.",url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.url);status.classList.add("is-visible");setTimeout(()=>status.classList.remove("is-visible"),2200)}}catch(e){if(e.name!=="AbortError"){status.textContent="Use the browser address to share";status.classList.add("is-visible")}}};
     document.addEventListener("contextmenu",e=>{if(e.target.closest(".photo-card,.viewer-media"))e.preventDefault()});document.addEventListener("dragstart",e=>{if(e.target.matches("img"))e.preventDefault()});build().catch(()=>field.classList.add("is-ready","is-moving"));
   </script>
-  <script src="project-transitions.js?v=20260828-igc4" defer></script>
+  <script src="project-transitions.js?v=20260901-igc5" defer></script>
 </body>
 </html>
