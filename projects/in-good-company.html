@@ -825,8 +825,8 @@
       renderScrollState();
 
       window.addEventListener('hashchange', () => {
-        const id = collectionFromHash();
-        if (id) activateCollection(id, true, false);
+        const id = collectionFromHash() || 'sunpark';
+        activateCollection(id, Boolean(window.location.hash), false);
       });
 
       const initialCollection = collectionFromHash();
