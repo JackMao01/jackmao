@@ -1,0 +1,24 @@
+{
+  "name": "First Words — Language in Place",
+  "short_name": "First Words",
+  "description": "A quiet language-practice hub pairing Korean and Japanese foundations with destination routes.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f1eb",
+  "theme_color": "#f4f1eb",
+  "lang": "en",
+  "icons": [
+    { "src": "./icons/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "./icons/maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "./icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "shortcuts": [
+    { "name": "Korean foundation", "short_name": "Korean", "url": "./korean.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Japanese foundation", "short_name": "Japanese", "url": "./japanese.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
