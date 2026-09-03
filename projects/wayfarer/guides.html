@@ -77,8 +77,8 @@
   .card:hover { transform:translateY(-5px); box-shadow:0 22px 46px rgba(0,0,0,0.12); }
   .card.soon { opacity:0.9; }
   .card-art { height:180px; position:relative; overflow:hidden; }
-  .card-art svg { position:absolute; inset:0; width:100%; height:100%; transition:transform .7s var(--smooth); }
-  .card:hover .card-art svg { transform:scale(1.05); }
+  .card-art > svg { position:absolute; inset:0; width:100%; height:100%; transition:transform .7s var(--smooth); }
+  .card:hover .card-art > svg { transform:scale(1.05); }
   .card-handle { position:absolute; left:14px; bottom:14px; z-index:2; background:rgba(255,255,255,0.92);
     backdrop-filter:blur(4px); font-size:12px; font-weight:600; padding:5px 11px; border-radius:9999px; }
   .card-badge { position:absolute; top:14px; right:14px; z-index:2; background:#111; color:#fff; font-size:10px;
@@ -87,7 +87,7 @@
     border:none; background:rgba(255,255,255,0.92); backdrop-filter:blur(4px); cursor:pointer; display:flex;
     align-items:center; justify-content:center; transition:transform .2s var(--smooth); }
   .card-save:hover { transform:scale(1.1); }
-  .card-save svg { width:17px; height:17px; }
+  .card-save svg { position:static; inset:auto; display:block; width:17px; height:17px; transform:none; }
   .card-body { padding:18px; flex:1; display:flex; flex-direction:column; }
   .card-place { font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
   .card h2 { font-size:1.3rem; font-weight:800; letter-spacing:-0.01em; line-height:1.15; margin-bottom:6px; }
