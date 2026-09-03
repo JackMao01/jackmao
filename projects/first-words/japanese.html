@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f3ed">
-  <meta name="description" content="The Japanese foundation in First Words combines 15 lessons with applied language routes through Kyoto and Tokyo.">
+  <meta name="description" content="The Japanese foundation in First Words combines 15 lessons with applied language routes through Kyoto, Tokyo, and Osaka.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.hellojackmao.com/projects/first-words/japanese.html">
   <meta property="og:title" content="First Words — Japanese Foundation">
-  <meta property="og:description" content="Fifteen Japanese lessons and practical routes through Kyoto and Tokyo.">
+  <meta property="og:description" content="Fifteen Japanese lessons and practical routes through Kyoto, Tokyo, and Osaka.">
   <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -16,7 +16,7 @@
   <meta property="og:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="First Words — Japanese Foundation">
-  <meta name="twitter:description" content="Fifteen Japanese lessons and practical routes through Kyoto and Tokyo.">
+  <meta name="twitter:description" content="Fifteen Japanese lessons and practical routes through Kyoto, Tokyo, and Osaka.">
   <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <link rel="canonical" href="https://www.hellojackmao.com/projects/first-words/japanese.html">
   <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
@@ -28,8 +28,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../project-transitions.css?v=20260825b">
-  <script defer src="../project-transitions.js?v=20260825b"></script>
+  <link rel="stylesheet" href="../project-transitions.css?v=20260903-1">
+  <script defer src="../project-transitions.js?v=20260903-1"></script>
   <style>
     :root {
       --paper: #f6f3ed;
@@ -80,6 +80,8 @@
     .tabs button { padding: 0.44rem 0.86rem; border-radius: 999px; }
     .tabs button[aria-selected="true"] { color: #fff; background: var(--charcoal); }
     .top-right { justify-self: end; display: flex; align-items: center; gap: 0.5rem; }
+    .data-button { min-height: 36px; padding: 0.42rem 0.66rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,0.72); font-size: 0.68rem; font-weight: 800; }
+    .data-button:hover { color: var(--ink); border-color: var(--ink); background: #fff; }
     .progress-pill { padding: 0.42rem 0.7rem; border: 1px solid rgba(104,116,90,0.25); border-radius: 999px; color: #4d5842; background: var(--moss-soft); font-size: 0.72rem; font-weight: 800; white-space: nowrap; }
 
     main { width: min(760px, 100%); margin: 0 auto; padding: clamp(1rem, 3.5vw, 2rem) clamp(0.9rem, 3vw, 1.35rem) 6.5rem; }
@@ -107,6 +109,7 @@
 
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0.66rem 1rem; border: 1px solid transparent; border-radius: 999px; color: #fff; background: var(--accent); text-decoration: none; font-size: 0.76rem; font-weight: 800; transition: transform 0.18s ease, background 0.18s ease; }
     .btn:hover { transform: translateY(-2px); background: var(--accent-deep); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
     .btn.ghost { color: var(--ink); border-color: var(--line); background: #fff; }
     .btn.ghost:hover { border-color: var(--ink); background: #fff; }
     .btn.dark { color: var(--ink); background: #f6f2ea; }
@@ -151,6 +154,7 @@
     .place-card h2 { margin-bottom: 0.3rem; font-size: 1.35rem; font-weight: 600; }
     .place-card p { margin-bottom: 0; color: var(--muted); font-size: 0.72rem; line-height: 1.55; }
     .place-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0.85rem; margin-top: 0.9rem; }
+    .place-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .place-card { margin-top: 0; padding: 1.05rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,249,0.74); }
     .place-card .place-mark-small { display: block; margin-bottom: 0.75rem; color: var(--accent); font: 600 2.5rem/1 var(--serif); }
     .route-group + .route-group { margin-top: 1.2rem; }
@@ -170,6 +174,18 @@
     .sheet-close { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: #fff; }
     .sheet-lede { margin-bottom: 0.9rem; color: var(--muted); font-size: 0.74rem; line-height: 1.6; }
     .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1rem; }
+    .check-card { margin-top: 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: 14px; background: #f7f3ed; }
+    .check-card .kicker { margin-bottom: 0.35rem; }
+    .check-card h3 { margin-bottom: 0.75rem; font-size: 1rem; line-height: 1.45; font-weight: 600; }
+    .check-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0.5rem; }
+    .check-option { min-height: 44px; padding: 0.65rem 0.75rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; font: 500 0.9rem var(--serif); transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease; }
+    .check-option:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .check-option:disabled { cursor: default; transform: none; }
+    .check-option.is-right { color: #34402d; border-color: var(--moss); background: var(--moss-soft); }
+    .check-option.is-wrong { color: var(--accent-deep); border-color: var(--accent); background: var(--accent-soft); }
+    .check-feedback { min-height: 1.2em; margin: 0.65rem 0 0; color: var(--muted); font-size: 0.68rem; font-weight: 700; }
+    .review-count { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; color: var(--muted); font-size: 0.66rem; font-weight: 800; text-transform: uppercase; }
+    .data-note { margin: 0; padding: 0.9rem 0; border-block: 1px solid var(--line); color: var(--muted); font-size: 0.72rem; line-height: 1.6; }
     .language-switcher { display: grid; gap: 0.65rem; }
     .language-track { display: grid; grid-template-columns: 48px minmax(0,1fr) auto; gap: 0.85rem; align-items: center; padding: 0.9rem; border: 1px solid var(--line); border-radius: 14px; background: #fff; text-decoration: none; transition: transform 0.18s ease, border-color 0.18s ease; }
     a.language-track:hover { transform: translateY(-2px); border-color: var(--accent); }
@@ -205,6 +221,7 @@
       .back span { display: none; }
       .top-left { gap: 0.55rem; }
       .progress-pill { padding-inline: 0.55rem; }
+      .progress-copy { display: none; }
       .practice-hero { min-height: 355px; padding: 1.25rem; }
       .practice-grid { grid-template-columns: 1fr; }
       .day-mark { position: absolute; right: 0; top: 0; opacity: 0.72; }
@@ -220,6 +237,7 @@
       .place-grid { grid-template-columns: 1fr; }
       .place-card { grid-template-columns: 1fr auto; }
       .place-card .btn { justify-self: start; }
+      .check-options { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -227,7 +245,7 @@
     }
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LearningResource","name":"First Words — Japanese Foundation","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A 15-lesson Japanese foundation with applied Kyoto and Tokyo language routes.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/japanese.html"}
+  {"@context":"https://schema.org","@type":"LearningResource","name":"First Words — Japanese Foundation","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A 15-lesson Japanese foundation with applied Kyoto, Tokyo, and Osaka language routes.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/japanese.html"}
   </script>
 </head>
 <body>
@@ -246,7 +264,7 @@
       <button type="button" role="tab" data-view="library" aria-selected="false">Library</button>
       <button type="button" role="tab" data-view="places" aria-selected="false">Places</button>
     </nav>
-    <div class="top-right"><span class="progress-pill"><span id="doneCount">0</span>/15 complete</span></div>
+    <div class="top-right"><button type="button" class="data-button" id="practiceData">Data</button><span class="progress-pill"><span id="doneCount">0</span>/15 <span class="progress-copy">complete</span></span></div>
   </header>
 
   <main id="main" style="view-transition-name: project-hero">
@@ -311,6 +329,16 @@
           { title: "Navigate", note: "Keep the line, exit, and transfer clear.", phrases: [["どの電車ですか","dono densha desu ka","Which train is it?"],["渋谷まで行きますか","Shibuya made ikimasu ka","Does this go to Shibuya?"],["出口はどこですか","deguchi wa doko desu ka","Where is the exit?"]] },
           { title: "Choose", note: "Ask at a counter without rushing the exchange.", phrases: [["これをください","kore o kudasai","This one, please"],["いくらですか","ikura desu ka","How much is it?"],["カードは使えますか","kaado wa tsukaemasu ka","Can I use a card?"]] },
           { title: "Reset", note: "Find a quieter place and ask for what you need.", phrases: [["静かなカフェはありますか","shizuka na kafe wa arimasu ka","Is there a quiet café?"],["ゆっくりおねがいします","yukkuri onegaishimasu","Slowly, please"],["だいじょうぶです","daijoubu desu","It is okay"]] }
+        ]
+      },
+      osaka: {
+        title: "Osaka", mark: "大阪", label: "Market city · social route",
+        intro: "A warmer street-level route for market counters, recommendations, and the easy conversation around food.",
+        guideUrl: "../wayfarer/osaka.html", guideLabel: "Open the Osaka guide",
+        groups: [
+          { title: "Ask", note: "Let the counter guide the first choice.", phrases: [["おすすめは何ですか","osusume wa nan desu ka","What do you recommend?"],["これは何ですか","kore wa nan desu ka","What is this?"],["人気ですか","ninki desu ka","Is it popular?"]] },
+          { title: "Choose", note: "Order simply and confirm the amount.", phrases: [["これを一つください","kore o hitotsu kudasai","One of these, please"],["二人分おねがいします","futari-bun onegaishimasu","For two people, please"],["いくらですか","ikura desu ka","How much is it?"]] },
+          { title: "Respond", note: "Close the exchange with warmth.", phrases: [["おいしいです","oishii desu","It is delicious"],["もう一つください","mou hitotsu kudasai","One more, please"],["ありがとうございます","arigatou gozaimasu","Thank you"]] }
         ]
       }
     };
@@ -378,12 +406,105 @@
     }
     function bindListen(root = document) { $$('[data-say]', root).forEach(button => button.addEventListener("click", () => speak(button.dataset.say))); }
 
+    function stringScore(value) {
+      return [...String(value)].reduce((score, character, index) => score + character.charCodeAt(0) * (index + 3), 0);
+    }
+    function choiceSet(correct, pool, seed = 0) {
+      const alternatives = [...new Set(pool.filter(item => item !== correct))]
+        .sort((a, b) => stringScore(a + seed) - stringScore(b + seed));
+      return [correct, ...alternatives.slice(0, 3)]
+        .sort((a, b) => stringScore(a + seed + "a") - stringScore(b + seed + "a"));
+    }
+    function checkMarkup(phrase, choices, label = "Check understanding") {
+      return `<section class="check-card"><div class="kicker">${esc(label)}</div><h3>Which Japanese phrase means “${esc(phrase[2])}”?</h3><div class="check-options">${choices.map(choice => `<button type="button" class="check-option" data-check-choice="${esc(choice)}" lang="ja">${esc(choice)}</button>`).join("")}</div><p class="check-feedback" id="checkFeedback" role="status" aria-live="polite">Choose one answer.</p></section>`;
+    }
+    function bindCheck(root, correct, onCorrect) {
+      const feedback = $("#checkFeedback", root);
+      $$('[data-check-choice]', root).forEach(button => button.addEventListener("click", () => {
+        if (button.dataset.checkChoice === correct) {
+          $$('[data-check-choice]', root).forEach(option => { option.disabled = true; });
+          button.classList.add("is-right");
+          feedback.textContent = "Correct. Say it once more, then continue.";
+          onCorrect();
+        } else {
+          button.classList.remove("is-wrong");
+          requestAnimationFrame(() => button.classList.add("is-wrong"));
+          feedback.textContent = "Not quite. Listen again and try another.";
+        }
+      }));
+    }
+
     function openLesson(index) {
       const lesson = lessons[index];
-      openSheet(`Lesson ${index + 1} · ${lesson.title}`, `<p class="sheet-lede">${esc(lesson.focus)} Listen first, then repeat each phrase out loud.</p>${phraseMarkup(lesson.phrases)}<div class="sheet-actions"><button type="button" class="btn" id="completeLesson">${state.done[index] ? "Practice complete ✓" : "Complete lesson"}</button></div>`);
+      const checkPhrase = lesson.phrases[(index + 1) % lesson.phrases.length];
+      const choices = choiceSet(checkPhrase[0], lesson.phrases.map(phrase => phrase[0]), index);
+      openSheet(`Lesson ${index + 1} · ${lesson.title}`, `<p class="sheet-lede">${esc(lesson.focus)} Listen first, then repeat each phrase out loud.</p>${phraseMarkup(lesson.phrases)}${checkMarkup(checkPhrase, choices)}<div class="sheet-actions"><button type="button" class="btn" id="completeLesson" ${state.done[index] ? "" : "disabled"}>${state.done[index] ? "Practice complete" : "Complete lesson"}</button></div>`);
       bindListen($("#sheetBody"));
+      bindCheck($("#sheetBody"), checkPhrase[0], () => { $("#completeLesson").disabled = false; });
       $("#completeLesson").addEventListener("click", () => {
         state.done[index] = true; state.lastLesson = index; save(); closeSheet(); toast("Lesson complete.");
+      });
+    }
+
+    function reviewPhrases() {
+      const pool = lessons.flatMap((lesson, lessonIndex) => state.done[lessonIndex] ? lesson.phrases : []);
+      if (!pool.length) return [];
+      const offset = new Date().getDate() % pool.length;
+      return Array.from({ length: Math.min(5, pool.length) }, (_, index) => pool[(offset + index * 3) % pool.length]);
+    }
+    function openReview() {
+      const cards = reviewPhrases();
+      if (!cards.length) { toast("Complete a lesson to begin reviewing."); return; }
+      const answerPool = lessons.flatMap((lesson, lessonIndex) => state.done[lessonIndex] ? lesson.phrases.map(phrase => phrase[0]) : []);
+      let cardIndex = 0;
+      let score = 0;
+      openSheet("Quick review", "");
+      const renderCard = () => {
+        if (cardIndex >= cards.length) {
+          $("#sheetBody").innerHTML = `<div class="check-card"><div class="kicker">Review complete</div><h3>${score}/${cards.length} correct</h3><p class="sheet-lede">A short return is enough to keep familiar phrases within reach.</p></div><div class="sheet-actions"><button type="button" class="btn" id="reviewDone">Done</button></div>`;
+          $("#reviewDone").addEventListener("click", closeSheet);
+          return;
+        }
+        const phrase = cards[cardIndex];
+        const choices = choiceSet(phrase[0], answerPool, cardIndex + phrase[2].length);
+        $("#sheetBody").innerHTML = `<div class="review-count"><span>Card ${cardIndex + 1} of ${cards.length}</span><span>${score} correct</span></div>${checkMarkup(phrase, choices, "Quick recall")}<div class="sheet-actions"><button type="button" class="btn" id="reviewNext" disabled>${cardIndex === cards.length - 1 ? "See result" : "Next phrase"}</button></div>`;
+        bindCheck($("#sheetBody"), phrase[0], () => {
+          score += 1;
+          $("#reviewNext").disabled = false;
+        });
+        $("#reviewNext").addEventListener("click", () => { cardIndex += 1; renderCard(); });
+      };
+      renderCard();
+    }
+
+    function openPracticeData() {
+      openSheet("Practice data", `<p class="sheet-lede">Your Japanese progress stays in this browser. Export a small backup before changing devices or clearing browser data.</p><p class="data-note"><strong>${state.done.filter(Boolean).length} of ${lessons.length} lessons complete</strong><br>Only progress is saved. No account or personal information is collected.</p><div class="sheet-actions"><button type="button" class="btn ghost" id="exportPractice">Export</button><button type="button" class="btn ghost" id="importPractice">Import</button><button type="button" class="btn" id="resetPractice">Reset</button></div>`);
+      $("#exportPractice").addEventListener("click", () => {
+        try {
+          const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url; link.download = "first-words-japanese-practice.json"; link.click();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          toast("Practice exported.");
+        } catch (error) { toast("Export failed."); }
+      });
+      $("#importPractice").addEventListener("click", () => {
+        const input = document.createElement("input");
+        input.type = "file"; input.accept = "application/json,.json";
+        input.addEventListener("change", async () => {
+          try {
+            const parsed = JSON.parse(await input.files[0].text());
+            if (!parsed || !Array.isArray(parsed.done)) throw new Error("Invalid practice file");
+            state = { ...defaultState(), ...parsed, v: 1, done: lessons.map((_, index) => Boolean(parsed.done[index])), lastLesson: Math.max(0, Math.min(lessons.length - 1, Number(parsed.lastLesson) || 0)) };
+            save(); closeSheet(); toast("Practice restored.");
+          } catch (error) { toast("That practice file could not be read."); }
+        });
+        input.click();
+      });
+      $("#resetPractice").addEventListener("click", () => {
+        if (!confirm("Reset all Japanese progress on this device?")) return;
+        state = defaultState(); save(); closeSheet(); toast("Japanese progress reset.");
       });
     }
 
@@ -391,21 +512,22 @@
       const route = placeRoutes[key];
       if (!route) return;
       const groups = route.groups.map((group, index) => `<section class="route-group"><div class="route-group-head"><h3>${esc(group.title)}</h3><span>${String(index + 1).padStart(2,"0")}</span></div><p class="route-note">${esc(group.note)}</p>${phraseMarkup(group.phrases)}</section>`).join("");
-      const guide = route.guideUrl ? `<a class="btn" href="${esc(route.guideUrl)}">${esc(route.guideLabel)} →</a>` : `<span class="btn ghost" aria-disabled="true">${esc(route.guideLabel)}</span>`;
+      const guide = route.guideUrl ? `<a class="btn" data-language-route-transition href="${esc(route.guideUrl)}">${esc(route.guideLabel)} →</a>` : `<span class="btn ghost" aria-disabled="true">${esc(route.guideLabel)}</span>`;
       openSheet(`${route.title} applied route`, `<p class="sheet-lede">Use the foundation in context. Move through three small situations without turning the route into a script.</p>${groups}<div class="sheet-actions">${guide}</div>`);
       bindListen($("#sheetBody"));
     }
 
     function openLanguages() {
-      openSheet("Choose a language", `<div class="language-switcher"><a class="language-track" href="korean.html"><span class="language-glyph" aria-hidden="true">한</span><span><b>Korean</b><small>15 lessons · 4 routes · Foundation complete</small></span><span class="language-state">Open →</span></a><div class="language-track is-current" aria-current="page"><span class="language-glyph jp" aria-hidden="true">あ</span><span><b>Japanese</b><small>15 lessons · Kyoto and Tokyo routes</small></span><span class="language-state">Current</span></div></div><a class="language-home" href="index.html">← First Words language home</a>`);
+      openSheet("Choose a language", `<div class="language-switcher"><a class="language-track" href="korean.html"><span class="language-glyph" aria-hidden="true">한</span><span><b>Korean</b><small>15 lessons · 4 routes · Foundation complete</small></span><span class="language-state">Open →</span></a><div class="language-track is-current" aria-current="page"><span class="language-glyph jp" aria-hidden="true">あ</span><span><b>Japanese</b><small>15 lessons · Kyoto, Tokyo, and Osaka routes</small></span><span class="language-state">Current</span></div></div><a class="language-home" href="index.html">← First Words language home</a>`);
     }
 
     function renderToday() {
       const count = state.done.filter(Boolean).length;
       const index = nextLesson();
       const lesson = lessons[index];
-      $("#view-today").innerHTML = `<div class="practice-hero"><div class="practice-grid"><div><div class="kicker">Japanese foundation</div><h1>${count === lessons.length ? "Keep the language close." : "One small lesson today."}</h1><p>${count === lessons.length ? "The foundation is complete. Revisit a lesson or carry the phrases into Kyoto and Tokyo." : lesson.focus}</p></div><div class="day-mark"><span>${String(index + 1).padStart(2,"0")}</span><small>${count}/${lessons.length} complete</small></div></div><div class="hero-action"><button type="button" class="btn dark" id="todayLesson">${count === lessons.length ? "Revisit final lesson" : `Begin ${lesson.title}`}</button><button type="button" class="btn dark" id="todayPlaces">Open place routes</button></div></div><div class="today-strip"><div><span>Track</span><b>Japanese</b></div><div><span>Next</span><b>${esc(lesson.title)}</b></div><div><span>Routes</span><b>Kyoto · Tokyo</b></div></div><header class="view-heading"><div class="kicker">Daily rhythm</div><h1>Listen. Repeat. Place.</h1><p>Build the foundation in sequence, then use the same language inside two different city rhythms.</p></header>`;
+      $("#view-today").innerHTML = `<div class="practice-hero"><div class="practice-grid"><div><div class="kicker">Japanese foundation</div><h1>${count === lessons.length ? "Keep the language close." : "One small lesson today."}</h1><p>${count === lessons.length ? "The foundation is complete. Revisit a lesson or carry the phrases into Kyoto, Tokyo, and Osaka." : lesson.focus}</p></div><div class="day-mark"><span>${String(index + 1).padStart(2,"0")}</span><small>${count}/${lessons.length} complete</small></div></div><div class="hero-action"><button type="button" class="btn dark" id="todayLesson">${count === lessons.length ? "Revisit final lesson" : `Begin ${lesson.title}`}</button>${count ? `<button type="button" class="btn dark" id="todayReview">Quick review</button>` : ""}<button type="button" class="btn dark" id="todayPlaces">Open place routes</button></div></div><div class="today-strip"><div><span>Track</span><b>Japanese</b></div><div><span>Next</span><b>${esc(lesson.title)}</b></div><div><span>Routes</span><b>Kyoto · Tokyo · Osaka</b></div></div><header class="view-heading"><div class="kicker">Daily rhythm</div><h1>Listen. Repeat. Place.</h1><p>Build the foundation in sequence, check what you remember, then use the same language inside three different city rhythms.</p></header>`;
       $("#todayLesson").addEventListener("click", () => openLesson(index));
+      if ($("#todayReview")) $("#todayReview").addEventListener("click", openReview);
       $("#todayPlaces").addEventListener("click", () => setView("places"));
     }
     function renderPath() {
@@ -424,7 +546,7 @@
     }
     function renderPlaces() {
       const cards = Object.entries(placeRoutes).map(([key,route], index) => `<article class="place-card"><div><span class="place-mark-small" lang="ja">${route.mark}</span><div class="kicker">Route ${String(index + 1).padStart(2,"0")}</div><h2>${esc(route.title)}</h2><p>${esc(route.label)}. ${esc(route.intro)}</p></div><button type="button" class="btn small" data-place="${key}">Open route</button></article>`).join("");
-      $("#view-places").innerHTML = `<div class="place-intro"><div><div class="kicker">Language in place</div><h1>Two cities, two rhythms.</h1><p>Kyoto rewards patience and permission. Tokyo rewards clarity and orientation. The same foundation adapts to both.</p></div><div class="place-kanji" lang="ja">日本</div></div><div class="place-grid">${cards}</div>`;
+      $("#view-places").innerHTML = `<div class="place-intro"><div><div class="kicker">Language in place</div><h1>Three cities, three rhythms.</h1><p>Kyoto rewards patience, Tokyo rewards clarity, and Osaka rewards an open exchange. The same foundation adapts to each.</p></div><div class="place-kanji" lang="ja">日本</div></div><div class="place-grid">${cards}</div>`;
       $$('[data-place]', $("#view-places")).forEach(button => button.addEventListener("click", () => openPlaceRoute(button.dataset.place)));
     }
     function renderTop() { $("#doneCount").textContent = state.done.filter(Boolean).length; }
@@ -432,6 +554,7 @@
 
     $$('[data-view]').forEach(button => button.addEventListener("click", () => setView(button.dataset.view)));
     $("#languageBtn").addEventListener("click", openLanguages);
+    $("#practiceData").addEventListener("click", openPracticeData);
     $("#sheetClose").addEventListener("click", closeSheet);
     $("#sheetBackdrop").addEventListener("click", closeSheet);
     document.addEventListener("keydown", event => { if (event.key === "Escape" && $("#sheet").classList.contains("open")) closeSheet(); });
