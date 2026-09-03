@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-back-top="none">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busan, Tide to Table — Wayfarer</title>
+  <meta name="description" content="A Wayfarer coastal guide to Busan, moving from working harbour and market counters to the last light on the water.">
+  <link rel="canonical" href="https://www.hellojackmao.com/projects/wayfarer/busan.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.hellojackmao.com/projects/wayfarer/busan.html">
+  <meta property="og:title" content="Busan, Tide to Table — Wayfarer">
+  <meta property="og:description" content="A coastal day moving from working harbour and market counters to the last light on the water.">
+  <meta property="og:site_name" content="Jack Mao — Portfolio">
+  <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta property="og:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Busan, Tide to Table — Wayfarer">
+  <meta name="twitter:description" content="A coastal field guide to Busan.">
+  <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
+  <meta name="twitter:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111111'/%3E%3Cpath d='M16 3 L19 16 L16 29 L13 16 Z' fill='%234ECDC4'/%3E%3Cpath d='M3 16 L16 13 L29 16 L16 19 Z' fill='%234ECDC4' opacity='0.6'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../project-transitions.css">
+  <style>
+    :root {
+      --foam:#f5f2e9; --paper:#fffdf8; --ink:#142020; --muted:#687270;
+      --sea:#176a72; --deep:#123f49; --sky:#b7d9d2; --signal:#f07952; --line:#cbd5d1;
+      --serif:"Instrument Serif", Georgia, serif; --sans:"Inter Tight", Arial, sans-serif; --ko:"Noto Sans KR", sans-serif;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{background:var(--foam);color:var(--ink);font-family:var(--sans);overflow-x:hidden} a{color:inherit}
+    .skip{position:fixed;z-index:100000;top:.75rem;left:.75rem;padding:.7rem 1rem;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;transform:translateY(calc(-100% - 1.5rem));transition:transform .2s ease}.skip:focus{transform:none}
+    :where(a,button):focus-visible{outline:3px solid var(--signal);outline-offset:4px}
+    .nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:66px;padding:0 clamp(1rem,4vw,3rem);background:rgba(245,242,233,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .nav a{text-decoration:none}.back,.issue{font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--muted)}.brand{font:400 1.25rem var(--serif)}.issue{justify-self:end}
+    .hero{min-height:min(830px,calc(100svh - 66px));display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);border-bottom:1px solid var(--ink)}
+    .hero-copy{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(2rem,6vw,5.5rem)}
+    .kicker{font-size:.68rem;font-weight:800;text-transform:uppercase;color:var(--signal)}
+    h1{max-width:8ch;margin-top:1rem;font:400 clamp(5rem,11vw,10rem)/.79 var(--serif)}h1 em{font-weight:400;color:var(--sea)}h1 .ko{display:block;margin-top:.2em;font:600 .37em/1 var(--ko);color:var(--deep)}
+    .deck{max-width:37rem;margin-top:3rem;font:400 clamp(1.3rem,2.5vw,2.15rem)/1.3 var(--serif)}.meta{display:flex;flex-wrap:wrap;gap:.7rem 1.5rem;margin-top:2rem;color:var(--muted);font-size:.72rem}
+    .sea-panel{position:relative;overflow:hidden;min-height:540px;background:var(--sea);color:#fff}
+    .horizon{position:absolute;left:-5%;right:-5%;border:2px solid var(--sky);border-radius:50%}.h1{height:34%;top:18%}.h2{height:42%;top:31%;border-color:var(--foam)}.h3{height:49%;top:49%;border-color:var(--signal)}
+    .harbour-type{position:absolute;right:7%;top:7%;writing-mode:vertical-rl;font:600 clamp(4rem,9vw,7.5rem)/1 var(--ko);color:rgba(255,255,255,.12)}
+    .coordinates{position:absolute;left:8%;bottom:8%;font-size:.67rem;font-weight:700;text-transform:uppercase;line-height:1.7;color:rgba(255,255,255,.72)}
+    .float-mark{position:absolute;left:55%;top:43%;width:22px;height:22px;border:6px solid var(--foam);border-radius:50%;box-shadow:0 0 0 2px var(--deep)}
+    .bridge{background:var(--ink);color:#fff}.bridge-in{width:min(1180px,calc(100% - 2rem));margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,6rem);padding:clamp(3.5rem,8vw,6.5rem) 0}
+    .bridge h2{max-width:10ch;margin-top:.8rem;font:400 clamp(2.7rem,6vw,5rem)/.92 var(--serif)}.bridge p{max-width:40rem;color:rgba(255,255,255,.66);line-height:1.7}
+    .phrases{margin:1.5rem 0;border-top:1px solid rgba(255,255,255,.18)}.phrase{display:grid;grid-template-columns:minmax(0,1fr) 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.18)}.phrase b{font:500 1rem var(--ko)}.phrase span{color:rgba(255,255,255,.58);font-size:.78rem}
+    .hana{display:inline-flex;min-height:44px;align-items:center;padding:0 1rem;border:1px solid var(--sky);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700;transition:background .25s,color .25s}.hana:hover{background:var(--sky);color:var(--ink)}
+    .route{width:min(1180px,calc(100% - 2rem));margin:auto;padding:clamp(4rem,10vw,9rem) 0}.route-head{display:grid;grid-template-columns:.5fr 1.5fr;gap:2rem;padding-bottom:2.2rem;border-bottom:2px solid var(--ink)}.route-head span{color:var(--signal);font-size:.68rem;font-weight:800}.route h2{max-width:14ch;font:400 clamp(3rem,6.5vw,6rem)/.9 var(--serif)}
+    .chapter{display:grid;grid-template-columns:8rem minmax(220px,.8fr) minmax(0,1.2fr);gap:clamp(1.5rem,4vw,4rem);align-items:start;padding:clamp(2.5rem,6vw,5rem) 0;border-bottom:1px solid var(--line)}
+    .time{color:var(--muted);font-size:.68rem;font-weight:700;text-transform:uppercase}.chapter h3{font:400 clamp(2.3rem,4.5vw,4rem)/.95 var(--serif)}.chapter h3 span{display:block;margin-top:.5rem;color:var(--sea);font:600 .36em/1.2 var(--ko)}.chapter p{color:var(--muted);font:400 1.15rem/1.62 var(--serif)}
+    .market-strip{background:var(--signal);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.market-in{width:min(1180px,calc(100% - 2rem));margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:clamp(3rem,7vw,6rem) 0}.market-in h2{max-width:10ch;font:400 clamp(3rem,6vw,5.4rem)/.9 var(--serif)}.market-copy{align-self:end;max-width:38rem}.market-copy p{font:400 1.2rem/1.55 var(--serif)}.market-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}.market-tags span{padding:.48rem .72rem;border:1px solid rgba(20,32,32,.45);font-size:.68rem;font-weight:700;text-transform:uppercase}
+    .field{background:var(--paper)}.field-in{width:min(1180px,calc(100% - 2rem));margin:auto;padding:clamp(4rem,8vw,7rem) 0}.field-in h2{font:400 clamp(2.8rem,5.5vw,5rem)/1 var(--serif)}.notes{display:grid;grid-template-columns:repeat(3,1fr);margin-top:2.5rem;border-top:1px solid var(--line)}.note{padding:1.5rem 1.5rem 1.5rem 0;border-right:1px solid var(--line)}.note+.note{padding-left:1.5rem}.note:last-child{border-right:0}.note b{display:block;margin-bottom:.65rem;font-size:.72rem;text-transform:uppercase}.note p{color:var(--muted);font-size:.9rem;line-height:1.65}
+    .close{min-height:470px;display:grid;place-items:center;padding:5rem 1rem 8rem;text-align:center;background:var(--deep);color:#fff}.close .ko{font:600 clamp(3.8rem,10vw,8.5rem)/1 var(--ko);color:var(--sky)}.close h2{max-width:14ch;margin:1rem auto;font:400 clamp(2.2rem,5vw,4.5rem)/1 var(--serif)}.close a{display:inline-flex;min-height:44px;align-items:center;margin-top:1rem;padding:0 1.1rem;border:1px solid rgba(255,255,255,.65);border-radius:999px;text-decoration:none;font-size:.75rem;font-weight:700}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:none}
+    @media(max-width:780px){.nav{grid-template-columns:1fr auto}.issue{display:none}.brand{justify-self:end}.hero{grid-template-columns:1fr}.hero-copy{min-height:600px;padding:2rem 1rem 3rem}h1{font-size:clamp(4.8rem,23vw,7.2rem)}.sea-panel{min-height:390px}.bridge-in,.route-head,.market-in{grid-template-columns:1fr}.phrase{grid-template-columns:1fr;gap:.25rem}.chapter{grid-template-columns:5rem minmax(0,1fr)}.chapter p{grid-column:2}.notes{grid-template-columns:1fr}.note,.note+.note{padding:1.25rem 0;border-right:0;border-bottom:1px solid var(--line)}.note:last-child{border-bottom:0}}
+    @media(max-width:460px){.chapter{grid-template-columns:1fr}.chapter p{grid-column:1}.time{color:var(--signal)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main-content">Skip to content</a>
+  <header class="nav">
+    <a class="back" href="guides.html">← The Library</a>
+    <a class="brand" href="index.html">Wayfarer</a>
+    <span class="issue">Coastal field note · 09</span>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="hero-copy">
+        <div><p class="kicker">Korea · Busan · From harbour to shore</p><h1>Tide <em>to</em><br>table.<span class="ko" lang="ko">부산</span></h1></div>
+        <div><p class="deck">Busan faces the water without ceremony. It works beside it, eats beside it, climbs above it, and meets it again at dusk.</p><div class="meta"><span>Words by Jiwon Kim</span><span>8 minute read</span><span>Issue 09 · 2026</span></div></div>
+      </div>
+      <div class="sea-panel" aria-label="Abstract coastal lines inspired by Busan harbour">
+        <span class="harbour-type" lang="ko" aria-hidden="true">항구</span><span class="horizon h1"></span><span class="horizon h2"></span><span class="horizon h3"></span><span class="float-mark" aria-hidden="true"></span>
+        <p class="coordinates">35.1796° N<br>129.0756° E<br>Port city · South coast</p>
+      </div>
+    </section>
+
+    <section class="bridge" aria-labelledby="language-title">
+      <div class="bridge-in">
+        <div><p class="kicker">First Words language companion</p><h2 id="language-title">A few words for the coast.</h2></div>
+        <div><p>The guide follows the shape of the day. First Words carries the useful Korean for finding it, ordering from it, and meeting it with courtesy.</p>
+          <div class="phrases">
+            <div class="phrase"><b lang="ko">시장이 어디예요?</b><span>Where is the market?</span></div>
+            <div class="phrase"><b lang="ko">이거 얼마예요?</b><span>How much is this?</span></div>
+            <div class="phrase"><b lang="ko">사진 찍어도 돼요?</b><span>May I take a photo?</span></div>
+          </div>
+          <a class="hana" href="../first-words/korean.html?place=busan">Open the Busan place pack →</a>
+        </div>
+      </div>
+    </section>
+
+    <article class="route">
+      <header class="route-head reveal"><span>01 · THE COASTAL LINE</span><h2>Follow the city from salt air to evening light.</h2></header>
+      <section class="chapter reveal"><div class="time">07:20 · Harbour</div><h3>Jagalchi<span lang="ko">자갈치</span></h3><p>Begin while the market is still unmistakably a workplace. Crates move, counters fill, and breakfast arrives without theatre. Look first, ask before photographing, and let the people working set the pace.</p></section>
+      <section class="chapter reveal"><div class="time">10:50 · Hillside</div><h3>Huinnyeoul<span lang="ko">흰여울</span></h3><p>The city lifts above the sea in lanes, steps, and walls that catch the coastal light. Walk slowly enough to remember that this is also a neighbourhood, not only a viewpoint.</p></section>
+      <section class="chapter reveal"><div class="time">14:10 · Crossing</div><h3>Yeongdo<span lang="ko">영도</span></h3><p>Harbour infrastructure and new creative spaces sit close together here. The pleasure is in the contrast: working edges, compact cafes, steep roads, and water appearing between buildings.</p></section>
+      <section class="chapter reveal"><div class="time">18:30 · Shore</div><h3>Gwangalli<span lang="ko">광안리</span></h3><p>Finish where the city turns toward the bridge and the beach becomes an evening room. Stay through the shift from daylight to electric light; Busan changes register without losing the sound of the water.</p></section>
+    </article>
+
+    <section class="market-strip">
+      <div class="market-in reveal"><div><p class="kicker">02 · AT THE COUNTER</p><h2>Let lunch be the route.</h2></div><div class="market-copy"><p>A market is not a checklist of dishes. Ask what is good today, order one thing at a time, and leave space for the recommendation you did not plan.</p><div class="market-tags"><span>Ask first</span><span>Order small</span><span>Follow the season</span></div></div></div>
+    </section>
+
+    <section class="field" aria-labelledby="field-title"><div class="field-in reveal"><p class="kicker">Keep in your pocket</p><h2 id="field-title">Field notes.</h2><div class="notes">
+      <div class="note"><b>Read the incline</b><p>Busan’s map looks flatter than the city feels. Leave extra time where the route rises away from the water.</p></div>
+      <div class="note"><b>Group the coast</b><p>Neighbourhoods spread along the shoreline. Choose one side of the city for a day instead of racing between every beach.</p></div>
+      <div class="note"><b>Keep the evening open</b><p>The best final stop may be the patch of water nearest you when the light begins to change.</p></div>
+    </div></div></section>
+
+    <section class="close"><div class="reveal"><div class="ko" lang="ko">바다 쪽으로</div><h2>Keep moving toward the water.</h2><a href="guides.html">Return to all guides →</a></div></section>
+  </main>
+  <script>
+    const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduced||!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
+    else{const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:"0px 0px -40px"});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));}
+  </script>
+  <script src="wayfarer-shared.js?v=20260902-4"></script>
+  <script>if(window.Wayfarer)Wayfarer.mountChrome("busan");</script>
+  <script defer src="../project-transitions.js"></script>
+  <script defer src="../../analytics.js"></script>
+</body>
+</html>

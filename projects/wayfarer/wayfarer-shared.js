@@ -41,6 +41,34 @@
       art: { sky: ["#6e9183", "#3a5249"], hill: "#2f433b", sun: "#f6f2ea", lm: "city" }
     },
     {
+      id: "seoul", file: "seoul.html", title: "Seoul, Between Stops",
+      place: "Korea · Seoul", mood: "City stories", region: "Asia",
+      author: "seoulnotes", readMins: 8, status: "live",
+      blurb: "A day carried by subway lines, neighbourhood pauses, and the city between destinations.",
+      art: { sky: ["#e9e7df", "#b8c8c1"], hill: "#263b35", sun: "#e86f51", lm: "city" }
+    },
+    {
+      id: "tokyo", file: "tokyo.html", title: "Tokyo, Between Signals",
+      place: "Japan · Tokyo", mood: "City stories", region: "Asia",
+      author: "tokyosignals", readMins: 8, status: "live",
+      blurb: "Platforms, counters, side streets, and the quiet intervals inside a city in motion.",
+      art: { sky: ["#e9eef2", "#9ec8d2"], hill: "#25272a", sun: "#e36650", lm: "city" }
+    },
+    {
+      id: "busan", file: "busan.html", title: "Busan, Tide to Table",
+      place: "Korea · Busan", mood: "Coastal routes", region: "Asia",
+      author: "busanlines", readMins: 8, status: "live",
+      blurb: "A coastal day moving from working harbour and market counters to the last light on the water.",
+      art: { sky: ["#dce9e5", "#70a89d"], hill: "#173f48", sun: "#f07952", lm: "wave" }
+    },
+    {
+      id: "jeju", file: "jeju.html", title: "Jeju, Follow the Wind",
+      place: "Korea · Jeju Island", mood: "Island routes", region: "Asia",
+      author: "jejufieldnotes", readMins: 9, status: "live",
+      blurb: "Volcanic ground, shifting weather, and an island day shaped by the direction of the wind.",
+      art: { sky: ["#eef0e7", "#9db8ae"], hill: "#303d37", sun: "#e7bd45", lm: "peaks" }
+    },
+    {
       id: "hello-toronto", file: "hello-toronto.html", title: "Hello, Toronto",
       place: "Canada · Toronto", mood: "City stories", region: "North America",
       author: "hellotoronto", readMins: 7, status: "live",
@@ -106,6 +134,14 @@
                    bio: "A travel essayist drawn to the grand manner — railways, palaces, and arriving as an occasion." },
     seorak:      { handle: "seorak", name: "The Seorak Review", based: "Seoul, Korea", since: "2022",
                    bio: "An editorial collective reading single countries slowly, one quarterly guide at a time." },
+    seoulnotes:  { handle: "seoulnotes", name: "Minji Park", based: "Seoul, Korea", since: "2026",
+                   bio: "Maps Seoul through transit, street-level rituals, and the useful pauses between one neighbourhood and the next." },
+    tokyosignals:{ handle: "tokyosignals", name: "Aiko Mori", based: "Tokyo, Japan", since: "2026",
+                   bio: "Reads Tokyo through station rhythms, neighbourhood scale, and the moments when a fast city briefly becomes quiet." },
+    busanlines:  { handle: "busanlines", name: "Jiwon Kim", based: "Busan, Korea", since: "2026",
+                   bio: "Writes the city from the water inward: harbours, market mornings, hillside streets, and the long coastal evening." },
+    jejufieldnotes:{ handle: "jejufieldnotes", name: "Sora Han", based: "Jeju, Korea", since: "2026",
+                   bio: "Follows weather, stone walls, and island roads across Jeju, writing the landscape at walking pace." },
     hellotoronto:{ handle: "hellotoronto", name: "Devon Clarke", based: "Toronto, Canada", since: "2024",
                    bio: "Civic booster and neighbourhood obsessive. Believes a city is the people who decided to build it together." },
     thelongquiet:{ handle: "thelongquiet", name: "Sofía Marín", based: "El Chaltén, Argentina", since: "2025",

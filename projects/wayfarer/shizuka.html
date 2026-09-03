@@ -433,6 +433,76 @@
     position: relative;
   }
 
+  .hana-companion {
+    padding: 0 4rem;
+    background: var(--washi);
+  }
+
+  .hana-companion-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2.25rem 0;
+    border-top: 1px solid rgba(107, 90, 71, 0.18);
+    border-bottom: 1px solid rgba(107, 90, 71, 0.18);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hana-companion-mark {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(196, 74, 58, 0.36);
+    color: var(--shu);
+    font: 600 1.4rem var(--serif);
+  }
+
+  .hana-companion-copy .eyebrow {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--cedar);
+    font: 500 0.62rem var(--sans);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .hana-companion-copy strong {
+    display: block;
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    font-weight: 500;
+  }
+
+  .hana-companion-copy p {
+    max-width: 62ch;
+    margin: 0.35rem 0 0;
+    color: var(--cedar);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    line-height: 1.65;
+  }
+
+  .hana-companion-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.65rem 1rem;
+    border: 1px solid rgba(196, 74, 58, 0.45);
+    color: var(--shu);
+    font: 500 0.68rem var(--sans);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s var(--breathe), background 0.25s var(--breathe);
+  }
+
+  .hana-companion-link:hover {
+    color: var(--rice);
+    background: var(--shu);
+  }
+
   .container {
     max-width: 1300px;
     margin: 0 auto;
@@ -1139,6 +1209,9 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     section { padding: 5.5rem 1.5rem; }
+    .hana-companion { padding: 0 1.5rem; }
+    .hana-companion-inner { grid-template-columns: auto minmax(0, 1fr); gap: 1rem; }
+    .hana-companion-link { grid-column: 2; justify-self: start; }
     .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; min-height: auto; }
     .hero-art { height: 50vh; }
     .vertical-kanji { display: none; }
@@ -1307,6 +1380,18 @@
     <span>Begin Quietly</span>
   </div>
 </section>
+
+<aside class="hana-companion" aria-label="Japanese language companion">
+  <div class="hana-companion-inner">
+    <div class="hana-companion-mark" lang="ja" aria-hidden="true">話</div>
+    <div class="hana-companion-copy">
+      <span class="eyebrow">First Words × Kyoto</span>
+      <strong>Carry a few words into the journey.</strong>
+      <p>Practice nine useful Japanese phrases, then return to this slow-travel invitation with the language still close.</p>
+    </div>
+    <a class="hana-companion-link" href="../first-words/japanese.html?place=kyoto">Open the Kyoto route →</a>
+  </div>
+</aside>
 
 <!-- ═══════════ AWAKENING — The Idea ═══════════ -->
 <section class="awakening" id="awakening">
@@ -1659,7 +1744,7 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
-<script src="wayfarer-shared.js?v=20260809-3"></script>
+<script src="wayfarer-shared.js?v=20260902-4"></script>
 <script>if(window.Wayfarer)Wayfarer.mountChrome("shizuka");</script>
   <script defer src="../../analytics.js"></script>
 </body>

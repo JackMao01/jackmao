@@ -554,7 +554,7 @@
     }
 
 
-  /* ---- Hana cross-link: "phrasebook" pop-out (lower-right, clears scroll arrows) ---- */
+  /* ---- First Words cross-link: phrasebook pop-out ---- */
   .hana-dock{ position:fixed; right:22px; bottom:20px; z-index:38;
     font-family:'Inter Tight',sans-serif; display:flex; flex-direction:column; align-items:flex-end; gap:0; }
   /* the resting pill */
@@ -565,16 +565,16 @@
   .hd-toggle:hover,.hd-toggle:focus-visible{ transform:translateY(-2px);
     box-shadow:0 12px 32px rgba(17,17,17,.34); outline:none; }
   .hd-toggle .hd-seal{ display:inline-flex; align-items:center; justify-content:center;
-    width:26px; height:26px; border-radius:50%; background:#10a67a;
-    font-family:'Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif; font-weight:800;
-    font-size:.95rem; color:#fff3df; line-height:1; }
+    width:26px; height:26px; border-radius:8px; background:#4056d6;
+    font-family:Georgia,serif; font-weight:700;
+    font-size:1.15rem; color:#fff; line-height:1; padding-top:.2rem; }
   .hd-toggle .hd-caret{ font-size:.7rem; opacity:.55; transition:transform .3s ease; }
   .hana-dock.is-open .hd-caret{ transform:rotate(180deg); }
   /* attention pulse (one-shot, motion-safe) */
   .hd-toggle.pulse{ animation:hdPulse 1.4s cubic-bezier(.16,1,.3,1) 2; }
-  @keyframes hdPulse{ 0%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 0 rgba(16,166,122,.55); }
-    70%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 16px rgba(16,166,122,0); }
-    100%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 0 rgba(16,166,122,0); } }
+  @keyframes hdPulse{ 0%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 0 rgba(64,86,214,.5); }
+    70%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 16px rgba(64,86,214,0); }
+    100%{ box-shadow:0 8px 26px rgba(17,17,17,.28),0 0 0 0 rgba(64,86,214,0); } }
   /* the card */
   .hd-card{ width:300px; max-width:calc(100vw - 44px); margin-bottom:.7rem;
     background:#fdfcfb; border:1px solid rgba(0,0,0,.07); border-radius:20px;
@@ -583,12 +583,12 @@
     pointer-events:none; transition:transform .42s cubic-bezier(.16,1,.3,1), opacity .3s ease; position:relative; }
   .hana-dock.is-open .hd-card{ transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
   .hd-stamp{ display:flex; align-items:center; gap:.55rem; margin-bottom:.85rem; }
-  .hd-stamp .seal{ width:40px; height:40px; border-radius:11px; background:#fff3df;
+  .hd-stamp .seal{ width:40px; height:40px; border-radius:11px; background:#20201d;
     display:flex; align-items:center; justify-content:center;
-    font-family:'Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif; font-weight:800;
-    font-size:1.45rem; color:#10a67a; line-height:1; flex:none; }
+    font-family:Georgia,serif; font-weight:700;
+    font-size:1.7rem; color:#4056d6; line-height:1; padding-top:.25rem; flex:none; }
   .hd-stamp .lbl{ font-size:.64rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
-    color:#4ECDC4; line-height:1.3; }
+    color:#4056d6; line-height:1.3; }
   .hd-card h4{ font-family:'Inter Tight',sans-serif; font-weight:800; font-size:1.24rem; line-height:1.12;
     margin:0 0 .55rem; color:#111; letter-spacing:-.01em; }
   .hd-card p{ font-family:'Inter Tight',sans-serif; font-size:.85rem; line-height:1.55;
@@ -596,7 +596,7 @@
   .hd-go{ display:inline-flex; align-items:center; gap:.45rem; font-family:'Inter Tight',sans-serif;
     font-weight:700; font-size:.84rem; color:#fdfcfb; background:#111; text-decoration:none;
     padding:.6rem 1.05rem; border-radius:100px; transition:background .2s ease, gap .2s ease; }
-  .hd-go:hover{ background:#10a67a; gap:.7rem; }
+  .hd-go:hover{ background:#4056d6; gap:.7rem; }
   .hd-x{ position:absolute; top:.6rem; right:.7rem; border:none; background:none; cursor:pointer;
     font-size:1rem; line-height:1; color:rgba(17,17,17,.35); padding:.2rem; }
   .hd-x:hover{ color:#111; }
@@ -609,7 +609,7 @@
   body.hd-card-open .scroll-ind{ opacity:0; pointer-events:none; transition:opacity .25s ease; }
   .scroll-ind{ transition:opacity .25s ease; }
 
-  /* ---- Hana dock: mobile (compact pill + bottom sheet) ---- */
+  /* ---- First Words dock: mobile (compact pill + bottom sheet) ---- */
   @media (max-width:760px){
     .hana-dock{ display:flex !important; right:14px; bottom:14px;
       bottom:calc(14px + env(safe-area-inset-bottom, 0px)); }
@@ -752,7 +752,7 @@
       </a>
     </div>
   </nav>
-  <script src="wayfarer-shared.js?v=20260809-3"></script>
+  <script src="wayfarer-shared.js?v=20260902-4"></script>
   <script>
     (function(){
       function upd(){
@@ -1096,6 +1096,38 @@
         </div>
       </div>
 
+      <!-- MOOD: Cities in motion -->
+      <div class="mood">
+        <div class="mood-head">
+          <span class="name">Cities in motion</span>
+          <span class="desc">Follow the rhythm between stops.</span>
+          <span class="count">3 guides</span>
+        </div>
+        <div class="guide-row">
+          <a class="guide" href="seoul.html">
+            <div class="guide-art">
+              <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#dce4e0"/><path d="M-20 165 Q80 35 210 115 T430 62" fill="none" stroke="#25443a" stroke-width="12"/><path d="M-10 95 Q130 205 250 105 T420 145" fill="none" stroke="#e86f51" stroke-width="7"/><circle cx="122" cy="112" r="10" fill="#f5f4ef" stroke="#25443a" stroke-width="5"/><circle cx="276" cy="91" r="10" fill="#f5f4ef" stroke="#e86f51" stroke-width="5"/></svg>
+              <span class="handle">@seoulnotes</span>
+            </div>
+            <div class="guide-body"><div class="guide-place">Korea · Seoul</div><h3>Seoul, Between Stops</h3><p>A day carried by subway lines, neighbourhood pauses, and the city between destinations.</p><div class="foot"><span class="read">Read the guide →</span><span class="mins">8 min</span></div></div>
+          </a>
+          <a class="guide" href="busan.html">
+            <div class="guide-art">
+              <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#dce9e5"/><path d="M0 144 Q50 108 100 144 T200 144 T300 144 T400 144" fill="none" stroke="#173f48" stroke-width="10"/><path d="M0 174 Q50 142 100 174 T200 174 T300 174 T400 174" fill="none" stroke="#70a89d" stroke-width="7"/><circle cx="310" cy="52" r="29" fill="#f07952"/></svg>
+              <span class="handle">@busanlines</span>
+            </div>
+            <div class="guide-body"><div class="guide-place">Korea · Busan</div><h3>Busan, Tide to Table</h3><p>A coastal day moving from working harbour and market counters to the last light on the water.</p><div class="foot"><span class="read">Read the guide →</span><span class="mins">8 min</span></div></div>
+          </a>
+          <a class="guide" href="tokyo.html">
+            <div class="guide-art">
+              <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#e9eef2"/><path d="M-25 44 L425 164" stroke="#e36650" stroke-width="10"/><path d="M28 205 L330 -18" stroke="#90c7d2" stroke-width="8"/><path d="M270 -15 L142 215" stroke="#4056d6" stroke-width="6"/><circle cx="181" cy="99" r="10" fill="#e9eef2" stroke="#25272a" stroke-width="5"/><circle cx="287" cy="128" r="10" fill="#e9eef2" stroke="#25272a" stroke-width="5"/></svg>
+              <span class="handle">@tokyosignals</span>
+            </div>
+            <div class="guide-body"><div class="guide-place">Japan · Tokyo</div><h3>Tokyo, Between Signals</h3><p>Platforms, counters, side streets, and the quiet intervals inside a city in motion.</p><div class="foot"><span class="read">Read the guide →</span><span class="mins">8 min</span></div></div>
+          </a>
+        </div>
+      </div>
+
       <!-- MOOD: City stories -->
       <div class="mood">
         <div class="mood-head">
@@ -1277,6 +1309,7 @@ const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").mat
  * ============================================================= */
 const DESTINATIONS = [
   { name: "Kyoto",     tagline: "A season of temples and slow mornings", sky: ["#f7c1a6", "#e8826b"], sun: "#fff3d6", hills: ["#b8553f", "#8a3a2c"], lm: "torii",    link: "shizuka.html", featured: true },
+  { name: "Tokyo",     tagline: "A city read between signals", sky: ["#e9eef2", "#9ec8d2"], sun: "#e36650", hills: ["#25272a", "#4056d6"], lm: "city", link: "tokyo.html" },
   { name: "Seoul",     tagline: "Palaces, peaks, and the grand manner", sky: ["#1a2a22", "#0e1411"], sun: "#c9a24b", hills: ["#c9a24b", "#8a6d2f"], lm: "compass",  link: "golden-route.html" },
   { name: "Gangneung", tagline: "Korea, read slowly", sky: ["#6e9183", "#3a5249"], sun: "#f6f2ea", hills: ["#2f433b", "#1f2e28"], lm: "city",     link: "seorak-review.html" },
   { name: "Toronto",   tagline: "A city built in primary colours", sky: ["#f7f4ee", "#dfe4ea"], sun: "#f4c430", hills: ["#141414", "#333333"], lm: "skyline",  link: "hello-toronto.html" },
@@ -1823,22 +1856,22 @@ if (document.readyState === "complete" || document.readyState === "interactive")
 </script>
 
 
-  <!-- Hana cross-link: a little phrasebook that pops out near the Korea guide -->
+  <!-- First Words cross-link: a little phrasebook near the language guides -->
   <div class="hana-dock" id="hanaDock">
     <div class="hd-scrim" aria-hidden="true"></div>
-    <div class="hd-card" id="hdCard" role="region" aria-label="Learn the language">
+    <div class="hd-card" id="hdCard" role="region" aria-label="First Words language companion">
       <button class="hd-x" type="button" aria-label="Dismiss">✕</button>
       <div class="hd-stamp">
-        <span class="seal" aria-hidden="true">한</span>
-        <span class="lbl">Interactive concept<br>· phrasebook ·</span>
+        <span class="seal" aria-hidden="true">“</span>
+        <span class="lbl">First Words<br>· language in place ·</span>
       </div>
-      <h4>Pack a few words for the road.</h4>
-      <p>Every great trip starts before the airport. Hana slips you a handful of Korean each day — spoken aloud, fifteen unhurried minutes — so the place greets you back when you arrive.</p>
-      <a class="hd-go" href="../hana/index.html">Start with Hana →</a>
+      <h4>Learn enough language to arrive with care.</h4>
+      <p>Begin with Korean or Japanese, then carry the words into destination routes shaped around the journey.</p>
+      <a class="hd-go" href="../first-words/index.html">Open First Words →</a>
     </div>
-    <button class="hd-toggle" type="button" aria-expanded="false" aria-controls="hdCard">
-      <span class="hd-seal" aria-hidden="true">한</span>
-      <span>Learn the language</span>
+    <button class="hd-toggle" type="button" aria-label="Open First Words language companion" aria-expanded="false" aria-controls="hdCard">
+      <span class="hd-seal" aria-hidden="true">“</span>
+      <span>First Words</span>
       <span class="hd-caret" aria-hidden="true">▲</span>
     </button>
   </div>
@@ -1853,15 +1886,13 @@ if (document.readyState === "complete" || document.readyState === "interactive")
       var scrim=document.querySelector('.hd-scrim'); if(scrim) scrim.addEventListener('click', shut);
       document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
 
-      /* One-shot pulse when the Korea (Seorak) guide scrolls into view */
+      /* One-shot pulse when the destination collection scrolls into view. */
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var pulsed = false;
-      function findKoreaCard(){
-        var h=[].slice.call(document.querySelectorAll('h3'));
-        for(var i=0;i<h.length;i++){ if(/seorak|korea/i.test(h[i].textContent)) return h[i].closest('article,div,a,section')||h[i]; }
-        return null;
+      function findGuideCollection(){
+        return document.querySelector('#library .library-head, .library .library-head') || document.querySelector('#library, .library');
       }
-      var target=findKoreaCard();
+      var target=findGuideCollection();
       if(target && !reduce && 'IntersectionObserver' in window){
         var io=new IntersectionObserver(function(entries){
           entries.forEach(function(en){
