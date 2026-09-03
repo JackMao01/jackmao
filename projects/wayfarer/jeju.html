@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gloock&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../project-transitions.css">
+  <link rel="stylesheet" href="../project-transitions.css?v=20260903-1">
   <style>
     :root{--cloud:#f0f1eb;--paper:#faf9f4;--ink:#19201d;--muted:#68706a;--stone:#38413c;--moss:#688071;--sea:#91b8af;--sun:#e7bd45;--line:#ced3cc;--display:"Gloock",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--ko:"Noto Sans KR",sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
     *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--cloud);color:var(--ink);font-family:var(--sans);overflow-x:hidden}a{color:inherit}.skip{position:fixed;z-index:100000;top:.75rem;left:.75rem;padding:.7rem 1rem;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;transform:translateY(calc(-100% - 1.5rem));transition:transform .2s ease}.skip:focus{transform:none}:where(a,button):focus-visible{outline:3px solid var(--sun);outline-offset:4px}
@@ -49,7 +49,7 @@
       <div class="island" aria-label="Abstract Jeju landscape shaped by wind, volcanic ground, and sun"><span class="sun"></span><span class="wind w1"></span><span class="wind w2"></span><span class="wind w3"></span><span class="island-word" lang="ko" aria-hidden="true">바람</span><p class="weather">Wind: variable<br>Ground: volcanic<br>Pace: unhurried</p></div>
     </section>
 
-    <section class="bridge" aria-labelledby="language-title"><div class="bridge-in"><div><p class="kicker">First Words language companion</p><h2 id="language-title">Language for an island day.</h2></div><div class="bridge-copy"><p>Jeju rewards flexibility. First Words keeps the useful questions close when the weather changes the plan or the road stretches farther than expected.</p><div class="phrases"><div class="phrase"><b lang="ko">버스 정류장이 어디예요?</b><span>Where is the bus stop?</span></div><div class="phrase"><b lang="ko">여기에서 얼마나 걸려요?</b><span>How long does it take from here?</span></div><div class="phrase"><b lang="ko">잘 먹겠습니다</b><span>Thank you for the meal.</span></div></div><a class="hana" href="../first-words/korean.html?place=jeju">Open the Jeju place pack →</a></div></div></section>
+    <section class="bridge" aria-labelledby="language-title"><div class="bridge-in"><div><p class="kicker">First Words language companion</p><h2 id="language-title">Language for an island day.</h2></div><div class="bridge-copy"><p>Jeju rewards flexibility. First Words keeps the useful questions close when the weather changes the plan or the road stretches farther than expected.</p><div class="phrases"><div class="phrase"><b lang="ko">버스 정류장이 어디예요?</b><span>Where is the bus stop?</span></div><div class="phrase"><b lang="ko">여기에서 얼마나 걸려요?</b><span>How long does it take from here?</span></div><div class="phrase"><b lang="ko">잘 먹겠습니다</b><span>Thank you for the meal.</span></div></div><a class="hana" data-language-route-transition href="../first-words/korean.html?place=jeju">Open the Jeju place pack →</a></div></div></section>
 
     <article class="journey"><header class="journey-head reveal"><span>01 · THE ISLAND ROAD</span><h2>Let the weather edit the itinerary.</h2></header>
       <section class="stop reveal"><div class="time">07:40 · East</div><h3>Seongsan<span lang="ko">성산</span></h3><p>Arrive early enough to watch the light find the volcanic rim. If clouds erase the summit, the coast below still gives the morning a shape. The island rarely offers only one reason to stop.</p></section>
@@ -64,9 +64,9 @@
     <section class="close"><div class="reveal"><div class="ko" lang="ko">바람을 따라</div><h2>The island is clearest when the plan stays loose.</h2><a href="guides.html">Return to all guides →</a></div></section>
   </main>
   <script>const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduced||!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}else{const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:"0px 0px -40px"});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));}</script>
-  <script src="wayfarer-shared.js?v=20260902-4"></script>
+<script src="wayfarer-shared.js?v=20260903-1"></script>
   <script>if(window.Wayfarer)Wayfarer.mountChrome("jeju");</script>
-  <script defer src="../project-transitions.js"></script>
+  <script defer src="../project-transitions.js?v=20260903-1"></script>
   <script defer src="../../analytics.js"></script>
 </body>
 </html>

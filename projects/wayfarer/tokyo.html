@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../project-transitions.css">
+  <link rel="stylesheet" href="../project-transitions.css?v=20260903-1">
   <style>
     :root {
       --paper:#f6f5f1; --white:#fff; --ink:#17181a; --muted:#6b6d70; --line:#ced1d3;
@@ -91,7 +91,7 @@
         <div><p class="bridge-kicker">First Words language companion</p><h2 id="language-title">Clarity before fluency.</h2></div>
         <div class="bridge-copy"><p>The guide gives the city its rhythm. First Words gives you a compact set of questions for moving through it without turning every exchange into a performance.</p>
           <div class="bridge-phrases"><div class="bridge-phrase"><b lang="ja">出口はどこですか</b><span>Where is the exit?</span></div><div class="bridge-phrase"><b lang="ja">カードは使えますか</b><span>Can I use a card?</span></div><div class="bridge-phrase"><b lang="ja">少し休みたいです</b><span>I would like to rest a little.</span></div></div>
-          <a class="first-words-link" href="../first-words/japanese.html?place=tokyo">Open the Tokyo route →</a>
+          <a class="first-words-link" data-language-route-transition href="../first-words/japanese.html?place=tokyo">Open the Tokyo route →</a>
         </div>
       </div>
     </section>
@@ -112,9 +112,9 @@
     if(reduced||!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
     else{const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:"0px 0px -40px"});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));}
   </script>
-  <script src="wayfarer-shared.js?v=20260902-4"></script>
+<script src="wayfarer-shared.js?v=20260903-1"></script>
   <script>if(window.Wayfarer) Wayfarer.mountChrome("tokyo");</script>
-  <script defer src="../project-transitions.js"></script>
+  <script defer src="../project-transitions.js?v=20260903-1"></script>
   <script defer src="../../analytics.js"></script>
 </body>
 </html>

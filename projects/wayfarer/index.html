@@ -637,8 +637,8 @@
     .hd-card{ transition:opacity .2s ease; }
   }
 </style>
-  <link rel="stylesheet" href="../project-transitions.css">
-  <script defer src="../project-transitions.js"></script>
+  <link rel="stylesheet" href="../project-transitions.css?v=20260903-1">
+  <script defer src="../project-transitions.js?v=20260903-1"></script>
     <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -752,7 +752,7 @@
       </a>
     </div>
   </nav>
-  <script src="wayfarer-shared.js?v=20260902-4"></script>
+<script src="wayfarer-shared.js?v=20260903-1"></script>
   <script>
     (function(){
       function upd(){
@@ -1101,7 +1101,7 @@
         <div class="mood-head">
           <span class="name">Cities in motion</span>
           <span class="desc">Follow the rhythm between stops.</span>
-          <span class="count">3 guides</span>
+          <span class="count">4 guides</span>
         </div>
         <div class="guide-row">
           <a class="guide" href="seoul.html">
@@ -1124,6 +1124,13 @@
               <span class="handle">@tokyosignals</span>
             </div>
             <div class="guide-body"><div class="guide-place">Japan · Tokyo</div><h3>Tokyo, Between Signals</h3><p>Platforms, counters, side streets, and the quiet intervals inside a city in motion.</p><div class="foot"><span class="read">Read the guide →</span><span class="mins">8 min</span></div></div>
+          </a>
+          <a class="guide" href="osaka.html">
+            <div class="guide-art">
+              <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#171717"/><path d="M-20 205 L250 -20" stroke="#ef6a32" stroke-width="42"/><path d="M-20 205 L250 -20" stroke="#d8ef57" stroke-width="5"/><rect x="35" y="26" width="145" height="54" fill="#d8ef57"/><rect x="235" y="87" width="130" height="68" fill="#2155d9"/><text x="107" y="60" text-anchor="middle" fill="#171717" font-family="Arial,sans-serif" font-size="17" font-weight="700">MARKET</text><text x="300" y="130" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="26" font-weight="700">大阪</text></svg>
+              <span class="handle">@osakastreet</span>
+            </div>
+            <div class="guide-body"><div class="guide-place">Japan · Osaka</div><h3>Osaka, At Street Level</h3><p>Market counters, covered arcades, and a city best understood at street level.</p><div class="foot"><span class="read">Read the guide →</span><span class="mins">8 min</span></div></div>
           </a>
         </div>
       </div>
@@ -1310,6 +1317,7 @@ const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 const DESTINATIONS = [
   { name: "Kyoto",     tagline: "A season of temples and slow mornings", sky: ["#f7c1a6", "#e8826b"], sun: "#fff3d6", hills: ["#b8553f", "#8a3a2c"], lm: "torii",    link: "shizuka.html", featured: true },
   { name: "Tokyo",     tagline: "A city read between signals", sky: ["#e9eef2", "#9ec8d2"], sun: "#e36650", hills: ["#25272a", "#4056d6"], lm: "city", link: "tokyo.html" },
+  { name: "Osaka",     tagline: "A city met at street level", sky: ["#f5f2eb", "#d8ef57"], sun: "#ef6a32", hills: ["#171717", "#2155d9"], lm: "city", link: "osaka.html" },
   { name: "Seoul",     tagline: "Palaces, peaks, and the grand manner", sky: ["#1a2a22", "#0e1411"], sun: "#c9a24b", hills: ["#c9a24b", "#8a6d2f"], lm: "compass",  link: "golden-route.html" },
   { name: "Gangneung", tagline: "Korea, read slowly", sky: ["#6e9183", "#3a5249"], sun: "#f6f2ea", hills: ["#2f433b", "#1f2e28"], lm: "city",     link: "seorak-review.html" },
   { name: "Toronto",   tagline: "A city built in primary colours", sky: ["#f7f4ee", "#dfe4ea"], sun: "#f4c430", hills: ["#141414", "#333333"], lm: "skyline",  link: "hello-toronto.html" },

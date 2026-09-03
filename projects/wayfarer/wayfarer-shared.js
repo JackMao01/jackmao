@@ -55,6 +55,13 @@
       art: { sky: ["#e9eef2", "#9ec8d2"], hill: "#25272a", sun: "#e36650", lm: "city" }
     },
     {
+      id: "osaka", file: "osaka.html", title: "Osaka, At Street Level",
+      place: "Japan · Osaka", mood: "City stories", region: "Asia",
+      author: "osakastreet", readMins: 8, status: "live",
+      blurb: "Market counters, covered arcades, and a city best understood at street level.",
+      art: { sky: ["#f5f2eb", "#d8ef57"], hill: "#171717", sun: "#ef6a32", lm: "city" }
+    },
+    {
       id: "busan", file: "busan.html", title: "Busan, Tide to Table",
       place: "Korea · Busan", mood: "Coastal routes", region: "Asia",
       author: "busanlines", readMins: 8, status: "live",
@@ -138,6 +145,8 @@
                    bio: "Maps Seoul through transit, street-level rituals, and the useful pauses between one neighbourhood and the next." },
     tokyosignals:{ handle: "tokyosignals", name: "Aiko Mori", based: "Tokyo, Japan", since: "2026",
                    bio: "Reads Tokyo through station rhythms, neighbourhood scale, and the moments when a fast city briefly becomes quiet." },
+    osakastreet:  { handle: "osakastreet", name: "Emi Kondo", based: "Osaka, Japan", since: "2026",
+                   bio: "Writes Osaka at eye level: market counters, covered arcades, neighbourhood rooms, and the social rhythm of one more stop." },
     busanlines:  { handle: "busanlines", name: "Jiwon Kim", based: "Busan, Korea", since: "2026",
                    bio: "Writes the city from the water inward: harbours, market mornings, hillside streets, and the long coastal evening." },
     jejufieldnotes:{ handle: "jejufieldnotes", name: "Sora Han", based: "Jeju, Korea", since: "2026",

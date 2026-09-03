@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../project-transitions.css">
+  <link rel="stylesheet" href="../project-transitions.css?v=20260903-1">
   <style>
     :root {
       --foam:#f5f2e9; --paper:#fffdf8; --ink:#142020; --muted:#687270;
@@ -89,7 +89,7 @@
             <div class="phrase"><b lang="ko">이거 얼마예요?</b><span>How much is this?</span></div>
             <div class="phrase"><b lang="ko">사진 찍어도 돼요?</b><span>May I take a photo?</span></div>
           </div>
-          <a class="hana" href="../first-words/korean.html?place=busan">Open the Busan place pack →</a>
+          <a class="hana" data-language-route-transition href="../first-words/korean.html?place=busan">Open the Busan place pack →</a>
         </div>
       </div>
     </section>
@@ -119,9 +119,9 @@
     if(reduced||!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
     else{const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:"0px 0px -40px"});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));}
   </script>
-  <script src="wayfarer-shared.js?v=20260902-4"></script>
+<script src="wayfarer-shared.js?v=20260903-1"></script>
   <script>if(window.Wayfarer)Wayfarer.mountChrome("busan");</script>
-  <script defer src="../project-transitions.js"></script>
+  <script defer src="../project-transitions.js?v=20260903-1"></script>
   <script defer src="../../analytics.js"></script>
 </body>
 </html>
