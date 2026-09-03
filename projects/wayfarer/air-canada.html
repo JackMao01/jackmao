@@ -58,6 +58,14 @@
   .top-nav a.cta { background: var(--red); color: #fff; border-left: none; }
   .top-nav a.cta:hover { background: var(--ink); }
   @media (max-width: 860px) { .top-nav a:not(.cta) { display: none; } }
+  @media (max-width: 420px) {
+    .top-row.wrap { padding-inline: 14px; gap: 8px; }
+    .portfolio-back { width: 40px; height: 40px; padding: 0 !important; margin-right: 0 !important; justify-content: center; color: rgba(17,17,17,.72) !important; border-color: rgba(17,17,17,.25) !important; }
+    .portfolio-back-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .brand { gap: 8px; }
+    .brand .name { font-size: 14px; }
+    .top-nav a.cta { padding-inline: 14px; }
+  }
 
   .hero { position: relative; overflow: hidden; }
   .hero::before { content: ""; position: absolute; top: -20%; right: -8%; width: 60%; height: 120%;
@@ -222,9 +230,9 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="top">
     <div class="wrap top-row">
-      <a href="/" aria-label="Back to portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.35);border-radius:9999px;padding:5px 11px;margin-right:14px;white-space:nowrap;">
+      <a class="portfolio-back" href="/" aria-label="Back to portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(17,17,17,0.72);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(17,17,17,0.25);border-radius:9999px;padding:5px 11px;margin-right:14px;white-space:nowrap;">
 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-Portfolio</a>
+<span class="portfolio-back-label">Portfolio</span></a>
 <div class="brand">
         <svg width="30" height="30" viewBox="0 0 40 40" aria-label="maple mark">
           <rect width="40" height="40" fill="#D82F2E"></rect>

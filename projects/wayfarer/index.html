@@ -88,6 +88,15 @@
   .icon-btn { background: none; border: none; padding: 8px; cursor: pointer; color: var(--ink);
     display: inline-flex; align-items: center; justify-content: center; }
   @media (max-width: 900px) { .nav-center { display: none; } }
+  @media (max-width: 360px) {
+    nav { padding: 12px; gap: 8px; }
+    .portfolio-back { width: 40px; height: 40px; padding: 0 !important; margin-right: 0 !important; justify-content: center; }
+    .portfolio-back-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .nav-left { gap: 7px; }
+    .nav-wordmark { font-size: 18px; }
+    .nav-right { gap: 0; }
+    .icon-btn { width: 40px; height: 40px; padding: 0; }
+  }
 
   /* ───────── Scroll indicator (z40) ───────── */
   .scroll-ind { position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
@@ -723,9 +732,9 @@
   <!-- Navbar -->
   <nav>
     <div class="nav-left">
-      <a href="/" aria-label="Back to portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(17,17,17,0.55);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(17,17,17,0.15);border-radius:9999px;padding:5px 11px;margin-right:12px;white-space:nowrap;">
+      <a class="portfolio-back" href="/" aria-label="Back to portfolio" style="display:inline-flex;align-items:center;gap:6px;color:rgba(17,17,17,0.55);text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(17,17,17,0.15);border-radius:9999px;padding:5px 11px;margin-right:12px;white-space:nowrap;">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Portfolio</a>
+        <span class="portfolio-back-label">Portfolio</span></a>
       <svg width="28" height="28" viewBox="0 0 32 32" aria-label="Wayfarer compass mark">
         <circle cx="16" cy="16" r="15" fill="none" stroke="#4ECDC4" stroke-width="1.5" opacity="0.45"></circle>
         <path d="M16 2 L19 16 L16 30 L13 16 Z" fill="#4ECDC4"></path>
