@@ -2,6 +2,10 @@
   navigation: auto;
 }
 
+[data-language-route-transition] {
+  view-transition-name: language-route;
+}
+
 /* Low-priority shared control: project pages can override it with local styles. */
 :where(#back-to-top, .back-top),
 .portfolio-back-top-fallback {
@@ -148,6 +152,20 @@ html.igc-arriving-from-editorial {
   ::view-transition-group(igc-lead-image) {
     animation-duration: 620ms;
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::view-transition-group(language-route) {
+    z-index: 35;
+    animation-duration: 460ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::view-transition-old(language-route),
+  ::view-transition-new(language-route) {
+    height: 100%;
+    animation-duration: 460ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: normal;
   }
 
   ::view-transition-group(igc-edition-switch) {
@@ -315,7 +333,9 @@ html.igc-arriving-from-editorial {
   ::view-transition-old(igc-edition-switch),
   ::view-transition-new(igc-edition-switch),
   ::view-transition-old(igc-lead-image),
-  ::view-transition-new(igc-lead-image) {
+  ::view-transition-new(igc-lead-image),
+  ::view-transition-old(language-route),
+  ::view-transition-new(language-route) {
     animation: none;
   }
 }
