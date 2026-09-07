@@ -114,6 +114,11 @@
       html { scroll-behavior: auto; }
       *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
+    .track { min-width: 0; gap: 1.4rem; }
+    .track-top, .track-foot { flex-wrap: wrap; }
+    .track-main { min-width: 0; }
+    .track::after { font-size: 8rem; right: .5rem; bottom: .5rem; }
+    @media(max-width:760px) { .track::after { display: none; } .track h3 { overflow-wrap: anywhere; } }
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"CreativeWork","name":"First Words — Language in Place","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A quiet language-practice hub pairing Korean, Japanese, and Chinese foundations with destination routes.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/"}

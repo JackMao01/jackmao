@@ -63,6 +63,11 @@
     @media(max-width:760px){.intro{grid-template-columns:1fr;gap:2rem}.tracks{grid-template-columns:1fr}.track{min-height:350px}.section-head{display:block}.section-head p{margin-top:.5rem}}
     @media(max-width:440px){.edition{display:none}main{padding-top:2.4rem}h1{font-size:3.5rem}.track{min-height:330px;border-radius:6px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    .track { min-width: 0; gap: 1.4rem; }
+    .track-top, .track-foot { flex-wrap: wrap; }
+    .track-main { min-width: 0; }
+    .track::after { font-size: 8rem; right: .5rem; bottom: .5rem; }
+    @media(max-width:760px) { .track::after { display: none; } .track h3 { overflow-wrap: anywhere; } }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"First Words — Chinese Foundations","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"Traditional Mandarin through Taipei and Cantonese through Hong Kong, presented as distinct foundations under one Chinese language family.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/chinese.html"}</script>
 </head>
@@ -82,7 +87,7 @@
       </div>
     </section>
     <div class="note"><span class="note-mark" aria-hidden="true">分</span><div><b>Shared family does not mean interchangeable speech.</b><p>The interface keeps Traditional Mandarin and Cantonese separate, while making their visual and cultural relationship easy to understand.</p></div></div>
-    <p class="note"><a href="practice.html">Destination practice: Taipei and Hong Kong →</a></p>
+    <p class="note"><a href="practice.html">Practise in Taipei and Hong Kong</a></p>
   </main>
   <script>
     (()=>{const progress=(key,total)=>{try{const state=JSON.parse(localStorage.getItem(key));const count=Array.isArray(state?.done)?state.done.filter(Boolean).length:0;return count?`${count}/${total} complete`:`${total} lessons`}catch(error){return `${total} lessons`}};document.querySelector("#mandarinProgress").textContent=progress("hana.mandarin-tw.v1",15);document.querySelector("#cantoneseProgress").textContent=progress("hana.cantonese.v1",15);if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));})();

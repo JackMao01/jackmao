@@ -27,7 +27,7 @@ const routes={
  hongkong:{name:'Hong Kong',language:'Cantonese',lang:'yue-Hant',file:'cantonese',guide:'hong-kong',phrases:[['唔該，地鐵站喺邊度','m4 goi1, dei6 tit3 zaam6 hai2 bin1 dou6','Excuse me, where is the MTR station?'],['我要呢個','ngo5 jiu3 ni1 go3','I would like this one'],['唔該晒','m4 goi1 saai3','Thank you very much']]}
 };
 const scenes=[['Find your way','You want to ask someone where the station is. Which phrase asks for directions?'],['At the counter','You point to the item you want on the menu. What could you say?'],['Before you go','Someone has helped you find your way. How would you thank them?']];
-let city=new URLSearchParams(location.search).get('place');if(!routes[city])city='taipei';let step=0,answered=false;
+let city=new URLSearchParams(location.search).get('place');if(!Object.hasOwn(routes,city))city='taipei';let step=0,answered=false;
 const get=id=>document.getElementById(id);
 function render(focus=false){const r=routes[city];answered=false;get('feedback').textContent='';get('next').hidden=true;
  document.querySelectorAll('[data-city]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.city===city)));
