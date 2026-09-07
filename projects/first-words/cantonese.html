@@ -380,15 +380,17 @@
     let languageVoice = null;
     function loadVoice() {
       if (!("speechSynthesis" in window)) return;
-      languageVoice = speechSynthesis.getVoices().find(voice => /^zh-HK/i.test(voice.lang)) || speechSynthesis.getVoices().find(voice => /Cantonese/i.test(voice.name)) || null;
+      languageVoice = speechSynthesis.getVoices().find(voice => /^(zh-HK|yue(-.*)?)$/i.test(voice.lang)) || speechSynthesis.getVoices().find(voice => /Cantonese/i.test(voice.name)) || null;
     }
     function speak(text) {
       if (!("speechSynthesis" in window)) { toast("Speech is not available in this browser."); return; }
       loadVoice();
+      if (!languageVoice) { toast("No Cantonese voice is available on this device. You can still use the written pronunciation."); return; }
       try {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "zh-HK";
         utterance.rate = 0.82;
+        utterance.onerror = () => toast("Could not play this phrase. Check your device's speech settings.");
         if (languageVoice) utterance.voice = languageVoice;
         if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
         speechSynthesis.speak(utterance);

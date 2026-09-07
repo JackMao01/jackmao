@@ -1,4 +1,4 @@
-const CACHE_NAME = "first-words-v7";
+const CACHE_NAME = "first-words-v8";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -48,7 +48,13 @@ self.addEventListener("fetch", (event) => {
           if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+        .catch(async () => {
+          const cache = await caches.open(CACHE_NAME);
+          // Destination queries select client-side content in the same cached page.
+          return (await cache.match(event.request)) ||
+            (await cache.match(event.request, { ignoreSearch: true })) ||
+            cache.match("./index.html");
+        })
     );
     return;
   }
