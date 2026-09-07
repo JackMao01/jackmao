@@ -761,7 +761,7 @@
       </a>
     </div>
   </nav>
-<script src="wayfarer-shared.js?v=20260907-covers"></script>
+<script src="wayfarer-shared.js?v=20260907-portrait"></script>
   <script>
     (function(){
       function upd(){
@@ -932,7 +932,6 @@
         <!-- CARD 1 — Kyoto / rotating field-note -->
         <a class="fcard" href="shizuka.html" data-delay="0.2">
           <div class="fcard-bg">
-            <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fc1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8826b"/><stop offset="55%" stop-color="#8a3a2c"/><stop offset="100%" stop-color="#2a140f"/></linearGradient></defs><rect width="400" height="560" fill="url(#fc1)"/><circle cx="300" cy="120" r="60" fill="#fff3d6" opacity="0.55"/><rect x="120" y="300" width="16" height="260" fill="#1f0d09"/><rect x="264" y="300" width="16" height="260" fill="#1f0d09"/><rect x="100" y="300" width="200" height="14" fill="#1f0d09"/><rect x="108" y="328" width="184" height="10" fill="#1f0d09"/></svg>
           </div>
           <div class="fcard-overlay" style="background:rgba(0,0,0,0.30);"></div>
           <div class="open-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
@@ -972,7 +971,6 @@
         <!-- CARD 2 — Korea / best-time-to-visit curve -->
         <a class="fcard" href="seorak-review.html" data-delay="0.35">
           <div class="fcard-bg">
-            <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fc2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8fae6e"/><stop offset="60%" stop-color="#4a6b3e"/><stop offset="100%" stop-color="#1f2e18"/></linearGradient></defs><rect width="400" height="560" fill="url(#fc2)"/><path d="M0 380 L120 300 L220 360 L320 290 L400 340 L400 560 L0 560 Z" fill="#3a5230" opacity="0.7"/><path d="M0 440 L140 390 L260 430 L400 380 L400 560 L0 560 Z" fill="#2a3d22"/></svg>
           </div>
           <div class="fcard-overlay" style="background:rgba(0,0,0,0.20);"></div>
           <div class="open-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
@@ -1013,7 +1011,6 @@
         <!-- CARD 3 — Toronto / itinerary tree -->
         <a class="fcard" href="hello-toronto.html" data-delay="0.5">
           <div class="fcard-bg">
-            <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fc3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a4a63"/><stop offset="100%" stop-color="#11161f"/></linearGradient></defs><rect width="400" height="560" fill="url(#fc3)"/><rect x="60" y="280" width="50" height="280" fill="#0d1119"/><rect x="130" y="220" width="36" height="340" fill="#0d1119"/><rect x="186" y="160" width="14" height="400" fill="#0d1119"/><ellipse cx="193" cy="230" rx="22" ry="11" fill="#f4c430" opacity="0.7"/><rect x="240" y="300" width="54" height="260" fill="#0d1119"/><circle cx="330" cy="150" r="22" fill="#e63027" opacity="0.6"/></svg>
           </div>
           <div class="fcard-overlay" style="background:rgba(0,0,0,0.34);"></div>
           <div class="open-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
@@ -1321,6 +1318,14 @@
 "use strict";
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+document.querySelectorAll(".fcard[href]").forEach(card => {
+  const guide = Wayfarer.guides.find(g => g.file === card.getAttribute("href"));
+  if (!guide) return;
+  const art = card.querySelector(".fcard-bg");
+  art.style.backgroundColor = guide.art.hill;
+  art.innerHTML = Wayfarer.cardArt(guide, 400, 560, "portrait");
+});
+
 document.querySelectorAll(".guide-art[data-guide-id]").forEach(function(art){
   if (!window.Wayfarer) return;
   const guide = Wayfarer.guideById(art.dataset.guideId);
@@ -1330,46 +1335,7 @@ document.querySelectorAll(".guide-art[data-guide-id]").forEach(function(art){
 /* ============================================================= *
  *  DESTINATION ART — original inline SVG (swap for photography)  *
  * ============================================================= */
-const DESTINATIONS = [
-  { name: "Kyoto",     tagline: "A season of temples and slow mornings", sky: ["#f7c1a6", "#e8826b"], sun: "#fff3d6", hills: ["#b8553f", "#8a3a2c"], lm: "torii",    link: "shizuka.html", featured: true },
-  { name: "Tokyo",     tagline: "A city read between signals", sky: ["#e9eef2", "#9ec8d2"], sun: "#e36650", hills: ["#25272a", "#4056d6"], lm: "city", link: "tokyo.html" },
-  { name: "Osaka",     tagline: "A city met at street level", sky: ["#f5f2eb", "#d8ef57"], sun: "#ef6a32", hills: ["#171717", "#2155d9"], lm: "city", link: "osaka.html" },
-  { name: "Seoul",     tagline: "Palaces, peaks, and the grand manner", sky: ["#1a2a22", "#0e1411"], sun: "#c9a24b", hills: ["#c9a24b", "#8a6d2f"], lm: "compass",  link: "golden-route.html" },
-  { name: "Gangneung", tagline: "Korea, read slowly", sky: ["#6e9183", "#3a5249"], sun: "#f6f2ea", hills: ["#2f433b", "#1f2e28"], lm: "city",     link: "seorak-review.html" },
-  { name: "Toronto",   tagline: "A city built in primary colours", sky: ["#f7f4ee", "#dfe4ea"], sun: "#f4c430", hills: ["#141414", "#333333"], lm: "skyline",  link: "hello-toronto.html" },
-  { name: "Patagonia", sky: ["#cfe6ef", "#8bb6c9"], sun: "#ffffff", hills: ["#5b7d8c", "#3c5763"], lm: "peaks",    link: null },
-  { name: "Lisbon",    sky: ["#add2f2", "#5a93c9"], sun: "#fef0c9", hills: ["#3a6ea5", "#274d77"], lm: "tram",     link: null },
-  { name: "Reykjavik", sky: ["#1f3b4d", "#0d1f2b"], sun: "#7fae9a", hills: ["#16313f", "#0a1b25"], lm: "aurora",   link: null },
-];
-
-function landmark(kind, a) {
-  switch (kind) {
-    case "torii": return '<g fill="'+a+'"><rect x="190" y="300" width="28" height="220"/><rect x="382" y="300" width="28" height="220"/><path d="M150 300 Q300 280 450 300 L460 322 Q300 298 140 322 Z"/><rect x="170" y="350" width="260" height="20"/></g>';
-    case "tram": return '<g fill="'+a+'"><rect x="200" y="360" width="200" height="120" rx="10"/><rect x="220" y="380" width="50" height="50" fill="#ffffff" opacity="0.85"/><rect x="285" y="380" width="50" height="50" fill="#ffffff" opacity="0.85"/><circle cx="240" cy="495" r="18"/><circle cx="360" cy="495" r="18"/><rect x="295" y="300" width="8" height="60"/></g>';
-    case "dome": return '<g fill="'+a+'"><rect x="210" y="380" width="180" height="140"/><path d="M210 380 Q300 300 390 380 Z"/><rect x="285" y="430" width="30" height="90" fill="#ffffff" opacity="0.85"/><circle cx="300" cy="300" r="10"/></g>';
-    case "aurora": return '<g fill="none" stroke="'+a+'" stroke-width="14" stroke-linecap="round" opacity="0.9"><path d="M120 240 Q220 140 320 220 Q420 300 480 200"/><path d="M140 300 Q240 200 340 280 Q440 360 500 260" opacity="0.6"/></g>';
-    case "arch": return '<g fill="'+a+'"><path d="M220 520 L220 360 Q300 300 380 360 L380 520 Z"/><path d="M260 520 L260 400 Q300 372 340 400 L340 520 Z" fill="#ffffff" opacity="0.85"/></g>';
-    case "peaks": return '<g fill="'+a+'"><path d="M120 520 L240 300 L320 420 L400 280 L500 520 Z"/><path d="M210 350 L240 300 L272 350 Z" fill="#ffffff"/><path d="M372 322 L400 280 L430 322 Z" fill="#ffffff"/></g>';
-    case "cyclades": return '<g fill="#ffffff"><rect x="220" y="400" width="60" height="100"/><rect x="320" y="380" width="60" height="120"/><path d="M220 400 Q250 360 280 400 Z" fill="'+a+'"/><path d="M320 380 Q350 340 380 380 Z" fill="'+a+'"/></g>';
-    case "compass": return '<g><circle cx="300" cy="260" r="120" fill="none" stroke="'+a+'" stroke-width="4" opacity="0.6"/><path d="M300 150 L322 260 L300 370 L278 260 Z" fill="'+a+'"/><path d="M190 260 L300 238 L410 260 L300 282 Z" fill="'+a+'" opacity="0.6"/><circle cx="300" cy="260" r="10" fill="#ffffff"/></g>';
-    case "city": return '<g fill="'+a+'"><rect x="120" y="320" width="80" height="200"/><rect x="220" y="250" width="90" height="270"/><rect x="330" y="350" width="70" height="170"/><rect x="420" y="290" width="80" height="230"/></g><g fill="#ffffff" opacity="0.5"><rect x="240" y="280" width="18" height="18"/><rect x="272" y="280" width="18" height="18"/><rect x="240" y="320" width="18" height="18"/><rect x="272" y="320" width="18" height="18"/></g>';
-    case "skyline": return '<g fill="'+a+'"><rect x="120" y="300" width="70" height="220"/><rect x="210" y="220" width="50" height="300"/><rect x="285" y="120" width="20" height="400"/><rect x="330" y="340" width="70" height="180"/><rect x="420" y="280" width="80" height="240"/></g><ellipse cx="295" cy="200" rx="34" ry="16" fill="#f4c430"/>';
-    default: return "";
-  }
-}
-
-function cardSVG(d, idx) {
-  const a = d.hills[1];
-  return '<svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
-    + '<defs><linearGradient id="sky'+idx+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+d.sky[0]+'"/><stop offset="100%" stop-color="'+d.sky[1]+'"/></linearGradient></defs>'
-    + '<rect width="600" height="600" fill="url(#sky'+idx+')"/>'
-    + '<circle cx="430" cy="150" r="70" fill="'+d.sun+'" opacity="0.9"/>'
-    + landmark(d.lm, a)
-    + '<path d="M0 470 Q150 430 300 470 T600 470 L600 600 L0 600 Z" fill="'+d.hills[0]+'"/>'
-    + '<path d="M0 520 Q150 490 300 520 T600 520 L600 600 L0 600 Z" fill="'+d.hills[1]+'"/>'
-    + '<text x="36" y="556" font-family="Inter Tight, sans-serif" font-size="40" font-weight="800" fill="#ffffff" opacity="0.95">'+d.name+'</text>'
-    + '</svg>';
-}
+// Destination artwork is supplied by the shared guide catalog.
 
 const BANNERS = [
   { h: "The world, one journey at a time",   bg: ["#1b2a3a", "#0e1722"], accent: "#4ECDC4" },
@@ -1442,9 +1408,6 @@ buildWords(document.getElementById("s3h2"),
   [{ words: ["Gateway", "to", "wander", "further."] }], 0.07, 0);
 
 /* ============================================================= *
- *  CARD OVERLAY — build the 7 cards once, never re-create        *
- * ============================================================= */
-/* ============================================================= *
  *  HERO STORY CARD  (Synergeus-style: mouse-tilt + auto-cycle)   *
  *  Replaces the old scroll-linked fan deck entirely. Wholly      *
  *  self-contained: a single card that tilts toward the cursor    *
@@ -1452,9 +1415,10 @@ buildWords(document.getElementById("s3h2"),
  *  No scroll math, no fixed overlay, nothing to drift.           *
  * ============================================================= */
 const storyCard = document.getElementById("storyCard");
-let storyIdx = 0, storyTimer = null;
+let storyIdx = 0, storyTimer = null, storySwapTimer = null;
 // Use a handful of the linked destinations as slides.
-const STORY_SLIDES = DESTINATIONS.filter(d => d.link).slice(0, 4);
+const STORY_SLIDES = ["shizuka", "tokyo", "osaka", "golden-route"].map(id => Wayfarer.guideById(id)).filter(Boolean);
+storyCard.querySelector(".sc-bars").innerHTML = STORY_SLIDES.map(() => '<div class="sc-bar"><div class="sc-bar-fill"></div></div>').join("");
 
 function renderStory(idx) {
   if (!storyCard || !STORY_SLIDES.length) return;
@@ -1467,11 +1431,13 @@ function renderStory(idx) {
   if (!REDUCED_MOTION) {
     art.style.opacity = "0"; title.style.opacity = "0"; place.style.opacity = "0";
   }
-  setTimeout(() => {
-    art.innerHTML = cardSVG(d, 0);
-    title.textContent = d.name;
-    place.textContent = d.tagline || "A guide worth getting lost in";
-    if (link && d.link) link.href = d.link;
+  clearTimeout(storySwapTimer);
+  storySwapTimer = setTimeout(() => {
+    art.style.backgroundColor = d.art.hill;
+    art.innerHTML = Wayfarer.cardArt(d, 400, 560, "portrait");
+    title.textContent = d.title;
+    place.textContent = d.place;
+    if (link && d.file) link.href = d.file;
     art.style.opacity = "1"; title.style.opacity = "1"; place.style.opacity = "1";
   }, REDUCED_MOTION ? 0 : 260);
   // progress bars: restart the fill animation by reflow toggle
@@ -1479,11 +1445,20 @@ function renderStory(idx) {
   bars.forEach((b, bi) => {
     b.style.animation = "none"; void b.offsetWidth;
     b.style.animation = "";
-    b.classList.toggle("active", bi === (idx % STORY_SLIDES.length) % 2);
+    b.classList.toggle("active", bi === ((idx % STORY_SLIDES.length) + STORY_SLIDES.length) % STORY_SLIDES.length);
   });
 }
 function storyNext() { storyIdx++; renderStory(storyIdx); }
-function startStoryTimer() { if (storyTimer) clearInterval(storyTimer); if (!REDUCED_MOTION) storyTimer = setInterval(storyNext, 3600); }
+function pauseStoryTimer() {
+  clearInterval(storyTimer); storyTimer = null;
+  storyCard.querySelectorAll(".sc-bar-fill").forEach(bar => bar.style.animationPlayState = "paused");
+}
+function startStoryTimer() {
+  pauseStoryTimer();
+  if (REDUCED_MOTION || document.hidden || storyCard.matches(":hover") || storyCard.contains(document.activeElement)) return;
+  storyCard.querySelectorAll(".sc-bar-fill").forEach(bar => bar.style.animationPlayState = "running");
+  storyTimer = setInterval(storyNext, 3600);
+}
 
 // Mouse tilt: normalize cursor to [-1,1] around viewport center, ease toward it.
 let tiltTX = 0, tiltTY = 0, tiltX = 0, tiltY = 0, tiltRAF = null;
@@ -1510,8 +1485,13 @@ function initStoryCard() {
   startStoryTimer();
   if (!REDUCED_MOTION) window.addEventListener("mousemove", onTiltMove, { passive: true });
   // pause cycling on hover so a reader can dwell
-  storyCard.addEventListener("mouseenter", () => { if (storyTimer) clearInterval(storyTimer); });
+  storyCard.addEventListener("mouseenter", pauseStoryTimer);
   storyCard.addEventListener("mouseleave", startStoryTimer);
+  storyCard.addEventListener("focusin", pauseStoryTimer);
+  storyCard.addEventListener("focusout", () => setTimeout(startStoryTimer, 0));
+  document.addEventListener("visibilitychange", startStoryTimer);
+  window.addEventListener("pagehide", pauseStoryTimer);
+  window.addEventListener("pageshow", startStoryTimer);
 }
 
 /* ============================================================= *

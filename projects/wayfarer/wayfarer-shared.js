@@ -227,9 +227,15 @@
       default:        return '';
     }
   }
-  function cardArt(g, w, h) {
+  function cardArt(g, w, h, layout) {
     w = w || 400; h = h || 220;
     if (COVER_ART[g.id]) {
+      if (layout === "portrait") {
+        return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-cover-id="' + g.id + '">'
+          + '<rect width="400" height="560" fill="' + g.art.hill + '"/>'
+          + '<rect width="400" height="45" fill="' + g.art.sky[0] + '"/>'
+          + '<g transform="translate(0 44)">' + COVER_ART[g.id] + '</g></svg>';
+      }
       return '<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
         + COVER_ART[g.id]
         + '</svg>';
