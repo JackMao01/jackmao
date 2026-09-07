@@ -372,6 +372,7 @@ body::before { content:""; position: fixed; inset: 0; z-index: -2; pointer-event
       color: #fff; background: var(--accent); font: 700 1.35rem var(--font-ko-display);
     }
     .language-glyph.jp { background: #c94f3d; font-family: "Gowun Batang", serif; }
+    .language-glyph.zh { background: #31578f; font-family: "Gowun Batang", serif; }
     .language-track b { display: block; font-size: 0.9rem; }
     .language-track small { display: block; margin-top: 0.2rem; color: var(--muted); font-size: 0.68rem; line-height: 1.45; }
     .language-state { color: var(--accent); font-size: 0.66rem; font-weight: 800; white-space: nowrap; }
@@ -1479,6 +1480,11 @@ function openLanguageSwitcher() {
         <span class="language-glyph jp" aria-hidden="true">あ</span>
         <span><b>Japanese</b><small>15 lessons · Kyoto and Tokyo routes</small></span>
         <span class="language-state">Open →</span>
+      </a>
+      <a class="language-track" href="chinese.html">
+        <span class="language-glyph zh" aria-hidden="true">華</span>
+        <span><b>Chinese</b><small>Traditional Mandarin · Cantonese · 2 city routes</small></span>
+        <span class="language-state">Choose →</span>
       </a>
     </div>
     <a class="language-home" href="index.html">← First Words language home</a>`);

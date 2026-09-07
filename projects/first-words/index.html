@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f1eb">
-  <meta name="description" content="First Words is a quiet language-practice hub pairing compact Korean and Japanese foundations with destination routes from Wayfarer.">
+  <meta name="description" content="First Words is a quiet language-practice hub pairing Korean, Japanese, and Chinese foundations with destination routes from Wayfarer.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.hellojackmao.com/projects/first-words/">
   <meta property="og:title" content="First Words — Language in Place">
-  <meta property="og:description" content="Learn enough language to arrive with care. Korean and Japanese foundations meet destination-based practice.">
+  <meta property="og:description" content="Learn enough language to arrive with care. Korean, Japanese, and Chinese foundations meet destination-based practice.">
   <meta property="og:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -40,6 +40,7 @@
       --accent: #4056d6;
       --japanese: #e36650;
       --green: #159873;
+      --chinese: #31578f;
       --lavender: #a998d6;
       --shadow: 0 24px 70px rgba(49, 42, 34, 0.11);
       --sans: "Manrope", system-ui, sans-serif;
@@ -80,6 +81,7 @@
     .track::after { content: attr(data-glyph); position: absolute; right: -1rem; bottom: -3rem; color: color-mix(in srgb,var(--track) 10%, transparent); font: 600 15rem/1 var(--serif); pointer-events: none; }
     .track-korean { --track: var(--green); }
     .track-japanese { --track: var(--japanese); }
+    .track-chinese { --track: var(--chinese); grid-column: 1 / -1; min-height: 340px; }
     .track-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
     .track-num { color: var(--track); font-size: .64rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .track-progress { padding: .35rem .55rem; border-radius: 999px; color: var(--muted); background: #efede8; font-size: .62rem; font-weight: 800; white-space: nowrap; }
@@ -97,6 +99,7 @@
       .intro { grid-template-columns: 1fr; gap: 2rem; }
       .principle { max-width: 28rem; }
       .tracks { grid-template-columns: 1fr; }
+      .track-chinese { grid-column: auto; }
       .track { min-height: 330px; }
       .section-head { display: block; }
       .section-head p { margin-top: .5rem; }
@@ -113,7 +116,7 @@
     }
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CreativeWork","name":"First Words — Language in Place","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A quiet language-practice hub pairing Korean and Japanese foundations with destination routes.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/"}
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"First Words — Language in Place","creator":{"@type":"Person","name":"Jack Mao","url":"https://www.hellojackmao.com"},"description":"A quiet language-practice hub pairing Korean, Japanese, and Chinese foundations with destination routes.","dateCreated":"2026","url":"https://www.hellojackmao.com/projects/first-words/"}
   </script>
 </head>
 <body>
@@ -135,7 +138,7 @@
 
     <section aria-labelledby="tracks-title">
       <div class="section-head">
-        <div><div class="kicker">Choose a track</div><h2 id="tracks-title">Two places to begin.</h2></div>
+        <div><div class="kicker">Choose a track</div><h2 id="tracks-title">Three ways to begin.</h2></div>
         <p>Each foundation keeps its own progress and opens into destination-specific routes from Wayfarer.</p>
       </div>
       <div class="tracks">
@@ -148,6 +151,11 @@
           <div class="track-top"><span class="track-num">Track 02</span><span class="track-progress" id="japaneseProgress">15 lessons</span></div>
           <div class="track-main"><span>日本語 · nihongo</span><h3>Japanese</h3><p>Fifteen foundations for reading, courtesy, movement, and everyday exchanges, applied in Kyoto, Tokyo, and Osaka.</p></div>
           <div class="track-foot"><span>Kyoto · Tokyo · Osaka</span><span>Open →</span></div>
+        </a>
+        <a class="track track-chinese" href="chinese.html" data-glyph="華">
+          <div class="track-top"><span class="track-num">Track 03</span><span class="track-progress" id="chineseProgress">30 lessons</span></div>
+          <div class="track-main"><span>中文 · zhōngwén</span><h3>Chinese</h3><p>Two related but distinct foundations: Traditional Mandarin through Taipei, followed by Cantonese through Hong Kong.</p></div>
+          <div class="track-foot"><span>Taipei · Hong Kong</span><span>Choose a language →</span></div>
         </a>
       </div>
     </section>
@@ -174,6 +182,13 @@
       };
       document.querySelector("#koreanProgress").textContent = progress("hana.v2", 15);
       document.querySelector("#japaneseProgress").textContent = progress("hana.japanese.v1", 15);
+      const chineseDone = ["hana.mandarin-tw.v1", "hana.cantonese.v1"].reduce((total, key) => {
+        try {
+          const state = JSON.parse(localStorage.getItem(key));
+          return total + (Array.isArray(state?.done) ? state.done.filter(Boolean).length : 0);
+        } catch (error) { return total; }
+      }, 0);
+      document.querySelector("#chineseProgress").textContent = chineseDone ? `${chineseDone}/30 complete` : "30 lessons";
       if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
     })();
   </script>

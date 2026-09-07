@@ -1,7 +1,7 @@
 {
   "name": "First Words — Language in Place",
   "short_name": "First Words",
-  "description": "A quiet language-practice hub pairing Korean and Japanese foundations with destination routes.",
+  "description": "A quiet language-practice hub pairing Korean, Japanese, and Chinese foundations with destination routes.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -19,6 +19,8 @@
   ],
   "shortcuts": [
     { "name": "Korean foundation", "short_name": "Korean", "url": "./korean.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Japanese foundation", "short_name": "Japanese", "url": "./japanese.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] }
+    { "name": "Japanese foundation", "short_name": "Japanese", "url": "./japanese.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Traditional Mandarin foundation", "short_name": "Mandarin", "url": "./traditional-mandarin.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Cantonese foundation", "short_name": "Cantonese", "url": "./cantonese.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

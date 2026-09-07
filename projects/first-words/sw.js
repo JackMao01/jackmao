@@ -1,9 +1,13 @@
-const CACHE_NAME = "first-words-v4";
+const CACHE_NAME = "first-words-v7";
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./korean.html",
   "./japanese.html",
+  "./chinese.html",
+  "./practice.html",
+  "./traditional-mandarin.html",
+  "./cantonese.html",
   "./manifest.webmanifest",
   "./icons/favicon-32.png",
   "./icons/favicon.svg",
@@ -27,7 +31,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      Promise.all(keys.filter((key) => /^(first-words-|hana-)/.test(key) && key !== CACHE_NAME).map((key) => caches.delete(key)))
     )
   );
   self.clients.claim();
@@ -41,7 +45,7 @@ self.addEventListener("fetch", (event) => {
       fetch(event.request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
         .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
@@ -55,10 +59,10 @@ self.addEventListener("fetch", (event) => {
       return fetch(event.request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          if (response.ok || response.type === "opaque") caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match("./index.html"));
+        .catch(() => Response.error());
     })
   );
 });
