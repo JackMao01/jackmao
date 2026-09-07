@@ -70,7 +70,7 @@
   .card:hover { transform:translateY(-5px); box-shadow:0 22px 46px rgba(0,0,0,0.12); }
   .card.soon { opacity:0.9; }
   .card-art { height:170px; position:relative; overflow:hidden; }
-  .card-art svg { position:absolute; inset:0; width:100%; height:100%; }
+  .card-art > svg { position:absolute; inset:0; width:100%; height:100%; }
   .card-badge { position:absolute; top:14px; right:14px; z-index:2; background:#111; color:#fff; font-size:10px;
     font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 10px; border-radius:9999px; }
   .card-body { padding:18px; }
@@ -137,7 +137,7 @@
 
   <footer>© 2026 Wayfarer · A place to get lost reading about places.</footer>
 
-<script src="wayfarer-shared.js?v=20260903-1"></script>
+<script src="wayfarer-shared.js?v=20260903-3"></script>
 <script>
   const W = window.Wayfarer;
   const params = new URLSearchParams(location.search);

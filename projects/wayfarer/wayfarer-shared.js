@@ -62,6 +62,20 @@
       art: { sky: ["#f5f2eb", "#d8ef57"], hill: "#171717", sun: "#ef6a32", lm: "city" }
     },
     {
+      id: "taipei", file: "taipei.html", title: "Taipei, Between Rain",
+      place: "Taiwan · Taipei", mood: "City stories", region: "Asia",
+      author: "taipeirain", readMins: 8, status: "live",
+      blurb: "Morning markets, neighbourhood streets, and the last light from the hills after rain.",
+      art: { sky: ["#edf3f5", "#9fc9d7"], hill: "#264b5e", sun: "#cf596d", lm: "city" }
+    },
+    {
+      id: "hong-kong", file: "hong-kong.html", title: "Hong Kong, In Layers",
+      place: "Hong Kong · Harbour city", mood: "City stories", region: "Asia",
+      author: "harbourlayers", readMins: 8, status: "live",
+      blurb: "Tram lines, steep streets, neighbourhood counters, and harbour light between two shores.",
+      art: { sky: ["#e9e4eb", "#b7a6bd"], hill: "#343137", sun: "#d65b72", lm: "city" }
+    },
+    {
       id: "busan", file: "busan.html", title: "Busan, Tide to Table",
       place: "Korea · Busan", mood: "Coastal routes", region: "Asia",
       author: "busanlines", readMins: 8, status: "live",
@@ -147,6 +161,10 @@
                    bio: "Reads Tokyo through station rhythms, neighbourhood scale, and the moments when a fast city briefly becomes quiet." },
     osakastreet:  { handle: "osakastreet", name: "Emi Kondo", based: "Osaka, Japan", since: "2026",
                    bio: "Writes Osaka at eye level: market counters, covered arcades, neighbourhood rooms, and the social rhythm of one more stop." },
+    taipeirain:   { handle: "taipeirain", name: "Lin Yu-ting", based: "Taipei, Taiwan", since: "2026",
+                   bio: "Maps Taipei through changing weather, neighbourhood counters, old streets, and the green hills at the city's edge." },
+    harbourlayers:{ handle: "harbourlayers", name: "Ava Leung", based: "Hong Kong", since: "2026",
+                   bio: "Reads Hong Kong vertically, following tram lines, stair streets, harbour crossings, and the daily language held between them." },
     busanlines:  { handle: "busanlines", name: "Jiwon Kim", based: "Busan, Korea", since: "2026",
                    bio: "Writes the city from the water inward: harbours, market mornings, hillside streets, and the long coastal evening." },
     jejufieldnotes:{ handle: "jejufieldnotes", name: "Sora Han", based: "Jeju, Korea", since: "2026",
@@ -170,6 +188,22 @@
   };
 
   /* ---- SVG art generator (shared by every card across the site) --------- */
+  const COVER_ART = {
+    shizuka: '<defs><linearGradient id="cover-shizuka-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7c1a6"/><stop offset="100%" stop-color="#e8826b"/></linearGradient></defs><rect width="400" height="200" fill="url(#cover-shizuka-gradient)"/><circle cx="300" cy="60" r="46" fill="#fff3d6" opacity="0.9"/><rect x="120" y="95" width="14" height="105" fill="#8a3a2c"/><rect x="250" y="95" width="14" height="105" fill="#8a3a2c"/><rect x="104" y="95" width="176" height="12" fill="#8a3a2c"/><rect x="110" y="118" width="164" height="9" fill="#8a3a2c"/><path d="M0 160 Q100 135 200 160 T400 160 L400 200 L0 200 Z" fill="#b8553f"/>',
+    "golden-route": '<rect width="400" height="200" fill="#0e1411"/><g stroke="#c9a24b" stroke-width="1" opacity="0.6"><line x1="200" y1="100" x2="200" y2="10"/><line x1="200" y1="100" x2="120" y2="30"/><line x1="200" y1="100" x2="280" y2="30"/><line x1="200" y1="100" x2="60" y2="70"/><line x1="200" y1="100" x2="340" y2="70"/></g><circle cx="200" cy="100" r="34" fill="#c9a24b" opacity="0.25"/><circle cx="200" cy="100" r="8" fill="#b03a58"/>',
+    patagonia: '<defs><linearGradient id="cover-patagonia-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cfe6ef"/><stop offset="100%" stop-color="#3c5763"/></linearGradient></defs><rect width="400" height="200" fill="url(#cover-patagonia-gradient)"/><path d="M40 200 L150 70 L210 130 L280 50 L380 200 Z" fill="#5b7d8c"/><path d="M132 92 L150 70 L170 92 Z" fill="#fff"/><path d="M262 74 L280 50 L300 74 Z" fill="#fff"/>',
+    seoul: '<rect width="400" height="200" fill="#dce4e0"/><path d="M-20 165 Q80 35 210 115 T430 62" fill="none" stroke="#25443a" stroke-width="12"/><path d="M-10 95 Q130 205 250 105 T420 145" fill="none" stroke="#e86f51" stroke-width="7"/><circle cx="122" cy="112" r="10" fill="#f5f4ef" stroke="#25443a" stroke-width="5"/><circle cx="276" cy="91" r="10" fill="#f5f4ef" stroke="#e86f51" stroke-width="5"/>',
+    busan: '<rect width="400" height="200" fill="#dce9e5"/><path d="M0 144 Q50 108 100 144 T200 144 T300 144 T400 144" fill="none" stroke="#173f48" stroke-width="10"/><path d="M0 174 Q50 142 100 174 T200 174 T300 174 T400 174" fill="none" stroke="#70a89d" stroke-width="7"/><circle cx="310" cy="52" r="29" fill="#f07952"/>',
+    tokyo: '<rect width="400" height="200" fill="#e9eef2"/><path d="M-25 44 L425 164" stroke="#e36650" stroke-width="10"/><path d="M28 205 L330 -18" stroke="#90c7d2" stroke-width="8"/><path d="M270 -15 L142 215" stroke="#4056d6" stroke-width="6"/><circle cx="181" cy="99" r="10" fill="#e9eef2" stroke="#25272a" stroke-width="5"/><circle cx="287" cy="128" r="10" fill="#e9eef2" stroke="#25272a" stroke-width="5"/>',
+    osaka: '<rect width="400" height="200" fill="#171717"/><path d="M-20 205 L250 -20" stroke="#ef6a32" stroke-width="42"/><path d="M-20 205 L250 -20" stroke="#d8ef57" stroke-width="5"/><rect x="35" y="26" width="145" height="54" fill="#d8ef57"/><rect x="235" y="87" width="130" height="68" fill="#2155d9"/><text x="107" y="60" text-anchor="middle" fill="#171717" font-family="Arial,sans-serif" font-size="17" font-weight="700">MARKET</text><text x="300" y="130" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="26" font-weight="700">&#22823;&#38442;</text>',
+    taipei: '<rect width="400" height="200" fill="#dce9ee"/><path d="M-20 165 Q90 55 205 128 T430 72" fill="none" stroke="#264b5e" stroke-width="11"/><path d="M0 111 Q120 205 244 112 T420 150" fill="none" stroke="#cf596d" stroke-width="7"/><circle cx="125" cy="118" r="10" fill="#f5f4ef" stroke="#264b5e" stroke-width="5"/><circle cx="278" cy="98" r="10" fill="#f5f4ef" stroke="#cf596d" stroke-width="5"/><path d="M0 186 Q85 158 165 184 T330 178 T420 184 L420 210 L0 210 Z" fill="#8fb4a8"/>',
+    "hong-kong": '<rect width="400" height="200" fill="#e9e4eb"/><rect x="35" y="116" width="42" height="84" fill="#343137"/><rect x="90" y="78" width="54" height="122" fill="#4d4850"/><rect x="159" y="103" width="39" height="97" fill="#343137"/><rect x="216" y="58" width="62" height="142" fill="#4d4850"/><rect x="294" y="91" width="71" height="109" fill="#343137"/><path d="M0 166 Q90 148 180 169 T360 165 T430 170" fill="none" stroke="#d65b72" stroke-width="8"/><circle cx="315" cy="43" r="24" fill="#d65b72" opacity=".9"/>',
+    "seorak-review": '<rect width="400" height="200" fill="#6e9183"/><rect x="40" y="120" width="70" height="80" fill="#3a5249"/><rect x="130" y="95" width="80" height="105" fill="#2f433b"/><rect x="230" y="130" width="60" height="70" fill="#3a5249"/><rect x="300" y="105" width="70" height="95" fill="#2f433b"/><circle cx="320" cy="55" r="30" fill="#f6f2ea" opacity="0.85"/><ellipse cx="90" cy="80" rx="9" ry="13" fill="#b8332a"/>',
+    "hello-toronto": '<rect width="400" height="200" fill="#f7f4ee"/><rect x="40" y="80" width="60" height="120" fill="#141414"/><rect x="120" y="50" width="40" height="150" fill="#141414"/><rect x="175" y="20" width="14" height="180" fill="#141414"/><ellipse cx="182" cy="70" rx="22" ry="11" fill="#f4c430"/><rect x="250" y="90" width="60" height="110" fill="#1452b8"/><circle cx="340" cy="55" r="26" fill="#e63027"/>',
+    lisbon: '<defs><linearGradient id="cover-lisbon-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#add2f2"/><stop offset="100%" stop-color="#274d77"/></linearGradient></defs><rect width="400" height="200" fill="url(#cover-lisbon-gradient)"/><rect x="150" y="80" width="100" height="120" fill="#3a6ea5"/><rect x="170" y="100" width="26" height="26" fill="#fff" opacity="0.8"/><rect x="210" y="100" width="26" height="26" fill="#fff" opacity="0.8"/><rect x="190" y="60" width="8" height="40" fill="#3a6ea5"/>',
+    reykjavik: '<defs><linearGradient id="cover-reykjavik-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1f3b4d"/><stop offset="100%" stop-color="#0d1f2b"/></linearGradient></defs><rect width="400" height="200" fill="url(#cover-reykjavik-gradient)"/><g fill="none" stroke="#7fae9a" stroke-width="9" stroke-linecap="round" opacity="0.85"><path d="M60 90 Q150 30 240 80 Q330 130 380 60"/><path d="M70 120 Q160 60 250 110 Q340 160 390 90" opacity="0.5"/></g>'
+  };
+
   function landmark(lm, c) {
     switch (lm) {
       case "torii":   return '<rect x="120" y="95" width="14" height="105" fill="#1f0d09"/><rect x="250" y="95" width="14" height="105" fill="#1f0d09"/><rect x="104" y="95" width="176" height="12" fill="#1f0d09"/>';
@@ -187,8 +221,13 @@
   }
   function cardArt(g, w, h) {
     w = w || 400; h = h || 220;
+    if (COVER_ART[g.id]) {
+      return '<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
+        + COVER_ART[g.id]
+        + '</svg>';
+    }
     const a = g.art;
-    return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
       + '<defs><linearGradient id="g' + g.id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="' + a.sky[0] + '"/><stop offset="100%" stop-color="' + a.sky[1] + '"/></linearGradient></defs>'
       + '<rect width="' + w + '" height="' + h + '" fill="url(#g' + g.id + ')"/>'
       + '<circle cx="' + (w*0.74) + '" cy="' + (h*0.32) + '" r="' + (h*0.22) + '" fill="' + a.sun + '" opacity="0.85"/>'
