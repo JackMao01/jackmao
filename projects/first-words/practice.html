@@ -14,11 +14,14 @@
 <script defer src="../project-transitions.js?v=20260903-1"></script>
 <style>
 :root{color-scheme:light;font-family:Manrope,system-ui,sans-serif;color:#20201d;background:#f4f1eb}*{box-sizing:border-box}body{margin:0}a{color:inherit;text-underline-offset:4px}header{display:flex;justify-content:space-between;gap:16px;padding:20px 24px;border-bottom:1px solid #d9d4cb}main{max-width:800px;margin:auto;padding:32px 24px 64px}h1{font:500 42px/1.1 Georgia,serif;margin:16px 0 24px;letter-spacing:0}h2{font:500 28px/1.25 Georgia,serif;margin:16px 0}p{line-height:1.65}nav{display:flex;gap:4px;border-bottom:1px solid #d9d4cb;margin-bottom:32px}button{font:inherit;cursor:pointer;min-height:48px;color:inherit}nav button{background:none;border:0;border-bottom:3px solid transparent;padding:12px 18px}nav button[aria-pressed=true]{border-color:#20201d;font-weight:700}.eyebrow{font-size:12px;color:#59564f}#answers{display:grid;gap:12px;margin-top:24px}.answer{text-align:left;padding:18px;background:#fbfaf7;border:1px solid #b5b0a6;border-radius:6px}.answer:hover{border-color:#20201d}.answer span{display:block;font-size:24px;line-height:1.6}.answer small{display:block;font-size:14px;color:#59564f}.answer[aria-disabled=true]{cursor:default}#feedback{min-height:64px;margin:20px 0}#next{padding:12px 24px;border:0;border-radius:6px;background:#20201d;color:white}footer{display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;padding-top:24px;border-top:1px solid #d9d4cb}:focus-visible{outline:3px solid #31578f;outline-offset:4px}[hidden]{display:none!important}@media(max-width:440px){header{padding:16px;font-size:13px}main{padding:24px 16px 48px}h1{font-size:36px}}
+#review{margin:12px 0 0 12px;padding:12px 24px;border:1px solid #8a857c;border-radius:6px;background:#fbfaf7;max-width:100%}@media(max-width:440px){#review{margin-left:0;display:block}}
 </style></head>
 <body><header><a href="chinese.html">First Words / Chinese</a><span>With Wayfarer</span></header>
 <main><h1>Words for the way.</h1><nav aria-label="Destination"><button data-city="taipei" aria-pressed="true">Taipei</button><button data-city="hongkong" aria-pressed="false">Hong Kong</button></nav>
 <p class="eyebrow" id="progress"></p><section aria-labelledby="question"><h2 id="question" tabindex="-1"></h2><p id="context"></p><div id="answers"></div></section>
 <p id="feedback" role="status" aria-live="polite"></p><button id="next" hidden>Continue</button>
+<button id="review" hidden>Review missed phrases</button>
+<p class="eyebrow" id="save-status" role="status"></p>
 <footer><a id="guide" data-language-route-transition>Read the Wayfarer guide</a><a id="foundation">Return to the foundation</a></footer>
 <noscript><p>Destination practice requires JavaScript. <a href="chinese.html">Browse the foundations</a>.</p></noscript></main>
 <script>
@@ -27,16 +30,49 @@ const routes={
  hongkong:{name:'Hong Kong',language:'Cantonese',lang:'yue-Hant',file:'cantonese',guide:'hong-kong',phrases:[['唔該，地鐵站喺邊度','m4 goi1, dei6 tit3 zaam6 hai2 bin1 dou6','Excuse me, where is the MTR station?'],['我要呢個','ngo5 jiu3 ni1 go3','I would like this one'],['唔該晒','m4 goi1 saai3','Thank you very much']]}
 };
 const scenes=[['Find your way','You want to ask someone where the station is. Which phrase asks for directions?'],['At the counter','You point to the item you want on the menu. What could you say?'],['Before you go','Someone has helped you find your way. How would you thank them?']];
-let city=new URLSearchParams(location.search).get('place');if(!Object.hasOwn(routes,city))city='taipei';let step=0,answered=false;
+let city=new URLSearchParams(location.search).get('place');
+if(!Object.hasOwn(routes,city))city='taipei';
 const get=id=>document.getElementById(id);
-function render(focus=false){const r=routes[city];answered=false;get('feedback').textContent='';get('next').hidden=true;
+const STORE='first-words-destination-practice-v1';
+const fresh=()=>({mode:'practice',queue:[0,1,2],cursor:0,missed:[],answered:false,wrong:false});
+const states={taipei:fresh(),hongkong:fresh()};
+let storageAvailable=true;
+const validIds=a=>Array.isArray(a)&&a.every(i=>Number.isInteger(i)&&i>=0&&i<scenes.length)&&new Set(a).size===a.length;
+try {
+ const saved=JSON.parse(localStorage.getItem(STORE)||'null');
+ if(saved&&saved.version===1)for(const id of Object.keys(states)){
+  const s=saved[id];
+  if(s&&['practice','review','summary'].includes(s.mode)&&validIds(s.queue)&&s.queue.length&&validIds(s.missed)&&Number.isInteger(s.cursor)&&s.cursor>=0&&s.cursor<s.queue.length&&typeof s.answered==='boolean'&&typeof s.wrong==='boolean')states[id]={mode:s.mode,queue:s.queue,cursor:s.cursor,missed:s.missed,answered:s.answered,wrong:s.wrong};
+ }
+}catch(error){if(error.name!=='SyntaxError')storageAvailable=false;}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify({version:1,...states}));storageAvailable=true;}catch{storageAvailable=false;}get('save-status').textContent=storageAvailable?'Progress saved on this device.':'Progress cannot be saved in this browser.';}
+function render(focus=false){
+ const r=routes[city],s=states[city],step=s.queue[s.cursor],summary=s.mode==='summary';
  document.querySelectorAll('[data-city]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.city===city)));
  get('guide').href='../wayfarer/'+r.guide+'.html';get('foundation').href=r.file+'.html?place='+city;
- get('progress').textContent=r.name+' / '+r.language+' / '+(step<3?String(step+1)+' of 3':'Complete');
- get('question').textContent=step<3?scenes[step][0]:'A few words, ready to carry.';get('context').textContent=step<3?scenes[step][1]:'You have practised finding transport, choosing an item, and closing an exchange with thanks.';get('answers').replaceChildren();
- if(step===3){get('next').hidden=false;get('next').textContent='Practise again';}else{get('next').textContent=step===2?'Finish':'Continue';
- // Rotate the options so the correct answer is not always in one position.
- [0,1,2].map(i=>(i+step*2+1)%3).forEach(i=>{const b=document.createElement('button');b.className='answer';const phrase=document.createElement('span');phrase.lang=r.lang;phrase.textContent=r.phrases[i][0];const reading=document.createElement('small');reading.textContent=r.phrases[i][1];b.append(phrase,reading);b.onclick=()=>{if(answered)return;if(i!==step){get('feedback').textContent='That means “'+r.phrases[i][2]+'”. Try a phrase that fits this situation.';return;}answered=true;get('feedback').textContent='Yes. “'+r.phrases[i][2]+'” fits this exchange.';document.querySelectorAll('.answer').forEach(x=>x.setAttribute('aria-disabled','true'));get('next').hidden=false;};get('answers').append(b);});}if(focus)get('question').focus();}
-get('next').onclick=()=>{step=step===3?0:step+1;render(true);};document.querySelectorAll('[data-city]').forEach(b=>b.onclick=()=>{city=b.dataset.city;step=0;const url=new URL(location.href);url.searchParams.set('place',city);history.replaceState(null,'',url);render();});render();
+ get('progress').textContent=r.name+' / '+r.language+' / '+(summary?'Complete':(s.mode==='review'?'Review / ':'')+(s.cursor+1)+' of '+s.queue.length);
+ get('question').textContent=summary?'A few words, ready to carry.':scenes[step][0];
+ get('context').textContent=summary?(s.missed.length?s.missed.length+' '+(s.missed.length===1?'phrase needs':'phrases need')+' another look.':'Every phrase in this session is clear.'):scenes[step][1];
+ get('answers').replaceChildren();get('feedback').textContent=!summary&&s.answered?'Yes. “'+r.phrases[step][2]+'” fits this exchange.':'';
+ get('next').hidden=!summary&&!s.answered;get('next').textContent=summary?'Practise all again':s.cursor===s.queue.length-1?'Finish':'Continue';
+ get('review').hidden=!summary||!s.missed.length;
+ if(!summary)[0,1,2].map(i=>(i+step*2+1)%3).forEach(i=>{
+  const b=document.createElement('button');b.className='answer';b.setAttribute('aria-disabled',String(s.answered));
+  const phrase=document.createElement('span');phrase.lang=r.lang;phrase.textContent=r.phrases[i][0];
+  const reading=document.createElement('small');reading.textContent=r.phrases[i][1];b.append(phrase,reading);
+  b.onclick=()=>{
+   if(s.answered)return;
+   if(i!==step){s.wrong=true;if(!s.missed.includes(step))s.missed.push(step);persist();get('feedback').textContent='That means “'+r.phrases[i][2]+'”. Try a phrase that fits this situation.';return;}
+   s.answered=true;if(s.mode==='review'&&!s.wrong)s.missed=s.missed.filter(id=>id!==step);
+   persist();get('feedback').textContent='Yes. “'+r.phrases[i][2]+'” fits this exchange.';
+   document.querySelectorAll('.answer').forEach(x=>x.setAttribute('aria-disabled','true'));get('next').hidden=false;
+  };get('answers').append(b);
+ });
+ persist();if(focus)get('question').focus();
+}
+get('next').onclick=()=>{const s=states[city];if(s.mode==='summary'){states[city]={...fresh(),missed:s.missed};}else if(s.answered){if(s.cursor===s.queue.length-1)s.mode='summary';else{s.cursor++;s.answered=false;s.wrong=false;}}render(true);};
+get('review').onclick=()=>{const s=states[city];if(!s.missed.length)return;states[city]={...fresh(),mode:'review',queue:[...s.missed],missed:[...s.missed]};render(true);};
+document.querySelectorAll('[data-city]').forEach(b=>b.onclick=()=>{city=b.dataset.city;const url=new URL(location.href);url.searchParams.set('place',city);history.replaceState(null,'',url);render();});
+render();
 if ('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script></body></html>
