@@ -181,7 +181,7 @@
 
     content.innerHTML =
       '<div class="profile">' +
-        '<div class="avatar" style="background:' + color + ';">' + initials + '</div>' +
+        '<div class="avatar" style="background:' + color + ';color:' + (['shizuka', 'goldenroute'].includes(handle) ? '#111' : '#fff') + ';">' + initials + '</div>' +
         '<div class="pinfo">' +
           '<div class="crumb"><a href="guides.html">Guides</a> · Author</div>' +
           '<h1>' + author.name + '</h1>' +
