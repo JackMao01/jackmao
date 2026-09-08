@@ -398,6 +398,17 @@
     }
   }
 
+  function mountEditorialNote() {
+    if (document.getElementById('wf-editorial-note')) return;
+    var note = document.createElement('p');
+    note.id = 'wf-editorial-note';
+    note.textContent = 'Wayfarer is a portfolio concept by Jack Mao. Contributor profiles, community conversations, and reviews demonstrate the proposed experience, not verified testimony. Check current travel details with official local sources.';
+    note.style.cssText = 'position:relative;clear:both;margin:0;padding:24px max(24px, calc((100% - 960px) / 2));background:#f5f5f5;color:#444;font:400 13px/1.7 system-ui,sans-serif;letter-spacing:0;text-align:left;overflow-wrap:anywhere;';
+    document.body.appendChild(note);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountEditorialNote, { once: true });
+  else mountEditorialNote();
+
   /* ---- Public API ------------------------------------------------------- */
   window.Wayfarer = {
     guides: GUIDES,

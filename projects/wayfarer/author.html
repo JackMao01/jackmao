@@ -137,7 +137,7 @@
 
   <footer>© 2026 Wayfarer · A place to get lost reading about places.</footer>
 
-<script src="wayfarer-shared.js?v=20260907-covers"></script>
+<script src="wayfarer-shared.js?v=20260908-provenance"></script>
 <script>
   const W = window.Wayfarer;
   const params = new URLSearchParams(location.search);
@@ -187,6 +187,7 @@
           '<h1>' + author.name + '</h1>' +
           '<div class="handle">' + (author.label || ('@' + author.handle)) + '</div>' +
           '<p class="bio">' + author.bio + '</p>' +
+          (isDefaultProfile ? '' : '<p class="bio">Illustrative contributor profile for the Wayfarer concept. Biography and bylines are not independently verified.</p>') +
           '<div class="meta"><span><b>' + liveCount + '</b> published guide' + (liveCount===1?'':'s') + '</span>' +
             '<span>Based in <b>' + author.based + '</b></span>' +
             '<span>On Wayfarer since <b>' + author.since + '</b></span></div>' +

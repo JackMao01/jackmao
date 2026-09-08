@@ -118,7 +118,7 @@
     if(reduced||!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
     else{const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target);}});},{threshold:.12,rootMargin:"0px 0px -40px"});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));}
   </script>
-<script src="wayfarer-shared.js?v=20260907-covers"></script>
+<script src="wayfarer-shared.js?v=20260908-provenance"></script>
   <script>if(window.Wayfarer) Wayfarer.mountChrome("tokyo");</script>
   <script defer src="../project-transitions.js?v=20260903-1"></script>
   <script defer src="../../analytics.js"></script>
