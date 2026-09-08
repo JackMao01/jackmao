@@ -13,10 +13,11 @@
  #mobileWorkMenu a span{flex-shrink:0;color:#aaa3b8;font:11px/1.4 'Menu Mono',monospace;letter-spacing:0;text-transform:none}
  #mobileWorkMenu a[aria-current=page]{color:#ccff00}
  #mobileWorkMenu a[aria-current=page] span{color:#ccff00}
- #mobileWorkMenu a.mpm-secondary{font-size:13px;color:#c6bfd1}
  #mobileWorkMenu a:hover{background:#ffffff08}
  #mobileWorkMenu :focus-visible{outline:2px solid #ccff00;outline-offset:2px}
- .mobile-tabbar.is-hidden{opacity:1;transform:translateX(-50%);pointer-events:auto}
+ #mobileTabbar{transition:opacity 180ms ease,transform 220ms ease}
+ #mobileTabbar.is-hidden{opacity:0;transform:translate(-50%,calc(110% + env(safe-area-inset-bottom)));pointer-events:none}
+ #mobileTabbar:focus-within{opacity:1;transform:translateX(-50%);pointer-events:auto}
 }
-@media(prefers-reduced-motion:reduce){#mobileWorkMenu{transition:none}}
+@media(prefers-reduced-motion:reduce){#mobileWorkMenu,#mobileTabbar{transition:none}}
 
