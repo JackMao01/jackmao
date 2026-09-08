@@ -1204,6 +1204,7 @@
   <meta name="twitter:image" content="https://www.hellojackmao.com/images/og-portfolio-index-card.png">
   <meta name="twitter:image:alt" content="Jack Mao portfolio index card for editorial, storytelling, and product design.">
   <style>.plate-fig-cap b { color:#49308d; }</style>
+<link rel="stylesheet" href="mobile-project-menu.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -1506,68 +1507,6 @@
       btt.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
     if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    // -- Mobile contextual tab bar --
-    (function() {
-      const tabbar = document.getElementById('mobileTabbar');
-      const menus = Array.from(document.querySelectorAll('.mobile-action-menu'));
-      const buttons = Array.from(document.querySelectorAll('[data-mobile-menu]'));
-      if (!tabbar || !menus.length || !buttons.length) return;
-      let scrollTimer = null;
-
-      const closeMenus = () => {
-        tabbar.classList.remove('is-open');
-        menus.forEach(menu => menu.classList.remove('is-open'));
-        buttons.forEach(button => button.setAttribute('aria-expanded', 'false'));
-      };
-      const openMenu = id => {
-        const target = document.getElementById(id);
-        const isOpen = target && target.classList.contains('is-open');
-        closeMenus();
-        if (target && !isOpen) {
-          tabbar.classList.add('is-open');
-          target.classList.add('is-open');
-          const trigger = buttons.find(button => button.dataset.mobileMenu === id);
-          if (trigger) trigger.setAttribute('aria-expanded', 'true');
-        }
-      };
-      const setHidden = hidden => {
-        if (tabbar.classList.contains('is-open')) hidden = false;
-        tabbar.classList.toggle('is-hidden', hidden);
-        menus.forEach(menu => menu.classList.toggle('is-hidden', hidden));
-      };
-
-      buttons.forEach(button => {
-        button.addEventListener('click', event => {
-          event.stopPropagation();
-          openMenu(button.dataset.mobileMenu);
-        });
-      });
-
-      menus.forEach(menu => {
-        menu.addEventListener('click', event => {
-          if (event.target.closest('a')) closeMenus();
-        });
-      });
-
-      document.addEventListener('click', event => {
-        if (!tabbar.contains(event.target) && !menus.some(menu => menu.contains(event.target))) closeMenus();
-      });
-
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeMenus();
-      });
-
-      window.addEventListener('hashchange', closeMenus);
-      window.addEventListener('pagehide', closeMenus);
-      window.addEventListener('scroll', () => {
-        if (!window.matchMedia('(max-width: 768px)').matches) return;
-        closeMenus();
-        setHidden(true);
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => setHidden(false), 260);
-      }, { passive: true });
-    })();
-
     // -- Haptic-style tap feedback --
     (function() {
       const targets = document.querySelectorAll('nav a, nav button, .mobile-tabbar a, .mobile-tabbar button, .mobile-action-menu a');
@@ -1600,5 +1539,6 @@
     })();
   </script>
   <script defer src="../analytics.js"></script>
+<script src="mobile-project-menu.js"></script>
 </body>
 </html>
